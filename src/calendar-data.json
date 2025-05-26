@@ -9,7 +9,6 @@
           "classes": ["is-holiday"],
           "event_title": "नववर्ष प्रारम्भ",
           "date_np": "१",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "14"
         },
@@ -17,7 +16,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "15"
         },
@@ -25,7 +23,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "16"
         },
@@ -33,7 +30,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "17"
         },
@@ -41,7 +37,6 @@
           "classes": [],
           "event_title": "विश्व सम्पदा दिवस",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "18"
         },
@@ -49,7 +44,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "19"
         },
@@ -57,7 +51,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "20"
         },
@@ -65,7 +58,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "अष्टमी",
           "date_en": "21"
         },
@@ -73,7 +65,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "22"
         },
@@ -81,7 +72,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "23"
         },
@@ -89,7 +79,6 @@
           "classes": [],
           "event_title": "वरुथिनी एकादशी व्रत",
           "date_np": "११",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "24"
         },
@@ -97,7 +86,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "25"
         },
@@ -105,7 +93,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "26"
         },
@@ -113,7 +100,6 @@
           "classes": [],
           "event_title": "आमाको मुख हेर्ने दिन",
           "date_np": "१४",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "27"
         },
@@ -121,7 +107,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१५",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "28"
         },
@@ -129,7 +114,6 @@
           "classes": [],
           "event_title": "परशुराम जयन्ती",
           "date_np": "१६",
-          "event_extra": "+ 1",
           "tithi": "द्वितीया",
           "date_en": "29"
         },
@@ -137,7 +121,6 @@
           "classes": [],
           "event_title": "अक्षयतृतीया",
           "date_np": "१७",
-          "event_extra": "+ 1",
           "tithi": "तृतीया",
           "date_en": "30"
         },
@@ -145,7 +128,6 @@
           "classes": ["is-holiday"],
           "event_title": "अन्तर्राष्ट्रिय श्रमिक दिवस",
           "date_np": "१८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "1"
         },
@@ -153,7 +135,6 @@
           "classes": [],
           "event_title": "श्री शङ्कराचार्य जयन्ती",
           "date_np": "१९",
-          "event_extra": "+ 1",
           "tithi": "पञ्चमी",
           "date_en": "2"
         },
@@ -161,7 +142,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "3"
         },
@@ -169,7 +149,6 @@
           "classes": [],
           "event_title": "गंगोत्पत्त / गङ्गा सप्तमी",
           "date_np": "२१",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "4"
         },
@@ -177,7 +156,6 @@
           "classes": [],
           "event_title": "पशुपतिनाथमा दमन पुष्पार्पण",
           "date_np": "२२",
-          "event_extra": "+ 2",
           "tithi": "अष्टमी",
           "date_en": "5"
         },
@@ -185,7 +163,6 @@
           "classes": [],
           "event_title": "सीता जयन्ती",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "6"
         },
@@ -193,7 +170,6 @@
           "classes": [],
           "event_title": "समाज सुधार दिवस (किराँत)",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "7"
         },
@@ -201,7 +177,6 @@
           "classes": [],
           "event_title": "मोहिनी एकादशी व्रत",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "8"
         },
@@ -209,7 +184,6 @@
           "classes": [],
           "event_title": "कानून दिवस",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "9"
         },
@@ -217,7 +191,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "10"
         },
@@ -225,7 +198,6 @@
           "classes": [],
           "event_title": "नृसिंह जयन्ती",
           "date_np": "२८",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "11"
         },
@@ -233,7 +205,6 @@
           "classes": ["is-holiday"],
           "event_title": "उभौली पर्व",
           "date_np": "२९",
-          "event_extra": "+ 5",
           "tithi": "पूर्णिमा",
           "date_en": "12"
         },
@@ -241,7 +212,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "13"
         },
@@ -249,7 +219,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "14"
         }
@@ -263,7 +232,6 @@
           "classes": [],
           "event_title": "ज्येष्ठ सङ्क्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 2",
           "tithi": "तृतीया",
           "date_en": "15"
         },
@@ -271,7 +239,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "16"
         },
@@ -279,7 +246,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३",
-          "event_extra": "+ 2",
           "tithi": "पञ्चमी",
           "date_en": "17"
         },
@@ -287,7 +253,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "18"
         },
@@ -295,7 +260,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "19"
         },
@@ -303,7 +267,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "६",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "20"
         },
@@ -311,7 +274,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "21"
         },
@@ -319,7 +281,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय जैविक विविधता दिवस",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "22"
         },
@@ -327,7 +288,6 @@
           "classes": [],
           "event_title": "अपरा एकादशी व्रत",
           "date_np": "९",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "23"
         },
@@ -335,7 +295,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "24"
         },
@@ -343,7 +302,6 @@
           "classes": ["is-current"],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "25"
         },
@@ -351,7 +309,6 @@
           "classes": [],
           "event_title": "वटसावित्री व्रत",
           "date_np": "१२",
-          "event_extra": "+ 2",
           "tithi": "चतुर्दशी",
           "date_en": "26"
         },
@@ -359,7 +316,6 @@
           "classes": [],
           "event_title": "शनि जयन्ती",
           "date_np": "१३",
-          "event_extra": "+ 2",
           "tithi": "औँशी",
           "date_en": "27"
         },
@@ -367,7 +323,6 @@
           "classes": [],
           "event_title": "दशहरा–स्नान आरम्भ",
           "date_np": "१४",
-          "event_extra": "+ 2",
           "tithi": "प्रतिपदा",
           "date_en": "28"
         },
@@ -375,7 +330,6 @@
           "classes": ["is-holiday"],
           "event_title": "राष्ट्रिय गणतन्त्र दिवस",
           "date_np": "१५",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "29"
         },
@@ -383,7 +337,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "30"
         },
@@ -391,7 +344,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "31"
         },
@@ -399,7 +351,6 @@
           "classes": [],
           "event_title": "कुुमार षष्ठी",
           "date_np": "१८",
-          "event_extra": "+ 2",
           "tithi": "षष्ठी",
           "date_en": "1"
         },
@@ -407,7 +358,6 @@
           "classes": [],
           "event_title": "कुमार यात्रा",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "2"
         },
@@ -415,7 +365,6 @@
           "classes": [],
           "event_title": "भौमाष्टमी ब्रत",
           "date_np": "२०",
-          "event_extra": "+ 2",
           "tithi": "अष्टमी",
           "date_en": "3"
         },
@@ -423,7 +372,6 @@
           "classes": [],
           "event_title": "जातीय भेदभाव तथा छुवाछूत उन्मूलन दिवस",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "4"
         },
@@ -431,7 +379,6 @@
           "classes": [],
           "event_title": "गोसाइँकुण्ड स्नान समाप्ति",
           "date_np": "२२",
-          "event_extra": "+ 2",
           "tithi": "दशमी",
           "date_en": "5"
         },
@@ -439,7 +386,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "6"
         },
@@ -447,7 +393,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२४",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "7"
         },
@@ -455,7 +400,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "8"
         },
@@ -463,7 +407,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "9"
         },
@@ -471,7 +414,6 @@
           "classes": [],
           "event_title": "पूर्णिमाव्रत",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "10"
         },
@@ -479,7 +421,6 @@
           "classes": [],
           "event_title": "मष्ट पूर्णिमा",
           "date_np": "२८",
-          "event_extra": "+ 3",
           "tithi": "पूर्णिमा",
           "date_en": "11"
         },
@@ -487,7 +428,6 @@
           "classes": [],
           "event_title": "बालश्रमविरुद्धको दिवस",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "12"
         },
@@ -495,7 +435,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "13"
         },
@@ -503,7 +442,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "14"
         }
@@ -517,7 +455,6 @@
           "classes": [],
           "event_title": "आषाढ सङ्क्रान्ति",
           "date_np": "१",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "15"
         },
@@ -525,7 +462,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "16"
         },
@@ -533,7 +469,6 @@
           "classes": [],
           "event_title": "विश्व खडेरी राेकथाम दिवस",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "17"
         },
@@ -541,7 +476,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "४",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "18"
         },
@@ -549,7 +483,6 @@
           "classes": [],
           "event_title": "भल-भल अष्टमी",
           "date_np": "५",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "19"
         },
@@ -557,7 +490,6 @@
           "classes": [],
           "event_title": "विश्व शरणार्थी दिवस",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "20"
         },
@@ -565,7 +497,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "+ 2",
           "tithi": "एकादशी",
           "date_en": "21"
         },
@@ -573,7 +504,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "22"
         },
@@ -581,7 +511,6 @@
           "classes": [],
           "event_title": "सोम प्रदोष व्रत",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "23"
         },
@@ -589,7 +518,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "24"
         },
@@ -597,7 +525,6 @@
           "classes": [],
           "event_title": "दर्शश्राद्ध",
           "date_np": "११",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "25"
         },
@@ -605,7 +532,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "26"
         },
@@ -613,7 +539,6 @@
           "classes": [],
           "event_title": "जगन्नाथ रथ जात्रा",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "27"
         },
@@ -621,7 +546,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "28"
         },
@@ -629,7 +553,6 @@
           "classes": [],
           "event_title": "दही-चिउरा खाने दिन",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "चतुर्थी",
           "date_en": "29"
         },
@@ -637,7 +560,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "30"
         },
@@ -645,7 +567,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "1"
         },
@@ -653,7 +574,6 @@
           "classes": [],
           "event_title": "देवपाटनमा गंगामाई रथयात्रा",
           "date_np": "१८",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "2"
         },
@@ -661,7 +581,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "१९",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "3"
         },
@@ -669,7 +588,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "4"
         },
@@ -677,7 +595,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "5"
         },
@@ -685,7 +602,6 @@
           "classes": [],
           "event_title": "हरिशयनी एकादशी व्रत",
           "date_np": "२२",
-          "event_extra": "+ 2",
           "tithi": "एकादशी",
           "date_en": "6"
         },
@@ -693,7 +609,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "7"
         },
@@ -701,7 +616,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "8"
         },
@@ -709,7 +623,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "9"
         },
@@ -717,7 +630,6 @@
           "classes": [],
           "event_title": "पुर्णिमा व्रत",
           "date_np": "२६",
-          "event_extra": "+ 2",
           "tithi": "पूर्णिमा",
           "date_en": "10"
         },
@@ -725,7 +637,6 @@
           "classes": [],
           "event_title": "विश्व जनसंख्या दिवस",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "11"
         },
@@ -733,7 +644,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "12"
         },
@@ -741,7 +651,6 @@
           "classes": [],
           "event_title": "भानु जयन्ती",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "13"
         },
@@ -749,7 +658,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "14"
         },
@@ -757,7 +665,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "15"
         },
@@ -765,7 +672,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३२",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "16"
         }
@@ -779,7 +685,6 @@
           "classes": [],
           "event_title": "श्रावण सङ्क्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 4",
           "tithi": "सप्तमी",
           "date_en": "17"
         },
@@ -787,7 +692,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "२",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "18"
         },
@@ -795,7 +699,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "19"
         },
@@ -803,7 +706,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "20"
         },
@@ -811,7 +713,6 @@
           "classes": [],
           "event_title": "कामिका एकादशी व्रत",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "21"
         },
@@ -819,7 +720,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "६",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "22"
         },
@@ -827,7 +727,6 @@
           "classes": [],
           "event_title": "घण्टाकर्ण चतुर्दशी",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "23"
         },
@@ -835,7 +734,6 @@
           "classes": [],
           "event_title": "दर्शश्राद्ध",
           "date_np": "८",
-          "event_extra": "+ 2",
           "tithi": "औँशी",
           "date_en": "24"
         },
@@ -843,7 +741,6 @@
           "classes": [],
           "event_title": "गुँला पर्वशुरु",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "25"
         },
@@ -851,7 +748,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "26"
         },
@@ -859,7 +755,6 @@
           "classes": [],
           "event_title": "वराह जयन्ती",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "27"
         },
@@ -867,7 +762,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "28"
         },
@@ -875,7 +769,6 @@
           "classes": [],
           "event_title": "नाग–पञ्चमी",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "29"
         },
@@ -883,7 +776,6 @@
           "classes": [],
           "event_title": "कल्की जयन्ती",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "30"
         },
@@ -891,7 +783,6 @@
           "classes": [],
           "event_title": "गोस्वामी तुलासीदास जयन्ती",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "31"
         },
@@ -899,7 +790,6 @@
           "classes": [],
           "event_title": "अष्टमीब्रत",
           "date_np": "१६",
-          "event_extra": "+ 2",
           "tithi": "अष्टमी",
           "date_en": "1"
         },
@@ -907,7 +797,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "अष्टमी",
           "date_en": "2"
         },
@@ -915,7 +804,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१८",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "3"
         },
@@ -923,7 +811,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "4"
         },
@@ -931,7 +818,6 @@
           "classes": [],
           "event_title": "पुत्रदा एकादशी",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "5"
         },
@@ -939,7 +825,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "6"
         },
@@ -947,7 +832,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "7"
         },
@@ -955,7 +839,6 @@
           "classes": [],
           "event_title": "पूर्णिमाव्रत",
           "date_np": "२३",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "8"
         },
@@ -963,7 +846,6 @@
           "classes": ["is-holiday"],
           "event_title": "जनै पूर्णिमा",
           "date_np": "२४",
-          "event_extra": "+ 2",
           "tithi": "पूर्णिमा",
           "date_en": "9"
         },
@@ -971,7 +853,6 @@
           "classes": [],
           "event_title": "गाईजात्रा (उपत्यका बिदा )",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "10"
         },
@@ -979,7 +860,6 @@
           "classes": [],
           "event_title": "रोपाई जात्रा",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "11"
         },
@@ -987,7 +867,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय युवा दिवस",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "12"
         },
@@ -995,7 +874,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "13"
         },
@@ -1003,7 +881,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "14"
         },
@@ -1011,7 +888,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "15"
         },
@@ -1019,7 +895,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "अष्टमी",
           "date_en": "16"
         }
@@ -1033,7 +908,6 @@
           "classes": [],
           "event_title": "भाद्र संक्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 1",
           "tithi": "नवमी",
           "date_en": "17"
         },
@@ -1041,7 +915,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "18"
         },
@@ -1049,7 +922,6 @@
           "classes": [],
           "event_title": "अजा एकादशी व्रत",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "19"
         },
@@ -1057,7 +929,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "20"
         },
@@ -1065,7 +936,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "21"
         },
@@ -1073,7 +943,6 @@
           "classes": [],
           "event_title": "दर्शश्राद्ध",
           "date_np": "६",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "22"
         },
@@ -1081,7 +950,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "23"
         },
@@ -1089,7 +957,6 @@
           "classes": [],
           "event_title": "गुँला पर्व समाप्त",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "24"
         },
@@ -1097,7 +964,6 @@
           "classes": [],
           "event_title": "तीजको दर खाने दिन",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "25"
         },
@@ -1105,7 +971,6 @@
           "classes": [],
           "event_title": "हरितालिका (तीज) व्रत (महिला कर्मचारी बिदा)",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "26"
         },
@@ -1113,7 +978,6 @@
           "classes": [],
           "event_title": "गणेश चतुर्थी व्रत",
           "date_np": "११",
-          "event_extra": "+ 1",
           "tithi": "चतुर्थी",
           "date_en": "27"
         },
@@ -1121,7 +985,6 @@
           "classes": [],
           "event_title": "ऋषिपञ्चमी व्रत",
           "date_np": "१२",
-          "event_extra": "+ 2",
           "tithi": "पञ्चमी",
           "date_en": "28"
         },
@@ -1129,7 +992,6 @@
           "classes": [],
           "event_title": "सूर्य षष्ठी",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "29"
         },
@@ -1137,7 +999,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "30"
         },
@@ -1145,7 +1006,6 @@
           "classes": [],
           "event_title": "गौरापर्व",
           "date_np": "१५",
-          "event_extra": "+ 2",
           "tithi": "अष्टमी",
           "date_en": "31"
         },
@@ -1153,7 +1013,6 @@
           "classes": [],
           "event_title": "नवमी ब्रत",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "1"
         },
@@ -1161,7 +1020,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "2"
         },
@@ -1169,7 +1027,6 @@
           "classes": [],
           "event_title": "हरिपरिवर्तिनी एकादशी व्रत",
           "date_np": "१८",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "3"
         },
@@ -1177,7 +1034,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "4"
         },
@@ -1185,7 +1041,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "5"
         },
@@ -1193,7 +1048,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२१",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "6"
         },
@@ -1201,7 +1055,6 @@
           "classes": [],
           "event_title": "पूर्णिमाव्रत",
           "date_np": "२२",
-          "event_extra": "+ 3",
           "tithi": "पूर्णिमा",
           "date_en": "7"
         },
@@ -1209,7 +1062,6 @@
           "classes": [],
           "event_title": "सोह्रश्राद्ध प्रारम्भ",
           "date_np": "२३",
-          "event_extra": "+ 2",
           "tithi": "प्रतिपदा",
           "date_en": "8"
         },
@@ -1217,7 +1069,6 @@
           "classes": [],
           "event_title": "द्वितीया श्राद्ध",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "9"
         },
@@ -1225,7 +1076,6 @@
           "classes": [],
           "event_title": "तृतीया श्राद्ध",
           "date_np": "२५",
-          "event_extra": "+ 1",
           "tithi": "तृतीया",
           "date_en": "10"
         },
@@ -1233,7 +1083,6 @@
           "classes": [],
           "event_title": "चौथी श्राद्ध",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "11"
         },
@@ -1241,7 +1090,6 @@
           "classes": [],
           "event_title": "पञ्चमी श्राद्ध",
           "date_np": "२७",
-          "event_extra": "+ 1",
           "tithi": "पञ्चमी",
           "date_en": "12"
         },
@@ -1249,7 +1097,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "13"
         },
@@ -1257,7 +1104,6 @@
           "classes": [],
           "event_title": "रवि सप्तमी ब्रत",
           "date_np": "२९",
-          "event_extra": "+ 4",
           "tithi": "सप्तमी",
           "date_en": "14"
         },
@@ -1265,7 +1111,6 @@
           "classes": [],
           "event_title": "नवमी श्राद्ध",
           "date_np": "३०",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "15"
         },
@@ -1273,7 +1118,6 @@
           "classes": [],
           "event_title": "दशमी श्राद्ध",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "16"
         }
@@ -1287,7 +1131,6 @@
           "classes": [],
           "event_title": "विश्वकर्मा पूजा",
           "date_np": "१",
-          "event_extra": "+ 5",
           "tithi": "एकादशी",
           "date_en": "17"
         },
@@ -1295,7 +1138,6 @@
           "classes": [],
           "event_title": "द्वादशी श्राद्ध",
           "date_np": "२",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "18"
         },
@@ -1303,7 +1145,6 @@
           "classes": [],
           "event_title": "त्रयोदशी श्राद्ध",
           "date_np": "३",
-          "event_extra": "+ 2",
           "tithi": "त्रयोदशी",
           "date_en": "19"
         },
@@ -1311,7 +1152,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "20"
         },
@@ -1319,7 +1159,6 @@
           "classes": [],
           "event_title": "सोह्रश्राद्ध पुर्ति",
           "date_np": "५",
-          "event_extra": "+ 4",
           "tithi": "औँशी",
           "date_en": "21"
         },
@@ -1327,7 +1166,6 @@
           "classes": ["is-holiday"],
           "event_title": "घटस्थापना व्रत/नवरात्र आरम्भ",
           "date_np": "६",
-          "event_extra": "+ 1",
           "tithi": "प्रतिपदा",
           "date_en": "22"
         },
@@ -1335,7 +1173,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय सांकेतिक भाषा दिवस",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "23"
         },
@@ -1343,7 +1180,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "24"
         },
@@ -1351,7 +1187,6 @@
           "classes": [],
           "event_title": "विश्व फार्मेसिस्ट दिवस",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "25"
         },
@@ -1359,7 +1194,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय परमाणु हतियार निर्मुल दिवस",
           "date_np": "१०",
-          "event_extra": "+ 1",
           "tithi": "चतुर्थी",
           "date_en": "26"
         },
@@ -1367,7 +1201,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "+ 1",
           "tithi": "पञ्चमी",
           "date_en": "27"
         },
@@ -1375,7 +1208,6 @@
           "classes": [],
           "event_title": "रेबिजविरुद्ध दिवस",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "28"
         },
@@ -1383,7 +1215,6 @@
           "classes": ["is-holiday"],
           "event_title": "फूलपाती",
           "date_np": "१३",
-          "event_extra": "+ 2",
           "tithi": "सप्तमी",
           "date_en": "29"
         },
@@ -1391,7 +1222,6 @@
           "classes": ["is-holiday"],
           "event_title": "महाअष्टमी व्रत/कालरात्रि/गोरखकाली पूजा/भाैमाष्टमी व्रत",
           "date_np": "१४",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "30"
         },
@@ -1399,7 +1229,6 @@
           "classes": ["is-holiday"],
           "event_title": "महानवमी व्रत",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "नवमी",
           "date_en": "1"
         },
@@ -1407,7 +1236,6 @@
           "classes": ["is-holiday"],
           "event_title": "विजया दशमी",
           "date_np": "१६",
-          "event_extra": "+ 1",
           "tithi": "दशमी",
           "date_en": "2"
         },
@@ -1415,7 +1243,6 @@
           "classes": ["is-holiday"],
           "event_title": "पापांकुशा एकादशी व्रत",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "3"
         },
@@ -1423,7 +1250,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१८",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "4"
         },
@@ -1431,7 +1257,6 @@
           "classes": [],
           "event_title": "विश्व शिक्षक दिवस",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "5"
         },
@@ -1439,7 +1264,6 @@
           "classes": [],
           "event_title": "कोजाग्रत व्रत/पूर्णिमा व्रत",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "6"
         },
@@ -1447,7 +1271,6 @@
           "classes": [],
           "event_title": "कार्तिक स्नान",
           "date_np": "२१",
-          "event_extra": "+ 1",
           "tithi": "पूर्णिमा",
           "date_en": "7"
         },
@@ -1455,7 +1278,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "8"
         },
@@ -1463,7 +1285,6 @@
           "classes": [],
           "event_title": "विश्व हुलाक दिवस",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "9"
         },
@@ -1471,7 +1292,6 @@
           "classes": [],
           "event_title": "विश्व मानसिक स्वास्थ दिवस",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "10"
         },
@@ -1479,7 +1299,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "11"
         },
@@ -1487,7 +1306,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "12"
         },
@@ -1495,7 +1313,6 @@
           "classes": [],
           "event_title": "अष्टमीब्रत",
           "date_np": "२७",
-          "event_extra": "+ 1",
           "tithi": "सप्तमी",
           "date_en": "13"
         },
@@ -1503,7 +1320,6 @@
           "classes": [],
           "event_title": "भौमाष्टमी ब्रत",
           "date_np": "२८",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "14"
         },
@@ -1511,7 +1327,6 @@
           "classes": [],
           "event_title": "ग्रामीण महिला दिवस",
           "date_np": "२९",
-          "event_extra": "+ 1",
           "tithi": "नवमी",
           "date_en": "15"
         },
@@ -1519,7 +1334,6 @@
           "classes": [],
           "event_title": "विश्व खाद्य दिवस",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "16"
         },
@@ -1527,7 +1341,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय गरिबी उन्मूलन दिवस",
           "date_np": "३१",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "17"
         }
@@ -1541,7 +1354,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "18"
         },
@@ -1549,7 +1361,6 @@
           "classes": [],
           "event_title": "काग तिहार/धनवन्तरी जयन्ती",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "19"
         },
@@ -1557,7 +1368,6 @@
           "classes": ["is-holiday"],
           "event_title": "लक्ष्मी पूजा",
           "date_np": "३",
-          "event_extra": "+ 2",
           "tithi": "चतुर्दशी",
           "date_en": "20"
         },
@@ -1565,7 +1375,6 @@
           "classes": [],
           "event_title": "दर्शश्राद्ध",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "औँशी",
           "date_en": "21"
         },
@@ -1573,7 +1382,6 @@
           "classes": ["is-holiday"],
           "event_title": "गोवर्धन पूजा/गाईगोरु पूजा",
           "date_np": "५",
-          "event_extra": "+ 2",
           "tithi": "प्रतिपदा",
           "date_en": "22"
         },
@@ -1581,7 +1389,6 @@
           "classes": ["is-holiday"],
           "event_title": "भाइटीका",
           "date_np": "६",
-          "event_extra": "+ 1",
           "tithi": "द्वितीया",
           "date_en": "23"
         },
@@ -1589,7 +1396,6 @@
           "classes": [],
           "event_title": "विश्व विकास सूचना दिवस",
           "date_np": "७",
-          "event_extra": "+ 1",
           "tithi": "तृतीया",
           "date_en": "24"
         },
@@ -1597,7 +1403,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "25"
         },
@@ -1605,7 +1410,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "26"
         },
@@ -1613,7 +1417,6 @@
           "classes": ["is-holiday"],
           "event_title": "छठ पर्व",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "27"
         },
@@ -1621,7 +1424,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "28"
         },
@@ -1629,7 +1431,6 @@
           "classes": [],
           "event_title": "बुधाष्टमी व्रत",
           "date_np": "१२",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "29"
         },
@@ -1637,7 +1438,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "30"
         },
@@ -1645,7 +1445,6 @@
           "classes": [],
           "event_title": "कुष्माण्ड नवमी",
           "date_np": "१४",
-          "event_extra": "+ 1",
           "tithi": "दशमी",
           "date_en": "31"
         },
@@ -1653,7 +1452,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१५",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "1"
         },
@@ -1661,7 +1459,6 @@
           "classes": [],
           "event_title": "चाँगुनारायण अखण्डदीप दर्शन",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "2"
         },
@@ -1669,7 +1466,6 @@
           "classes": [],
           "event_title": "सोम प्रदोष व्रत",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "3"
         },
@@ -1677,7 +1473,6 @@
           "classes": [],
           "event_title": "युनेस्को दिवस",
           "date_np": "१८",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "4"
         },
@@ -1685,7 +1480,6 @@
           "classes": [],
           "event_title": "चतुर्मास व्रत पूर्ण/कार्तिक स्नानब्रत पूर्ण",
           "date_np": "१९",
-          "event_extra": "+ 2",
           "tithi": "पूर्णिमा",
           "date_en": "5"
         },
@@ -1693,7 +1487,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "6"
         },
@@ -1701,7 +1494,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "7"
         },
@@ -1709,7 +1501,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "8"
         },
@@ -1717,7 +1508,6 @@
           "classes": [],
           "event_title": "विश्व स्वतन्त्रता दिवस",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "9"
         },
@@ -1725,7 +1515,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "10"
         },
@@ -1733,7 +1522,6 @@
           "classes": [],
           "event_title": "फाल्गुनानन्द जयन्ती (किराँत धर्मावलम्बी मात्र)",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "11"
         },
@@ -1741,7 +1529,6 @@
           "classes": [],
           "event_title": "बुधाष्टमी व्रत",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "अष्टमी",
           "date_en": "12"
         },
@@ -1749,7 +1536,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "13"
         },
@@ -1757,7 +1543,6 @@
           "classes": [],
           "event_title": "विश्व मधुमेह दिवस",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "14"
         },
@@ -1765,7 +1550,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "15"
         },
@@ -1773,7 +1557,6 @@
           "classes": [],
           "event_title": "गुरु नानक जयन्ती (शिख धर्मावलम्बी)",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "16"
         }
@@ -1787,7 +1570,6 @@
           "classes": [],
           "event_title": "मार्ग शीर्ष संक्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 2",
           "tithi": "त्रयोदशी",
           "date_en": "17"
         },
@@ -1795,7 +1577,6 @@
           "classes": [],
           "event_title": "अर्जुनधारा मेला",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "18"
         },
@@ -1803,7 +1584,6 @@
           "classes": [],
           "event_title": "बाला चतुर्दशी (शत बीज छर्ने)",
           "date_np": "३",
-          "event_extra": "+ 2",
           "tithi": "चतुर्दशी",
           "date_en": "19"
         },
@@ -1811,7 +1591,6 @@
           "classes": [],
           "event_title": "स्नानदान गर्ने औँशी",
           "date_np": "४",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "20"
         },
@@ -1819,7 +1598,6 @@
           "classes": [],
           "event_title": "टेलिभिजन दिवस",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "21"
         },
@@ -1827,7 +1605,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "22"
         },
@@ -1835,7 +1612,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "23"
         },
@@ -1843,7 +1619,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "24"
         },
@@ -1851,7 +1626,6 @@
           "classes": [],
           "event_title": "विवाहपञ्चमी",
           "date_np": "९",
-          "event_extra": "+ 1",
           "tithi": "पञ्चमी",
           "date_en": "25"
         },
@@ -1859,7 +1633,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "26"
         },
@@ -1867,7 +1640,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "27"
         },
@@ -1875,7 +1647,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "28"
         },
@@ -1883,7 +1654,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "29"
         },
@@ -1891,7 +1661,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "30"
         },
@@ -1899,7 +1668,6 @@
           "classes": [],
           "event_title": "मोक्षदा एकादशी ब्रत",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "1"
         },
@@ -1907,7 +1675,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "१६",
-          "event_extra": "+ 1",
           "tithi": "त्रयोदशी",
           "date_en": "2"
         },
@@ -1915,7 +1682,6 @@
           "classes": [],
           "event_title": "काशीको पिशाचमोचन तीर्थमा श्राद्ध",
           "date_np": "१७",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "3"
         },
@@ -1923,7 +1689,6 @@
           "classes": ["is-holiday"],
           "event_title": "उँधौली पर्व",
           "date_np": "१८",
-          "event_extra": "+ 4",
           "tithi": "पूर्णिमा",
           "date_en": "4"
         },
@@ -1931,7 +1696,6 @@
           "classes": [],
           "event_title": "स्वयंसेवक दिवस",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "5"
         },
@@ -1939,7 +1703,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "6"
         },
@@ -1947,7 +1710,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय नागरिक उड्डयन दिवस",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "7"
         },
@@ -1955,7 +1717,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "8"
         },
@@ -1963,7 +1724,6 @@
           "classes": [],
           "event_title": "भ्रष्टाचारविरुद्धको अन्तर्राष्ट्रिय दिवस",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "9"
         },
@@ -1971,7 +1731,6 @@
           "classes": [],
           "event_title": "विश्व मानव अधिकार दिवस",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "10"
         },
@@ -1979,7 +1738,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय पर्वत दिवस",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "11"
         },
@@ -1987,7 +1745,6 @@
           "classes": [],
           "event_title": "अष्टमीब्रत",
           "date_np": "२६",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "12"
         },
@@ -1995,7 +1752,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "13"
         },
@@ -2003,7 +1759,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "14"
         },
@@ -2011,7 +1766,6 @@
           "classes": [],
           "event_title": "सफला एकादशी ब्रत",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "15"
         }
@@ -2025,7 +1779,6 @@
           "classes": [],
           "event_title": "पौष संक्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "16"
         },
@@ -2033,7 +1786,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "17"
         },
@@ -2041,7 +1793,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय आप्रवासी दिवस",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "18"
         },
@@ -2049,7 +1800,6 @@
           "classes": [],
           "event_title": "गयामौनी कोका-कौषिका औँशी",
           "date_np": "४",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "19"
         },
@@ -2057,7 +1807,6 @@
           "classes": ["is-holiday"],
           "event_title": "तोल ल्होसार",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "20"
         },
@@ -2065,7 +1814,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "21"
         },
@@ -2073,7 +1821,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "22"
         },
@@ -2081,7 +1828,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "23"
         },
@@ -2089,7 +1835,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "24"
         },
@@ -2097,7 +1842,6 @@
           "classes": ["is-holiday"],
           "event_title": "क्रिसमस (इसाई धर्म मात्र)",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "25"
         },
@@ -2105,7 +1849,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "26"
         },
@@ -2113,7 +1856,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "27"
         },
@@ -2121,7 +1863,6 @@
           "classes": [],
           "event_title": "अष्टमीब्रत",
           "date_np": "१३",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "28"
         },
@@ -2129,7 +1870,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "29"
         },
@@ -2137,7 +1877,6 @@
           "classes": ["is-holiday"],
           "event_title": "तमु (गुरुङ) ल्होसार",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "30"
         },
@@ -2145,7 +1884,6 @@
           "classes": [],
           "event_title": "राष्ट्रिय मेलमिलाप दिवस",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "31"
         },
@@ -2153,7 +1891,6 @@
           "classes": [],
           "event_title": "सन् २०२५ प्रारम्भ",
           "date_np": "१७",
-          "event_extra": "+ 2",
           "tithi": "त्रयोदशी",
           "date_en": "1"
         },
@@ -2161,7 +1898,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१८",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "2"
         },
@@ -2169,7 +1905,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१९",
-          "event_extra": "+ 2",
           "tithi": "पूर्णिमा",
           "date_en": "3"
         },
@@ -2177,7 +1912,6 @@
           "classes": [],
           "event_title": "विश्व ब्रेल दिवस",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "4"
         },
@@ -2185,7 +1919,6 @@
           "classes": [],
           "event_title": "श्री गुरु गोविन्द सिंह जयन्ती",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "5"
         },
@@ -2193,7 +1926,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "6"
         },
@@ -2201,7 +1933,6 @@
           "classes": [],
           "event_title": "अरनिको स्मृति दिवस",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "7"
         },
@@ -2209,7 +1940,6 @@
           "classes": [],
           "event_title": "नेपाल ज्योतिष परिषदको वार्षिकोत्सव",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "8"
         },
@@ -2217,7 +1947,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "9"
         },
@@ -2225,7 +1954,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "10"
         },
@@ -2233,7 +1961,6 @@
           "classes": ["is-holiday"],
           "event_title": "पृथ्वी जयन्ती तथा राष्ट्रिय एकता दिवस",
           "date_np": "२७",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "11"
         },
@@ -2241,7 +1968,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "12"
         },
@@ -2249,7 +1975,6 @@
           "classes": [],
           "event_title": "राष्ट्रिय भक्का दिवस",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "13"
         },
@@ -2257,7 +1982,6 @@
           "classes": [],
           "event_title": "षटतिला एकादशी व्रत",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "14"
         }
@@ -2271,7 +1995,6 @@
           "classes": ["is-holiday"],
           "event_title": "माघे संक्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 4",
           "tithi": "द्वादशी",
           "date_en": "15"
         },
@@ -2279,7 +2002,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "२",
-          "event_extra": "+ 1",
           "tithi": "त्रयोदशी",
           "date_en": "16"
         },
@@ -2287,7 +2009,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "17"
         },
@@ -2295,7 +2016,6 @@
           "classes": ["is-holiday"],
           "event_title": "सोनम ल्होछार",
           "date_np": "४",
-          "event_extra": "+ 1",
           "tithi": "औँशी",
           "date_en": "18"
         },
@@ -2303,7 +2023,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "19"
         },
@@ -2311,7 +2030,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "20"
         },
@@ -2319,7 +2037,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "21"
         },
@@ -2327,7 +2044,6 @@
           "classes": [],
           "event_title": "तिलकुन्द चतुर्थी",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "22"
         },
@@ -2335,7 +2051,6 @@
           "classes": [],
           "event_title": "वसन्त पञ्चमी",
           "date_np": "९",
-          "event_extra": "+ 2",
           "tithi": "पञ्चमी",
           "date_en": "23"
         },
@@ -2343,7 +2058,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "24"
         },
@@ -2351,7 +2065,6 @@
           "classes": [],
           "event_title": "रवि सप्तमी ब्रत",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "25"
         },
@@ -2359,7 +2072,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय भन्सार दिवस",
           "date_np": "१२",
-          "event_extra": "+ 2",
           "tithi": "अष्टमी",
           "date_en": "26"
         },
@@ -2367,7 +2079,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "27"
         },
@@ -2375,7 +2086,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "28"
         },
@@ -2383,7 +2093,6 @@
           "classes": [],
           "event_title": "भीमा एकादशी व्रत",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "29"
         },
@@ -2391,7 +2100,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "१६",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "30"
         },
@@ -2399,7 +2107,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "31"
         },
@@ -2407,7 +2114,6 @@
           "classes": [],
           "event_title": "श्री स्वस्थानी व्रत समाप्त",
           "date_np": "१८",
-          "event_extra": "+ 2",
           "tithi": "पूर्णिमा",
           "date_en": "1"
         },
@@ -2415,7 +2121,6 @@
           "classes": [],
           "event_title": "विश्व सिमसार दिवस",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "2"
         },
@@ -2423,7 +2128,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "3"
         },
@@ -2431,7 +2135,6 @@
           "classes": [],
           "event_title": "विश्व क्यान्सर दिवस",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "4"
         },
@@ -2439,7 +2142,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "5"
         },
@@ -2447,7 +2149,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "6"
         },
@@ -2455,7 +2156,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "7"
         },
@@ -2463,7 +2163,6 @@
           "classes": [],
           "event_title": "रवि सप्तमी ब्रत",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "8"
         },
@@ -2471,7 +2170,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "२६",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "9"
         },
@@ -2479,7 +2177,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२७",
-          "event_extra": "",
           "tithi": "अष्टमी",
           "date_en": "10"
         },
@@ -2487,7 +2184,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "11"
         },
@@ -2495,7 +2191,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "12"
         }
@@ -2509,7 +2204,6 @@
           "classes": [],
           "event_title": "फाल्गुण संक्रान्ति",
           "date_np": "१",
-          "event_extra": "+ 2",
           "tithi": "एकादशी",
           "date_en": "13"
         },
@@ -2517,7 +2211,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२",
-          "event_extra": "+ 1",
           "tithi": "द्वादशी",
           "date_en": "14"
         },
@@ -2525,7 +2218,6 @@
           "classes": ["is-holiday"],
           "event_title": "महाशिवरात्रि व्रत",
           "date_np": "३",
-          "event_extra": "+ 2",
           "tithi": "त्रयोदशी",
           "date_en": "15"
         },
@@ -2533,7 +2225,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "16"
         },
@@ -2541,7 +2232,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "औँशी",
           "date_en": "17"
         },
@@ -2549,7 +2239,6 @@
           "classes": ["is-holiday"],
           "event_title": "ग्याल्पो ल्होसार",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "18"
         },
@@ -2557,7 +2246,6 @@
           "classes": ["is-holiday"],
           "event_title": "राष्ट्रिय प्रजातन्त्र दिवस",
           "date_np": "७",
-          "event_extra": "+ 1",
           "tithi": "द्वितीया",
           "date_en": "19"
         },
@@ -2565,7 +2253,6 @@
           "classes": [],
           "event_title": "सामाजिक न्याय दिवस",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "20"
         },
@@ -2573,7 +2260,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "21"
         },
@@ -2581,7 +2267,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "22"
         },
@@ -2589,7 +2274,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "23"
         },
@@ -2597,7 +2281,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१२",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "24"
         },
@@ -2605,7 +2288,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "25"
         },
@@ -2613,7 +2295,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "26"
         },
@@ -2621,7 +2302,6 @@
           "classes": [],
           "event_title": "आमलकी एकादशी",
           "date_np": "१५",
-          "event_extra": "+ 1",
           "tithi": "एकादशी",
           "date_en": "27"
         },
@@ -2629,7 +2309,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "28"
         },
@@ -2637,7 +2316,6 @@
           "classes": [],
           "event_title": "प्रदोष व्रत",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "1"
         },
@@ -2645,7 +2323,6 @@
           "classes": ["is-holiday"],
           "event_title": "पहाडी जिल्लामा होली बिदा",
           "date_np": "१८",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "2"
         },
@@ -2653,7 +2330,6 @@
           "classes": ["is-holiday"],
           "event_title": "फागुपूर्णिमा (तराईमा होली बिदा)",
           "date_np": "१९",
-          "event_extra": "+ 1",
           "tithi": "पूर्णिमा",
           "date_en": "3"
         },
@@ -2661,7 +2337,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "4"
         },
@@ -2669,7 +2344,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "5"
         },
@@ -2677,7 +2351,6 @@
           "classes": [],
           "event_title": "नाला मत्स्येन्द्रनाथ स्नान",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "6"
         },
@@ -2685,7 +2358,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "7"
         },
@@ -2693,7 +2365,6 @@
           "classes": [],
           "event_title": "अन्तर्राष्ट्रिय नारी दिवस",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "8"
         },
@@ -2701,7 +2372,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "9"
         },
@@ -2709,7 +2379,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "10"
         },
@@ -2717,7 +2386,6 @@
           "classes": [],
           "event_title": "बुधाष्टमी व्रत",
           "date_np": "२७",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "11"
         },
@@ -2725,7 +2393,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "12"
         },
@@ -2733,7 +2400,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "13"
         },
@@ -2741,7 +2407,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "14"
         }
@@ -2755,7 +2420,6 @@
           "classes": [],
           "event_title": "पापमोचनी एकादशी व्रत",
           "date_np": "१",
-          "event_extra": "+ 2",
           "tithi": "एकादशी",
           "date_en": "15"
         },
@@ -2763,7 +2427,6 @@
           "classes": [],
           "event_title": "सोम प्रदोष व्रत",
           "date_np": "२",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "16"
         },
@@ -2771,7 +2434,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "३",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "17"
         },
@@ -2779,7 +2441,6 @@
           "classes": [],
           "event_title": "घोडेजात्रा (काठमाडौं मात्र)",
           "date_np": "४",
-          "event_extra": "",
           "tithi": "चतुर्दशी",
           "date_en": "18"
         },
@@ -2787,7 +2448,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "५",
-          "event_extra": "",
           "tithi": "औँशी",
           "date_en": "19"
         },
@@ -2795,7 +2455,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "६",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "20"
         },
@@ -2803,7 +2462,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "७",
-          "event_extra": "+ 1",
           "tithi": "तृतीया",
           "date_en": "21"
         },
@@ -2811,7 +2469,6 @@
           "classes": [],
           "event_title": "विश्व पानी दिवस",
           "date_np": "८",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "22"
         },
@@ -2819,7 +2476,6 @@
           "classes": [],
           "event_title": "विश्व मौसम दिवस",
           "date_np": "९",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "23"
         },
@@ -2827,7 +2483,6 @@
           "classes": [],
           "event_title": "विश्व क्षयरोग दिवस",
           "date_np": "१०",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "24"
         },
@@ -2835,7 +2490,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "११",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "25"
         },
@@ -2843,7 +2497,6 @@
           "classes": [],
           "event_title": "सेतो मत्स्येन्द्रनाथको रथजात्रा",
           "date_np": "१२",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "26"
         },
@@ -2851,7 +2504,6 @@
           "classes": [],
           "event_title": "रामनवमी ब्रत",
           "date_np": "१३",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "27"
         },
@@ -2859,7 +2511,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "१४",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "28"
         },
@@ -2867,7 +2518,6 @@
           "classes": [],
           "event_title": "कामदा एकादशी ब्रत",
           "date_np": "१५",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "29"
         },
@@ -2875,7 +2525,6 @@
           "classes": [],
           "event_title": "सोम प्रदोष व्रत",
           "date_np": "१६",
-          "event_extra": "",
           "tithi": "द्वादशी",
           "date_en": "30"
         },
@@ -2883,7 +2532,6 @@
           "classes": [],
           "event_title": "महावीर जयन्ती (जैन धर्मावलम्बी मात्र)",
           "date_np": "१७",
-          "event_extra": "",
           "tithi": "त्रयोदशी",
           "date_en": "31"
         },
@@ -2891,7 +2539,6 @@
           "classes": [],
           "event_title": "पूर्णिमाव्रत",
           "date_np": "१८",
-          "event_extra": "+ 1",
           "tithi": "चतुर्दशी",
           "date_en": "1"
         },
@@ -2899,7 +2546,6 @@
           "classes": [],
           "event_title": "बालाजुमा २२ धारा स्नान मेला",
           "date_np": "१९",
-          "event_extra": "",
           "tithi": "पूर्णिमा",
           "date_en": "2"
         },
@@ -2907,7 +2553,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२०",
-          "event_extra": "",
           "tithi": "प्रतिपदा",
           "date_en": "3"
         },
@@ -2915,7 +2560,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२१",
-          "event_extra": "",
           "tithi": "द्वितीया",
           "date_en": "4"
         },
@@ -2923,7 +2567,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२२",
-          "event_extra": "",
           "tithi": "तृतीया",
           "date_en": "5"
         },
@@ -2931,7 +2574,6 @@
           "classes": [],
           "event_title": "विश्व खेलकूद दिवस",
           "date_np": "२३",
-          "event_extra": "",
           "tithi": "चतुर्थी",
           "date_en": "6"
         },
@@ -2939,7 +2581,6 @@
           "classes": [],
           "event_title": "विश्व स्वास्थ्य दिवस",
           "date_np": "२४",
-          "event_extra": "",
           "tithi": "पञ्चमी",
           "date_en": "7"
         },
@@ -2947,7 +2588,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२५",
-          "event_extra": "",
           "tithi": "षष्ठी",
           "date_en": "8"
         },
@@ -2955,7 +2595,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२६",
-          "event_extra": "",
           "tithi": "सप्तमी",
           "date_en": "9"
         },
@@ -2963,7 +2602,6 @@
           "classes": [],
           "event_title": "गोरखकाली पूजा",
           "date_np": "२७",
-          "event_extra": "+ 1",
           "tithi": "अष्टमी",
           "date_en": "10"
         },
@@ -2971,7 +2609,6 @@
           "classes": ["is-holiday"],
           "event_title": "",
           "date_np": "२८",
-          "event_extra": "",
           "tithi": "नवमी",
           "date_en": "11"
         },
@@ -2979,7 +2616,6 @@
           "classes": [],
           "event_title": "",
           "date_np": "२९",
-          "event_extra": "",
           "tithi": "दशमी",
           "date_en": "12"
         },
@@ -2987,7 +2623,6 @@
           "classes": [],
           "event_title": "वरुथिनी एकादशी व्रत",
           "date_np": "३०",
-          "event_extra": "",
           "tithi": "एकादशी",
           "date_en": "13"
         }

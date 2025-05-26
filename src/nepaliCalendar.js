@@ -1,9 +1,10 @@
 import calendarData from "./calendar-data.json";
 
 /**
- * Returns { date_np, month_np, year } for today's Nepal time.
+ * Returns the full Nepali date object for today's Nepal time,
+ * including tithi and event_title.
  */
-export function getTodayNepaliDate() {
+export function getTodayNepaliDateFull() {
   // 1. Get Nepal time
   const now = new Date();
   const nepalOffsetMinutes = 5 * 60 + 45;
@@ -39,7 +40,6 @@ export function getTodayNepaliDate() {
         monthObj.month_year_en,
         dateObj.date_en
       );
-      // Now match both the English month and day and year
       if (
         enMonth === monthName &&
         parseInt(dateObj.date_en, 10) === day &&
@@ -49,6 +49,8 @@ export function getTodayNepaliDate() {
           date_np: dateObj.date_np,
           month_np: monthObj.month_np,
           year: calendarData.year,
+          tithi: dateObj.tithi,
+          event_title: dateObj.event_title,
         };
       }
     }
@@ -67,16 +69,26 @@ function getExactEnglishMonth(month_year_en, date_en) {
 }
 
 /**
- * Renders the Nepali date in the DOM element with [data-today-np]
+ * Renders Nepali date info into separate elements/attributes:
+ * - [data-np-date]: date_np
+ * - [data-np-month-year]: month_np, year (comma separated)
+ * - [data-np-day-tithi]: tithi
+ * - [data-np-day-event]: event_title
  */
 export function renderTodayNepaliDate() {
-  const el = document.querySelector("[data-today-np]");
-  if (!el) return;
+  const todayNp = getTodayNepaliDateFull();
 
-  const todayNp = getTodayNepaliDate();
-  if (todayNp) {
-    el.textContent = `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`;
-  } else {
-    el.textContent = "Nepali date not found";
-  }
+  // Only query DOM once per selector for performance
+  const elDate = document.querySelector("[data-np-date]");
+  const elMonthYear = document.querySelector("[data-np-month-year]");
+  const elTithi = document.querySelector("[data-np-day-tithi]");
+  const elEvent = document.querySelector("[data-np-day-event]");
+
+  if (elDate) elDate.textContent = todayNp ? todayNp.date_np : "";
+  if (elMonthYear)
+    elMonthYear.textContent = todayNp
+      ? `${todayNp.month_np}, ${todayNp.year}`
+      : "";
+  if (elTithi) elTithi.textContent = todayNp ? todayNp.tithi : "";
+  if (elEvent) elEvent.textContent = todayNp ? todayNp.event_title : "";
 }

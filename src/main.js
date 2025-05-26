@@ -7,6 +7,7 @@ import {
 } from "./nepaliCalendar.js";
 import { renderNepaliTimePeriod } from "./nepaliTimePeriod.js";
 import { renderNepaliDayOfWeek } from "./nepaliWeekday.js";
+import { setupTabs } from "./tabs.js"; // <-- Import tabs
 
 // Cache for last rendered Gregorian date and Nepali date
 let lastRenderedGregorianDate = "";
@@ -42,6 +43,7 @@ function renderAllNepalTime() {
 
 // Initial render
 renderAllNepalTime();
+setupTabs(); // <-- Initialize tabs after DOM is ready
 
 // Update everything every second, but only update date-dependent parts if needed
 setInterval(renderAllNepalTime, 1000);

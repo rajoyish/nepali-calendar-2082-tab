@@ -7,30 +7,48 @@
     <title>Nepali Calendar 2082</title>
   </head>
   <body>
-    <main class="calendar">
-      <section class="calendar__upper">
-        <p class="calendar__date-en" data-today-en></p>
-        <p class="calendar__clock" data-clock></p>
-      </section>
-      <section class="calendar__main">
-        <h1 class="calendar__date-np" data-np-date>००</h1>
-        <h2 class="calendar__month-year" data-np-month-year>बबब, अअ</h2>
+    <main class="tabs-container">
+      <ul class="tabs-list" aria-label="Calendar Tabs">
+        <li><a id="tab-today" href="#panel-today">Today</a></li>
+        <li><a id="tab-calendar" href="#panel-calendar">Full Calendar</a></li>
+        <li>
+          <a id="tab-converter" href="#panel-converter">Date Converter</a>
+        </li>
+      </ul>
+      <div class="tabs__panels">
+        <div id="panel-today" aria-labelledby="tab-today">
+          <section class="calendar">
+            <div class="calendar__upper">
+              <p class="calendar__date-en" data-today-en></p>
+              <p class="calendar__clock" data-clock></p>
+            </div>
 
-        <div class="calendar__day-tithi-event">
-          <h3 class="calendar__day-of-week" data-np-day-of-week>ककक</h3>
-          <h3 class="calendar__tithi" data-np-day-tithi>खखख</h3>
-          <h3 class="calendar__event" data-np-day-event>गगग</h3>
+            <div class="calendar__main">
+              <h1 class="calendar__date-np" data-np-date></h1>
+              <h2 class="calendar__month-year" data-np-month-year></h2>
+
+              <div class="calendar__day-tithi-event">
+                <h3 class="calendar__day-of-week" data-np-day-of-week></h3>
+                <h3 class="calendar__tithi" data-np-day-tithi></h3>
+                <h3 class="calendar__event" data-np-day-event></h3>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-      <footer class="calendar__footer">
-        <p>
-          Made with ❤️ by
-          <a class="calendar__author-link" href="https://x.com/john"
-            >John Doe</a
-          >
-        </p>
-      </footer>
+        <div id="panel-calendar" aria-labelledby="tab-calendar">
+          <!-- Full Calendar content here -->
+        </div>
+        <div id="panel-converter" aria-labelledby="tab-converter">
+          <!-- Nepali Date Converter content here -->
+        </div>
+      </div>
     </main>
+    <footer class="calendar__footer">
+      <p>
+        Made with ❤️ by
+        <a class="calendar__author-link" href="https://x.com/john">John Doe</a>
+      </p>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>

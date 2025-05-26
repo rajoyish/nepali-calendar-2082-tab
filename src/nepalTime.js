@@ -1,5 +1,7 @@
 // src/nepalTime.js
 
+import { toDevanagariNumeral } from "./devanagariNumeral.js";
+
 /**
  * Returns the current Nepal time as a Date object.
  */
@@ -69,7 +71,8 @@ export function renderNepalDate() {
 export function renderNepalClock() {
   const el = document.querySelector("[data-clock]");
   if (!el) return;
-  el.textContent = getNepalClock();
+  // Convert the clock string to Devanagari before setting
+  el.textContent = toDevanagariNumeral(getNepalClock());
 }
 
 /**

@@ -70,6 +70,11 @@ h6 {
 }
 
 /* My Styles */
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr;
+}
 
 /* Tabs */
 .tabs-list {
@@ -96,7 +101,6 @@ h6 {
 
 .tabs-container {
   padding: 2rem;
-  border-radius: 0.5rem;
   background: white;
 }
 
@@ -108,6 +112,7 @@ h6 {
 .calendar__upper {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20rem;
 }
 
 .calendar__date-en,
@@ -116,5 +121,69 @@ h6 {
 }
 
 .calendar {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.calendar__date-np {
+  font-size: 12.5rem;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.calendar__month-year {
+  font-weight: 400;
+  font-size: 5.25rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.calendar__day-tithi-event {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar__day-of-week,
+.calendar__tithi,
+.calendar__event {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.calendar__date-np,
+.calendar__month-year {
+  text-align: center;
+}
+
+.calendar__footer {
+  font-size: 1.5rem;
+  text-align: center;
+  display: block;
   padding: 1rem;
+}
+
+@media (min-width: 500px) {
+  .calendar {
+    margin-top: 1rem;
+  }
+  .calendar__day-tithi-event {
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: center;
+  }
+
+  .bullet::before {
+    content: "";
+    position: fixed;
+    background-color: lightgrey;
+    height: 0.8rem;
+    width: 0.8rem;
+    margin-top: 0.3rem;
+    margin-left: -1.5rem;
+    border-radius: 50%;
+  }
 }

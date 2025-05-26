@@ -34,9 +34,12 @@
               <h2 class="calendar__month-year" data-np-month-year></h2>
 
               <div class="calendar__day-tithi-event">
-                <h3 class="calendar__day-of-week" data-np-day-of-week></h3>
-                <h3 class="calendar__tithi" data-np-day-tithi></h3>
-                <h3 class="calendar__event" data-np-day-event></h3>
+                <h3
+                  class="calendar__day-of-week bullet"
+                  data-np-day-of-week
+                ></h3>
+                <h3 class="calendar__tithi bullet" data-np-day-tithi></h3>
+                <h3 class="calendar__event bullet" data-np-day-event></h3>
               </div>
             </div>
           </section>
@@ -50,10 +53,12 @@
       </div>
     </main>
     <footer class="calendar__footer">
-      <p>
-        Made with ❤️ by
-        <a class="calendar__author-link" href="https://x.com/john">John Doe</a>
-      </p>
+      <span>Made with ❤️ by </span>
+      <span>
+        <a class="calendar__author-link" href="https://x.com/john"
+          >John Doe</a
+        ></span
+      >
     </footer>
 
     <script type="module" src="/src/main.js"></script>

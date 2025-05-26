@@ -1,15 +1,20 @@
 // src/nepalTime.js
 
 /**
- * Returns the current Nepal time as a formatted Gregorian string.
- * Example: "Sunday, May 25, 2025 12:22:00"
+ * Returns the current Nepal time as a Date object.
  */
-export function getNepalGregorianDateTime() {
+function getNepalTime() {
   const now = new Date();
   const nepalOffsetMinutes = 5 * 60 + 45;
   const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-  const nepalTime = new Date(utc + nepalOffsetMinutes * 60000);
+  return new Date(utc + nepalOffsetMinutes * 60000);
+}
 
+/**
+ * Returns the Nepal date string, e.g. "Sunday, May 25, 2025"
+ */
+export function getNepalGregorianDate() {
+  const nepalTime = getNepalTime();
   const days = [
     "Sunday",
     "Monday",
@@ -33,20 +38,44 @@ export function getNepalGregorianDateTime() {
     "November",
     "December",
   ];
-  const pad = (n) => n.toString().padStart(2, "0");
-
   return `${days[nepalTime.getDay()]}, ${
     months[nepalTime.getMonth()]
-  } ${nepalTime.getDate()}, ${nepalTime.getFullYear()} ${pad(
-    nepalTime.getHours()
-  )}:${pad(nepalTime.getMinutes())}:${pad(nepalTime.getSeconds())}`;
+  } ${nepalTime.getDate()}, ${nepalTime.getFullYear()}`;
 }
 
 /**
- * Renders the Nepal time string into [data-today-en]
+ * Returns the Nepal time string, e.g. "12:22:00"
  */
-export function renderNepalTime() {
+export function getNepalClock() {
+  const nepalTime = getNepalTime();
+  const pad = (n) => n.toString().padStart(2, "0");
+  return `${pad(nepalTime.getHours())}:${pad(nepalTime.getMinutes())}:${pad(
+    nepalTime.getSeconds()
+  )}`;
+}
+
+/**
+ * Renders the Nepal date into [data-today-en]
+ */
+export function renderNepalDate() {
   const el = document.querySelector("[data-today-en]");
   if (!el) return;
-  el.textContent = getNepalGregorianDateTime();
+  el.textContent = getNepalGregorianDate();
+}
+
+/**
+ * Renders the Nepal clock into [data-clock]
+ */
+export function renderNepalClock() {
+  const el = document.querySelector("[data-clock]");
+  if (!el) return;
+  el.textContent = getNepalClock();
+}
+
+/**
+ * Renders both date and clock (for convenience)
+ */
+export function renderNepalTime() {
+  renderNepalDate();
+  renderNepalClock();
 }

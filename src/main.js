@@ -1,23 +1,47 @@
 import "./style.css";
 
-import { renderNepalTime } from "./nepalTime.js";
-import { renderTodayNepaliDate } from "./nepaliCalendar.js";
+import { renderNepalTime, getNepalGregorianDate } from "./nepalTime.js";
+import {
+  renderTodayNepaliDate,
+  getTodayNepaliDateFull,
+} from "./nepaliCalendar.js";
 import { renderNepaliTimePeriod } from "./nepaliTimePeriod.js";
 import { renderNepaliDayOfWeek } from "./nepaliWeekday.js";
 
-// Render both date/clock, Nepali time period indicator, and Nepali weekday
+// Cache for last rendered Gregorian date and Nepali date
+let lastRenderedGregorianDate = "";
+let lastRenderedNepaliDate = "";
+
+// Render all time-related info, but only update date-dependent parts if date changes
 function renderAllNepalTime() {
+  // Always update clock and time period (they change every second)
   renderNepalTime();
   renderNepaliTimePeriod();
-  renderNepaliDayOfWeek();
+
+  // Get the current Gregorian date string (e.g. "Sunday, May 25, 2025")
+  const currentGregorianDate = getNepalGregorianDate();
+
+  // Only update date-dependent parts if the date has changed
+  if (currentGregorianDate !== lastRenderedGregorianDate) {
+    lastRenderedGregorianDate = currentGregorianDate;
+    renderNepaliDayOfWeek();
+
+    // Get the current Nepali date (e.g. "वैशाख १३, २०८२")
+    const todayNp = getTodayNepaliDateFull();
+    const currentNepaliDate = todayNp
+      ? `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`
+      : "";
+
+    // Only update Nepali date-dependent parts if the Nepali date has changed
+    if (currentNepaliDate !== lastRenderedNepaliDate) {
+      lastRenderedNepaliDate = currentNepaliDate;
+      renderTodayNepaliDate();
+    }
+  }
 }
 
 // Initial render
 renderAllNepalTime();
-renderTodayNepaliDate();
 
-// Update time, period, and weekday every second
+// Update everything every second, but only update date-dependent parts if needed
 setInterval(renderAllNepalTime, 1000);
-
-// Update Nepali date every minute
-setInterval(renderTodayNepaliDate, 60 * 1000);

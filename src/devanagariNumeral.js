@@ -3,11 +3,8 @@
 const devanagariDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 
 /**
- * Converts all ASCII digits in a string to Devanagari numerals.
- * @param {string} str
- * @returns {string}
+ * Converts a string of Western digits to Devanagari numerals.
  */
 export function toDevanagariNumeral(str) {
-  // Use a single regex replace for performance
-  return str.replace(/\d/g, (d) => devanagariDigits[d]);
+  return String(str).replace(/\d/g, (d) => devanagariDigits[d]);
 }

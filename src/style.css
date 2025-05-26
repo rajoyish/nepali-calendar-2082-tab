@@ -71,10 +71,6 @@ h6 {
 
 /* My Styles */
 
-.calendar {
-  padding: 1rem;
-}
-
 /* Tabs */
 .tabs-list {
   font-size: 1.5rem;
@@ -117,4 +113,8 @@ h6 {
 .calendar__date-en,
 .calendar__clock {
   font-size: 1.5rem;
+}
+
+.calendar {
+  padding: 1rem;
 }

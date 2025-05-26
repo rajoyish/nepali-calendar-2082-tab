@@ -1,6 +1,10 @@
 import "./style.css";
 
-import { startNepalTimeClock } from "./nepalTime.js";
+import { renderNepalTime } from "./nepalTime.js";
+import { renderTodayNepaliDate } from "./nepaliCalendar.js";
 
-// Start the clock (updates every second)
-startNepalTimeClock();
+renderNepalTime();
+renderTodayNepaliDate();
+
+setInterval(renderNepalTime, 1000);
+setInterval(renderTodayNepaliDate, 60 * 1000);

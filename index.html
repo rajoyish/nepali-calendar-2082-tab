@@ -7,8 +7,31 @@
     <title>Vite App</title>
   </head>
   <body>
-    <h1 class="today-np" data-today-np></h1>
-    <h2 class="today-en" data-today-en></h2>
+    <main class="calendar">
+      <section class="calendar__upper">
+        <p class="calendar__date-en" data-today-en>26 May, 2025</p>
+        <p class="calendar__clock" data-clock>बिहान ११:३०:०३ AM</p>
+      </section>
+      <section class="calendar__main">
+        <h1 class="calendar__date-np" data-np>१२</h1>
+        <h2 class="calendar__month-year" data-np-month-year>जेठ, २०८२</h2>
+        <div class="calendar__day-tithi">
+          <h3 class="calendar__day-of-week" data-np-day-of-week>सोमवार</h3>
+          <h3 class="calendar__tithi" data-np-day-event>
+            चतुर्दशी, ज्येष्ठ कृष्णपक्ष
+          </h3>
+        </div>
+      </section>
+      <footer class="calendar__footer">
+        <p>
+          Made with ❤️ by
+          <a class="calendar__author-link" href="https://x.com/john"
+            >John Doe</a
+          >
+        </p>
+      </footer>
+    </main>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,5 +1,9 @@
 // src/nepalTime.js
 
+/**
+ * Returns the current Nepal time as a formatted Gregorian string.
+ * Example: "Sunday, May 25, 2025 12:22:00"
+ */
 export function getNepalGregorianDateTime() {
   const now = new Date();
   const nepalOffsetMinutes = 5 * 60 + 45;
@@ -38,20 +42,11 @@ export function getNepalGregorianDateTime() {
   )}:${pad(nepalTime.getMinutes())}:${pad(nepalTime.getSeconds())}`;
 }
 
-export function startNepalTimeClock() {
+/**
+ * Renders the Nepal time string into [data-today-en]
+ */
+export function renderNepalTime() {
   const el = document.querySelector("[data-today-en]");
   if (!el) return;
-
-  let lastValue = "";
-
-  function update() {
-    const current = getNepalGregorianDateTime();
-    if (current !== lastValue) {
-      el.textContent = current;
-      lastValue = current;
-    }
-  }
-
-  update(); // Initial call
-  return setInterval(update, 1000);
+  el.textContent = getNepalGregorianDateTime();
 }

@@ -37,6 +37,7 @@ function removeRecursiveSync(target) {
 
 const distDir = path.resolve(__dirname, "../dist");
 const extDir = path.resolve(__dirname, "../chrome-extension");
+const faviconsDir = path.resolve(__dirname, "../public/favicons");
 const manifestSrc = path.resolve(__dirname, "../manifest.json");
 const manifestDest = path.join(extDir, "manifest.json");
 const iconSrc = path.resolve(__dirname, "../icon-128.png");
@@ -57,5 +58,27 @@ fs.readdirSync(distDir).forEach((item) => {
 
 // 3. Copy dist/ to chrome-extension/
 copyRecursiveSync(distDir, extDir);
+
+// 4. Copy favicons from public/favicons/ to chrome-extension/ root
+if (fs.existsSync(faviconsDir)) {
+  fs.readdirSync(faviconsDir).forEach((file) => {
+    const srcFile = path.join(faviconsDir, file);
+    const destFile = path.join(extDir, file);
+    fs.copyFileSync(srcFile, destFile);
+  });
+  console.log("Copied favicons to chrome-extension/");
+} else {
+  console.log("No favicons directory found in public/");
+}
+
+// 5. Copy manifest.json to chrome-extension/
+if (fs.existsSync(manifestSrc)) {
+  fs.copyFileSync(manifestSrc, manifestDest);
+}
+
+// 6. Copy icon-128.png to chrome-extension/
+if (fs.existsSync(iconSrc)) {
+  fs.copyFileSync(iconSrc, iconDest);
+}
 
 console.log("Copied build output to chrome-extension/");

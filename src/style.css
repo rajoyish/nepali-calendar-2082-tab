@@ -101,6 +101,11 @@ body {
   text-underline-offset: 0.5em;
 }
 
+a {
+  margin: 0 0.2rem;
+}
+
+footer a,
 .tabs-list [aria-selected="true"],
 .calendar__author-link {
   color: gold;

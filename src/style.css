@@ -72,6 +72,10 @@ h6 {
 /* My Styles */
 body {
   min-height: 100vh;
+  background: linear-gradient(to top, #30cfd0, #330867);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: whitesmoke;
   display: grid;
   grid-template-rows: repeat(2, auto) 1fr auto;
 }
@@ -88,19 +92,21 @@ body {
 
 .tabs-list a {
   text-decoration: none;
-  color: black;
+  color: whitesmoke;
 }
 
 .tabs-list [aria-selected="true"] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
-  color: blueviolet;
+}
+
+.tabs-list [aria-selected="true"],
+.calendar__author-link {
+  color: gold;
 }
 
 .tabs-container {
-  /* padding: 2rem; */
-  background: white;
   align-self: center;
 }
 
@@ -108,7 +114,7 @@ body {
   display: none;
 }
 
-/* Calendar Styles */
+/* Today Styles */
 .calendar__upper {
   display: flex;
   justify-content: space-between;
@@ -118,7 +124,6 @@ body {
 .calendar {
   display: flex;
   flex-direction: column;
-  /* margin-top: 2rem; */
 }
 
 .calendar__date-np {
@@ -130,7 +135,6 @@ body {
 .calendar__month-year {
   font-weight: 400;
   font-size: 5.25rem;
-  /* margin-bottom: 0; */
   line-height: 1.5;
 }
 
@@ -175,7 +179,7 @@ body {
   .bullet::before {
     content: "";
     position: absolute;
-    background-color: lightgrey;
+    background-color: cyan;
     height: 0.8rem;
     width: 0.8rem;
     margin-top: 0.3rem;

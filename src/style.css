@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: "Anek Devanagari", sans-serif;
+  font-family: 'Anek Devanagari', sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   /* 4. Add accessible line-height */
@@ -95,7 +95,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected="true"] {
+.tabs-list [aria-selected='true'] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -106,7 +106,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected="true"],
+.tabs-list [aria-selected='true'],
 .calendar__author-link {
   color: gold;
 }
@@ -167,7 +167,6 @@ footer a,
   text-align: center;
   display: block;
   padding: 1rem;
-  line-height: 0.5;
 }
 
 /* Privacy Page */
@@ -196,7 +195,7 @@ footer a,
   }
 
   .bullet::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: cyan;
     height: 0.8rem;

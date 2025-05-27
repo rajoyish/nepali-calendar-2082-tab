@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nepali Calendar 2082</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@75..125,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-DQV2Whi5.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CXkzsEpu.css">
+  </head>
+  <body>
+    <!-- Row 1: Tabs -->
+    <ul class="tabs-list" aria-label="Calendar Tabs">
+      <li>
+        <a id="tab-today" href="#panel-today" aria-controls="panel-today"
+          >Today</a
+        >
+      </li>
+      <li>
+        <a
+          id="tab-calendar"
+          href="#panel-calendar"
+          aria-controls="panel-calendar"
+          >Full Calendar</a
+        >
+      </li>
+      <li>
+        <a
+          id="tab-converter"
+          href="#panel-converter"
+          aria-controls="panel-converter"
+          >Date Converter</a
+        >
+      </li>
+    </ul>
+
+    <div class="calendar__upper">
+      <p class="calendar__date-en" data-today-en></p>
+      <p class="calendar__clock" data-clock></p>
+    </div>
+
+    <!-- Row 2: Tab Panels -->
+    <main class="tabs-container">
+      <div class="tabs__panels">
+        <div id="panel-today" aria-labelledby="tab-today">
+          <section class="calendar">
+            <div class="calendar__main">
+              <h1 class="calendar__date-np" data-np-date></h1>
+              <h2 class="calendar__month-year" data-np-month-year></h2>
+              <div class="calendar__day-tithi-event">
+                <h3 class="calendar__day-of-week" data-np-day-of-week></h3>
+                <h3 class="calendar__tithi bullet" data-np-day-tithi></h3>
+                <h3 class="calendar__event bullet" data-np-day-event></h3>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="panel-calendar" aria-labelledby="tab-calendar">
+          <!-- <p>Full Calendar content goes here.</p> -->
+        </div>
+        <div id="panel-converter" aria-labelledby="tab-converter">
+          <!-- Date Converter content goes here. -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Row 3: Footer -->
+    <footer class="calendar__footer">
+      Made with ❤️ by
+      <a class="calendar__author-link" href="https://x.com/john">John Doe</a>
+    </footer>
+  </body>
+</html>

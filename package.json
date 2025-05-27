@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "copy-extension": "node scripts/copy-extension.js",
+    "build-extension": "npm run build && npm run copy-extension",
     "preview": "vite preview"
   },
   "devDependencies": {

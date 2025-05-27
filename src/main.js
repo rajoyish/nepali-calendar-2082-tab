@@ -11,10 +11,14 @@ import {
 } from "./nepaliCalendar.js";
 import { renderNepaliDayOfWeek } from "./nepaliWeekday.js";
 import { setupTabs } from "./tabs.js";
+import { getTimePeriodBgImage } from "./getTimePeriodBg.js";
 
 // Cache for last rendered Gregorian date and Nepali date
 let lastRenderedGregorianDate = "";
 let lastRenderedNepaliDate = "";
+
+// Cache for last applied background image
+let lastBgImage = "";
 
 /**
  * Render date-dependent info if the date has changed.
@@ -41,10 +45,29 @@ function renderDateDependentNepalInfo() {
   }
 }
 
+/**
+ * Set the background image based on the current Nepali time period.
+ * Only updates if the image needs to change.
+ */
+function updateBackgroundImage() {
+  const now = new Date();
+  const bgImage = getTimePeriodBgImage(now);
+  if (bgImage !== lastBgImage) {
+    document.body.style.backgroundImage = `url(${bgImage})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
+    lastBgImage = bgImage;
+  }
+}
+
 // Initial render
 renderDateDependentNepalInfo();
 setupTabs();
 startNepalClock(); // Starts the clock and time period updates
+updateBackgroundImage();
 
 // Update date-dependent info every minute (date changes at midnight)
-setInterval(renderDateDependentNepalInfo, 60 * 1000);
+setInterval(() => {
+  renderDateDependentNepalInfo();
+  updateBackgroundImage();
+}, 60 * 1000);

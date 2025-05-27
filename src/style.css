@@ -165,6 +165,20 @@ body {
   line-height: 0.5;
 }
 
+/* Privacy Page */
+.privacy__wrapper {
+  max-width: 700px;
+  display: grid;
+
+  background-color: whitesmoke;
+  color: #1d1c1c;
+  padding: 2rem;
+  font-size: 1.5rem;
+  place-content: center;
+  margin: 15% auto;
+  border-radius: 0.5em;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {

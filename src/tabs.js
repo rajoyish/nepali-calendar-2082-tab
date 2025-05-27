@@ -1,10 +1,8 @@
-// src/tabs.js
+export function setupTabs() {
+  const tabsList = document.querySelector(".tabs-list");
+  const tabsContainer = document.querySelector(".tabs-container");
+  if (!tabsList || !tabsContainer) return;
 
-export function setupTabs(containerSelector = ".tabs-container") {
-  const tabsContainer = document.querySelector(containerSelector);
-  if (!tabsContainer) return;
-
-  const tabsList = tabsContainer.querySelector("ul");
   const tabButtons = tabsList.querySelectorAll("a");
   const tabPanels = tabsContainer.querySelectorAll(".tabs__panels > div");
 
@@ -17,7 +15,9 @@ export function setupTabs(containerSelector = ".tabs-container") {
     tab.setAttribute("role", "tab");
     if (index === 0) {
       tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
     } else {
+      tab.setAttribute("aria-selected", "false");
       tab.setAttribute("tabindex", "-1");
       tabPanels[index].setAttribute("hidden", "");
     }
@@ -28,14 +28,14 @@ export function setupTabs(containerSelector = ".tabs-container") {
     panel.setAttribute("tabindex", "0");
   });
 
-  tabsContainer.addEventListener("click", (e) => {
+  tabsList.addEventListener("click", (e) => {
     const clickedTab = e.target.closest("a");
     if (!clickedTab) return;
     e.preventDefault();
     switchTab(clickedTab);
   });
 
-  tabsContainer.addEventListener("keydown", (e) => {
+  tabsList.addEventListener("keydown", (e) => {
     switch (e.key) {
       case "ArrowLeft":
         moveLeft();

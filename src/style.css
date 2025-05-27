@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: 'Anek Devanagari', sans-serif;
+  font-family: "Anek Devanagari", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   /* 4. Add accessible line-height */
@@ -71,16 +71,16 @@ h6 {
 
 /* My Styles */
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: repeat(2, auto) 1fr auto;
 }
 
 /* Tabs */
 .tabs-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
   display: flex;
   gap: 2rem;
   justify-content: center;
@@ -91,7 +91,7 @@ body {
   color: black;
 }
 
-.tabs-list [aria-selected='true'] {
+.tabs-list [aria-selected="true"] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -99,8 +99,9 @@ body {
 }
 
 .tabs-container {
-  padding: 2rem;
+  /* padding: 2rem; */
   background: white;
+  align-self: center;
 }
 
 .tabs__panels > div[hidden] {
@@ -111,13 +112,13 @@ body {
 .calendar__upper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6rem;
+  padding: 1rem;
 }
 
 .calendar {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .calendar__date-np {
@@ -129,7 +130,7 @@ body {
 .calendar__month-year {
   font-weight: 400;
   font-size: 5.25rem;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   line-height: 1.5;
 }
 
@@ -157,13 +158,10 @@ body {
   text-align: center;
   display: block;
   padding: 1rem;
+  line-height: 0.5;
 }
 
 @media (min-width: 500px) {
-  .calendar {
-    margin-top: 1rem;
-  }
-
   .calendar__date-en,
   .calendar__clock {
     font-size: 1.3rem;
@@ -175,7 +173,7 @@ body {
   }
 
   .bullet::before {
-    content: '';
+    content: "";
     position: absolute;
     background-color: lightgrey;
     height: 0.8rem;

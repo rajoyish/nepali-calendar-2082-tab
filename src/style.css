@@ -173,7 +173,6 @@ footer a,
 .privacy__wrapper {
   max-width: 700px;
   display: grid;
-
   background-color: whitesmoke;
   color: #1d1c1c;
   padding: 2rem;
@@ -191,10 +190,21 @@ footer a,
   background: rgba(255, 255, 255, 0.8);
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto auto 1fr;
   list-style-type: none;
   padding: 2rem;
   color: #1d1c1c;
   border-radius: 0.5em;
+  gap: 0.5em;
+}
+
+.month-view-header-wrapper {
+  grid-column: 1 / 8;
+  grid-row: 1 / 1;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .month-view__day-of-week {
@@ -208,27 +218,19 @@ footer a,
 }
 
 /* Responsive font sizes using clamp() */
+.month-view-header-wrapper,
 .month-view__day-of-week,
-.month-view__date-en,
-.month-view__date-tithi {
+.month-view__date-en {
   font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
 }
 
 .month-view__date {
-  border: 1px solid gray;
+  border: 1px solid lightslategray;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
-}
-
-/* Remove the right border from all but the last column */
-.month-view__date:not(:nth-child(7n)) {
-  border-right: none;
-}
-/* Remove the bottom border from all but the last row */
-.month-view__date:not(:nth-last-child(-n + 7)) {
-  border-bottom: none;
+  border-radius: 0.5em;
 }
 
 .month-view__date-en {

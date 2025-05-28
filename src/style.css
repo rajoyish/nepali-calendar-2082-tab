@@ -246,6 +246,17 @@ footer a,
   align-self: flex-start;
 }
 
+.month-view__date--empty {
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.month-view__date.is-today {
+  background: #1ec31e;
+  border-color: #1ec31e;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {

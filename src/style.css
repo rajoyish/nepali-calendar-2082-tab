@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: 'Anek Devanagari', sans-serif;
+  font-family: "Anek Devanagari", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   /* 4. Add accessible line-height */
@@ -95,7 +95,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected='true'] {
+.tabs-list [aria-selected="true"] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -106,7 +106,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected='true'],
+.tabs-list [aria-selected="true"],
 .calendar__author-link {
   color: gold;
 }
@@ -183,6 +183,67 @@ footer a,
   border-radius: 0.5em;
 }
 
+/* Month View Calendar  */
+
+.month-view {
+  max-width: 75rem;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.8);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style-type: none;
+  padding: 2rem;
+  color: #1d1c1c;
+  border-radius: 0.5em;
+}
+
+.month-view__day-of-week {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.month-view__day-label--np {
+  font-weight: 500;
+}
+
+/* Responsive font sizes using clamp() */
+.month-view__day-of-week,
+.month-view__date-en,
+.month-view__date-tithi {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+}
+
+.month-view__date {
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+/* Remove the right border from all but the last column */
+.month-view__date:not(:nth-child(7n)) {
+  border-right: none;
+}
+/* Remove the bottom border from all but the last row */
+.month-view__date:not(:nth-last-child(-n + 7)) {
+  border-bottom: none;
+}
+
+.month-view__date-en {
+  align-self: flex-end;
+}
+
+.month-view__date-np {
+  font-size: clamp(1.2rem, 3vw + 0.5rem, 2.2rem);
+  font-weight: bold;
+}
+
+.month-view__date-tithi {
+  align-self: flex-start;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {
@@ -195,7 +256,7 @@ footer a,
   }
 
   .bullet::before {
-    content: '';
+    content: "";
     position: absolute;
     background-color: cyan;
     height: 0.8rem;

@@ -1,6 +1,6 @@
 // src/nepaliWeekday.js
 
-const weekdays = [
+export const weekdays = [
   ["Sunday", "आइतबार"],
   ["Monday", "सोमबार"],
   ["Tuesday", "मङ्गलबार"],
@@ -35,4 +35,30 @@ export function renderNepaliDayOfWeek() {
   // e.g. "Sunday, May 25, 2025"
   const enDay = elEn.textContent.split(",")[0].trim();
   elNp.textContent = toNepaliWeekday(enDay);
+}
+
+/**
+ * Renders the weekday header row into the given <ul>.
+ * @param {HTMLElement} ul
+ */
+export function renderNepaliWeekdayHeader(ul) {
+  weekdays.forEach(([en, np]) => {
+    const li = document.createElement("li");
+    li.className = "month-view__day-of-week";
+
+    const spanNp = document.createElement("span");
+    spanNp.className = "month-view__day-label--np";
+    spanNp.setAttribute("data-day-label-np", "");
+    spanNp.textContent = np;
+
+    const spanEn = document.createElement("span");
+    spanEn.className = "month-view__day-label--en";
+    spanEn.setAttribute("data-day-label-en", "");
+    spanEn.textContent = en;
+
+    li.appendChild(spanNp);
+    li.appendChild(spanEn);
+
+    ul.appendChild(li);
+  });
 }

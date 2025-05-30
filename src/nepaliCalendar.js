@@ -1,4 +1,4 @@
-import calendarData from "./calendar-data.json";
+import calendarData from './calendar-data.json';
 
 /**
  * Returns the full Nepali date object for today's Nepal time,
@@ -18,18 +18,18 @@ export function getTodayNepaliDateFull() {
 
   // 3. Get English month name
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   const monthName = months[month];
 
@@ -63,8 +63,8 @@ export function getTodayNepaliDateFull() {
  * returns the correct English month name for that date.
  */
 function getExactEnglishMonth(month_year_en, date_en) {
-  const [monthsPart] = month_year_en.split(" ");
-  const [firstMonth, secondMonth] = monthsPart.split("/");
+  const [monthsPart] = month_year_en.split(' ');
+  const [firstMonth, secondMonth] = monthsPart.split('/');
   return parseInt(date_en, 10) === 1 ? secondMonth : firstMonth;
 }
 
@@ -78,17 +78,25 @@ function getExactEnglishMonth(month_year_en, date_en) {
 export function renderTodayNepaliDate() {
   const todayNp = getTodayNepaliDateFull();
 
-  // Only query DOM once per selector for performance
-  const elDate = document.querySelector("[data-np-date]");
-  const elMonthYear = document.querySelector("[data-np-month-year]");
-  const elTithi = document.querySelector("[data-np-day-tithi]");
-  const elEvent = document.querySelector("[data-np-day-event]");
+  const elDate = document.querySelector('[data-np-date]');
+  const elMonthYear = document.querySelector('[data-np-month-year]');
+  const elTithi = document.querySelector('[data-np-day-tithi]');
+  const elEvent = document.querySelector('[data-np-day-event]');
 
-  if (elDate) elDate.textContent = todayNp ? todayNp.date_np : "";
+  if (elDate) elDate.textContent = todayNp ? todayNp.date_np : '';
   if (elMonthYear)
     elMonthYear.textContent = todayNp
       ? `${todayNp.month_np}, ${todayNp.year}`
-      : "";
-  if (elTithi) elTithi.textContent = todayNp ? todayNp.tithi : "";
-  if (elEvent) elEvent.textContent = todayNp ? todayNp.event_title : "";
+      : '';
+  if (elTithi) elTithi.textContent = todayNp ? todayNp.tithi : '';
+
+  if (elEvent) {
+    if (todayNp && todayNp.event_title) {
+      elEvent.textContent = todayNp.event_title;
+      elEvent.style.display = ''; // Reset to default
+    } else {
+      elEvent.textContent = '';
+      elEvent.style.display = 'none'; // Hide if no event
+    }
+  }
 }

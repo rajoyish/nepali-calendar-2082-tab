@@ -16,20 +16,20 @@ export function getTodayNepaliDateFull() {
   const month = nepalTime.getMonth(); // 0-based
   const day = nepalTime.getDate();
 
-  // 3. Get English month name
+  // 3. Use abbreviated English month names to match JSON
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
     'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
   ];
   const monthName = months[month];
 
@@ -55,16 +55,21 @@ export function getTodayNepaliDateFull() {
       }
     }
   }
+  // If not found, return null
+  // For debugging, you can uncomment the following:
+  // console.log('Nepal Year:', year, 'Month:', monthName, 'Day:', day);
   return null;
 }
 
 /**
  * Given a month_year_en string like "Apr/May 2025" and a date_en,
- * returns the correct English month name for that date.
+ * returns the correct English month abbreviation for that date.
  */
 function getExactEnglishMonth(month_year_en, date_en) {
   const [monthsPart] = month_year_en.split(' ');
   const [firstMonth, secondMonth] = monthsPart.split('/');
+  // month_year_en uses "Apr/May", "May/Jun" etc.
+  // We want "Apr" or "May" as returned value
   return parseInt(date_en, 10) === 1 ? secondMonth : firstMonth;
 }
 
@@ -77,6 +82,7 @@ function getExactEnglishMonth(month_year_en, date_en) {
  */
 export function renderTodayNepaliDate() {
   const todayNp = getTodayNepaliDateFull();
+  // For debugging: console.log('todayNp:', todayNp);
 
   const elDate = document.querySelector('[data-np-date]');
   const elMonthYear = document.querySelector('[data-np-month-year]');

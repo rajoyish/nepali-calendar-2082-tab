@@ -1,4 +1,4 @@
-import calendarData from './calendar-data.json';
+import calendarData from "./calendar-data.json";
 
 /**
  * Returns the full Nepali date object for today's Nepal time,
@@ -18,32 +18,34 @@ export function getTodayNepaliDateFull() {
 
   // 3. Use abbreviated English month names to match JSON
   const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   const monthName = months[month];
 
-  // 4. Search all months and all dates for a match using your logic
+  // 4. Search all months and all dates for a match
   for (const monthObj of calendarData.months) {
     for (const dateObj of monthObj.dates) {
       const enMonth = getExactEnglishMonth(
         monthObj.month_year_en,
         dateObj.date_en
       );
+
+      // Check if this date matches today's Gregorian date
       if (
         enMonth === monthName &&
         parseInt(dateObj.date_en, 10) === day &&
-        monthObj.month_year_en.includes(year.toString())
+        isYearMatch(monthObj.month_year_en, year)
       ) {
         return {
           date_np: dateObj.date_np,
@@ -55,22 +57,74 @@ export function getTodayNepaliDateFull() {
       }
     }
   }
-  // If not found, return null
-  // For debugging, you can uncomment the following:
-  // console.log('Nepal Year:', year, 'Month:', monthName, 'Day:', day);
+
+  // For debugging
+  console.log("No match found for:", { year, monthName, day });
   return null;
 }
 
 /**
  * Given a month_year_en string like "Apr/May 2025" and a date_en,
  * returns the correct English month abbreviation for that date.
+ *
+ * Logic: Higher date_en values (typically 14+) are in the first month,
+ * Lower date_en values (typically 1-14) are in the second month.
  */
 function getExactEnglishMonth(month_year_en, date_en) {
-  const [monthsPart] = month_year_en.split(' ');
-  const [firstMonth, secondMonth] = monthsPart.split('/');
-  // month_year_en uses "Apr/May", "May/Jun" etc.
-  // We want "Apr" or "May" as returned value
-  return parseInt(date_en, 10) === 1 ? secondMonth : firstMonth;
+  const [monthsPart] = month_year_en.split(" ");
+  const [firstMonth, secondMonth] = monthsPart.split("/");
+  const dateNum = parseInt(date_en, 10);
+
+  // Based on the data pattern: higher dates are in first month, lower in second
+  // Using 14 as the typical threshold, but this could be adjusted per month if needed
+  return dateNum >= 14 ? firstMonth : secondMonth;
+}
+
+/**
+ * Checks if the given year matches the year(s) in month_year_en string.
+ * Handles cases like "Dec/Jan 2025-26" and "Apr/May 2025"
+ */
+function isYearMatch(month_year_en, targetYear) {
+  const yearPart = month_year_en.split(" ")[1];
+
+  if (yearPart.includes("-")) {
+    // Handle cases like "2025-26"
+    const [startYear, endYearSuffix] = yearPart.split("-");
+    const startYearNum = parseInt(startYear, 10);
+    const endYearNum = parseInt(startYear.substring(0, 2) + endYearSuffix, 10);
+    return targetYear === startYearNum || targetYear === endYearNum;
+  } else {
+    // Handle simple cases like "2025"
+    return parseInt(yearPart, 10) === targetYear;
+  }
+}
+
+/**
+ * Enhanced version that can handle dynamic thresholds per month if needed
+ */
+function getExactEnglishMonthAdvanced(month_year_en, date_en) {
+  const [monthsPart] = month_year_en.split(" ");
+  const [firstMonth, secondMonth] = monthsPart.split("/");
+  const dateNum = parseInt(date_en, 10);
+
+  // Month-specific thresholds (can be customized based on actual data)
+  const thresholds = {
+    "Apr/May": 13,
+    "May/Jun": 14,
+    "Jun/Jul": 14,
+    "Jul/Aug": 16,
+    "Aug/Sep": 16,
+    "Sep/Oct": 16,
+    "Oct/Nov": 17,
+    "Nov/Dec": 16,
+    "Dec/Jan": 15,
+    "Jan/Feb": 14,
+    "Feb/Mar": 12,
+    "Mar/Apr": 14,
+  };
+
+  const threshold = thresholds[monthsPart] || 14;
+  return dateNum >= threshold ? firstMonth : secondMonth;
 }
 
 /**
@@ -82,27 +136,112 @@ function getExactEnglishMonth(month_year_en, date_en) {
  */
 export function renderTodayNepaliDate() {
   const todayNp = getTodayNepaliDateFull();
-  // For debugging: console.log('todayNp:', todayNp);
 
-  const elDate = document.querySelector('[data-np-date]');
-  const elMonthYear = document.querySelector('[data-np-month-year]');
-  const elTithi = document.querySelector('[data-np-day-tithi]');
-  const elEvent = document.querySelector('[data-np-day-event]');
+  // Enhanced debugging
+  if (!todayNp) {
+    console.warn("Could not find Nepali date for today");
+    const now = new Date();
+    const nepalOffsetMinutes = 5 * 60 + 45;
+    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    const nepalTime = new Date(utc + nepalOffsetMinutes * 60000);
+    console.log("Nepal time:", nepalTime.toISOString());
+    console.log("Looking for:", {
+      year: nepalTime.getFullYear(),
+      month: nepalTime.getMonth() + 1,
+      day: nepalTime.getDate(),
+    });
+  }
 
-  if (elDate) elDate.textContent = todayNp ? todayNp.date_np : '';
+  const elDate = document.querySelector("[data-np-date]");
+  const elMonthYear = document.querySelector("[data-np-month-year]");
+  const elTithi = document.querySelector("[data-np-day-tithi]");
+  const elEvent = document.querySelector("[data-np-day-event]");
+
+  if (elDate) elDate.textContent = todayNp ? todayNp.date_np : "";
   if (elMonthYear)
     elMonthYear.textContent = todayNp
       ? `${todayNp.month_np}, ${todayNp.year}`
-      : '';
-  if (elTithi) elTithi.textContent = todayNp ? todayNp.tithi : '';
+      : "";
+  if (elTithi) elTithi.textContent = todayNp ? todayNp.tithi : "";
 
   if (elEvent) {
     if (todayNp && todayNp.event_title) {
       elEvent.textContent = todayNp.event_title;
-      elEvent.style.display = ''; // Reset to default
+      elEvent.style.display = ""; // Reset to default
     } else {
-      elEvent.textContent = '';
-      elEvent.style.display = 'none'; // Hide if no event
+      elEvent.textContent = "";
+      elEvent.style.display = "none"; // Hide if no event
     }
   }
+}
+
+/**
+ * Utility function to get Nepal time
+ */
+export function getNepalTime() {
+  const now = new Date();
+  const nepalOffsetMinutes = 5 * 60 + 45;
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  return new Date(utc + nepalOffsetMinutes * 60000);
+}
+
+/**
+ * Debug function to test the date matching logic
+ */
+export function debugDateMatching(testDate = null) {
+  const targetDate = testDate || getNepalTime();
+  const year = targetDate.getFullYear();
+  const month = targetDate.getMonth();
+  const day = targetDate.getDate();
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const monthName = months[month];
+
+  console.log("Debug info:", {
+    targetDate: targetDate.toISOString(),
+    year,
+    monthName,
+    day,
+  });
+
+  // Find all potential matches
+  const matches = [];
+  for (const monthObj of calendarData.months) {
+    for (const dateObj of monthObj.dates) {
+      const enMonth = getExactEnglishMonth(
+        monthObj.month_year_en,
+        dateObj.date_en
+      );
+
+      if (
+        enMonth === monthName &&
+        parseInt(dateObj.date_en, 10) === day &&
+        isYearMatch(monthObj.month_year_en, year)
+      ) {
+        matches.push({
+          nepali_date: dateObj.date_np,
+          nepali_month: monthObj.month_np,
+          english_month_year: monthObj.month_year_en,
+          english_date: dateObj.date_en,
+          calculated_month: enMonth,
+        });
+      }
+    }
+  }
+
+  console.log("Found matches:", matches);
+  return matches;
 }

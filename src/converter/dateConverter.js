@@ -32,8 +32,10 @@ export class DateConverter {
    */
   cacheElements() {
     this.elements = {
-      // Mode buttons
-      modeButtons: this.container.querySelectorAll("[data-converter-mode]"),
+      // Toggle switch
+      modeToggle: this.container.querySelector("[data-converter-toggle]"),
+      modeLabelAd: this.container.querySelector("[data-mode-label-ad]"),
+      modeLabelBs: this.container.querySelector("[data-mode-label-bs]"),
 
       // Sections
       adSection: this.container.querySelector(
@@ -59,12 +61,13 @@ export class DateConverter {
    * Attach event listeners to UI elements
    */
   attachEventListeners() {
-    // Mode switching buttons
-    this.elements.modeButtons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        this.switchMode(e.target.dataset.converterMode);
+    // Toggle switch for mode
+    if (this.elements.modeToggle) {
+      this.elements.modeToggle.addEventListener("change", (e) => {
+        const mode = e.target.checked ? "bs-to-ad" : "ad-to-bs";
+        this.switchMode(mode);
       });
-    });
+    }
 
     // AD date input
     if (this.elements.adInput) {
@@ -97,6 +100,8 @@ export class DateConverter {
       this.elements.adInput.value = today;
       this.convertAndDisplayAdToBs(today);
     }
+    // Set initial mode label
+    this.updateModeLabels();
   }
 
   /**
@@ -106,12 +111,15 @@ export class DateConverter {
   switchMode(mode) {
     this.currentMode = mode;
 
-    // Update button states
-    this.elements.modeButtons.forEach((btn) => {
-      const isActive = btn.dataset.converterMode === mode;
-      btn.dataset.converterActive = isActive.toString();
-      btn.setAttribute("aria-pressed", isActive.toString());
-    });
+    // Update toggle checked state
+    if (this.elements.modeToggle) {
+      this.elements.modeToggle.checked = mode === "bs-to-ad";
+      this.elements.modeToggle.setAttribute(
+        "aria-checked",
+        mode === "bs-to-ad" ? "true" : "false"
+      );
+    }
+    this.updateModeLabels();
 
     // Update section visibility
     if (mode === "ad-to-bs") {
@@ -124,14 +132,27 @@ export class DateConverter {
   }
 
   /**
+   * Update the mode label highlighting based on current mode
+   */
+  updateModeLabels() {
+    if (this.elements.modeLabelAd && this.elements.modeLabelBs) {
+      if (this.currentMode === "ad-to-bs") {
+        this.elements.modeLabelAd.style.opacity = "1";
+        this.elements.modeLabelBs.style.opacity = "0.7";
+      } else {
+        this.elements.modeLabelAd.style.opacity = "0.7";
+        this.elements.modeLabelBs.style.opacity = "1";
+      }
+    }
+  }
+
+  /**
    * Convert AD date to BS date
    * @param {string} adDate - Date in YYYY-MM-DD format
    * @returns {Object} - Converted BS date object
    */
   convertAdToBs(adDate) {
     try {
-      console.log("Converting AD to BS:", adDate);
-
       if (!adDate || typeof adDate !== "string") {
         throw new Error(
           "Invalid date format. Please provide date in YYYY-MM-DD format."
@@ -152,7 +173,6 @@ export class DateConverter {
 
       // The package returns a string in format "YYYY-MM-DD"
       const result = adToBs(adDate);
-      console.log("Conversion result:", result);
 
       if (!result) {
         throw new Error(
@@ -175,7 +195,6 @@ export class DateConverter {
         formatted: this.formatBsDate(bsDateObj),
       };
     } catch (error) {
-      console.error("AD to BS conversion error:", error);
       return {
         success: false,
         error: error.message,
@@ -192,8 +211,6 @@ export class DateConverter {
    */
   convertBsToAd(year, month, day) {
     try {
-      console.log("Converting BS to AD:", { year, month, day });
-
       // Validate inputs
       if (!year || !month || !day) {
         throw new Error("Year, month, and day are required.");
@@ -216,7 +233,6 @@ export class DateConverter {
         day
       ).padStart(2, "0")}`;
       const result = bsToAd(bsDateString);
-      console.log("BS to AD conversion result:", result);
 
       if (!result) {
         throw new Error(
@@ -239,7 +255,6 @@ export class DateConverter {
         formatted: this.formatAdDate(adDateObj),
       };
     } catch (error) {
-      console.error("BS to AD conversion error:", error);
       return {
         success: false,
         error: error.message,
@@ -328,14 +343,12 @@ export class DateConverter {
       const { year, month, day } = bsDate;
 
       if (!year || !month || !day) {
-        console.error("Unable to extract date components:", bsDate);
         return "Invalid date format";
       }
 
       const monthName = nepaliMonths[month - 1] || `Month ${month}`;
       return `${year} ${monthName} ${day}`;
     } catch (error) {
-      console.error("Error formatting BS date:", error);
       return "Error formatting date";
     }
   }
@@ -365,14 +378,12 @@ export class DateConverter {
       const { year, month, day } = adDate;
 
       if (!year || !month || !day) {
-        console.error("Unable to extract date components:", adDate);
         return "Invalid date format";
       }
 
       const monthName = months[month - 1] || `Month ${month}`;
       return `${monthName} ${day}, ${year}`;
     } catch (error) {
-      console.error("Error formatting AD date:", error);
       return "Error formatting date";
     }
   }

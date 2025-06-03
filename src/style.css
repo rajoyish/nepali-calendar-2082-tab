@@ -258,6 +258,71 @@ footer a,
 }
 
 /* Date Converter */
+/* Toggle Switch */
+.date-converter__modes {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.date-converter__mode-label {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+input[type="checkbox"].toggle {
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 3.2em;
+  height: 1.8em;
+  background: #e0e0e0;
+  border-radius: 1em;
+  transition: background 0.2s;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+  width: 1.4em;
+  height: 1.4em;
+  background: #2196f3; /* Blue for AD */
+  border-radius: 50%;
+  transition: left 0.2s, background 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+input[type="checkbox"].toggle:checked + .toggle-switch::before {
+  left: 1.6em;
+  background: #43c94b; /* Green for BS */
+}
+
+input[type="checkbox"].toggle:focus + .toggle-switch {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
+  opacity: 1;
+}
+input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
+  opacity: 1;
+}
+
 .date-converter {
   font-family: inherit;
   display: flex;

@@ -90,22 +90,25 @@
           <!-- Date Converter content -->
           <article class="date-converter">
             <nav class="date-converter__modes">
-              <button
-                class="date-converter__mode-btn"
-                data-converter-mode="ad-to-bs"
-                data-converter-active="true"
-                aria-pressed="true"
+              <span class="date-converter__mode-label" data-mode-label-ad
+                >AD → BS</span
               >
-                AD → BS
-              </button>
-              <button
-                class="date-converter__mode-btn"
-                data-converter-mode="bs-to-ad"
-                data-converter-active="false"
-                aria-pressed="false"
+              <input
+                type="checkbox"
+                id="date-converter-toggle"
+                class="toggle"
+                data-converter-toggle
+                aria-checked="false"
+                aria-label="Switch between AD to BS and BS to AD"
+              />
+              <label
+                for="date-converter-toggle"
+                class="toggle-switch"
+                aria-hidden="true"
+              ></label>
+              <span class="date-converter__mode-label" data-mode-label-bs
+                >BS → AD</span
               >
-                BS → AD
-              </button>
             </nav>
 
             <main class="date-converter__content">

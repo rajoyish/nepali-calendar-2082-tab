@@ -89,13 +89,9 @@
         <div id="panel-converter" aria-labelledby="tab-converter">
           <!-- Date Converter content -->
           <article class="date-converter">
-            <header class="converter-header">
-              <h2>📅 Nepali Date Converter</h2>
-              <p>Convert dates between AD (English) and BS (Nepali) calendar</p>
-            </header>
-
-            <nav class="converter-modes">
+            <nav class="date-converter__modes">
               <button
+                class="date-converter__mode-btn"
                 data-converter-mode="ad-to-bs"
                 data-converter-active="true"
                 aria-pressed="true"
@@ -103,6 +99,7 @@
                 AD → BS
               </button>
               <button
+                class="date-converter__mode-btn"
                 data-converter-mode="bs-to-ad"
                 data-converter-active="false"
                 aria-pressed="false"
@@ -111,30 +108,28 @@
               </button>
             </nav>
 
-            <main class="converter-content">
+            <main class="date-converter__content">
               <!-- AD to BS Converter -->
               <section data-converter-section="ad-to-bs">
-                <div class="input-group">
-                  <label for="converter-ad-date">Select AD Date:</label>
+                <div class="date-converter__input-group">
+                  <label for="converter-ad-date">Select AD Date</label>
                   <input
                     type="date"
                     id="converter-ad-date"
                     data-converter-ad-input
                   />
                 </div>
-                <div class="result-group">
-                  <label>Nepali Date (BS):</label>
-                  <output data-converter-bs-result>
-                    Select a date to convert
-                  </output>
+                <div class="date-converter__result-group">
+                  <label>Bikram Sambat (BS)</label>
+                  <output data-converter-bs-result></output>
                 </div>
               </section>
 
               <!-- BS to AD Converter -->
               <section data-converter-section="bs-to-ad" hidden>
-                <div class="input-group">
-                  <label>Enter BS Date:</label>
-                  <div class="bs-date-inputs">
+                <div class="date-converter__input-group">
+                  <label>Enter Anno Domini (AD)</label>
+                  <div class="date-converter__bs-date-inputs">
                     <input
                       type="number"
                       data-converter-bs-year
@@ -168,15 +163,14 @@
                     />
                   </div>
                 </div>
-                <div class="result-group">
+                <div class="date-converter__result-group">
                   <label>English Date (AD):</label>
-                  <output data-converter-ad-result>
-                    Enter BS date to convert
-                  </output>
+                  <output data-converter-ad-result></output>
                 </div>
               </section>
             </main>
           </article>
+          <!-- End of Date Converter content -->
         </div>
       </div>
     </main>

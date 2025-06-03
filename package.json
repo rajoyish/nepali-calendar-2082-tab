@@ -14,6 +14,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@sbmdkl/nepali-date-converter": "^2.0.4"
+    "@sbmdkl/nepali-date-converter": "^2.0.4",
+    "bootstrap-icons": "^1.13.1"
   }
 }

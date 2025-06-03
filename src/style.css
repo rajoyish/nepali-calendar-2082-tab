@@ -387,6 +387,97 @@ output {
   flex-direction: column;
 }
 
+/* Clipboard icon and popover for copy-to-clipboard */
+[data-converter-bs-result] strong,
+[data-converter-bs-result] small,
+[data-converter-ad-result] strong,
+[data-converter-ad-result] small {
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+[data-converter-bs-result] strong:hover,
+[data-converter-bs-result] small:hover,
+[data-converter-ad-result] strong:hover,
+[data-converter-ad-result] small:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-converter-bs-result] strong:hover::after,
+[data-converter-bs-result] small:hover::after,
+[data-converter-ad-result] strong:hover::after,
+[data-converter-ad-result] small:hover::after {
+  content: "";
+  display: inline-block;
+}
+
+[data-converter-bs-result] strong:hover::before,
+[data-converter-bs-result] small:hover::before,
+[data-converter-ad-result] strong:hover::before,
+[data-converter-ad-result] small:hover::before {
+  content: "";
+  display: none;
+}
+
+[data-converter-bs-result] strong:hover::after,
+[data-converter-bs-result] small:hover::after,
+[data-converter-ad-result] strong:hover::after,
+[data-converter-ad-result] small:hover::after {
+  content: "";
+  display: none;
+}
+
+[data-converter-bs-result] strong:hover::after,
+[data-converter-bs-result] small:hover::after,
+[data-converter-ad-result] strong:hover::after,
+[data-converter-ad-result] small:hover::after {
+  content: "";
+  display: none;
+}
+
+/* Clipboard icon on hover */
+[data-converter-bs-result] strong:hover::after,
+[data-converter-bs-result] small:hover::after,
+[data-converter-ad-result] strong:hover::after,
+[data-converter-ad-result] small:hover::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -0.3em;
+  margin-left: 0.1em;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='white' stroke-width='1.5' viewBox='0 0 16 16'%3E%3Cpath d='M10 1.5v1a1.5 1.5 0 0 1-3 0v-1'/%3E%3Crect width='10' height='12' x='3' y='2.5' rx='2'/%3E%3C/svg%3E")
+    no-repeat center/contain;
+  pointer-events: none;
+}
+
+/* Popover styling */
+.copy-popover {
+  font-family: sans-serif;
+  position: absolute;
+  top: -2.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: purple;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.25em 0.8em;
+  border-radius: 0.5em;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.copy-popover.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {

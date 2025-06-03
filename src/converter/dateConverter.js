@@ -66,6 +66,80 @@ export class DateConverter {
         });
       }
     });
+
+    // Clipboard for BS result
+    if (this.elements.bsResult) {
+      this.addCopyListeners(this.elements.bsResult);
+    }
+    // Clipboard for AD result
+    if (this.elements.adResult) {
+      this.addCopyListeners(this.elements.adResult);
+    }
+  }
+
+  /**
+   * Add copy-to-clipboard listeners to <output> element's <strong> and <small>
+   * @param {HTMLElement} outputEl
+   */
+  addCopyListeners(outputEl) {
+    // Use event delegation for both <strong> and <small>
+    outputEl.addEventListener("click", (e) => {
+      const target = e.target;
+      if (
+        (target.tagName === "STRONG" || target.tagName === "SMALL") &&
+        outputEl.contains(target)
+      ) {
+        const text = target.textContent.trim();
+        if (text) {
+          this.copyTextWithPopover(target, text);
+        }
+      }
+    });
+  }
+
+  /**
+   * Show popover and copy text
+   * @param {HTMLElement} el
+   * @param {string} text
+   */
+  copyTextWithPopover(el, text) {
+    // Copy to clipboard
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    } else {
+      // fallback for old browsers
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+      } catch (err) {}
+      document.body.removeChild(textarea);
+    }
+
+    // Remove any existing popover
+    this.removePopover(el);
+
+    // Create popover
+    const popover = document.createElement("span");
+    popover.className = "copy-popover show";
+    popover.textContent = "Copied!";
+    el.appendChild(popover);
+
+    // Remove after 2 seconds
+    setTimeout(() => {
+      this.removePopover(el);
+    }, 2000);
+  }
+
+  /**
+   * Remove popover from element
+   * @param {HTMLElement} el
+   */
+  removePopover(el) {
+    const pop = el.querySelector(".copy-popover");
+    if (pop) pop.remove();
   }
 
   setDefaultDate() {

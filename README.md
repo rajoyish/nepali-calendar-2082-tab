@@ -1,69 +1,74 @@
-# Tabre – Nepali Date & Time New Tab Extension
+# Tabre – Nepali Calendar & Date Converter New Tab Extension
 
 **Live Demo:** [https://tabre.netlify.app/](https://tabre.netlify.app/)
 
 ---
 
-Tabre is a lightweight and visually pleasing Chrome Extension that transforms your new tab into a dashboard for the **current Nepali date and time**.
-
-- View the Nepali date, month, and day **in Devanagari script**.
-- Instantly see the corresponding **Gregorian (English) date**.
-- Real-time digital clock with Nepali time period indicator (बिहान, मध्यान्ह, अपरान्ह, etc).
-- Clean, beautiful background images and icons.
-- **More utilities coming soon!**
+Tabre is a modern, privacy-first Chrome extension that transforms your new tab into a beautiful Nepali calendar dashboard. Instantly view the current Nepali date, time, tithi, events, and convert dates between Bikram Sambat (BS) and Gregorian (AD) calendars—right from every new tab.
 
 ---
 
 ## Features
 
-- 🕓 **Current Nepali Date & Time**  
-  Displays the Nepali date and time updated every second.
+- 🗓 **Current Nepali Date & Time**  
+  See today’s Nepali date, month, and day in Devanagari script, updated in real time.
 
-- 📅 **Date Conversion**  
-  Instantly see both Nepali (Bikram Sambat) and Gregorian dates.
+- 🔄 **Date Converter (AD ↔ BS)**  
+  Instantly convert dates between Nepali (Bikram Sambat) and English (Gregorian) calendars.
 
-- 🕰 **Time Period Awareness**  
-  Understand your day with Nepali time segments: बिहान, मध्यान्ह, अपरान्ह, साँझ, बेलुका, राति.
+- ⏰ **Time Period Awareness**  
+  Know the current Nepali time segment: बिहान, मध्यान्ह, अपरान्ह, साँझ, बेलुका, राति.
+
+- 📅 **Full Month View**  
+  View the entire current Nepali month at a glance.
 
 - 🖼 **Aesthetic Backgrounds**  
-  Rotating scenic backgrounds for a delightful experience.
+  Enjoy rotating scenic backgrounds and clean, modern design.
 
-- ⚡ **Fast, Lightweight, and Privacy-Friendly**  
-  All calculations are done on your device. No user data is tracked or sent anywhere.
+- ⚡ **Fast, Lightweight, and 100% Private**  
+  All calculations and features run locally on your device. **No personal data is collected, stored, or transmitted.**
 
-- 🛠 **More Utilities Coming Soon!**  
-  Plan is to add calendar, reminders, and more Nepali digital tools.
+---
+
+## Privacy & Data Protection
+
+**Tabre is designed with your privacy in mind:**
+
+- No personal data is collected, stored, or shared.
+- No analytics, tracking, or third-party scripts.
+- All features and calculations work entirely on your device.
+- No network requests are made except to load the extension itself.
+
+**You enjoy full privacy protection.**
 
 ---
 
 ## Installation
 
-## Chrome Extension
+### From Chrome Web Store
 
-The `chrome-extension/` folder contains a Chrome extension that sets your new tab page to the live Tabre site.
+1. Visit the [Chrome Web Store page](#) (link will be available after publishing).
+2. Click **Add to Chrome**.
+3. Open a new tab to start using Tabre!
 
-- `manifest.json`: Extension config
-- `tabre.html`: Instantly redirects new tabs to https://tabre.netlify.app/
-- `icon128.png`: (optional) Extension icon
+### Manual Installation (Unpacked Extension)
 
-### How to use:
+1. Download or clone this repository.
+2. Open `chrome://extensions/` in your Chrome browser.
+3. Enable **Developer Mode** (top right).
+4. Click **Load unpacked** and select the project folder.
+5. Open a new tab to see Tabre in action.
 
-1. Go to `chrome://extensions/`
-2. Enable Developer Mode
-3. Click "Load unpacked" and select the `chrome-extension` folder
-4. Open a new tab!
+---
 
-This extension will always load the latest deployed version of Tabre.
+## How It Works
 
-**Web Demo**  
-Visit: [https://tabre.netlify.app/](https://tabre.netlify.app/)
-
-**Manual Installation (Unpacked Extension)**
-
-1. Download or clone this repo.
-2. Open `chrome://extensions/` in your browser.
-3. Enable "Developer Mode".
-4. Click "Load unpacked" and select the project folder.
+- **New Tab Override:**  
+  Tabre replaces your default new tab page with a modern Nepali calendar dashboard.
+- **Instant Access:**  
+  Every new tab shows the current Nepali date, time, and a full month calendar.
+- **Date Converter:**  
+  Easily convert dates between AD and BS, both ways.
 
 ---
 
@@ -73,10 +78,26 @@ Visit: [https://tabre.netlify.app/](https://tabre.netlify.app/)
 
 - [Vite 6](https://vitejs.dev/)
 - Vanilla JavaScript
-- CSS/HTML
+- HTML & CSS
 
-**Install dependencies:**
+**To run locally:**
 
 ```bash
 npm install
+npm run dev
 ```
+
+---
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+**Tabre** – Your Nepali calendar, always one tab away.  
+\*\*No tracking. No data collection. Just pure utility.
+
+---
+
+**Web Demo:** [https://tabre.netlify.app/](https://tabre.netlify.app/)

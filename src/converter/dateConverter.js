@@ -11,45 +11,30 @@ export class DateConverter {
     this.elements = {};
   }
 
-  /**
-   * Initialize the converter with DOM elements
-   * @param {string} containerId - The container element ID
-   */
   init(containerId) {
     this.container = document.getElementById(containerId);
     if (!this.container) {
       console.error(`Container with ID "${containerId}" not found`);
       return;
     }
-
     this.cacheElements();
     this.attachEventListeners();
     this.setDefaultDate();
   }
 
-  /**
-   * Cache DOM elements for better performance
-   */
   cacheElements() {
     this.elements = {
-      // Toggle switch
       modeToggle: this.container.querySelector("[data-converter-toggle]"),
       modeLabelAd: this.container.querySelector("[data-mode-label-ad]"),
       modeLabelBs: this.container.querySelector("[data-mode-label-bs]"),
-
-      // Sections
       adSection: this.container.querySelector(
         "[data-converter-section='ad-to-bs']"
       ),
       bsSection: this.container.querySelector(
         "[data-converter-section='bs-to-ad']"
       ),
-
-      // AD to BS elements
       adInput: this.container.querySelector("[data-converter-ad-input]"),
       bsResult: this.container.querySelector("[data-converter-bs-result]"),
-
-      // BS to AD elements
       bsYear: this.container.querySelector("[data-converter-bs-year]"),
       bsMonth: this.container.querySelector("[data-converter-bs-month]"),
       bsDay: this.container.querySelector("[data-converter-bs-day]"),
@@ -57,26 +42,18 @@ export class DateConverter {
     };
   }
 
-  /**
-   * Attach event listeners to UI elements
-   */
   attachEventListeners() {
-    // Toggle switch for mode
     if (this.elements.modeToggle) {
       this.elements.modeToggle.addEventListener("change", (e) => {
         const mode = e.target.checked ? "bs-to-ad" : "ad-to-bs";
         this.switchMode(mode);
       });
     }
-
-    // AD date input
     if (this.elements.adInput) {
       this.elements.adInput.addEventListener("change", (e) => {
         this.convertAndDisplayAdToBs(e.target.value);
       });
     }
-
-    // BS date inputs
     const bsInputs = [
       this.elements.bsYear,
       this.elements.bsMonth,
@@ -91,27 +68,17 @@ export class DateConverter {
     });
   }
 
-  /**
-   * Set today's date as default
-   */
   setDefaultDate() {
     if (this.elements.adInput) {
       const today = new Date().toISOString().split("T")[0];
       this.elements.adInput.value = today;
       this.convertAndDisplayAdToBs(today);
     }
-    // Set initial mode label
     this.updateModeLabels();
   }
 
-  /**
-   * Switch between conversion modes
-   * @param {string} mode - The conversion mode ('ad-to-bs' or 'bs-to-ad')
-   */
   switchMode(mode) {
     this.currentMode = mode;
-
-    // Update toggle checked state
     if (this.elements.modeToggle) {
       this.elements.modeToggle.checked = mode === "bs-to-ad";
       this.elements.modeToggle.setAttribute(
@@ -120,8 +87,6 @@ export class DateConverter {
       );
     }
     this.updateModeLabels();
-
-    // Update section visibility
     if (mode === "ad-to-bs") {
       this.elements.adSection?.removeAttribute("hidden");
       this.elements.bsSection?.setAttribute("hidden", "");
@@ -131,9 +96,6 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Update the mode label highlighting based on current mode
-   */
   updateModeLabels() {
     if (this.elements.modeLabelAd && this.elements.modeLabelBs) {
       if (this.currentMode === "ad-to-bs") {
@@ -146,11 +108,16 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Convert AD date to BS date
-   * @param {string} adDate - Date in YYYY-MM-DD format
-   * @returns {Object} - Converted BS date object
-   */
+  toNepaliNumber(num) {
+    const npDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return String(num).replace(/\d/g, (d) => npDigits[d]);
+  }
+
+  toNepaliNumberWithSlash(str) {
+    const npDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return String(str).replace(/\d/g, (d) => npDigits[d]);
+  }
+
   convertAdToBs(adDate) {
     try {
       if (!adDate || typeof adDate !== "string") {
@@ -158,41 +125,27 @@ export class DateConverter {
           "Invalid date format. Please provide date in YYYY-MM-DD format."
         );
       }
-
-      // Validate date format (YYYY-MM-DD)
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
       if (!dateRegex.test(adDate)) {
         throw new Error("Date must be in YYYY-MM-DD format.");
       }
-
-      // Check if it's a valid date
       const dateObj = new Date(adDate);
       if (isNaN(dateObj.getTime())) {
         throw new Error("Invalid date provided.");
       }
-
-      // The package returns a string in format "YYYY-MM-DD"
       const result = adToBs(adDate);
-
       if (!result) {
         throw new Error(
           "Unable to convert the date. Please try a different date."
         );
       }
-
-      // Parse the result string "YYYY-MM-DD" to get individual components
       const [year, month, day] = result.split("-").map(Number);
-
-      const bsDateObj = {
-        year: year,
-        month: month,
-        day: day,
-      };
-
+      const bsDateObj = { year, month, day };
       return {
         success: true,
         data: bsDateObj,
         formatted: this.formatBsDate(bsDateObj),
+        formattedNepali: this.formatBsDateNepali(bsDateObj),
       };
     } catch (error) {
       return {
@@ -202,53 +155,31 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Convert BS date to AD date
-   * @param {number} year - BS year
-   * @param {number} month - BS month (1-12)
-   * @param {number} day - BS day
-   * @returns {Object} - Converted AD date object
-   */
   convertBsToAd(year, month, day) {
     try {
-      // Validate inputs
       if (!year || !month || !day) {
         throw new Error("Year, month, and day are required.");
       }
-
       if (year < 1970 || year > 2100) {
         throw new Error("Year must be between 1970 and 2100.");
       }
-
       if (month < 1 || month > 12) {
         throw new Error("Month must be between 1 and 12.");
       }
-
       if (day < 1 || day > 32) {
         throw new Error("Day must be between 1 and 32.");
       }
-
-      // Format BS date as string for the package
       const bsDateString = `${year}-${String(month).padStart(2, "0")}-${String(
         day
       ).padStart(2, "0")}`;
       const result = bsToAd(bsDateString);
-
       if (!result) {
         throw new Error(
           "Unable to convert the BS date. Please check the date values."
         );
       }
-
-      // Parse the result string "YYYY-MM-DD" to get individual components
       const [adYear, adMonth, adDay] = result.split("-").map(Number);
-
-      const adDateObj = {
-        year: adYear,
-        month: adMonth,
-        day: adDay,
-      };
-
+      const adDateObj = { year: adYear, month: adMonth, day: adDay };
       return {
         success: true,
         data: adDateObj,
@@ -262,28 +193,26 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Convert AD date and display result
-   * @param {string} adDate - AD date in YYYY-MM-DD format
-   */
   convertAndDisplayAdToBs(adDate) {
     if (!adDate || !this.elements.bsResult) return;
-
     const result = this.convertAdToBs(adDate);
-
     if (result.success) {
+      const { year, month, day } = result.data;
+      const nepaliYear = this.toNepaliNumber(year);
+      const nepaliDay = this.toNepaliNumber(day);
+      const nepaliMonth = this.getNepaliMonthName(month);
+      const nepaliSmall = this.toNepaliNumberWithSlash(
+        `${year}/${month}/${day}`
+      );
       this.elements.bsResult.innerHTML = `
-        <strong>${result.formatted}</strong>
-        <small>(${result.data.year}/${result.data.month}/${result.data.day})</small>
+        <strong>${nepaliYear} ${nepaliMonth} ${nepaliDay}</strong>
+        <small>${nepaliSmall}</small>
       `;
     } else {
       this.elements.bsResult.textContent = `Error: ${result.error}`;
     }
   }
 
-  /**
-   * Convert BS date and display result
-   */
   convertAndDisplayBsToAd() {
     if (
       !this.elements.bsYear ||
@@ -293,18 +222,14 @@ export class DateConverter {
     ) {
       return;
     }
-
     const year = parseInt(this.elements.bsYear.value);
     const month = parseInt(this.elements.bsMonth.value);
     const day = parseInt(this.elements.bsDay.value);
-
     if (!year || !month || !day) {
       this.elements.adResult.textContent = "Enter complete BS date to convert";
       return;
     }
-
     const result = this.convertBsToAd(year, month, day);
-
     if (result.success) {
       this.elements.adResult.innerHTML = `
         <strong>${result.formatted}</strong>
@@ -318,11 +243,6 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Format BS date for display
-   * @param {Object} bsDate - BS date object
-   * @returns {string} - Formatted BS date string
-   */
   formatBsDate(bsDate) {
     try {
       const nepaliMonths = [
@@ -339,13 +259,10 @@ export class DateConverter {
         "फाल्गुन",
         "चैत्र",
       ];
-
       const { year, month, day } = bsDate;
-
       if (!year || !month || !day) {
         return "Invalid date format";
       }
-
       const monthName = nepaliMonths[month - 1] || `Month ${month}`;
       return `${year} ${monthName} ${day}`;
     } catch (error) {
@@ -353,11 +270,36 @@ export class DateConverter {
     }
   }
 
-  /**
-   * Format AD date for display
-   * @param {Object} adDate - AD date object
-   * @returns {string} - Formatted AD date string
-   */
+  formatBsDateNepali(bsDate) {
+    try {
+      const { year, month, day } = bsDate;
+      const monthName = this.getNepaliMonthName(month);
+      return `${this.toNepaliNumber(year)} ${monthName} ${this.toNepaliNumber(
+        day
+      )}`;
+    } catch (error) {
+      return "Error formatting date";
+    }
+  }
+
+  getNepaliMonthName(month) {
+    const nepaliMonths = [
+      "बैशाख",
+      "जेठ",
+      "आषाढ",
+      "श्रावण",
+      "भाद्र",
+      "आश्विन",
+      "कार्तिक",
+      "मंसिर",
+      "पौष",
+      "माघ",
+      "फाल्गुन",
+      "चैत्र",
+    ];
+    return nepaliMonths[month - 1] || `Month ${month}`;
+  }
+
   formatAdDate(adDate) {
     try {
       const months = [
@@ -374,13 +316,10 @@ export class DateConverter {
         "November",
         "December",
       ];
-
       const { year, month, day } = adDate;
-
       if (!year || !month || !day) {
         return "Invalid date format";
       }
-
       const monthName = months[month - 1] || `Month ${month}`;
       return `${monthName} ${day}, ${year}`;
     } catch (error) {

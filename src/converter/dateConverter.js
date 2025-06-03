@@ -231,13 +231,14 @@ export class DateConverter {
     }
     const result = this.convertBsToAd(year, month, day);
     if (result.success) {
+      const { year, month, day } = result.data;
+      const dd = String(day).padStart(2, "0");
+      const mm = String(month).padStart(2, "0");
+      const yyyy = year;
       this.elements.adResult.innerHTML = `
-        <strong>${result.formatted}</strong>
-        <small>(${result.data.year}-${String(result.data.month).padStart(
-        2,
-        "0"
-      )}-${String(result.data.day).padStart(2, "0")})</small>
-      `;
+      <strong>${result.formatted}</strong>
+      <small>${dd}/${mm}/${yyyy}</small>
+    `;
     } else {
       this.elements.adResult.textContent = `Error: ${result.error}`;
     }

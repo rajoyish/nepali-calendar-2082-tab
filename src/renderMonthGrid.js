@@ -23,6 +23,10 @@ export function renderMonthGrid(
   for (; cellIndex < firstDayWeekIndex; cellIndex++) {
     const li = document.createElement("li");
     li.className = "month-view__date month-view__date--empty";
+    // Mark empty Saturday cells
+    if (cellIndex % 7 === 6) {
+      li.classList.add("is-saturday");
+    }
     ul.appendChild(li);
   }
 
@@ -35,6 +39,11 @@ export function renderMonthGrid(
     const dateObj = monthDates[dateIndex];
     const li = document.createElement("li");
     li.className = "month-view__date";
+
+    // Mark Saturday cells
+    if (cellIndex % 7 === 6) {
+      li.classList.add("is-saturday");
+    }
 
     // Build the full Nepali date string for this cell
     // e.g. "जेठ १४, २०८२"
@@ -71,6 +80,10 @@ export function renderMonthGrid(
   for (; cellIndex < totalCells; cellIndex++) {
     const li = document.createElement("li");
     li.className = "month-view__date month-view__date--empty";
+    // Mark empty Saturday cells
+    if (cellIndex % 7 === 6) {
+      li.classList.add("is-saturday");
+    }
     ul.appendChild(li);
   }
 }

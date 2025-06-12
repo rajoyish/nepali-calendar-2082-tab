@@ -263,7 +263,7 @@ function setupEventHandlers() {
  * Initialize the application
  */
 function initApp() {
-  console.log("Initializing Nepali Calendar App...");
+  // console.log("Initializing Nepali Calendar App...");
 
   try {
     // Initial render of date-dependent info
@@ -288,7 +288,7 @@ function initApp() {
     // Setup event handlers
     setupEventHandlers();
 
-    console.log("Nepali Calendar App initialized successfully!");
+    // console.log("Nepali Calendar App initialized successfully!");
   } catch (error) {
     console.error("Failed to initialize Nepali Calendar App:", error);
   }

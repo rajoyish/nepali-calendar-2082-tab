@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: 'Anek Devanagari', sans-serif;
+  font-family: "Anek Devanagari", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   /* 4. Add accessible line-height */
@@ -95,7 +95,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected='true'] {
+.tabs-list [aria-selected="true"] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -106,7 +106,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected='true'],
+.tabs-list [aria-selected="true"],
 .calendar__author-link {
   color: gold;
 }
@@ -275,7 +275,7 @@ footer a,
   transition: opacity 0.2s;
 }
 
-input[type='checkbox'].toggle {
+input[type="checkbox"].toggle {
   opacity: 0;
   position: absolute;
   left: -9999px;
@@ -294,7 +294,7 @@ input[type='checkbox'].toggle {
 }
 
 .toggle-switch::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0.2em;
   left: 0.2em;
@@ -306,20 +306,20 @@ input[type='checkbox'].toggle {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-input[type='checkbox'].toggle:checked + .toggle-switch::before {
+input[type="checkbox"].toggle:checked + .toggle-switch::before {
   left: 1.6em;
   background: #43c94b; /* Green for BS */
 }
 
-input[type='checkbox'].toggle:focus + .toggle-switch {
+input[type="checkbox"].toggle:focus + .toggle-switch {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
 
-input[type='checkbox'].toggle:not(:checked) ~ [data-mode-label-ad] {
+input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
   opacity: 1;
 }
-input[type='checkbox'].toggle:checked ~ [data-mode-label-bs] {
+input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
   opacity: 1;
 }
 
@@ -412,7 +412,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: inline-block;
 }
 
@@ -420,7 +420,7 @@ output {
 [data-converter-bs-result] small:hover::before,
 [data-converter-ad-result] strong:hover::before,
 [data-converter-ad-result] small:hover::before {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -428,7 +428,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -436,7 +436,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -445,7 +445,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   margin-top: -0.3em;
@@ -482,6 +482,11 @@ output {
   pointer-events: auto;
 }
 
+.is-saturday {
+  color: red;
+  border-color: red;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {
@@ -494,7 +499,7 @@ output {
   }
 
   .bullet::before {
-    content: '';
+    content: "";
     position: absolute;
     background-color: cyan;
     height: 0.8rem;

@@ -1,5 +1,3 @@
-// src/nepaliWeekday.js
-
 export const weekdays = [
   ["Sunday", "आइतबार"],
   ["Monday", "सोमबार"],
@@ -42,9 +40,13 @@ export function renderNepaliDayOfWeek() {
  * @param {HTMLElement} ul
  */
 export function renderNepaliWeekdayHeader(ul) {
-  weekdays.forEach(([en, np]) => {
+  weekdays.forEach(([en, np], idx) => {
     const li = document.createElement("li");
     li.className = "month-view__day-of-week";
+    // Add is-saturday class to Saturday header
+    if (idx === 6) {
+      li.classList.add("is-saturday");
+    }
 
     const spanNp = document.createElement("span");
     spanNp.className = "month-view__day-label--np";

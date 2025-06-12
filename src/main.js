@@ -15,6 +15,7 @@ import { setupTabs } from "./tabs.js";
 import { getTimePeriodBgImage } from "./today/getTimePeriodBg.js";
 import { initMonthView } from "./full-calendar/initMonthView.js";
 import { DateConverter } from "./date-converter/dateConverter.js";
+import { setupFullscreenButton } from "./utils/fullscreen.js";
 
 // --- State ---
 
@@ -159,6 +160,7 @@ function initApp() {
   setupConverterTab();
   setupPeriodicUpdates();
   setupEventHandlers();
+  setupFullscreenButton();
 }
 
 document.addEventListener("DOMContentLoaded", initApp);

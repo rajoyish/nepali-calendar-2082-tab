@@ -548,6 +548,30 @@ output {
   z-index: 2;
 }
 
+/* Fullscreen Button */
+
+.btn-fullscreen {
+  display: grid;
+  place-items: center;
+  min-height: 3rem;
+  border: 0;
+  background: none;
+  color: whitesmoke;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.bi-fullscreen,
+.bi-fullscreen-exit {
+  font-size: 1.3rem;
+}
+
+.calendar-clock__wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {

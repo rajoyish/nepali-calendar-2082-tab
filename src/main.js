@@ -74,7 +74,7 @@ function initializeConverter() {
     try {
       converterInstance = new DateConverter();
       converterInstance.init("panel-converter");
-      console.log("Date converter initialized successfully!");
+      // console.log("Date converter initialized successfully!");
     } catch (error) {
       console.error("Failed to initialize date converter:", error);
     }

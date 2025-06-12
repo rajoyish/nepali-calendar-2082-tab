@@ -173,6 +173,8 @@ export function renderTodayNepaliDate() {
       elEvent.style.display = "none"; // Hide if no event
     }
   }
+
+  updateHolidayNotice();
 }
 
 /**
@@ -244,4 +246,75 @@ export function debugDateMatching(testDate = null) {
 
   console.log("Found matches:", matches);
   return matches;
+}
+
+/**
+ * Show or hide the holiday notice element based on whether today is a public holiday.
+ * Caches the result for the current day for performance.
+ */
+let lastHolidayCheckDate = "";
+let lastIsHoliday = false;
+
+export function updateHolidayNotice() {
+  // 1. Get today's Nepali date object (already cached in renderTodayNepaliDate)
+  const todayNp = getTodayNepaliDateFull();
+
+  // 2. Compose a unique key for today (e.g., "2082-जेठ-११")
+  const todayKey = todayNp
+    ? `${todayNp.year}-${todayNp.month_np}-${todayNp.date_np}`
+    : "";
+
+  // 3. If already checked for today, use cached result
+  if (todayKey === lastHolidayCheckDate) {
+    setHolidayNoticeVisibility(lastIsHoliday);
+    return;
+  }
+
+  // 4. Find the matching date object in calendarData
+  let isHoliday = false;
+  if (todayNp) {
+    for (const monthObj of calendarData.months) {
+      if (monthObj.month_np === todayNp.month_np) {
+        for (const dateObj of monthObj.dates) {
+          if (dateObj.date_np === todayNp.date_np) {
+            if (
+              Array.isArray(dateObj.classes) &&
+              dateObj.classes.includes("is-holiday")
+            ) {
+              isHoliday = true;
+            }
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
+
+  // 5. Cache the result
+  lastHolidayCheckDate = todayKey;
+  lastIsHoliday = isHoliday;
+
+  // 6. Show/hide the notice
+  setHolidayNoticeVisibility(isHoliday);
+}
+
+/**
+ * Show or hide the holiday notice element in the DOM.
+ * The element should exist in your HTML (or you can create it dynamically).
+ */
+function setHolidayNoticeVisibility(show) {
+  let el = document.querySelector(".holiday-notice");
+  if (!el) {
+    // Optionally, create the element if not present
+    // (Uncomment if you want to auto-inject)
+    /*
+    el = document.createElement("h3");
+    el.className = "calendar__event holiday-notice";
+    el.innerHTML = `<span class="holiday-notice__icon"></span>आज सार्वजनिक बिदा`;
+    document.body.appendChild(el); // Or append to a specific container
+    */
+    return;
+  }
+  el.style.display = show ? "" : "none";
 }

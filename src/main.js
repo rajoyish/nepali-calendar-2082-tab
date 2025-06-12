@@ -1,21 +1,21 @@
 import "./style.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+// New imports
 import {
   startNepalClock,
   renderNepalDate,
   getNepalGregorianDate,
-} from "./nepalTime.js";
+} from "./today/nepalTime.js";
 import {
   renderTodayNepaliDate,
   getTodayNepaliDateFull,
-} from "./nepaliCalendar.js";
-import { renderNepaliDayOfWeek } from "./nepaliWeekday.js";
-import { setupTabs } from "./tabs.js";
-import { getTimePeriodBgImage } from "./getTimePeriodBg.js";
-import { initMonthView } from "./initMonthView.js";
-
-// Import converter functionality directly
-import { DateConverter } from "./converter/dateConverter.js";
+} from "./today/nepaliCalendar.js";
+import { renderNepaliDayOfWeek } from "./today/nepaliWeekday.js";
+import { setupTabs } from "./tabs.js"; // stays in src/
+import { getTimePeriodBgImage } from "./today/getTimePeriodBg.js";
+import { initMonthView } from "./full-calendar/initMonthView.js";
+import { DateConverter } from "./date-converter/dateConverter.js";
 
 // Cache for last rendered Gregorian date and Nepali date
 let lastRenderedGregorianDate = "";

@@ -1,4 +1,4 @@
-import calendarData from "./calendar-data.json";
+import calendarData from "../calendar-data.json";
 
 /**
  * Returns the full Nepali date object for today's Nepal time,

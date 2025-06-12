@@ -1,7 +1,7 @@
-import { renderNepaliWeekdayHeader } from "./nepaliWeekday.js";
+import { renderNepaliWeekdayHeader } from "../today/nepaliWeekday.js";
 import { renderMonthGrid } from "./renderMonthGrid.js";
-import { getTodayNepaliDateFull } from "./nepaliCalendar.js";
-import calendarData from "./calendar-data.json";
+import { getTodayNepaliDateFull } from "../today/nepaliCalendar.js";
+import calendarData from "../calendar-data.json";
 
 export function initMonthView(container) {
   container.innerHTML = "";

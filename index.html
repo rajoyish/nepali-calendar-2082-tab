@@ -127,11 +127,18 @@
               <section data-converter-section="ad-to-bs">
                 <div class="date-converter__input-group">
                   <label for="converter-ad-date">Select AD Date</label>
-                  <input
-                    type="date"
-                    id="converter-ad-date"
-                    data-converter-ad-input
-                  />
+
+                  <div class="custom-date-input">
+                    <input
+                      type="date"
+                      id="converter-ad-date"
+                      data-converter-ad-input
+                      class="custom-date-field"
+                    />
+                    <i
+                      class="bi bi-calendar2-date-fill custom-calendar-icon"
+                    ></i>
+                  </div>
                 </div>
                 <div class="date-converter__result-group">
                   <label>Bikram Sambat (BS)</label>

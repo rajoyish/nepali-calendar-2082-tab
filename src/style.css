@@ -572,6 +572,58 @@ output {
   align-items: center;
 }
 
+.custom-date-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Add right padding so text doesn't overlap the icon */
+.custom-date-field {
+  padding-right: 2.5em;
+  color: white; /* Optional: make text white */
+  background: transparent; /* Optional: transparent background */
+  border: 1px solid #fff; /* Optional: white border */
+  border-radius: 0.5em; /* Optional: rounded corners */
+  font-size: 1.8rem; /* Optional: larger text */
+  padding-top: 0.3em;
+}
+
+/* Hide the native calendar icon in Chrome, Safari, Edge */
+.custom-date-field::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+/* Hide the native calendar icon in Firefox */
+.custom-date-field::-moz-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+/* Hide the native calendar icon in Edge (old) and IE */
+.custom-date-field::-ms-input-placeholder {
+  color: transparent;
+}
+
+/* Position the custom icon */
+.custom-calendar-icon {
+  position: absolute;
+  right: 0.75em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 1.3em;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.custom-calendar-icon:hover {
+  color: #0d6efd; /* Optional: change color on hover */
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {

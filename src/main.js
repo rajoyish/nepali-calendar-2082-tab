@@ -16,6 +16,7 @@ import { getTimePeriodBgImage } from "./today/getTimePeriodBg.js";
 import { initMonthView } from "./full-calendar/initMonthView.js";
 import { DateConverter } from "./date-converter/dateConverter.js";
 import { setupFullscreenButton } from "./utils/fullscreen.js";
+import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 
 // --- State ---
 
@@ -161,6 +162,7 @@ function initApp() {
   setupPeriodicUpdates();
   setupEventHandlers();
   setupFullscreenButton();
+  setupDateInputIcon();
 }
 
 document.addEventListener("DOMContentLoaded", initApp);

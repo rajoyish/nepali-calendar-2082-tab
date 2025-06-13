@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Tabre: Nepali Calendar New Tab",
-  "description": "Tabre is a modern Nepali calendar web app for the year 2082, featuring Nepali date, time, tithi, events, and a date converter. Instantly view the Nepali calendar and utilities every time you open a new tab.",
-  "version": "5.0.0",
+  "description": "Tabre: Modern Nepali calendar for 2082 with date, time, tithi, events & converter—view instantly on every new tab.",
+  "version": "2.0.0",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

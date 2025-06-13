@@ -1,16 +1,13 @@
-/* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 2. Remove default margin */
 * {
   margin: 0;
 }
 
-/* 3. Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
@@ -18,60 +15,11 @@
 }
 
 body {
-  font-family: "Anek Devanagari", sans-serif;
+  font-family: 'Anek Devanagari', sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
-  /* 4. Add accessible line-height */
   line-height: 1.5;
-  /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
-}
-
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/* My Styles */
-
-body {
   min-height: 100vh;
   background: linear-gradient(to top, #30cfd0, #330867);
   background-repeat: no-repeat;
@@ -81,10 +29,12 @@ body {
   grid-template-rows: repeat(2, auto) 1fr auto;
 }
 
-/* Tabs */
+.hidden {
+  display: none;
+}
+
 .tabs-list {
   list-style: none;
-  margin: 0;
   padding: 1rem;
   display: flex;
   gap: 2rem;
@@ -96,7 +46,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected="true"] {
+.tabs-list [aria-selected='true'] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -108,7 +58,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected="true"],
+.tabs-list [aria-selected='true'],
 .calendar__author-link {
   color: gold;
 }
@@ -121,7 +71,6 @@ footer a,
   display: none;
 }
 
-/* Today Styles */
 .calendar__upper {
   display: flex;
   justify-content: space-between;
@@ -172,7 +121,6 @@ footer a,
   padding: 1rem;
 }
 
-/* Privacy Page */
 .privacy__wrapper {
   max-width: 700px;
   display: grid;
@@ -184,8 +132,6 @@ footer a,
   margin: 15% auto;
   border-radius: 0.5em;
 }
-
-/* Month View Calendar  */
 
 .month-view {
   max-width: 75rem;
@@ -220,7 +166,6 @@ footer a,
   font-weight: 500;
 }
 
-/* Responsive font sizes using clamp() */
 .month-view-header-wrapper,
 .month-view__day-of-week,
 .month-view__date-en {
@@ -260,8 +205,6 @@ footer a,
   border-color: #1ec31e;
 }
 
-/* Date Converter */
-/* Toggle Switch */
 .date-converter__modes {
   display: flex;
   align-items: center;
@@ -278,7 +221,7 @@ footer a,
   transition: opacity 0.2s;
 }
 
-input[type="checkbox"].toggle {
+input[type='checkbox'].toggle {
   opacity: 0;
   position: absolute;
   left: -9999px;
@@ -297,32 +240,32 @@ input[type="checkbox"].toggle {
 }
 
 .toggle-switch::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.2em;
   left: 0.2em;
   width: 1.4em;
   height: 1.4em;
-  background: #2196f3; /* Blue for AD */
+  background: #2196f3;
   border-radius: 50%;
   transition: left 0.2s, background 0.2s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-input[type="checkbox"].toggle:checked + .toggle-switch::before {
+input[type='checkbox'].toggle:checked + .toggle-switch::before {
   left: 1.6em;
-  background: #43c94b; /* Green for BS */
+  background: #43c94b;
 }
 
-input[type="checkbox"].toggle:focus + .toggle-switch {
+input[type='checkbox'].toggle:focus + .toggle-switch {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
 
-input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
+input[type='checkbox'].toggle:not(:checked) ~ [data-mode-label-ad] {
   opacity: 1;
 }
-input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
+input[type='checkbox'].toggle:checked ~ [data-mode-label-bs] {
   opacity: 1;
 }
 
@@ -415,7 +358,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: inline-block;
 }
 
@@ -423,7 +366,7 @@ output {
 [data-converter-bs-result] small:hover::before,
 [data-converter-ad-result] strong:hover::before,
 [data-converter-ad-result] small:hover::before {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -431,7 +374,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -439,7 +382,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -448,7 +391,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: inline-block;
   vertical-align: middle;
   margin-top: -0.3em;
@@ -460,7 +403,6 @@ output {
   pointer-events: none;
 }
 
-/* Popover styling */
 .copy-popover {
   font-family: sans-serif;
   position: absolute;
@@ -490,7 +432,6 @@ output {
   border-color: red;
 }
 
-/* Pulse on holiday */
 .holiday-notice {
   display: flex;
   align-items: center;
@@ -510,7 +451,7 @@ output {
 }
 
 .holiday-notice__icon::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -539,7 +480,7 @@ output {
 }
 
 .holiday-notice__icon::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -550,8 +491,6 @@ output {
   transform: translate(-50%, -50%);
   z-index: 2;
 }
-
-/* Fullscreen Button */
 
 .btn-fullscreen {
   display: grid;
@@ -582,35 +521,30 @@ output {
   line-height: 1;
 }
 
-/* Add right padding so text doesn't overlap the icon */
 .custom-date-field {
   padding-right: 2.5em;
-  color: white; /* Optional: make text white */
-  background: transparent; /* Optional: transparent background */
-  border: 1px solid #fff; /* Optional: white border */
-  border-radius: 0.5em; /* Optional: rounded corners */
-  font-size: 1.8rem; /* Optional: larger text */
+  color: white;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 0.5em;
+  font-size: 1.8rem;
   padding-top: 0.3em;
 }
 
-/* Hide the native calendar icon in Chrome, Safari, Edge */
 .custom-date-field::-webkit-calendar-picker-indicator {
   opacity: 0;
   display: none;
 }
 
-/* Hide the native calendar icon in Firefox */
 .custom-date-field::-moz-calendar-picker-indicator {
   opacity: 0;
   display: none;
 }
 
-/* Hide the native calendar icon in Edge (old) and IE */
 .custom-date-field::-ms-input-placeholder {
   color: transparent;
 }
 
-/* Position the custom icon */
 .custom-calendar-icon {
   position: absolute;
   right: 0.75em;
@@ -624,10 +558,9 @@ output {
 }
 
 .custom-calendar-icon:hover {
-  color: #0d6efd; /* Optional: change color on hover */
+  color: #0d6efd;
 }
 
-/* reminder */
 .reminder {
   max-width: 50rem;
   display: flex;
@@ -671,7 +604,6 @@ output {
 }
 
 .reminder__modal {
-  display: none;
   position: fixed;
   left: 0;
   top: 0;
@@ -699,83 +631,10 @@ output {
   gap: 1em;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   accent-color: gold;
   scale: 2;
   margin-top: -0.5em;
-}
-
-/* Toast */
-.reminder-toast {
-  position: fixed;
-  left: 50%;
-  bottom: 2rem;
-  transform: translateX(-50%);
-  background: #222;
-  color: #fff;
-  padding: 1.5em 2em;
-  border-radius: 0.75em;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-  z-index: 9999;
-  min-width: 260px;
-  max-width: 90vw;
-  display: flex;
-  align-items: center;
-  animation: reminder-toast-in 0.3s;
-}
-
-@keyframes reminder-toast-in {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-.reminder-toast__content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7em;
-  align-items: center;
-}
-
-.reminder-toast__details {
-  font-size: 1.1em;
-  margin-bottom: 0.5em;
-  text-align: center;
-}
-
-.reminder-toast__task {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.2em;
-}
-
-.reminder-toast__minutes {
-  display: block;
-  font-size: 0.95em;
-  color: #ffd700;
-}
-
-.reminder-toast__ok {
-  margin-top: 0.5em;
-  padding: 0.4em 1.2em;
-  background: #ffd700;
-  color: #222;
-  border: none;
-  border-radius: 0.4em;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.reminder-toast__ok:hover,
-.reminder-toast__ok:focus {
-  background: #fffbe6;
-  outline: none;
 }
 
 @media (min-width: 500px) {
@@ -790,7 +649,7 @@ input[type="checkbox"] {
   }
 
   .bullet::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: cyan;
     height: 0.8rem;

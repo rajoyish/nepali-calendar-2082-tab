@@ -1,183 +1,224 @@
 // src/reminder/index.js
 
-import notificationSound from "../assets/notification.mp3";
+let notificationSound;
+try {
+  notificationSound = new URL('../assets/notification.mp3', import.meta.url)
+    .href;
+} catch {
+  notificationSound = '/src/assets/notification.mp3';
+}
 
 let reminderEndTime = null;
 let countdownRAF = null;
 let audio = null;
+let soundEnabled = true;
+let isSoundPlaying = false;
+let lastTask = '';
 
 export function setupReminder() {
-  const panel = document.getElementById("panel-reminder");
+  const panel = document.getElementById('panel-reminder');
   if (!panel) return;
 
-  const setBtn = panel.querySelector(".reminder__btn");
-  const resetBtn = panel.querySelectorAll(".reminder__btn")[1];
-  const modal = panel.querySelector(".reminder__modal");
-  const form = panel.querySelector(".reminder-form");
-  const cancelBtn = panel.querySelector('.reminder-form__btn[type="button"]');
-  const titleInput = form.querySelector("#reminder-form__task-title");
-  const minutesInput = form.querySelector("#reminder-form__minutes");
-  const soundCheckbox = form.querySelector("#sound");
-  const displayTitle = panel.querySelector(".reminder__title");
-  const displayTime = panel.querySelector(".reminder__time");
+  const elements = {
+    setBtn: panel.querySelector('.reminder__btn'),
+    resetBtn: panel.querySelectorAll('.reminder__btn')[1],
+    modal: panel.querySelector('.reminder__modal'),
+    form: panel.querySelector('.reminder-form'),
+    cancelBtn: panel.querySelector('.reminder-form__btn[type="button"]'),
+    titleInput: panel.querySelector('#reminder-form__task-title'),
+    minutesInput: panel.querySelector('#reminder-form__minutes'),
+    soundCheckbox: panel.querySelector('#sound'),
+    displayTitle: panel.querySelector('.reminder__title'),
+    displayTime: panel.querySelector('.reminder__time'),
+  };
 
-  // Helper: Show/hide modal
+  if (!validateElements(elements)) return;
+
+  const {
+    setBtn,
+    resetBtn,
+    modal,
+    form,
+    cancelBtn,
+    titleInput,
+    minutesInput,
+    soundCheckbox,
+    displayTitle,
+    displayTime,
+  } = elements;
+
+  function validateElements(elements) {
+    const required = [
+      'setBtn',
+      'resetBtn',
+      'modal',
+      'form',
+      'displayTitle',
+      'displayTime',
+    ];
+    return required.every((key) => elements[key]);
+  }
+
   function showModal() {
-    modal.style.display = "block";
-    titleInput.focus();
-  }
-  function hideModal() {
-    modal.style.display = "none";
-    form.reset();
+    modal.classList.remove('hidden');
+    form.classList.remove('hidden');
+    titleInput?.focus();
   }
 
-  // Helper: Format mm:ss
+  function hideModal() {
+    modal.classList.add('hidden');
+    form.classList.add('hidden');
+    form?.reset();
+  }
+
   function formatTime(ms) {
     const totalSeconds = Math.max(0, Math.floor(ms / 1000));
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return (
-      String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0")
-    );
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+      2,
+      '0'
+    )}`;
   }
 
-  // Helper: Start countdown
+  function updateDisplay(task, time = '20:00') {
+    const titleTextNode = displayTitle.childNodes[0];
+    if (titleTextNode) {
+      titleTextNode.textContent = `${task} `;
+    } else {
+      displayTitle.innerHTML = `${task} <span class="reminder__title-emphasis">in</span>`;
+    }
+    displayTime.textContent = time;
+    displayTime.setAttribute('datetime', time);
+  }
+
+  function updateResetBtnText() {
+    if (isSoundPlaying) {
+      resetBtn.textContent = 'Stop Sound';
+    } else {
+      resetBtn.textContent = 'Reset';
+    }
+  }
+
   function startCountdown(task, minutes) {
     function update() {
       if (!reminderEndTime) return;
-      const now = Date.now();
-      const msLeft = reminderEndTime - now;
+
+      const msLeft = reminderEndTime - Date.now();
+
       if (msLeft <= 0) {
-        displayTime.textContent = "00:00";
-        displayTime.setAttribute("datetime", "00:00");
-        handleReminderEnd(task, minutes);
-        resetReminder(false); // Don't stop sound here, let it play until toast is dismissed
+        updateDisplay(task, '00:00');
+        handleReminderEnd(task);
         return;
       }
+
       const formatted = formatTime(msLeft);
       if (displayTime.textContent !== formatted) {
-        displayTime.textContent = formatted;
-        displayTime.setAttribute("datetime", formatted);
+        updateDisplay(task, formatted);
       }
       countdownRAF = requestAnimationFrame(update);
     }
     countdownRAF = requestAnimationFrame(update);
   }
 
-  // Helper: Set reminder
   function setReminder(task, minutes) {
-    displayTitle.childNodes[0].textContent = task + " ";
-    const now = Date.now();
-    const ms = Number(minutes) * 60 * 1000;
-    reminderEndTime = now + ms;
+    soundEnabled = soundCheckbox?.checked ?? true;
+    lastTask = task;
 
-    // Start countdown
+    reminderEndTime = Date.now() + Number(minutes) * 60 * 1000;
+
     if (countdownRAF) cancelAnimationFrame(countdownRAF);
     startCountdown(task, minutes);
   }
 
-  // Helper: Reset reminder
-  // If stopSoundNow is false, don't stop sound (used when reminder ends)
   function resetReminder(stopSoundNow = true) {
-    displayTitle.childNodes[0].textContent = "Buy Eggs ";
-    displayTime.textContent = "20:00";
-    displayTime.setAttribute("datetime", "20:00");
+    updateDisplay('Buy Eggs');
     reminderEndTime = null;
-    if (countdownRAF) cancelAnimationFrame(countdownRAF);
-    countdownRAF = null;
+
+    if (countdownRAF) {
+      cancelAnimationFrame(countdownRAF);
+      countdownRAF = null;
+    }
+
     if (stopSoundNow) stopSound();
-    removeToast();
+
+    hideModal();
+    isSoundPlaying = false;
+    updateResetBtnText();
   }
 
-  // Helper: Play and stop sound
   function playSound() {
-    stopSound(); // Stop any previous sound
-    audio = new Audio(notificationSound);
-    audio.loop = true;
-    audio.play().catch(() => {
-      // Some browsers block autoplay, ignore error
-    });
+    if (!soundEnabled) return;
+
+    stopSound();
+    try {
+      audio = new Audio(notificationSound);
+      audio.loop = true;
+      audio
+        .play()
+        .then(() => {
+          isSoundPlaying = true;
+          updateResetBtnText();
+        })
+        .catch(() => {
+          isSoundPlaying = true;
+          updateResetBtnText();
+        });
+    } catch (error) {
+      isSoundPlaying = true;
+      updateResetBtnText();
+    }
   }
+
   function stopSound() {
     if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-      audio = null;
+      try {
+        audio.pause();
+        audio.currentTime = 0;
+        audio = null;
+      } catch (error) {}
     }
+    isSoundPlaying = false;
+    updateResetBtnText();
   }
 
-  // Toast helpers
-  function showToast(task, minutes) {
-    removeToast(); // Remove any existing toast
+  function handleReminderEnd(task) {
+    if (soundEnabled) {
+      playSound();
+      // Don't reset here, let user stop sound
+    }
+    // If sound is not enabled, do nothing (no alert, no sound)
+  }
 
-    // Create toast
-    const toast = document.createElement("div");
-    toast.className = "reminder-toast";
-    toast.innerHTML = `
-      <div class="reminder-toast__content">
-        <strong>⏰ Reminder</strong>
-        <div class="reminder-toast__details">
-          <span class="reminder-toast__task">${task}</span>
-          <span class="reminder-toast__minutes">Set for ${minutes} minute${
-      minutes > 1 ? "s" : ""
-    }</span>
-        </div>
-        <button class="reminder-toast__ok">Okay</button>
-      </div>
-    `;
-    document.body.appendChild(toast);
+  function handleFormSubmit(e) {
+    e.preventDefault();
 
-    // Focus the OK button for accessibility
-    const okBtn = toast.querySelector(".reminder-toast__ok");
-    if (okBtn) okBtn.focus();
+    const task = titleInput?.value.trim() || '';
+    const minutes = minutesInput?.value.trim() || '';
 
-    okBtn.addEventListener("click", () => {
-      stopSound();
-      removeToast();
+    if (!task || !minutes || isNaN(minutes) || Number(minutes) <= 0) {
+      return;
+    }
+
+    setReminder(task, Number(minutes));
+    hideModal();
+  }
+
+  // Event listeners
+  setBtn.addEventListener('click', showModal);
+  resetBtn.addEventListener('click', () => resetReminder());
+  form.addEventListener('submit', handleFormSubmit);
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      hideModal();
     });
   }
 
-  function removeToast() {
-    const toast = document.querySelector(".reminder-toast");
-    if (toast) toast.remove();
-  }
-
-  // Helper: Handle reminder end
-  function handleReminderEnd(task, minutes) {
-    if (soundCheckbox && soundCheckbox.checked) {
-      playSound();
-    }
-    showToast(task, minutes);
-    // Sound will stop when user clicks Okay
-  }
-
-  // Event: Open modal
-  setBtn.addEventListener("click", showModal);
-
-  // Event: Cancel button
-  cancelBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    hideModal();
-  });
-
-  // Event: Reset button
-  resetBtn.addEventListener("click", () => {
-    resetReminder();
-  });
-
-  // Event: Form submit
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const task = titleInput.value.trim();
-    const minutes = minutesInput.value.trim();
-    if (!task || !minutes || isNaN(minutes) || minutes <= 0) {
-      showToast("Please enter a valid task and minutes.", 0);
-      return;
-    }
-    setReminder(task, minutes);
-    hideModal();
-  });
-
-  // Hide modal on load
-  hideModal();
+  // Initialize
+  modal.classList.add('hidden');
+  form.classList.add('hidden');
+  isSoundPlaying = false;
+  updateResetBtnText();
 }

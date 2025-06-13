@@ -60,6 +60,14 @@
           >Date Converter</a
         >
       </li>
+      <li>
+        <a
+          id="tab-converter"
+          href="#panel-reminder"
+          aria-controls="panel-reminder"
+          >Reminder</a
+        >
+      </li>
     </ul>
 
     <div class="calendar__upper">
@@ -94,11 +102,13 @@
             </div>
           </section>
         </div>
+
         <div id="panel-calendar" aria-labelledby="tab-calendar">
           <div id="month-view-calendar-root"></div>
         </div>
+
+        <!-- Date Converter content -->
         <div id="panel-converter" aria-labelledby="tab-converter">
-          <!-- Date Converter content -->
           <article class="date-converter">
             <nav class="date-converter__modes">
               <span class="date-converter__mode-label" data-mode-label-ad
@@ -191,8 +201,68 @@
               </section>
             </main>
           </article>
-          <!-- End of Date Converter content -->
         </div>
+        <!--End of Date Converter content -->
+
+        <!-- Reminder -->
+        <div id="panel-reminder" aria-labelledby="tab-reminder">
+          <section class="reminder">
+            <header class="reminder__header">
+              <h2 class="reminder__title">
+                Buy Eggs
+                <span class="reminder__title-emphasis">in</span>
+              </h2>
+              <time class="reminder__time" datetime="20:00">20:00</time>
+            </header>
+
+            <footer class="reminder__controls">
+              <button type="button" class="reminder__btn">Set Reminder</button>
+              <button type="button" class="reminder__btn">Reset</button>
+            </footer>
+
+            <aside class="reminder__modal">
+              <form class="reminder-form">
+                <div class="form-wrapper">
+                  <div class="reminder-form__control">
+                    <label for="reminder-form__task-title">
+                      What should I remind you about?
+                    </label>
+                    <input
+                      type="text"
+                      id="reminder-form__task-title"
+                      placeholder="Buy Eggs"
+                      required
+                    />
+                    <small class="reminder-form__info">
+                      Task to remind. Keep it short. Use a verb phrase.
+                    </small>
+                  </div>
+
+                  <div class="reminder-form__control">
+                    <label for="reminder-form__minutes">Remind in</label>
+                    <input type="number" id="reminder-form__minutes" required />
+                    <small class="reminder-form__info">e.g., 30 minutes</small>
+                  </div>
+
+                  <div class="reminder-form-control-checkbox">
+                    <input type="checkbox" id="sound" checked />
+                    <label for="sound">Enable Sound?</label>
+                  </div>
+
+                  <div class="reminder-form__button-group">
+                    <button type="submit" class="reminder-form__btn">
+                      Save
+                    </button>
+                    <button type="button" class="reminder-form__btn">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </aside>
+          </section>
+        </div>
+        <!-- End of Reminder -->
       </div>
     </main>
 

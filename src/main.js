@@ -17,6 +17,7 @@ import { initMonthView } from "./full-calendar/initMonthView.js";
 import { DateConverter } from "./date-converter/dateConverter.js";
 import { setupFullscreenButton } from "./utils/fullscreen.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
+import { setupReminder } from "./reminder/index.js";
 
 // --- State ---
 
@@ -163,6 +164,7 @@ function initApp() {
   setupEventHandlers();
   setupFullscreenButton();
   setupDateInputIcon();
+  setupReminder();
 }
 
 document.addEventListener("DOMContentLoaded", initApp);

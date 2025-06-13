@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: 'Anek Devanagari', sans-serif;
+  font-family: "Anek Devanagari", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   /* 4. Add accessible line-height */
@@ -70,6 +70,7 @@ h6 {
 }
 
 /* My Styles */
+
 body {
   min-height: 100vh;
   background: linear-gradient(to top, #30cfd0, #330867);
@@ -95,7 +96,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected='true'] {
+.tabs-list [aria-selected="true"] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -107,7 +108,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected='true'],
+.tabs-list [aria-selected="true"],
 .calendar__author-link {
   color: gold;
 }
@@ -277,7 +278,7 @@ footer a,
   transition: opacity 0.2s;
 }
 
-input[type='checkbox'].toggle {
+input[type="checkbox"].toggle {
   opacity: 0;
   position: absolute;
   left: -9999px;
@@ -296,7 +297,7 @@ input[type='checkbox'].toggle {
 }
 
 .toggle-switch::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0.2em;
   left: 0.2em;
@@ -308,20 +309,20 @@ input[type='checkbox'].toggle {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-input[type='checkbox'].toggle:checked + .toggle-switch::before {
+input[type="checkbox"].toggle:checked + .toggle-switch::before {
   left: 1.6em;
   background: #43c94b; /* Green for BS */
 }
 
-input[type='checkbox'].toggle:focus + .toggle-switch {
+input[type="checkbox"].toggle:focus + .toggle-switch {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
 
-input[type='checkbox'].toggle:not(:checked) ~ [data-mode-label-ad] {
+input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
   opacity: 1;
 }
-input[type='checkbox'].toggle:checked ~ [data-mode-label-bs] {
+input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
   opacity: 1;
 }
 
@@ -366,7 +367,7 @@ input[type='checkbox'].toggle:checked ~ [data-mode-label-bs] {
   color: gold;
 }
 
-input,
+.date-converter__content input,
 select {
   min-width: 20rem;
   border: 1px solid whitesmoke;
@@ -414,7 +415,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: inline-block;
 }
 
@@ -422,7 +423,7 @@ output {
 [data-converter-bs-result] small:hover::before,
 [data-converter-ad-result] strong:hover::before,
 [data-converter-ad-result] small:hover::before {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -430,7 +431,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -438,7 +439,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -447,7 +448,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   margin-top: -0.3em;
@@ -509,7 +510,7 @@ output {
 }
 
 .holiday-notice__icon::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -538,7 +539,7 @@ output {
 }
 
 .holiday-notice__icon::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -626,6 +627,157 @@ output {
   color: #0d6efd; /* Optional: change color on hover */
 }
 
+/* reminder */
+.reminder {
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.reminder-form__control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.reminder__controls,
+.reminder-form__button-group {
+  margin: 0 auto;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+}
+
+.reminder__header {
+  text-align: center;
+}
+
+.reminder__title {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.reminder__title-emphasis {
+  font-style: italic;
+  color: gold;
+}
+
+.reminder__time {
+  font-size: 12.5rem;
+  font-weight: 700;
+}
+
+.reminder__modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+}
+
+.reminder-form {
+  min-height: 100vh;
+  max-width: 45rem;
+  display: grid;
+  place-items: center;
+  margin: auto;
+}
+
+.reminder-form-control-checkbox {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+  color: gold;
+  gap: 1em;
+}
+
+input[type="checkbox"] {
+  accent-color: gold;
+  scale: 2;
+  margin-top: -0.5em;
+}
+
+/* Toast */
+.reminder-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 1.5em 2em;
+  border-radius: 0.75em;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  min-width: 260px;
+  max-width: 90vw;
+  display: flex;
+  align-items: center;
+  animation: reminder-toast-in 0.3s;
+}
+
+@keyframes reminder-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.reminder-toast__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  align-items: center;
+}
+
+.reminder-toast__details {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.reminder-toast__task {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.reminder-toast__minutes {
+  display: block;
+  font-size: 0.95em;
+  color: #ffd700;
+}
+
+.reminder-toast__ok {
+  margin-top: 0.5em;
+  padding: 0.4em 1.2em;
+  background: #ffd700;
+  color: #222;
+  border: none;
+  border-radius: 0.4em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.reminder-toast__ok:hover,
+.reminder-toast__ok:focus {
+  background: #fffbe6;
+  outline: none;
+}
+
 @media (min-width: 500px) {
   .calendar__date-en,
   .calendar__clock {
@@ -638,7 +790,7 @@ output {
   }
 
   .bullet::before {
-    content: '';
+    content: "";
     position: absolute;
     background-color: cyan;
     height: 0.8rem;

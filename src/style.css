@@ -34,6 +34,7 @@ body {
 }
 
 .tabs-list {
+  font-family: 'Mona Sans', sans-serif;
   list-style: none;
   padding: 1rem;
   display: flex;
@@ -562,6 +563,7 @@ output {
 }
 
 .reminder {
+  font-family: 'Mona Sans', sans-serif;
   max-width: 50rem;
   display: flex;
   flex-direction: column;
@@ -589,8 +591,13 @@ output {
 }
 
 .reminder__title {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
   font-weight: 300;
+}
+
+.reminder__time {
+  font-size: clamp(3rem, 15vw + 1rem, 12.5rem);
+  font-weight: 700;
 }
 
 .reminder__title-emphasis {
@@ -598,9 +605,35 @@ output {
   color: gold;
 }
 
-.reminder__time {
-  font-size: 12.5rem;
+.reminder__btn {
+  font-family: inherit;
+  font-size: 1rem;
   font-weight: 700;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: gold;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: goldenrod;
+  color: whitesmoke;
+}
+
+.btn-danger {
+  background-color: red;
+  color: whitesmoke;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: maroon;
 }
 
 .reminder__modal {

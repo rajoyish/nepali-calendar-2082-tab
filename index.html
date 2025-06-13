@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@75..125,100..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -216,8 +216,12 @@
             </header>
 
             <footer class="reminder__controls">
-              <button type="button" class="reminder__btn">Set Reminder</button>
-              <button type="button" class="reminder__btn">Reset</button>
+              <button type="button" class="reminder__btn btn-primary">
+                Set Reminder
+              </button>
+              <button type="button" class="reminder__btn btn-danger">
+                Reset
+              </button>
             </footer>
 
             <aside class="reminder__modal hidden">
@@ -250,10 +254,16 @@
                   </div>
 
                   <div class="reminder-form__button-group">
-                    <button type="submit" class="reminder-form__btn">
+                    <button
+                      type="submit"
+                      class="reminder-form__btn reminder__btn btn-primary"
+                    >
                       Save
                     </button>
-                    <button type="button" class="reminder-form__btn">
+                    <button
+                      type="button"
+                      class="reminder-form__btn reminder__btn btn-danger"
+                    >
                       Cancel
                     </button>
                   </div>

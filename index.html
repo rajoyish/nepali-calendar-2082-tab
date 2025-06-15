@@ -233,23 +233,34 @@
                     </label>
                     <input
                       type="text"
+                      class="reminder-form__input"
                       id="reminder-form__task-title"
                       placeholder="Buy Eggs"
                       required
                     />
                     <small class="reminder-form__info">
-                      Task to remind. Keep it short. Use a verb phrase.
+                      Keep it short. Use a verb phrase.
                     </small>
                   </div>
 
                   <div class="reminder-form__control">
                     <label for="reminder-form__minutes">Remind in</label>
-                    <input type="number" id="reminder-form__minutes" required />
+                    <input
+                      class="reminder-form__input"
+                      type="number"
+                      id="reminder-form__minutes"
+                      required
+                    />
                     <small class="reminder-form__info">e.g., 30 minutes</small>
                   </div>
 
                   <div class="reminder-form-control-checkbox">
-                    <input type="checkbox" id="sound" checked />
+                    <input
+                      class="reminder-form__checkbox"
+                      type="checkbox"
+                      id="sound"
+                      checked
+                    />
                     <label for="sound">Enable Sound?</label>
                   </div>
 

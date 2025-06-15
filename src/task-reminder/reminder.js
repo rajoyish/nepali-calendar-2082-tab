@@ -1,4 +1,4 @@
-// src/reminder/index.js
+// src/task-reminder/reminder.js
 
 let notificationSound;
 try {

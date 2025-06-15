@@ -578,6 +578,32 @@ output {
   font-size: 1.5rem;
 }
 
+.reminder-form__control label {
+  text-align: left;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.reminder-form__input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 0.5em;
+}
+
+.reminder-form__input::placeholder {
+  font-family: inherit;
+  color: #868686;
+}
+
+.reminder-form__info {
+  text-align: left;
+  color: gold;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
 .reminder__controls,
 .reminder-form__button-group {
   margin: 0 auto;
@@ -592,12 +618,13 @@ output {
 
 .reminder__title {
   font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .reminder__time {
   font-size: clamp(3rem, 15vw + 1rem, 12.5rem);
-  font-weight: 700;
+  font-weight: 900;
+ 
 }
 
 .reminder__title-emphasis {
@@ -656,18 +683,17 @@ output {
 
 .reminder-form-control-checkbox {
   display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
+  font-size: 1rem;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
   color: gold;
   gap: 1em;
 }
 
 input[type='checkbox'] {
   accent-color: gold;
-  scale: 2;
-  margin-top: -0.5em;
+  scale: 1.5;
 }
 
 @media (min-width: 500px) {

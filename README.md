@@ -4,83 +4,60 @@
 
 ---
 
-Tabre is a modern, privacy-first Chrome extension that transforms your new tab into a beautiful Nepali calendar dashboard. Instantly view the current Nepali date, time, tithi, events, and convert dates between Bikram Sambat (BS) and Gregorian (AD) calendars—right from every new tab.
+Tabre is a Chrome extension that transforms your new tab into a beautiful Nepali calendar dashboard. Instantly view the current Nepali date, time, tithi, and events, convert between Bikram Sambat (BS) and Gregorian (AD) calendars, and set task reminders with countdown and optional sound alerts—all in one place.
 
 ---
 
 ## Features
 
 - 🗓 **Current Nepali Date & Time**  
-  See today’s Nepali date, month, and day in Devanagari script, updated in real time.
+  See today’s Nepali date and time in Devanagari, updated live.
 
 - 🔄 **Date Converter (AD ↔ BS)**  
-  Instantly convert dates between Nepali (Bikram Sambat) and English (Gregorian) calendars.
+  Instantly convert dates between Nepali (BS) and English (AD).
 
 - ⏰ **Time Period Awareness**  
-  Know the current Nepali time segment: बिहान, मध्यान्ह, अपरान्ह, साँझ, बेलुका, राति.
+  Shows the current Nepali time segment (e.g., बिहान, मध्यान्ह).
 
 - 📅 **Full Month View**  
-  View the entire current Nepali month at a glance.
+  View the entire current Nepali month.
+
+- 🔔 **Task Reminder with Countdown & Sound**  
+  Set a task reminder with a countdown timer and optional sound alert.
 
 - 🖼 **Aesthetic Backgrounds**  
-  Enjoy rotating scenic backgrounds and clean, modern design.
+  Enjoy rotating scenic backgrounds and a clean, modern design.
 
-- ⚡ **Fast, Lightweight, and 100% Private**  
-  All calculations and features run locally on your device. **No personal data is collected, stored, or transmitted.**
+- ⚡ **Fast & Private**  
+  All features run locally. No data is collected or sent anywhere.
 
 ---
 
-## Privacy & Data Protection
+## Privacy
 
-**Tabre is designed with your privacy in mind:**
-
-- No personal data is collected, stored, or shared.
-- No analytics, tracking, or third-party scripts.
-- All features and calculations work entirely on your device.
-- No network requests are made except to load the extension itself.
-
-**You enjoy full privacy protection.**
+- No data collection, tracking, or third-party scripts.
+- All features work 100% offline on your device.
 
 ---
 
 ## Installation
 
-### From Chrome Web Store
+**From Chrome Web Store:**
 
-1. Visit the [Chrome Web Store page](#) (link will be available after publishing).
+1. Visit the [Chrome Web Store page](https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo).
 2. Click **Add to Chrome**.
-3. Open a new tab to start using Tabre!
 
-### Manual Installation (Unpacked Extension)
+**Manual:**
 
-1. Download or clone this repository.
-2. Open `chrome://extensions/` in your Chrome browser.
-3. Enable **Developer Mode** (top right).
-4. Click **Load unpacked** and select the project folder.
-5. Open a new tab to see Tabre in action.
-
----
-
-## How It Works
-
-- **New Tab Override:**  
-  Tabre replaces your default new tab page with a modern Nepali calendar dashboard.
-- **Instant Access:**  
-  Every new tab shows the current Nepali date, time, and a full month calendar.
-- **Date Converter:**  
-  Easily convert dates between AD and BS, both ways.
+1. Clone/download this repo.
+2. Go to `chrome://extensions/` and enable **Developer Mode**.
+3. Click **Load unpacked** and select the project folder.
 
 ---
 
 ## Development
 
-**Built with:**
-
-- [Vite 6](https://vitejs.dev/)
-- Vanilla JavaScript
-- HTML & CSS
-
-**To run locally:**
+Built with [Vite 6](https://vitejs.dev/), vanilla JS, HTML & CSS.
 
 ```bash
 npm install
@@ -89,15 +66,7 @@ npm run dev
 
 ---
 
-## License
-
-[MIT](LICENSE)
-
----
-
 **Tabre** – Your Nepali calendar, always one tab away.  
-\*\*No tracking. No data collection. Just pure utility.
-
----
+No tracking. No data collection. Just pure utility.
 
 **Web Demo:** [https://tabre.netlify.app/](https://tabre.netlify.app/)

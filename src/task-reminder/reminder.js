@@ -10,6 +10,8 @@ try {
 
 let reminderEndTime = null;
 let countdownRAF = null;
+let reminderTimeout = null;
+let soundTimeout = null;
 let audio = null;
 let soundEnabled = true;
 let isSoundPlaying = false;
@@ -101,6 +103,16 @@ export function setupReminder() {
   }
 
   function startCountdown(task, minutes) {
+    // Cancel any previous timeouts
+    if (reminderTimeout) {
+      clearTimeout(reminderTimeout);
+      reminderTimeout = null;
+    }
+    if (soundTimeout) {
+      clearTimeout(soundTimeout);
+      soundTimeout = null;
+    }
+
     function update() {
       if (!reminderEndTime) return;
 
@@ -108,7 +120,7 @@ export function setupReminder() {
 
       if (msLeft <= 0) {
         updateDisplay(task, '00:00');
-        handleReminderEnd(task);
+        // Don't call handleReminderEnd here; setTimeout will handle it
         return;
       }
 
@@ -119,6 +131,20 @@ export function setupReminder() {
       countdownRAF = requestAnimationFrame(update);
     }
     countdownRAF = requestAnimationFrame(update);
+
+    // Schedule the sound to play 500ms before the end
+    const msToSound = Math.max(0, reminderEndTime - Date.now() - 500);
+    soundTimeout = setTimeout(() => {
+      if (soundEnabled) playSound();
+    }, msToSound);
+
+    // Schedule the end event at the actual end
+    const msToEnd = reminderEndTime - Date.now();
+    reminderTimeout = setTimeout(() => {
+      updateDisplay(task, '00:00');
+      // Don't play sound here, already played 500ms before
+      // You can add any other end logic here if needed
+    }, msToEnd);
   }
 
   function setReminder(task, minutes) {
@@ -128,6 +154,9 @@ export function setupReminder() {
     reminderEndTime = Date.now() + Number(minutes) * 60 * 1000;
 
     if (countdownRAF) cancelAnimationFrame(countdownRAF);
+    if (reminderTimeout) clearTimeout(reminderTimeout);
+    if (soundTimeout) clearTimeout(soundTimeout);
+
     startCountdown(task, minutes);
   }
 
@@ -138,6 +167,14 @@ export function setupReminder() {
     if (countdownRAF) {
       cancelAnimationFrame(countdownRAF);
       countdownRAF = null;
+    }
+    if (reminderTimeout) {
+      clearTimeout(reminderTimeout);
+      reminderTimeout = null;
+    }
+    if (soundTimeout) {
+      clearTimeout(soundTimeout);
+      soundTimeout = null;
     }
 
     if (stopSoundNow) stopSound();
@@ -180,14 +217,6 @@ export function setupReminder() {
     }
     isSoundPlaying = false;
     updateResetBtnText();
-  }
-
-  function handleReminderEnd(task) {
-    if (soundEnabled) {
-      playSound();
-      // Don't reset here, let user stop sound
-    }
-    // If sound is not enabled, do nothing (no alert, no sound)
   }
 
   function handleFormSubmit(e) {

@@ -24,6 +24,7 @@ function getNepalTime() {
   const now = new Date();
   const offset = 5 * 60 + 45;
   return new Date(now.getTime() + (now.getTimezoneOffset() + offset) * 60000);
+  // return new Date('2025-10-20T12:00:00+05:45');
 }
 
 /**
@@ -126,7 +127,18 @@ export function updateHolidayNotice(today = getTodayNepaliDateFull()) {
   setDisplay('.holiday-notice', isHoliday);
 }
 
-// --- Debug: Show all matches for a given AD date (for dev) ---
+/**
+ * Returns true if the date object is a holiday.
+ * @param {object} dateObj
+ * @returns {boolean}
+ */
+export function isHoliday(dateObj) {
+  return (
+    dateObj &&
+    Array.isArray(dateObj.classes) &&
+    dateObj.classes.includes('is-holiday')
+  );
+}
 
 export function getNepaliDateForAd(adDateString) {
   // adDateString: "YYYY-MM-DD"
@@ -154,6 +166,7 @@ export function getNepaliDateForAd(adDateString) {
   };
 }
 
+// --- Debug: Show all matches for a given AD date (for dev) ---
 export function debugDateMatching(testDate = null) {
   const t = testDate || getNepalTime();
   const iso = t.toISOString().split('T')[0];

@@ -320,6 +320,7 @@ select {
   border-radius: 0.3em;
   height: 4rem;
   text-align: center;
+  font-size: 1.3rem;
 }
 
 input:focus,
@@ -428,7 +429,8 @@ output {
   pointer-events: auto;
 }
 
-.is-saturday {
+.is-saturday,
+.is-holiday {
   color: red;
   border-color: red;
 }
@@ -624,7 +626,6 @@ output {
 .reminder__time {
   font-size: clamp(3rem, 15vw + 1rem, 12.5rem);
   font-weight: 900;
- 
 }
 
 .reminder__title-emphasis {

@@ -1,3 +1,5 @@
+import { isHoliday } from '../today/nepaliCalendar.js';
+
 /**
  * Renders 35 date grid items as <li> elements.
  * @param {HTMLElement} ul
@@ -21,11 +23,11 @@ export function renderMonthGrid(
 
   // 1. Pad empty cells before the first day
   for (; cellIndex < firstDayWeekIndex; cellIndex++) {
-    const li = document.createElement("li");
-    li.className = "month-view__date month-view__date--empty";
+    const li = document.createElement('li');
+    li.className = 'month-view__date month-view__date--empty';
     // Mark empty Saturday cells
     if (cellIndex % 7 === 6) {
-      li.classList.add("is-saturday");
+      li.classList.add('is-saturday');
     }
     ul.appendChild(li);
   }
@@ -37,12 +39,17 @@ export function renderMonthGrid(
     dateIndex++, cellIndex++
   ) {
     const dateObj = monthDates[dateIndex];
-    const li = document.createElement("li");
-    li.className = "month-view__date";
+    const li = document.createElement('li');
+    li.className = 'month-view__date';
 
     // Mark Saturday cells
     if (cellIndex % 7 === 6) {
-      li.classList.add("is-saturday");
+      li.classList.add('is-saturday');
+    }
+
+    // Add is-holiday class if this date is a holiday
+    if (isHoliday(dateObj)) {
+      li.classList.add('is-holiday');
     }
 
     // Build the full Nepali date string for this cell
@@ -51,23 +58,23 @@ export function renderMonthGrid(
 
     // Highlight today if matches
     if (todaysNpDateStr && cellNpDateStr === todaysNpDateStr) {
-      li.classList.add("is-today");
+      li.classList.add('is-today');
     }
 
-    const spanEn = document.createElement("span");
-    spanEn.className = "month-view__date-en";
-    spanEn.setAttribute("data-month-view-date-en", "");
+    const spanEn = document.createElement('span');
+    spanEn.className = 'month-view__date-en';
+    spanEn.setAttribute('data-month-view-date-en', '');
     spanEn.textContent = dateObj.date_en;
 
-    const spanNp = document.createElement("span");
-    spanNp.className = "month-view__date-np";
-    spanNp.setAttribute("data-month-view-date-np", "");
+    const spanNp = document.createElement('span');
+    spanNp.className = 'month-view__date-np';
+    spanNp.setAttribute('data-month-view-date-np', '');
     spanNp.textContent = dateObj.date_np;
 
-    const spanTithi = document.createElement("span");
-    spanTithi.className = "month-view__date-tithi";
-    spanTithi.setAttribute("data-month-view-tithi", "");
-    spanTithi.textContent = dateObj.tithi || "";
+    const spanTithi = document.createElement('span');
+    spanTithi.className = 'month-view__date-tithi';
+    spanTithi.setAttribute('data-month-view-tithi', '');
+    spanTithi.textContent = dateObj.tithi || '';
 
     li.appendChild(spanEn);
     li.appendChild(spanNp);
@@ -78,11 +85,11 @@ export function renderMonthGrid(
 
   // 3. Pad empty cells after the last day
   for (; cellIndex < totalCells; cellIndex++) {
-    const li = document.createElement("li");
-    li.className = "month-view__date month-view__date--empty";
+    const li = document.createElement('li');
+    li.className = 'month-view__date month-view__date--empty';
     // Mark empty Saturday cells
     if (cellIndex % 7 === 6) {
-      li.classList.add("is-saturday");
+      li.classList.add('is-saturday');
     }
     ul.appendChild(li);
   }

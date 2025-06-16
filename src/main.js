@@ -18,6 +18,8 @@ import { DateConverter } from './date-converter/dateConverter.js';
 import { setupFullscreenButton } from './utils/fullscreen.js';
 import { setupDateInputIcon } from './utils/dateInputIcon.js';
 import { setupReminder } from './task-reminder/reminder.js';
+import { getNepaliDateForAd } from './today/nepaliCalendar.js';
+window.getNepaliDateForAd = getNepaliDateForAd;
 
 // --- State ---
 

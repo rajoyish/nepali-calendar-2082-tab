@@ -1,11 +1,22 @@
+// src/today/nepaliWeekday.js
 export const weekdays = [
-  ["Sunday", "आइतबार"],
-  ["Monday", "सोमबार"],
-  ["Tuesday", "मङ्गलबार"],
-  ["Wednesday", "बुधबार"],
-  ["Thursday", "बिहीबार"],
-  ["Friday", "शुक्रबार"],
-  ["Saturday", "शनिबार"],
+  ['Sunday', 'आइतबार'],
+  ['Monday', 'सोमबार'],
+  ['Tuesday', 'मङ्गलबार'],
+  ['Wednesday', 'बुधबार'],
+  ['Thursday', 'बिहीबार'],
+  ['Friday', 'शुक्रबार'],
+  ['Saturday', 'शनिबार'],
+];
+
+export const abbreviatedWeekdays = [
+  ['Sun', 'आइत'],
+  ['Mon', 'सोम'],
+  ['Tue', 'मङ्गल'],
+  ['Wed', 'बुध'],
+  ['Thu', 'बिही'],
+  ['Fri', 'शुक्र'],
+  ['Sat', 'शनि'],
 ];
 
 /**
@@ -17,7 +28,7 @@ export function toNepaliWeekday(enDay) {
   for (const [en, np] of weekdays) {
     if (en === enDay) return np;
   }
-  return "";
+  return '';
 }
 
 /**
@@ -25,13 +36,13 @@ export function toNepaliWeekday(enDay) {
  * and renders to [data-np-day-of-week].
  */
 export function renderNepaliDayOfWeek() {
-  const elEn = document.querySelector("[data-today-en]");
-  const elNp = document.querySelector("[data-np-day-of-week]");
+  const elEn = document.querySelector('[data-today-en]');
+  const elNp = document.querySelector('[data-np-day-of-week]');
   if (!elEn || !elNp) return;
 
   // The English day is the first word before a comma
   // e.g. "Sunday, May 25, 2025"
-  const enDay = elEn.textContent.split(",")[0].trim();
+  const enDay = elEn.textContent.split(',')[0].trim();
   elNp.textContent = toNepaliWeekday(enDay);
 }
 
@@ -41,21 +52,28 @@ export function renderNepaliDayOfWeek() {
  */
 export function renderNepaliWeekdayHeader(ul) {
   weekdays.forEach(([en, np], idx) => {
-    const li = document.createElement("li");
-    li.className = "month-view__day-of-week";
+    const abbrEn = abbreviatedWeekdays[idx][0];
+    const abbrNp = abbreviatedWeekdays[idx][1];
+
+    const li = document.createElement('li');
+    li.className = 'month-view__day-of-week';
     // Add is-saturday class to Saturday header
     if (idx === 6) {
-      li.classList.add("is-saturday");
+      li.classList.add('is-saturday');
     }
 
-    const spanNp = document.createElement("span");
-    spanNp.className = "month-view__day-label--np";
-    spanNp.setAttribute("data-day-label-np", "");
+    const spanNp = document.createElement('span');
+    spanNp.className = 'month-view__day-label--np';
+    spanNp.setAttribute('data-day-label-np', '');
+    spanNp.setAttribute('data-full', np);
+    spanNp.setAttribute('data-abbr', abbrNp);
     spanNp.textContent = np;
 
-    const spanEn = document.createElement("span");
-    spanEn.className = "month-view__day-label--en";
-    spanEn.setAttribute("data-day-label-en", "");
+    const spanEn = document.createElement('span');
+    spanEn.className = 'month-view__day-label--en';
+    spanEn.setAttribute('data-day-label-en', '');
+    spanEn.setAttribute('data-full', en);
+    spanEn.setAttribute('data-abbr', abbrEn);
     spanEn.textContent = en;
 
     li.appendChild(spanNp);

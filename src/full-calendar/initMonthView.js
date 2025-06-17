@@ -1,25 +1,32 @@
-import { renderNepaliWeekdayHeader } from "../today/nepaliWeekday.js";
-import { renderMonthGrid } from "./renderMonthGrid.js";
-import { getTodayNepaliDateFull } from "../today/nepaliCalendar.js";
-import calendarData from "../calendar-data.json";
+// src/full-calendar/initMonthView.js
+import {
+  renderNepaliWeekdayHeader,
+  abbreviatedWeekdays,
+  weekdays,
+} from '../today/nepaliWeekday.js';
+import { renderMonthGrid } from './renderMonthGrid.js';
+import { getTodayNepaliDateFull } from '../today/nepaliCalendar.js';
+import calendarData from '../calendar-data.json';
+
+let abbreviationListenerAdded = false;
 
 export function initMonthView(container) {
-  container.innerHTML = "";
+  container.innerHTML = '';
 
-  const ul = document.createElement("ul");
-  ul.className = "month-view";
+  const ul = document.createElement('ul');
+  ul.className = 'month-view';
 
   // --- Inject the month view header as the first li ---
-  const headerLi = document.createElement("li");
-  headerLi.className = "month-view-header-wrapper";
+  const headerLi = document.createElement('li');
+  headerLi.className = 'month-view-header-wrapper';
 
-  const spanNp = document.createElement("span");
-  spanNp.className = "todays-date-np";
-  spanNp.setAttribute("data-todays-date-np", "");
+  const spanNp = document.createElement('span');
+  spanNp.className = 'todays-date-np';
+  spanNp.setAttribute('data-todays-date-np', '');
 
-  const spanMonthYear = document.createElement("span");
-  spanMonthYear.className = "month-year-indicator";
-  spanMonthYear.setAttribute("data-month-year-indicator", "");
+  const spanMonthYear = document.createElement('span');
+  spanMonthYear.className = 'month-year-indicator';
+  spanMonthYear.setAttribute('data-month-year-indicator', '');
 
   headerLi.appendChild(spanNp);
   headerLi.appendChild(spanMonthYear);
@@ -32,8 +39,10 @@ export function initMonthView(container) {
   // --- Get current Nepali month and year ---
   const todayNp = getTodayNepaliDateFull();
   if (!todayNp) {
-    renderMonthGrid(ul, [], 0, "", "", "");
+    renderMonthGrid(ul, [], 0, '', '', '');
     container.appendChild(ul);
+    updateWeekdayAbbreviations(); // Always call after rendering
+    maybeAddResizeListener();
     return;
   }
 
@@ -42,8 +51,10 @@ export function initMonthView(container) {
     (m) => m.month_np === todayNp.month_np
   );
   if (!monthObj) {
-    renderMonthGrid(ul, [], 0, "", "", "");
+    renderMonthGrid(ul, [], 0, '', '', '');
     container.appendChild(ul);
+    updateWeekdayAbbreviations();
+    maybeAddResizeListener();
     return;
   }
 
@@ -58,22 +69,22 @@ export function initMonthView(container) {
   const monthYearEn = monthObj.month_year_en;
 
   function getGregorianMonthYear(monthYearEn, dateEn) {
-    const [monthsPart, yearPart] = monthYearEn.split(" ");
-    const [firstMonth, secondMonth] = monthsPart.split("/");
+    const [monthsPart, yearPart] = monthYearEn.split(' ');
+    const [firstMonth, secondMonth] = monthsPart.split('/');
     const monthName = dateEn === 1 ? secondMonth : firstMonth;
     const monthIndex = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ].indexOf(monthName);
     const year = parseInt(yearPart, 10);
     return { monthIndex, year };
@@ -94,4 +105,35 @@ export function initMonthView(container) {
   );
 
   container.appendChild(ul);
+
+  // --- Update weekday abbreviations and add resize listener ---
+  updateWeekdayAbbreviations();
+  maybeAddResizeListener();
+}
+
+// --- Responsive weekday abbreviation logic ---
+
+function updateWeekdayAbbreviations() {
+  const isAbbreviated = window.matchMedia('(max-width: 499px)').matches;
+  const npSpans = document.querySelectorAll(
+    '.month-view__day-label--np[data-day-label-np]'
+  );
+  const enSpans = document.querySelectorAll(
+    '.month-view__day-label--en[data-day-label-en]'
+  );
+  if (npSpans.length !== 7 || enSpans.length !== 7) return;
+  for (let i = 0; i < 7; i++) {
+    npSpans[i].textContent = isAbbreviated
+      ? abbreviatedWeekdays[i][1]
+      : weekdays[i][1];
+    enSpans[i].textContent = isAbbreviated
+      ? abbreviatedWeekdays[i][0]
+      : weekdays[i][0];
+  }
+}
+
+function maybeAddResizeListener() {
+  if (abbreviationListenerAdded) return;
+  window.addEventListener('resize', updateWeekdayAbbreviations);
+  abbreviationListenerAdded = true;
 }

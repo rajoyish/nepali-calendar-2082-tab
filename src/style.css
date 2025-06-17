@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: "Anek Devanagari", sans-serif;
+  font-family: 'Anek Devanagari', sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   line-height: 1.5;
@@ -42,7 +42,7 @@ body {
 .date-converter__input-group label,
 .date-converter__result-group label,
 .calendar__footer {
-  font-family: "Mona Sans", sans-serif;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 .tabs-list {
@@ -51,6 +51,7 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin-bottom: 1.5rem;
 }
@@ -60,7 +61,7 @@ body {
   color: whitesmoke;
 }
 
-.tabs-list [aria-selected="true"] {
+.tabs-list [aria-selected='true'] {
   text-decoration: underline;
   text-decoration-thickness: 0.25em;
   text-underline-offset: 0.5em;
@@ -72,7 +73,7 @@ a {
 }
 
 footer a,
-.tabs-list [aria-selected="true"],
+.tabs-list [aria-selected='true'],
 .calendar__author-link {
   color: gold;
 }
@@ -90,6 +91,7 @@ footer a,
   justify-content: space-between;
   padding: 1rem;
   align-items: center;
+  margin-bottom: 3em;
 }
 
 .calendar {
@@ -98,15 +100,20 @@ footer a,
 }
 
 .calendar__date-np {
-  font-size: 12.5rem;
-  margin-bottom: 0;
-  line-height: 1;
+  font-size: clamp(3rem, 25vw, 12.5rem);
 }
 
 .calendar__month-year {
   font-weight: 400;
-  font-size: 5.25rem;
-  line-height: 1.5;
+  font-size: clamp(1.5rem, 10vw, 5.25rem);
+  margin-bottom: 1em;
+}
+
+.calendar__day-of-week,
+.calendar__tithi,
+.calendar__event {
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .calendar__day-tithi-event {
@@ -117,21 +124,15 @@ footer a,
   gap: 0.5rem;
 }
 
-.calendar__day-of-week,
-.calendar__tithi,
-.calendar__event {
-  font-weight: 400;
-  font-size: 1.5rem;
-}
-
 .calendar__date-np,
 .calendar__month-year {
   text-align: center;
 }
 
 .calendar__footer {
-  text-align: center;
   display: block;
+  font-size: 0.95rem;
+  text-align: center;
   padding: 1rem;
 }
 
@@ -235,7 +236,7 @@ footer a,
   transition: opacity 0.2s;
 }
 
-input[type="checkbox"].toggle {
+input[type='checkbox'].toggle {
   opacity: 0;
   position: absolute;
   left: -9999px;
@@ -254,7 +255,7 @@ input[type="checkbox"].toggle {
 }
 
 .toggle-switch::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.2em;
   left: 0.2em;
@@ -266,20 +267,20 @@ input[type="checkbox"].toggle {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-input[type="checkbox"].toggle:checked + .toggle-switch::before {
+input[type='checkbox'].toggle:checked + .toggle-switch::before {
   left: 1.6em;
   background: #43c94b;
 }
 
-input[type="checkbox"].toggle:focus + .toggle-switch {
+input[type='checkbox'].toggle:focus + .toggle-switch {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
 
-input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
+input[type='checkbox'].toggle:not(:checked) ~ [data-mode-label-ad] {
   opacity: 1;
 }
-input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
+input[type='checkbox'].toggle:checked ~ [data-mode-label-bs] {
   opacity: 1;
 }
 
@@ -373,7 +374,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: inline-block;
 }
 
@@ -381,7 +382,7 @@ output {
 [data-converter-bs-result] small:hover::before,
 [data-converter-ad-result] strong:hover::before,
 [data-converter-ad-result] small:hover::before {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -389,7 +390,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -397,7 +398,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: none;
 }
 
@@ -406,7 +407,7 @@ output {
 [data-converter-bs-result] small:hover::after,
 [data-converter-ad-result] strong:hover::after,
 [data-converter-ad-result] small:hover::after {
-  content: "";
+  content: '';
   display: inline-block;
   vertical-align: middle;
   margin-top: -0.3em;
@@ -467,7 +468,7 @@ output {
 }
 
 .holiday-notice__icon::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -496,7 +497,7 @@ output {
 }
 
 .holiday-notice__icon::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -581,7 +582,7 @@ output {
 }
 
 .reminder {
-  max-width: 50rem;
+  /* max-width: 50rem; */
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -639,8 +640,10 @@ output {
 }
 
 .reminder__time {
+  display: block;
   font-size: clamp(3rem, 15vw + 1rem, 12.5rem);
   font-weight: 900;
+  margin-bottom: 1em;
 }
 
 .reminder__title-emphasis {
@@ -707,7 +710,7 @@ output {
   gap: 1em;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   accent-color: gold;
   scale: 1.5;
 }
@@ -721,7 +724,7 @@ input[type="checkbox"] {
 }
 
 .past-reminders__title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
   margin-bottom: 2rem;
   font-weight: 300;
 }
@@ -729,6 +732,8 @@ input[type="checkbox"] {
 .past-reminders__list {
   list-style-type: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .past-reminders__item {
@@ -745,13 +750,13 @@ input[type="checkbox"] {
 }
 
 .past-reminders__icon {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.8rem);
   color: gold;
 }
 
 .past-reminders__time,
 .past-reminders__task-title {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 1.2vw + 0.8rem, 1.5rem);
 }
 
 .past-reminder-delete-btn {
@@ -775,6 +780,13 @@ input[type="checkbox"] {
   background-color: maroon;
 }
 
+.calendar__day-tithi-event,
+.month-view,
+.date-converter,
+.reminder__controls {
+  margin-bottom: 5em;
+}
+
 @media (min-width: 500px) {
   .tabs-list {
     gap: 2rem;
@@ -792,7 +804,7 @@ input[type="checkbox"] {
   }
 
   .bullet::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: cyan;
     height: 0.8rem;
@@ -807,7 +819,6 @@ input[type="checkbox"] {
   }
 
   .past-reminders__list {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4em;
   }

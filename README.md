@@ -4,29 +4,32 @@
 
 ---
 
-Tabre is a Chrome extension that transforms your new tab into a beautiful Nepali calendar dashboard. Instantly view the current Nepali date, time, tithi, and events, convert between Bikram Sambat (BS) and Gregorian (AD) calendars, and set task reminders with countdown and optional sound alerts—all in one place.
+Tabre is a Chrome extension that turns your new tab into a modern Nepali calendar dashboard. Instantly see the current Nepali date, time, tithi, and events, convert between Bikram Sambat (BS) and Gregorian (AD) calendars, and manage simple reminders—all in one place.
 
 ---
 
 ## Features
 
 - 🗓 **Current Nepali Date & Time**  
-  See today’s Nepali date and time in Devanagari, updated live.
+  View today’s Nepali date and time in Devanagari, updated live.
 
 - 🔄 **Date Converter (AD ↔ BS)**  
-  Instantly convert dates between Nepali (BS) and English (AD).
+  Quickly convert dates between Nepali (BS) and English (AD).
 
 - ⏰ **Time Period Awareness**  
-  Shows the current Nepali time segment (e.g., बिहान, मध्यान्ह).
+  See the current Nepali time segment (e.g., बिहान, मध्यान्ह).
 
 - 📅 **Full Month View**  
-  View the entire current Nepali month.
+  Browse the entire current Nepali month.
 
-- 🔔 **Task Reminder with Countdown & Sound**  
-  Set a task reminder with a countdown timer and optional sound alert.
+- 🔔 **Reminders with Sound Notification**
+
+  - Set reminder tasks.
+  - View recent reminders and click to start them.
+  - Get a sound alert when a reminder finishes.
 
 - 🖼 **Aesthetic Backgrounds**  
-  Enjoy rotating scenic backgrounds and a clean, modern design.
+  Enjoy rotating scenic backgrounds and a clean, modern look.
 
 - ⚡ **Fast & Private**  
   All features run locally. No data is collected or sent anywhere.
@@ -47,9 +50,9 @@ Tabre is a Chrome extension that transforms your new tab into a beautiful Nepali
 1. Visit the [Chrome Web Store page](https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo).
 2. Click **Add to Chrome**.
 
-**Manual:**
+**Manual Installation:**
 
-1. Clone/download this repo.
+1. Clone or download this repository.
 2. Go to `chrome://extensions/` and enable **Developer Mode**.
 3. Click **Load unpacked** and select the project folder.
 

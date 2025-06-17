@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tabre: Nepali Calendar New Tab",
   "description": "Tabre: Modern Nepali calendar for 2082 with date, time, tithi, events & converter—view instantly on every new tab.",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

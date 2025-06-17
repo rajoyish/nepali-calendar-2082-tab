@@ -32,9 +32,17 @@ function savePastReminders(reminders) {
   localStorage.setItem(PAST_REMINDERS_KEY, JSON.stringify(reminders));
 }
 
-function addPastReminder(reminder) {
+function addOrMovePastReminder(reminder) {
   const reminders = loadPastReminders();
-  reminders.unshift(reminder); // newest first
+  // Find if this reminder already exists (by task and time)
+  const idx = reminders.findIndex(
+    (r) => r.task === reminder.task && r.time === reminder.time
+  );
+  if (idx !== -1) {
+    // Move to top
+    reminders.splice(idx, 1);
+  }
+  reminders.unshift(reminder);
   if (reminders.length > MAX_PAST_REMINDERS)
     reminders.length = MAX_PAST_REMINDERS;
   savePastReminders(reminders);
@@ -61,8 +69,6 @@ function renderPastReminders() {
     pastRemindersBlock.style.display = "";
   }
 
-  // Only update DOM if changed
-  // (For simplicity, we clear and re-render, but only if count or content changed)
   list.innerHTML = "";
 
   reminders.forEach((reminder, idx) => {
@@ -91,14 +97,14 @@ function renderPastReminders() {
   });
 }
 
-function setupPastRemindersDeleteHandler() {
+function setupPastRemindersListHandler({ setReminder }) {
   const list = document.querySelector(".past-reminders__list");
   if (!list) return;
 
-  // Event delegation for delete button
   list.addEventListener("click", (e) => {
     const btn = e.target.closest(".past-reminder-delete-btn");
     if (btn) {
+      // Delete logic
       const li = btn.closest(".past-reminders__item");
       if (!li) return;
       const idx = parseInt(li.getAttribute("data-past-reminder-index"), 10);
@@ -106,6 +112,26 @@ function setupPastRemindersDeleteHandler() {
         deletePastReminder(idx);
         renderPastReminders();
       }
+      return;
+    }
+
+    // If not delete button, check for item click
+    const item = e.target.closest(".past-reminders__item");
+    if (item && !e.target.closest(".past-reminder-delete-btn")) {
+      const idx = parseInt(item.getAttribute("data-past-reminder-index"), 10);
+      const reminders = loadPastReminders();
+      const reminder = reminders[idx];
+      if (!reminder) return;
+
+      // Parse minutes from "10 min"
+      let minutes = 0;
+      if (reminder.time) {
+        const match = reminder.time.match(/(\d+)\s*min/);
+        if (match) minutes = parseInt(match[1], 10);
+      }
+
+      // Start reminder immediately (do not show modal)
+      setReminder(reminder.task, minutes, { updatePast: true });
     }
   });
 }
@@ -240,7 +266,8 @@ export function setupReminder() {
     }, msToEnd);
   }
 
-  function setReminder(task, minutes) {
+  // Accepts an options object for special cases (like updatePast)
+  function setReminder(task, minutes, options = {}) {
     soundEnabled = soundCheckbox?.checked ?? true;
     lastTask = task;
 
@@ -252,12 +279,21 @@ export function setupReminder() {
 
     startCountdown(task, minutes);
 
-    // Save to localStorage and update UI
-    addPastReminder({
-      task,
-      time: `${minutes} min`,
-      created: Date.now(),
-    });
+    // If called from a past reminder, move it to top, don't duplicate
+    if (options.updatePast) {
+      addOrMovePastReminder({
+        task,
+        time: `${minutes} min`,
+        created: Date.now(),
+      });
+    } else {
+      // Normal add (from form)
+      addOrMovePastReminder({
+        task,
+        time: `${minutes} min`,
+        created: Date.now(),
+      });
+    }
     renderPastReminders();
   }
 
@@ -354,5 +390,7 @@ export function setupReminder() {
 
   // Past reminders
   renderPastReminders();
-  setupPastRemindersDeleteHandler();
+  setupPastRemindersListHandler({
+    setReminder,
+  });
 }

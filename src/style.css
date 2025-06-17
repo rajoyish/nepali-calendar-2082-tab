@@ -736,6 +736,7 @@ input[type="checkbox"] {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .past-reminders__icon-wrapper {

@@ -29,12 +29,23 @@ body {
   grid-template-rows: repeat(2, auto) 1fr auto;
 }
 
+/* Utilities */
 .hidden {
   display: none;
 }
 
-.tabs-list {
+/* Typography */
+.tabs-list,
+.custom-date-field,
+.reminder,
+.date-converter__modes,
+.date-converter__input-group label,
+.date-converter__result-group label,
+.calendar__footer {
   font-family: "Mona Sans", sans-serif;
+}
+
+.tabs-list {
   list-style: none;
   padding: 1rem;
   display: flex;
@@ -527,7 +538,6 @@ output {
 }
 
 .custom-date-field {
-  font-family: "Mona Sans", sans-serif;
   padding-right: 2.5em;
   color: white;
   background: transparent;
@@ -571,7 +581,6 @@ output {
 }
 
 .reminder {
-  font-family: "Mona Sans", sans-serif;
   max-width: 50rem;
   display: flex;
   flex-direction: column;
@@ -703,6 +712,68 @@ input[type="checkbox"] {
   scale: 1.5;
 }
 
+/* Past Reminders */
+.past-reminders {
+  margin-bottom: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-reminders__title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.past-reminders__list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.past-reminders__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.past-reminders__icon-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.past-reminders__icon {
+  font-size: 1.5rem;
+  color: gold;
+}
+
+.past-reminders__time,
+.past-reminders__task-title {
+  font-size: 1.5rem;
+}
+
+.past-reminder-delete-btn {
+  border: 0;
+  background-color: red;
+  color: whitesmoke;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.5em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+}
+
+.past-reminder-delete-btn:hover,
+.past-reminder-delete-btn:focus {
+  background-color: maroon;
+}
+
 @media (min-width: 500px) {
   .tabs-list {
     gap: 2rem;
@@ -732,5 +803,11 @@ input[type="checkbox"] {
 
   .date-converter__bs-date-inputs {
     flex-direction: row;
+  }
+
+  .past-reminders__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4em;
   }
 }

@@ -215,6 +215,34 @@
               <time class="reminder__time" datetime="20:00">20:00</time>
             </header>
 
+            <!-- Your Past Reminders -->
+            <div class="past-reminders">
+              <h2 class="past-reminders__title">Your Past Reminders</h2>
+              <ul class="past-reminders__list">
+                <li class="past-reminders__item">
+                  <div class="past-reminders__icon-wrapper">
+                    <span class="past-reminders__icon">
+                      <i class="bi bi-clock-history"></i>
+                    </span>
+                    <span class="past-reminders__time" data-past-reminder-time
+                      >10 min</span
+                    >
+                  </div>
+                  <h3
+                    class="past-reminders__task-title"
+                    data-past-reminder-task-title
+                  >
+                    Buy Eggs
+                  </h3>
+                  <button class="past-reminder-delete-btn">
+                    <i class="bi bi-trash3-fill"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- End of Past Reminders -->
+
             <footer class="reminder__controls">
               <button type="button" class="reminder__btn btn-primary">
                 Set Reminder

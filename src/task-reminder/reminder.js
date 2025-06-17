@@ -2,10 +2,10 @@
 
 let notificationSound;
 try {
-  notificationSound = new URL('../assets/notification.mp3', import.meta.url)
+  notificationSound = new URL("../assets/notification.mp3", import.meta.url)
     .href;
 } catch {
-  notificationSound = '/src/assets/notification.mp3';
+  notificationSound = "/src/assets/notification.mp3";
 }
 
 let reminderEndTime = null;
@@ -15,23 +15,116 @@ let soundTimeout = null;
 let audio = null;
 let soundEnabled = true;
 let isSoundPlaying = false;
-let lastTask = '';
+let lastTask = "";
+
+const PAST_REMINDERS_KEY = "pastReminders";
+const MAX_PAST_REMINDERS = 6;
+
+function loadPastReminders() {
+  try {
+    return JSON.parse(localStorage.getItem(PAST_REMINDERS_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function savePastReminders(reminders) {
+  localStorage.setItem(PAST_REMINDERS_KEY, JSON.stringify(reminders));
+}
+
+function addPastReminder(reminder) {
+  const reminders = loadPastReminders();
+  reminders.unshift(reminder); // newest first
+  if (reminders.length > MAX_PAST_REMINDERS)
+    reminders.length = MAX_PAST_REMINDERS;
+  savePastReminders(reminders);
+}
+
+function deletePastReminder(index) {
+  const reminders = loadPastReminders();
+  reminders.splice(index, 1);
+  savePastReminders(reminders);
+}
+
+function renderPastReminders() {
+  const pastRemindersBlock = document.querySelector(".past-reminders");
+  const list = document.querySelector(".past-reminders__list");
+  if (!pastRemindersBlock || !list) return;
+
+  const reminders = loadPastReminders();
+
+  // Hide the whole block if no reminders
+  if (!reminders.length) {
+    pastRemindersBlock.style.display = "none";
+    return;
+  } else {
+    pastRemindersBlock.style.display = "";
+  }
+
+  // Only update DOM if changed
+  // (For simplicity, we clear and re-render, but only if count or content changed)
+  list.innerHTML = "";
+
+  reminders.forEach((reminder, idx) => {
+    const li = document.createElement("li");
+    li.className = "past-reminders__item";
+    li.setAttribute("data-past-reminder-index", idx);
+
+    li.innerHTML = `
+      <div class="past-reminders__icon-wrapper">
+        <span class="past-reminders__icon">
+          <i class="bi bi-clock-history"></i>
+        </span>
+        <span class="past-reminders__time" data-past-reminder-time>
+          ${reminder.time}
+        </span>
+      </div>
+      <h3 class="past-reminders__task-title" data-past-reminder-task-title>
+        ${reminder.task}
+      </h3>
+      <button class="past-reminder-delete-btn" title="Delete reminder">
+        <i class="bi bi-trash3-fill"></i>
+      </button>
+    `;
+
+    list.appendChild(li);
+  });
+}
+
+function setupPastRemindersDeleteHandler() {
+  const list = document.querySelector(".past-reminders__list");
+  if (!list) return;
+
+  // Event delegation for delete button
+  list.addEventListener("click", (e) => {
+    const btn = e.target.closest(".past-reminder-delete-btn");
+    if (btn) {
+      const li = btn.closest(".past-reminders__item");
+      if (!li) return;
+      const idx = parseInt(li.getAttribute("data-past-reminder-index"), 10);
+      if (!isNaN(idx)) {
+        deletePastReminder(idx);
+        renderPastReminders();
+      }
+    }
+  });
+}
 
 export function setupReminder() {
-  const panel = document.getElementById('panel-reminder');
+  const panel = document.getElementById("panel-reminder");
   if (!panel) return;
 
   const elements = {
-    setBtn: panel.querySelector('.reminder__btn'),
-    resetBtn: panel.querySelectorAll('.reminder__btn')[1],
-    modal: panel.querySelector('.reminder__modal'),
-    form: panel.querySelector('.reminder-form'),
+    setBtn: panel.querySelector(".reminder__btn"),
+    resetBtn: panel.querySelectorAll(".reminder__btn")[1],
+    modal: panel.querySelector(".reminder__modal"),
+    form: panel.querySelector(".reminder-form"),
     cancelBtn: panel.querySelector('.reminder-form__btn[type="button"]'),
-    titleInput: panel.querySelector('#reminder-form__task-title'),
-    minutesInput: panel.querySelector('#reminder-form__minutes'),
-    soundCheckbox: panel.querySelector('#sound'),
-    displayTitle: panel.querySelector('.reminder__title'),
-    displayTime: panel.querySelector('.reminder__time'),
+    titleInput: panel.querySelector("#reminder-form__task-title"),
+    minutesInput: panel.querySelector("#reminder-form__minutes"),
+    soundCheckbox: panel.querySelector("#sound"),
+    displayTitle: panel.querySelector(".reminder__title"),
+    displayTime: panel.querySelector(".reminder__time"),
   };
 
   if (!validateElements(elements)) return;
@@ -51,25 +144,25 @@ export function setupReminder() {
 
   function validateElements(elements) {
     const required = [
-      'setBtn',
-      'resetBtn',
-      'modal',
-      'form',
-      'displayTitle',
-      'displayTime',
+      "setBtn",
+      "resetBtn",
+      "modal",
+      "form",
+      "displayTitle",
+      "displayTime",
     ];
     return required.every((key) => elements[key]);
   }
 
   function showModal() {
-    modal.classList.remove('hidden');
-    form.classList.remove('hidden');
+    modal.classList.remove("hidden");
+    form.classList.remove("hidden");
     titleInput?.focus();
   }
 
   function hideModal() {
-    modal.classList.add('hidden');
-    form.classList.add('hidden');
+    modal.classList.add("hidden");
+    form.classList.add("hidden");
     form?.reset();
   }
 
@@ -77,13 +170,13 @@ export function setupReminder() {
     const totalSeconds = Math.max(0, Math.floor(ms / 1000));
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
       2,
-      '0'
+      "0"
     )}`;
   }
 
-  function updateDisplay(task, time = '20:00') {
+  function updateDisplay(task, time = "20:00") {
     const titleTextNode = displayTitle.childNodes[0];
     if (titleTextNode) {
       titleTextNode.textContent = `${task} `;
@@ -91,14 +184,14 @@ export function setupReminder() {
       displayTitle.innerHTML = `${task} <span class="reminder__title-emphasis">in</span>`;
     }
     displayTime.textContent = time;
-    displayTime.setAttribute('datetime', time);
+    displayTime.setAttribute("datetime", time);
   }
 
   function updateResetBtnText() {
     if (isSoundPlaying) {
-      resetBtn.textContent = 'Stop Sound';
+      resetBtn.textContent = "Stop Sound";
     } else {
-      resetBtn.textContent = 'Reset';
+      resetBtn.textContent = "Reset";
     }
   }
 
@@ -119,7 +212,7 @@ export function setupReminder() {
       const msLeft = reminderEndTime - Date.now();
 
       if (msLeft <= 0) {
-        updateDisplay(task, '00:00');
+        updateDisplay(task, "00:00");
         // Don't call handleReminderEnd here; setTimeout will handle it
         return;
       }
@@ -141,7 +234,7 @@ export function setupReminder() {
     // Schedule the end event at the actual end
     const msToEnd = reminderEndTime - Date.now();
     reminderTimeout = setTimeout(() => {
-      updateDisplay(task, '00:00');
+      updateDisplay(task, "00:00");
       // Don't play sound here, already played 500ms before
       // You can add any other end logic here if needed
     }, msToEnd);
@@ -158,10 +251,18 @@ export function setupReminder() {
     if (soundTimeout) clearTimeout(soundTimeout);
 
     startCountdown(task, minutes);
+
+    // Save to localStorage and update UI
+    addPastReminder({
+      task,
+      time: `${minutes} min`,
+      created: Date.now(),
+    });
+    renderPastReminders();
   }
 
   function resetReminder(stopSoundNow = true) {
-    updateDisplay('Buy Eggs');
+    updateDisplay("Buy Eggs");
     reminderEndTime = null;
 
     if (countdownRAF) {
@@ -222,8 +323,8 @@ export function setupReminder() {
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    const task = titleInput?.value.trim() || '';
-    const minutes = minutesInput?.value.trim() || '';
+    const task = titleInput?.value.trim() || "";
+    const minutes = minutesInput?.value.trim() || "";
 
     if (!task || !minutes || isNaN(minutes) || Number(minutes) <= 0) {
       return;
@@ -234,20 +335,24 @@ export function setupReminder() {
   }
 
   // Event listeners
-  setBtn.addEventListener('click', showModal);
-  resetBtn.addEventListener('click', () => resetReminder());
-  form.addEventListener('submit', handleFormSubmit);
+  setBtn.addEventListener("click", showModal);
+  resetBtn.addEventListener("click", () => resetReminder());
+  form.addEventListener("submit", handleFormSubmit);
 
   if (cancelBtn) {
-    cancelBtn.addEventListener('click', (e) => {
+    cancelBtn.addEventListener("click", (e) => {
       e.preventDefault();
       hideModal();
     });
   }
 
   // Initialize
-  modal.classList.add('hidden');
-  form.classList.add('hidden');
+  modal.classList.add("hidden");
+  form.classList.add("hidden");
   isSoundPlaying = false;
   updateResetBtnText();
+
+  // Past reminders
+  renderPastReminders();
+  setupPastRemindersDeleteHandler();
 }

@@ -4,13 +4,19 @@
   "version": "3.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+   "build:calendar": "node scripts/build-calendar.js",
+    "watch:calendar": "nodemon --watch src/data/calendar-2083 --ext json --exec \"npm run build:calendar\"",
+    "predev": "npm run build:calendar",
+    "dev": "concurrently \"npm run watch:calendar\" \"vite\"",
+    "prebuild": "npm run build:calendar",
     "build": "vite build",
     "copy-extension": "node scripts/copy-extension.js",
     "build-extension": "npm run build && npm run copy-extension",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14",
     "vite": "^6.3.5"
   },
   "dependencies": {

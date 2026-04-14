@@ -1,0 +1,235 @@
+{
+      "month_np": "जेठ",
+      "month_year_en": "May/Jun 2026",
+      "dates": [
+        {
+          "classes": [],
+          "event_title": "वृष संक्रान्ति",
+          "date_np": "१",
+          "tithi": "त्रयोदशी",
+          "date_en": "15"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "२",
+          "tithi": "औँशी",
+          "date_en": "16"
+        },
+        {
+          "classes": [],
+          "event_title": "गोसाइकुण्ड स्नान आरम्भ",
+          "date_np": "३",
+          "tithi": "प्रतिपदा",
+          "date_en": "17"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "४",
+          "tithi": "द्वितीया",
+          "date_en": "18"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "५",
+          "tithi": "तृतीया",
+          "date_en": "19"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "६",
+          "tithi": "चतुर्थी",
+          "date_en": "20"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "७",
+          "tithi": "पञ्चमी",
+          "date_en": "21"
+        },
+        {
+          "classes": [],
+          "event_title": "अन्तर्राष्ट्रिय जैविक विविधता दिवस",
+          "date_np": "८",
+          "tithi": "षष्ठी",
+          "date_en": "22"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "९",
+          "tithi": "सप्तमी",
+          "date_en": "23"
+        },
+        {
+          "classes": [],
+          "event_title": "गोरखकाली पूजा",
+          "date_np": "१०",
+          "tithi": "अष्टमी",
+          "date_en": "24"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "११",
+          "tithi": "नवमी",
+          "date_en": "25"
+        },
+        {
+          "classes": [],
+          "event_title": "गोसाइकुण्ड स्नान समाप्ति",
+          "date_np": "१२",
+          "tithi": "दशमी",
+          "date_en": "26"
+        },
+        {
+          "classes": [],
+          "event_title": "पद्मिनी एकादशी व्रत",
+          "date_np": "१३",
+          "tithi": "एकादशी",
+          "date_en": "27"
+        },
+        {
+          "classes": [],
+          "event_title": "प्रदोष व्रत",
+          "date_np": "१४",
+          "tithi": "द्वादशी",
+          "date_en": "28"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "राष्ट्रिय गणतन्त्र दिवस",
+          "date_np": "१५",
+          "tithi": "त्रयोदशी",
+          "date_en": "29"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "१६",
+          "tithi": "चतुर्दशी",
+          "date_en": "30"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१७",
+          "tithi": "पूर्णिमा",
+          "date_en": "31"
+        },
+        {
+          "classes": [],
+          "event_title": "विश्व बुवाआमा दिवस",
+          "date_np": "१८",
+          "tithi": "प्रतिपदा",
+          "date_en": "1"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१९",
+          "tithi": "द्वितीया",
+          "date_en": "2"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२०",
+          "tithi": "तृतीया",
+          "date_en": "3"
+        },
+        {
+          "classes": [],
+          "event_title": "जातीय भेदभाव तथा छुवाछूत उन्मूलन दिवस",
+          "date_np": "२१",
+          "tithi": "चतुर्थी",
+          "date_en": "4"
+        },
+        {
+          "classes": [],
+          "event_title": "विश्व वातावरण दिवस",
+          "date_np": "२२",
+          "tithi": "पञ्चमी",
+          "date_en": "5"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "२३",
+          "tithi": "षष्ठी",
+          "date_en": "6"
+        },
+        {
+          "classes": [],
+          "event_title": "रविसप्तमी व्रत",
+          "date_np": "२४",
+          "tithi": "सप्तमी",
+          "date_en": "7"
+        },
+        {
+          "classes": [],
+          "event_title": "गोरखकाली पूजा",
+          "date_np": "२५",
+          "tithi": "अष्टमी",
+          "date_en": "8"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२६",
+          "tithi": "नवमी",
+          "date_en": "9"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२७",
+          "tithi": "दशमी",
+          "date_en": "10"
+        },
+        {
+          "classes": [],
+          "event_title": "परमा एकादशी व्रत",
+          "date_np": "२८",
+          "tithi": "एकादशी",
+          "date_en": "11"
+        },
+        {
+          "classes": [],
+          "event_title": "प्रदोष व्रत",
+          "date_np": "२९",
+          "tithi": "द्वादशी",
+          "date_en": "12"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "३०",
+          "tithi": "त्रयोदशी",
+          "date_en": "13"
+        },
+        {
+          "classes": [],
+          "event_title": "विश्व रक्तदाता दिवस",
+          "date_np": "३१",
+          "tithi": "चतुर्दशी",
+          "date_en": "14"
+        }
+      ]
+    }

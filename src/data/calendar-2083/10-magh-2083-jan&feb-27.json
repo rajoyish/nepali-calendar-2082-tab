@@ -1,0 +1,223 @@
+    {
+      "month_np": "माघ",
+      "month_year_en": "Jan/Feb 2027",
+      "dates": [
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "माघे संक्रान्ति",
+          "date_np": "१",
+          "tithi": "सप्तमी",
+          "date_en": "15"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "२",
+          "tithi": "अष्टमी",
+          "date_en": "16"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "३",
+          "tithi": "नवमी",
+          "date_en": "17"
+        },
+        {
+          "classes": [],
+          "event_title": "पुत्रदा एकादशी व्रत (स्मार्तहरूको लागि)",
+          "date_np": "४",
+          "tithi": "एकादशी",
+          "date_en": "18"
+        },
+        {
+          "classes": [],
+          "event_title": "पुत्रदा एकादशी व्रत (वैष्णवहरूको लागि)",
+          "date_np": "५",
+          "tithi": "द्वादशी",
+          "date_en": "19"
+        },
+        {
+          "classes": [],
+          "event_title": "प्रदोष व्रत",
+          "date_np": "६",
+          "tithi": "त्रयोदशी",
+          "date_en": "20"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "७",
+          "tithi": "चतुर्दशी",
+          "date_en": "21"
+        },
+        {
+          "classes": [],
+          "event_title": "श्री स्वस्थानी व्रत कथा प्रारम्भ",
+          "date_np": "८",
+          "tithi": "पूर्णिमा",
+          "date_en": "22"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "९",
+          "tithi": "प्रतिपदा",
+          "date_en": "23"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१०",
+          "tithi": "द्वितीया",
+          "date_en": "24"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "११",
+          "tithi": "तृतीया",
+          "date_en": "25"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१२",
+          "tithi": "चतुर्थी",
+          "date_en": "26"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१३",
+          "tithi": "पञ्चमी",
+          "date_en": "27"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१४",
+          "tithi": "षष्ठी",
+          "date_en": "28"
+        },
+        {
+          "classes": [],
+          "event_title": "गोरखकाली पूजा",
+          "date_np": "१५",
+          "tithi": "सप्तमी",
+          "date_en": "29"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "१६",
+          "tithi": "अष्टमी",
+          "date_en": "30"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१७",
+          "tithi": "नवमी",
+          "date_en": "31"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "१८",
+          "tithi": "दशमी",
+          "date_en": "1"
+        },
+        {
+          "classes": [],
+          "event_title": "षट्तिला एकादशी",
+          "date_np": "१९",
+          "tithi": "एकादशी",
+          "date_en": "2"
+        },
+        {
+          "classes": [],
+          "event_title": "प्रदोष व्रत",
+          "date_np": "२०",
+          "tithi": "द्वादशी",
+          "date_en": "3"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२१",
+          "tithi": "त्रयोदशी",
+          "date_en": "4"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२२",
+          "tithi": "चतुर्दशी",
+          "date_en": "5"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "",
+          "date_np": "२३",
+          "tithi": "औँशी",
+          "date_en": "6"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "सोनाम ल्होछार",
+          "date_np": "२४",
+          "tithi": "प्रतिपदा",
+          "date_en": "7"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२५",
+          "tithi": "द्वितीया",
+          "date_en": "8"
+        },
+        {
+          "classes": [],
+          "event_title": "",
+          "date_np": "२६",
+          "tithi": "तृतीया",
+          "date_en": "9"
+        },
+        {
+          "classes": [],
+          "event_title": "तिलकुन्द चौथी",
+          "date_np": "२७",
+          "tithi": "चतुर्थी",
+          "date_en": "10"
+        },
+        {
+          "classes": [
+            "is-holiday"
+          ],
+          "event_title": "सरस्वती पूजा",
+          "date_np": "२८",
+          "tithi": "पञ्चमी",
+          "date_en": "11"
+        },
+        {
+          "classes": [],
+          "event_title": "स्कन्द षष्ठी",
+          "date_np": "२९",
+          "tithi": "षष्ठी",
+          "date_en": "12"
+        }
+      ]
+    }

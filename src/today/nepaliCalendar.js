@@ -1,4 +1,4 @@
-import calendarData from '../calendar-data.json';
+import calendarData from '../data/calendar-data.json';
 import { adToBs } from '@sbmdkl/nepali-date-converter';
 
 // --- Helpers ---

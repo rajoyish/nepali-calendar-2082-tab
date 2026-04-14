@@ -6,7 +6,7 @@ import {
 } from '../today/nepaliWeekday.js';
 import { renderMonthGrid } from './renderMonthGrid.js';
 import { getTodayNepaliDateFull } from '../today/nepaliCalendar.js';
-import calendarData from '../calendar-data.json';
+import calendarData from '../data/calendar-data.json';
 
 let abbreviationListenerAdded = false;
 

@@ -21,14 +21,10 @@ import { setupReminder } from './task-reminder/reminder.js';
 import { getNepaliDateForAd } from './today/nepaliCalendar.js';
 window.getNepaliDateForAd = getNepaliDateForAd;
 
-// --- State ---
-
 let lastRenderedGregorianDate = '';
 let lastRenderedNepaliDate = '';
 let lastBgImage = '';
 let converterInstance = null;
-
-// --- Date-dependent Rendering ---
 
 function renderDateDependentNepalInfo() {
   const currentGregorianDate = getNepalGregorianDate();
@@ -49,18 +45,14 @@ function renderDateDependentNepalInfo() {
   }
 }
 
-// --- Background Image ---
-
 function updateBackgroundImage() {
   const now = new Date();
   const bgImage = getTimePeriodBgImage(now);
-  if (bgImage !== lastBgImage) {
+  if (bgImage && bgImage !== lastBgImage) {
     document.body.style.backgroundImage = `url(${bgImage})`;
     lastBgImage = bgImage;
   }
 }
-
-// --- Converter ---
 
 function initializeConverter() {
   const converterPanel = document.getElementById('panel-converter');
@@ -73,8 +65,6 @@ function initializeConverter() {
     }
   }
 }
-
-// --- Tabs ---
 
 function setupTabActivation(tabSelector, panelSelector, onActivate) {
   const tabsList = document.querySelector('.tabs-list');
@@ -124,16 +114,12 @@ function setupConverterTab() {
   );
 }
 
-// --- Periodic Updates ---
-
 function setupPeriodicUpdates() {
   setInterval(() => {
     renderDateDependentNepalInfo();
     updateBackgroundImage();
   }, 60 * 1000);
 }
-
-// --- Event Handlers ---
 
 function setupEventHandlers() {
   document.addEventListener('visibilitychange', () => {
@@ -152,8 +138,6 @@ function setupEventHandlers() {
     }
   });
 }
-
-// --- App Initialization ---
 
 function initApp() {
   renderDateDependentNepalInfo();

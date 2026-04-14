@@ -1,11 +1,6 @@
 import { npTimePeriods } from "./nepaliTimePeriod.js";
 import { bgImages } from "./bgImages.js";
 
-/**
- * Returns the index of the current Nepali time period for a given Date.
- * @param {Date} date
- * @returns {number} Index in npTimePeriods (0-5)
- */
 export function getNepaliTimePeriodIndex(date) {
   const hour = date.getHours();
   const minute = date.getMinutes();
@@ -24,22 +19,16 @@ export function getNepaliTimePeriodIndex(date) {
         return i;
       }
     } else {
-      // Overnight range (e.g., राति)
       if (totalMinutes >= startMin || totalMinutes < endMin) {
         return i;
       }
     }
   }
-  // Fallback (should not happen)
   return 0;
 }
 
-/**
- * Returns the background image URL for the current Nepali time period.
- * @param {Date} date
- * @returns {string} Image URL (imported by Vite)
- */
 export function getTimePeriodBgImage(date) {
+  if (bgImages.length === 0) return "";
   const idx = getNepaliTimePeriodIndex(date);
-  return bgImages[idx];
+  return bgImages[idx % bgImages.length];
 }

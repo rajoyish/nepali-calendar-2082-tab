@@ -1,10 +1,10 @@
 {
-  "name": "nepali-calendar-2082",
+  "name": "nepali-calendar-2083",
   "private": true,
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
   "scripts": {
-   "build:calendar": "node scripts/build-calendar.js",
+    "build:calendar": "node scripts/build-calendar.js",
     "watch:calendar": "nodemon --watch src/data/calendar-2083 --ext json --exec \"npm run build:calendar\"",
     "predev": "npm run build:calendar",
     "dev": "concurrently \"npm run watch:calendar\" \"vite\"",

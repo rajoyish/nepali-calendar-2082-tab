@@ -1,9 +1,6 @@
-// src/task-reminder/reminder.js
-
 let notificationSound;
 try {
-  notificationSound = new URL("../assets/notification.mp3", import.meta.url)
-    .href;
+  notificationSound = new URL("../assets/notification.mp3", import.meta.url).href;
 } catch {
   notificationSound = "/src/assets/notification.mp3";
 }
@@ -20,6 +17,22 @@ let lastTask = "";
 const PAST_REMINDERS_KEY = "pastReminders";
 const MAX_PAST_REMINDERS = 6;
 
+function requestNotificationPermission() {
+  if ("Notification" in window && Notification.permission !== "granted" && Notification.permission !== "denied") {
+    Notification.requestPermission();
+  }
+}
+
+function showNotification(title, body) {
+  if ("Notification" in window && Notification.permission === "granted") {
+    new Notification(title, {
+      body: body,
+      icon: "/favicons/android-chrome-192x192.png",
+      requireInteraction: true
+    });
+  }
+}
+
 function loadPastReminders() {
   try {
     return JSON.parse(localStorage.getItem(PAST_REMINDERS_KEY)) || [];
@@ -34,17 +47,14 @@ function savePastReminders(reminders) {
 
 function addOrMovePastReminder(reminder) {
   const reminders = loadPastReminders();
-  // Find if this reminder already exists (by task and time)
   const idx = reminders.findIndex(
     (r) => r.task === reminder.task && r.time === reminder.time
   );
   if (idx !== -1) {
-    // Move to top
     reminders.splice(idx, 1);
   }
   reminders.unshift(reminder);
-  if (reminders.length > MAX_PAST_REMINDERS)
-    reminders.length = MAX_PAST_REMINDERS;
+  if (reminders.length > MAX_PAST_REMINDERS) reminders.length = MAX_PAST_REMINDERS;
   savePastReminders(reminders);
 }
 
@@ -61,7 +71,6 @@ function renderPastReminders() {
 
   const reminders = loadPastReminders();
 
-  // Hide the whole block if no reminders
   if (!reminders.length) {
     pastRemindersBlock.style.display = "none";
     return;
@@ -104,7 +113,6 @@ function setupPastRemindersListHandler({ setReminder }) {
   list.addEventListener("click", (e) => {
     const btn = e.target.closest(".past-reminder-delete-btn");
     if (btn) {
-      // Delete logic
       const li = btn.closest(".past-reminders__item");
       if (!li) return;
       const idx = parseInt(li.getAttribute("data-past-reminder-index"), 10);
@@ -115,7 +123,6 @@ function setupPastRemindersListHandler({ setReminder }) {
       return;
     }
 
-    // If not delete button, check for item click
     const item = e.target.closest(".past-reminders__item");
     if (item && !e.target.closest(".past-reminder-delete-btn")) {
       const idx = parseInt(item.getAttribute("data-past-reminder-index"), 10);
@@ -123,14 +130,12 @@ function setupPastRemindersListHandler({ setReminder }) {
       const reminder = reminders[idx];
       if (!reminder) return;
 
-      // Parse minutes from "10 min"
       let minutes = 0;
       if (reminder.time) {
         const match = reminder.time.match(/(\d+)\s*min/);
         if (match) minutes = parseInt(match[1], 10);
       }
 
-      // Start reminder immediately (do not show modal)
       setReminder(reminder.task, minutes, { updatePast: true });
     }
   });
@@ -184,6 +189,7 @@ export function setupReminder() {
     modal.classList.remove("hidden");
     form.classList.remove("hidden");
     titleInput?.focus();
+    requestNotificationPermission();
   }
 
   function hideModal() {
@@ -196,10 +202,7 @@ export function setupReminder() {
     const totalSeconds = Math.max(0, Math.floor(ms / 1000));
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
-      2,
-      "0"
-    )}`;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   }
 
   function updateDisplay(task, time = "20:00") {
@@ -222,7 +225,6 @@ export function setupReminder() {
   }
 
   function startCountdown(task, minutes) {
-    // Cancel any previous timeouts
     if (reminderTimeout) {
       clearTimeout(reminderTimeout);
       reminderTimeout = null;
@@ -239,7 +241,6 @@ export function setupReminder() {
 
       if (msLeft <= 0) {
         updateDisplay(task, "00:00");
-        // Don't call handleReminderEnd here; setTimeout will handle it
         return;
       }
 
@@ -251,23 +252,20 @@ export function setupReminder() {
     }
     countdownRAF = requestAnimationFrame(update);
 
-    // Schedule the sound to play 500ms before the end
     const msToSound = Math.max(0, reminderEndTime - Date.now() - 500);
     soundTimeout = setTimeout(() => {
       if (soundEnabled) playSound();
     }, msToSound);
 
-    // Schedule the end event at the actual end
     const msToEnd = reminderEndTime - Date.now();
     reminderTimeout = setTimeout(() => {
       updateDisplay(task, "00:00");
-      // Don't play sound here, already played 500ms before
-      // You can add any other end logic here if needed
+      showNotification(`Time to ${task}! ✅`, "Your reminder session is complete.");
     }, msToEnd);
   }
 
-  // Accepts an options object for special cases (like updatePast)
   function setReminder(task, minutes, options = {}) {
+    requestNotificationPermission();
     soundEnabled = soundCheckbox?.checked ?? true;
     lastTask = task;
 
@@ -279,7 +277,6 @@ export function setupReminder() {
 
     startCountdown(task, minutes);
 
-    // If called from a past reminder, move it to top, don't duplicate
     if (options.updatePast) {
       addOrMovePastReminder({
         task,
@@ -287,7 +284,6 @@ export function setupReminder() {
         created: Date.now(),
       });
     } else {
-      // Normal add (from form)
       addOrMovePastReminder({
         task,
         time: `${minutes} min`,
@@ -370,7 +366,6 @@ export function setupReminder() {
     hideModal();
   }
 
-  // Event listeners
   setBtn.addEventListener("click", showModal);
   resetBtn.addEventListener("click", () => resetReminder());
   form.addEventListener("submit", handleFormSubmit);
@@ -382,13 +377,11 @@ export function setupReminder() {
     });
   }
 
-  // Initialize
   modal.classList.add("hidden");
   form.classList.add("hidden");
   isSoundPlaying = false;
   updateResetBtnText();
 
-  // Past reminders
   renderPastReminders();
   setupPastRemindersListHandler({
     setReminder,

@@ -22,6 +22,7 @@ import { DateConverter } from "./date-converter/dateConverter.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 import { setupReminder } from "./task-reminder/reminder.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
+import { updateExtensionUI } from "./components/ExtensionUIUpdater/ExtensionUIUpdater.js";
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 
@@ -41,6 +42,10 @@ function renderDateDependentNepalInfo() {
     const currentNepaliDate = todayNp
       ? `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`
       : "";
+
+    if (todayNp) {
+      updateExtensionUI(currentNepaliDate, todayNp.date_np);
+    }
 
     if (currentNepaliDate !== lastRenderedNepaliDate) {
       lastRenderedNepaliDate = currentNepaliDate;
@@ -76,7 +81,7 @@ function initializeConverter() {
       converterInstance = new DateConverter();
       converterInstance.init("panel-converter");
     } catch (error) {
-      console.error("Failed to initialize date converter:", error);
+      console.error(error);
     }
   }
 }

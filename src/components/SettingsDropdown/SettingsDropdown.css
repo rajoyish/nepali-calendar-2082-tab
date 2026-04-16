@@ -1,0 +1,169 @@
+.settings {
+    position: relative;
+    display: inline-block;
+}
+
+.settings__trigger {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    min-width: 120px;
+    justify-content: space-between;
+}
+
+.settings__trigger:hover {
+    background: #357abd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+.settings__trigger:focus {
+    outline: 2px solid #357abd;
+    outline-offset: 2px;
+}
+
+.settings__trigger:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.3);
+}
+
+.settings__trigger-text {
+    flex: 1;
+    text-align: left;
+}
+
+.settings__trigger-icon {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.settings__trigger[aria-expanded="true"] .settings__trigger-icon {
+    transform: rotate(180deg);
+}
+
+.settings__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    margin-top: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    min-width: 12.5rem;
+}
+
+.settings__trigger[aria-expanded="true"] + .settings__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.settings__item {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    transition: background-color 0.15s ease;
+}
+
+.settings__item:hover {
+    background: #f8f9fa;
+}
+
+.settings__item:focus {
+    background: #e3f2fd;
+    outline: 2px solid #4a90e2;
+    outline-offset: -2px;
+}
+
+.settings__item:active {
+    background: #bbdefb;
+}
+
+.settings__item-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__item-icon i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.settings__item-text {
+    flex: 1;
+}
+
+@media (max-width: 480px) {
+    .settings__menu {
+        min-width: 160px;
+    }
+
+    .settings__trigger {
+        min-width: 100px;
+        font-size: 13px;
+    }
+
+    .settings__item {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+
+.settings__menu:focus {
+    outline: none;
+}
+
+@media (prefers-contrast: high) {
+    .settings__trigger {
+        border: 2px solid currentColor;
+    }
+
+    .settings__menu {
+        border: 2px solid #000;
+    }
+
+    .settings__item:focus {
+        outline: 3px solid #000;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .settings__trigger,
+    .settings__trigger-icon,
+    .settings__menu,
+    .settings__item {
+        transition: none;
+    }
+
+    .settings__trigger:hover {
+        transform: none;
+    }
+}

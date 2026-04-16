@@ -1,5 +1,3 @@
-// src/npTimePeriods.js
-
 export const npTimePeriods = [
   ["बिहान", "05:00–12:00"],
   ["मध्यान्ह", "12:00–13:00"],

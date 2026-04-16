@@ -1,29 +1,33 @@
-import './style.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "./style.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 import {
   startNepalClock,
   renderNepalDate,
   getNepalGregorianDate,
-} from './today/nepalTime.js';
+} from "./today/nepalTime.js";
 import {
   renderTodayNepaliDate,
   getTodayNepaliDateFull,
-} from './today/nepaliCalendar.js';
-import { renderNepaliDayOfWeek } from './today/nepaliWeekday.js';
-import { setupTabs } from './tabs.js';
-import { getTimePeriodBgImage } from './today/getTimePeriodBg.js';
-import { initMonthView } from './full-calendar/initMonthView.js';
-import { DateConverter } from './date-converter/dateConverter.js';
-import { setupFullscreenButton } from './utils/fullscreen.js';
-import { setupDateInputIcon } from './utils/dateInputIcon.js';
-import { setupReminder } from './task-reminder/reminder.js';
-import { getNepaliDateForAd } from './today/nepaliCalendar.js';
+  getNepaliDateForAd,
+} from "./today/nepaliCalendar.js";
+import { renderNepaliDayOfWeek } from "./today/nepaliWeekday.js";
+import { setupTabs } from "./tabs.js";
+import {
+  getTimePeriodBgImage,
+  changeBackgroundManually,
+} from "./today/getTimePeriodBg.js";
+import { initMonthView } from "./full-calendar/initMonthView.js";
+import { DateConverter } from "./date-converter/dateConverter.js";
+import { setupDateInputIcon } from "./utils/dateInputIcon.js";
+import { setupReminder } from "./task-reminder/reminder.js";
+import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
+
 window.getNepaliDateForAd = getNepaliDateForAd;
 
-let lastRenderedGregorianDate = '';
-let lastRenderedNepaliDate = '';
-let lastBgImage = '';
+let lastRenderedGregorianDate = "";
+let lastRenderedNepaliDate = "";
+let lastBgImage = "";
 let converterInstance = null;
 
 function renderDateDependentNepalInfo() {
@@ -36,7 +40,7 @@ function renderDateDependentNepalInfo() {
     const todayNp = getTodayNepaliDateFull();
     const currentNepaliDate = todayNp
       ? `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`
-      : '';
+      : "";
 
     if (currentNepaliDate !== lastRenderedNepaliDate) {
       lastRenderedNepaliDate = currentNepaliDate;
@@ -54,27 +58,38 @@ function updateBackgroundImage() {
   }
 }
 
+function setupManualBackgroundUpdate() {
+  const btn = document.getElementById("btn-change-bg");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      changeBackgroundManually();
+      lastBgImage = "";
+      updateBackgroundImage();
+    });
+  }
+}
+
 function initializeConverter() {
-  const converterPanel = document.getElementById('panel-converter');
+  const converterPanel = document.getElementById("panel-converter");
   if (converterPanel && !converterInstance) {
     try {
       converterInstance = new DateConverter();
-      converterInstance.init('panel-converter');
+      converterInstance.init("panel-converter");
     } catch (error) {
-      console.error('Failed to initialize date converter:', error);
+      console.error("Failed to initialize date converter:", error);
     }
   }
 }
 
 function setupTabActivation(tabSelector, panelSelector, onActivate) {
-  const tabsList = document.querySelector('.tabs-list');
+  const tabsList = document.querySelector(".tabs-list");
   if (!tabsList) return;
 
-  const tabButtons = tabsList.querySelectorAll('a');
+  const tabButtons = tabsList.querySelectorAll("a");
   const tabIndex = Array.from(tabButtons).findIndex(
     (tab) =>
       tab.textContent.trim() === tabSelector ||
-      tab.getAttribute('href') === panelSelector
+      tab.getAttribute("href") === panelSelector,
   );
   if (tabIndex === -1) return;
 
@@ -82,16 +97,16 @@ function setupTabActivation(tabSelector, panelSelector, onActivate) {
   const panel = document.querySelector(panelSelector);
 
   function maybeActivate() {
-    if (panel && !panel.hasAttribute('hidden')) onActivate(panel);
+    if (panel && !panel.hasAttribute("hidden")) onActivate(panel);
   }
 
-  tabsList.addEventListener('click', (e) => {
-    const clickedTab = e.target.closest('a');
+  tabsList.addEventListener("click", (e) => {
+    const clickedTab = e.target.closest("a");
     if (clickedTab === tab) setTimeout(maybeActivate, 0);
   });
 
-  tabsList.addEventListener('keydown', (e) => {
-    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+  tabsList.addEventListener("keydown", (e) => {
+    if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) {
       setTimeout(maybeActivate, 0);
     }
   });
@@ -100,8 +115,8 @@ function setupTabActivation(tabSelector, panelSelector, onActivate) {
 }
 
 function setupCalendarTab() {
-  setupTabActivation('Full Calendar', '#panel-calendar', (panel) => {
-    const calendarRoot = panel.querySelector('#month-view-calendar-root');
+  setupTabActivation("Full Calendar", "#panel-calendar", (panel) => {
+    const calendarRoot = panel.querySelector("#month-view-calendar-root");
     if (calendarRoot && !calendarRoot.hasChildNodes()) {
       initMonthView(calendarRoot);
     }
@@ -109,8 +124,8 @@ function setupCalendarTab() {
 }
 
 function setupConverterTab() {
-  setupTabActivation('Date Converter', '#panel-converter', () =>
-    initializeConverter()
+  setupTabActivation("Date Converter", "#panel-converter", () =>
+    initializeConverter(),
   );
 }
 
@@ -122,17 +137,17 @@ function setupPeriodicUpdates() {
 }
 
 function setupEventHandlers() {
-  document.addEventListener('visibilitychange', () => {
+  document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
       renderDateDependentNepalInfo();
       updateBackgroundImage();
     }
   });
 
-  window.addEventListener('online', () => {
+  window.addEventListener("online", () => {
     if (!converterInstance) {
-      const converterPanel = document.querySelector('#panel-converter');
-      if (converterPanel && !converterPanel.hasAttribute('hidden')) {
+      const converterPanel = document.querySelector("#panel-converter");
+      if (converterPanel && !converterPanel.hasAttribute("hidden")) {
         initializeConverter();
       }
     }
@@ -144,13 +159,18 @@ function initApp() {
   setupTabs();
   startNepalClock();
   updateBackgroundImage();
+  setupManualBackgroundUpdate();
   setupCalendarTab();
   setupConverterTab();
   setupPeriodicUpdates();
   setupEventHandlers();
-  setupFullscreenButton();
   setupDateInputIcon();
   setupReminder();
+
+  const settingsElement = document.querySelector(".settings");
+  if (settingsElement) {
+    initSettingsDropdown(settingsElement);
+  }
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener("DOMContentLoaded", initApp);

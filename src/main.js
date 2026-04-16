@@ -2,83 +2,28 @@ import "./style.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import {
-  startNepalClock,
-  renderNepalDate,
-  getNepalGregorianDate,
-} from "./today/nepalTime.js";
-import {
-  renderTodayNepaliDate,
-  getTodayNepaliDateFull,
+  createTodayComponent,
   getNepaliDateForAd,
-} from "./today/nepaliCalendar.js";
-import { renderNepaliDayOfWeek } from "./today/nepaliWeekday.js";
+} from "./components/Today/Today.js";
 import { setupTabs } from "./tabs.js";
-import {
-  getTimePeriodBgImage,
-  changeBackgroundManually,
-} from "./today/getTimePeriodBg.js";
-import { initMonthView } from "./full-calendar/initMonthView.js";
-import { DateConverter } from "./date-converter/dateConverter.js";
+import { initMonthView } from "./components/FullCalendar/FullCalendar.js";
+import { createDateConverter } from "./components/DateConverter/DateConverter.js";
+import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
-import { setupReminder } from "./task-reminder/reminder.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
 import { updateExtensionUI } from "./components/ExtensionUIUpdater/ExtensionUIUpdater.js";
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 
-let lastRenderedGregorianDate = "";
-let lastRenderedNepaliDate = "";
-let lastBgImage = "";
+const todayComponent = createTodayComponent();
+const taskReminder = createTaskReminder();
 let converterInstance = null;
-
-function renderDateDependentNepalInfo() {
-  const currentGregorianDate = getNepalGregorianDate();
-  if (currentGregorianDate !== lastRenderedGregorianDate) {
-    lastRenderedGregorianDate = currentGregorianDate;
-    renderNepalDate();
-    renderNepaliDayOfWeek();
-
-    const todayNp = getTodayNepaliDateFull();
-    const currentNepaliDate = todayNp
-      ? `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`
-      : "";
-
-    if (todayNp) {
-      updateExtensionUI(currentNepaliDate, todayNp.date_np);
-    }
-
-    if (currentNepaliDate !== lastRenderedNepaliDate) {
-      lastRenderedNepaliDate = currentNepaliDate;
-      renderTodayNepaliDate();
-    }
-  }
-}
-
-function updateBackgroundImage() {
-  const now = new Date();
-  const bgImage = getTimePeriodBgImage(now);
-  if (bgImage && bgImage !== lastBgImage) {
-    document.body.style.backgroundImage = `url(${bgImage})`;
-    lastBgImage = bgImage;
-  }
-}
-
-function setupManualBackgroundUpdate() {
-  const btn = document.getElementById("btn-change-bg");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      changeBackgroundManually();
-      lastBgImage = "";
-      updateBackgroundImage();
-    });
-  }
-}
 
 function initializeConverter() {
   const converterPanel = document.getElementById("panel-converter");
   if (converterPanel && !converterInstance) {
     try {
-      converterInstance = new DateConverter();
+      converterInstance = createDateConverter();
       converterInstance.init("panel-converter");
     } catch (error) {
       console.error(error);
@@ -136,16 +81,14 @@ function setupConverterTab() {
 
 function setupPeriodicUpdates() {
   setInterval(() => {
-    renderDateDependentNepalInfo();
-    updateBackgroundImage();
+    todayComponent.periodicUpdate();
   }, 60 * 1000);
 }
 
 function setupEventHandlers() {
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-      renderDateDependentNepalInfo();
-      updateBackgroundImage();
+      todayComponent.periodicUpdate();
     }
   });
 
@@ -160,17 +103,14 @@ function setupEventHandlers() {
 }
 
 function initApp() {
-  renderDateDependentNepalInfo();
+  todayComponent.init(updateExtensionUI);
+  taskReminder.init();
   setupTabs();
-  startNepalClock();
-  updateBackgroundImage();
-  setupManualBackgroundUpdate();
   setupCalendarTab();
   setupConverterTab();
   setupPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();
-  setupReminder();
 
   const settingsElement = document.querySelector(".settings");
   if (settingsElement) {

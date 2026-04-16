@@ -1,0 +1,215 @@
+.reminder {
+    font-family: "Mona Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* Added constraints to prevent stretching */
+    width: 100%;
+    max-width: 50rem;
+    padding: 0 1.5rem;
+}
+
+.reminder-form__control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.reminder-form__control label {
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.reminder-form__input {
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+}
+
+.reminder-form__input::placeholder {
+    font-family: inherit;
+    color: #868686;
+}
+
+.reminder-form__info {
+    text-align: left;
+    color: gold;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.reminder__controls,
+.reminder-form__button-group {
+    margin: 0 auto;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.reminder__controls {
+    margin-bottom: 5em;
+}
+
+.reminder__header {
+    text-align: center;
+}
+
+.reminder__title {
+    font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+    font-weight: 500;
+}
+
+.reminder__time {
+    display: block;
+    font-size: clamp(3rem, 15vw + 1rem, 12.5rem);
+    font-weight: 900;
+    margin-bottom: 1em;
+}
+
+.reminder__title-emphasis {
+    font-style: italic;
+    color: gold;
+}
+
+.reminder__btn {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 0.3em;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: gold;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: goldenrod;
+    color: whitesmoke;
+}
+
+.btn-danger {
+    background-color: red;
+    color: whitesmoke;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: maroon;
+}
+
+.reminder__modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+}
+
+.reminder-form {
+    min-height: 100vh;
+    max-width: 45rem;
+    display: grid;
+    place-items: center;
+    margin: auto;
+}
+
+.reminder-form-control-checkbox {
+    display: flex;
+    font-size: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 4em;
+    color: gold;
+    gap: 1em;
+}
+
+.reminder-form-control-checkbox input[type="checkbox"] {
+    accent-color: gold;
+    scale: 1.5;
+}
+
+/* Past Reminders */
+.past-reminders {
+    margin-bottom: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.past-reminders__title {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.past-reminders__list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.past-reminders__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.past-reminders__icon-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.past-reminders__icon {
+    font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.3rem);
+    color: gold;
+}
+
+.past-reminders__time,
+.past-reminders__task-title {
+    font-size: clamp(1rem, 1.2vw + 0.8rem, 1.5rem);
+}
+
+.past-reminder-delete-btn {
+    border: 0;
+    background-color: red;
+    color: whitesmoke;
+    height: 2rem;
+    width: 2rem;
+    padding: 0.5em;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    margin-left: auto;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.past-reminder-delete-btn:hover,
+.past-reminder-delete-btn:focus {
+    background-color: maroon;
+}
+
+@media (min-width: 500px) {
+    .past-reminders__list {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 4em;
+    }
+}

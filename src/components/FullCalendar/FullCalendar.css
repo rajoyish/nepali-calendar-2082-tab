@@ -49,6 +49,18 @@
     min-width: 0;
 }
 
+.month-view__date:not(.month-view__date--empty) {
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.month-view__date:not(.month-view__date--empty):hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: scale(1.03);
+}
+
 .month-view__date-en {
     align-self: flex-end;
     font-size: 1rem;
@@ -79,6 +91,96 @@
 .is-holiday {
     color: red;
     border-color: red;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+.calendar-controls__month-select {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 0.25em;
+    border: 1px solid lightslategray;
+    background-color: white;
+    color: #1d1c1c;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+}
+
+.calendar-controls__month-select:hover {
+    border-color: #333;
+}
+
+.date-modal {
+    border: none;
+    border-radius: 0.5em;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    font-family: inherit;
+    color: #1d1c1c;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.date-modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.date-modal__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.date-modal__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.date-modal__close {
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.date-modal__close:hover {
+    color: #000;
+}
+
+.date-modal__body {
+    padding: 1.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.date-modal__body p {
+    margin: 0.5rem 0;
 }
 
 @media (min-width: 500px) {

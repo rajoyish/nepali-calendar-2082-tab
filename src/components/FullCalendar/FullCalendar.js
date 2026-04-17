@@ -17,6 +17,41 @@ function isHoliday(dateObj) {
   );
 }
 
+function createModal() {
+  const dialog = document.createElement("dialog");
+  dialog.className = "date-modal";
+
+  const content = document.createElement("div");
+  content.className = "date-modal__content";
+
+  const header = document.createElement("header");
+  header.className = "date-modal__header";
+
+  const title = document.createElement("h3");
+  title.className = "date-modal__title";
+
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "date-modal__close";
+  closeBtn.innerHTML = "&times;";
+  closeBtn.onclick = () => dialog.close();
+
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+
+  const body = document.createElement("div");
+  body.className = "date-modal__body";
+
+  content.appendChild(header);
+  content.appendChild(body);
+  dialog.appendChild(content);
+
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  return { dialog, title, body };
+}
+
 function renderMonthGrid(
   ul,
   monthDates,
@@ -24,10 +59,13 @@ function renderMonthGrid(
   todaysNpDateStr,
   month_np,
   year,
+  modalElements,
+  monthYearEn,
 ) {
   const totalCells = 42;
   let cellIndex = 0;
   let dateIndex = 0;
+  const firstDateEn = parseInt(monthDates[0].date_en, 10);
 
   for (; cellIndex < firstDayWeekIndex; cellIndex++) {
     const li = document.createElement("li");
@@ -71,6 +109,52 @@ function renderMonthGrid(
     li.appendChild(spanEn);
     li.appendChild(spanNp);
     li.appendChild(spanTithi);
+
+    li.addEventListener("click", () => {
+      const { dialog, title, body } = modalElements;
+      title.textContent = `${month_np} ${dateObj.date_np}, ${year}`;
+
+      if (isHoliday(dateObj)) {
+        title.style.color = "red";
+      } else {
+        title.style.color = "";
+      }
+
+      const dateEnNum = parseInt(dateObj.date_en, 10);
+      const { monthIndex, year: enYear } = getGregorianMonthYear(
+        monthYearEn,
+        dateEnNum,
+        firstDateEn,
+      );
+      const fullMonths = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const fullEnglishDate = `${dateEnNum} ${fullMonths[monthIndex]} ${enYear}`;
+
+      const eventText = dateObj.event_title ? dateObj.event_title : "छैन";
+      const tithiText = dateObj.tithi ? dateObj.tithi : "छैन";
+      const holidayStatus = isHoliday(dateObj) ? "हो" : "छैन";
+
+      body.innerHTML = `
+        <p>अङ्ग्रेजी तारिख: <strong>${fullEnglishDate}</strong></p>
+        <p>तिथि: <strong>${tithiText}</strong></p>
+        <p>घटनाक्रम: <strong>${eventText}</strong></p>
+        <p>सार्वजनिक विदा: <strong>${holidayStatus}</strong></p>
+      `;
+      dialog.showModal();
+    });
+
     ul.appendChild(li);
   }
 
@@ -108,8 +192,69 @@ function maybeAddResizeListener() {
   abbreviationListenerAdded = true;
 }
 
+function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
+  const parts = monthYearEn.split(" ");
+  const monthsPart = parts[0];
+  const yearPart = parts[1];
+  const mParts = monthsPart.split("/");
+  const firstMonth = mParts[0];
+  const secondMonth = mParts[1];
+
+  let isSecondMonth = false;
+  if (firstDateEn !== undefined) {
+    isSecondMonth = dateEn < firstDateEn;
+  } else {
+    isSecondMonth = dateEn === 1;
+  }
+
+  const monthName = isSecondMonth ? secondMonth : firstMonth;
+  const monthIndex = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ].findIndex((m) => monthName.toLowerCase().startsWith(m));
+
+  let year = parseInt(yearPart, 10);
+  if (
+    isSecondMonth &&
+    monthIndex === 0 &&
+    firstMonth.toLowerCase().startsWith("dec")
+  ) {
+    year += 1;
+  }
+
+  return { monthIndex, year };
+}
+
 export function initMonthView(container) {
   container.innerHTML = "";
+
+  const controlsDiv = document.createElement("div");
+  controlsDiv.className = "calendar-controls";
+
+  const monthSelect = document.createElement("select");
+  monthSelect.className = "calendar-controls__month-select";
+
+  if (calendarData.months && calendarData.months.length > 0) {
+    calendarData.months.forEach((m, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = `${m.month_np} (${m.month_year_en})`;
+      monthSelect.appendChild(option);
+    });
+  }
+
+  controlsDiv.appendChild(monthSelect);
+  container.appendChild(controlsDiv);
 
   const ul = document.createElement("ul");
   ul.className = "month-view";
@@ -127,74 +272,69 @@ export function initMonthView(container) {
 
   headerLi.appendChild(spanNp);
   headerLi.appendChild(spanMonthYear);
-  ul.appendChild(headerLi);
-
-  renderNepaliWeekdayHeader(ul);
-
-  const todayNp = getTodayNepaliDateFull();
-  if (!todayNp) {
-    renderMonthGrid(ul, [], 0, "", "", "");
-    container.appendChild(ul);
-    updateWeekdayAbbreviations();
-    maybeAddResizeListener();
-    return;
-  }
-
-  const monthObj = calendarData.months.find(
-    (m) => m.month_np === todayNp.month_np,
-  );
-  if (!monthObj) {
-    renderMonthGrid(ul, [], 0, "", "", "");
-    container.appendChild(ul);
-    updateWeekdayAbbreviations();
-    maybeAddResizeListener();
-    return;
-  }
-
-  const todaysNpDateStr = `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`;
-  spanNp.textContent = todaysNpDateStr;
-  spanMonthYear.textContent = `${todayNp.year} ${todayNp.month_np} | ${monthObj.month_year_en}`;
-
-  const firstDateObj = monthObj.dates[0];
-  const firstDateEn = parseInt(firstDateObj.date_en, 10);
-  const monthYearEn = monthObj.month_year_en;
-
-  function getGregorianMonthYear(monthYearEn, dateEn) {
-    const [monthsPart, yearPart] = monthYearEn.split(" ");
-    const [firstMonth, secondMonth] = monthsPart.split("/");
-    const monthName = dateEn === 1 ? secondMonth : firstMonth;
-    const monthIndex = [
-      "jan",
-      "feb",
-      "mar",
-      "apr",
-      "may",
-      "jun",
-      "jul",
-      "aug",
-      "sep",
-      "oct",
-      "nov",
-      "dec",
-    ].findIndex((m) => monthName.toLowerCase().startsWith(m));
-    const year = parseInt(yearPart, 10);
-    return { monthIndex, year };
-  }
-
-  const { monthIndex, year } = getGregorianMonthYear(monthYearEn, firstDateEn);
-  const firstDate = new Date(year, monthIndex, firstDateEn);
-  const firstDayWeekIndex = firstDate.getDay();
-
-  renderMonthGrid(
-    ul,
-    monthObj.dates,
-    firstDayWeekIndex,
-    todaysNpDateStr,
-    monthObj.month_np,
-    calendarData.year,
-  );
 
   container.appendChild(ul);
-  updateWeekdayAbbreviations();
+
+  const modalElements = createModal();
+  container.appendChild(modalElements.dialog);
+
+  const todayNp = getTodayNepaliDateFull();
+  let currentMonthIndex = 0;
+  let todaysNpDateStr = "";
+
+  if (todayNp && calendarData.months) {
+    todaysNpDateStr = `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`;
+    const foundIndex = calendarData.months.findIndex(
+      (m) => m.month_np === todayNp.month_np,
+    );
+    if (foundIndex !== -1) {
+      currentMonthIndex = foundIndex;
+    }
+  }
+
+  monthSelect.value = currentMonthIndex;
+
+  function renderSelectedMonth() {
+    if (!calendarData.months || calendarData.months.length === 0) return;
+
+    const selectedIndex = parseInt(monthSelect.value, 10);
+    const monthObj = calendarData.months[selectedIndex];
+
+    spanNp.textContent = todaysNpDateStr;
+    spanMonthYear.textContent = `${calendarData.year} ${monthObj.month_np} | ${monthObj.month_year_en}`;
+
+    ul.innerHTML = "";
+    ul.appendChild(headerLi);
+    renderNepaliWeekdayHeader(ul);
+
+    const firstDateObj = monthObj.dates[0];
+    const firstDateEn = parseInt(firstDateObj.date_en, 10);
+    const monthYearEn = monthObj.month_year_en;
+
+    const { monthIndex, year } = getGregorianMonthYear(
+      monthYearEn,
+      firstDateEn,
+      firstDateEn,
+    );
+    const firstDate = new Date(year, monthIndex, firstDateEn);
+    const firstDayWeekIndex = firstDate.getDay();
+
+    renderMonthGrid(
+      ul,
+      monthObj.dates,
+      firstDayWeekIndex,
+      todaysNpDateStr,
+      monthObj.month_np,
+      calendarData.year,
+      modalElements,
+      monthYearEn,
+    );
+
+    updateWeekdayAbbreviations();
+  }
+
+  monthSelect.addEventListener("change", renderSelectedMonth);
+
+  renderSelectedMonth();
   maybeAddResizeListener();
 }

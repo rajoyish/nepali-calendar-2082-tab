@@ -25,7 +25,7 @@ function renderMonthGrid(
   month_np,
   year,
 ) {
-  const totalCells = 35;
+  const totalCells = 42;
   let cellIndex = 0;
   let dateIndex = 0;
 
@@ -164,19 +164,19 @@ export function initMonthView(container) {
     const [firstMonth, secondMonth] = monthsPart.split("/");
     const monthName = dateEn === 1 ? secondMonth : firstMonth;
     const monthIndex = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ].indexOf(monthName);
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "jun",
+      "jul",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ].findIndex((m) => monthName.toLowerCase().startsWith(m));
     const year = parseInt(yearPart, 10);
     return { monthIndex, year };
   }

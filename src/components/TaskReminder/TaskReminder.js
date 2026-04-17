@@ -20,7 +20,6 @@ export function createTaskReminder() {
   let isSoundPlaying = false;
   let lastTask = "";
 
-  // Flag to prevent event listener memory leaks
   let isInitialized = false;
 
   const PAST_REMINDERS_KEY = "pastReminders";
@@ -109,7 +108,7 @@ export function createTaskReminder() {
             ${reminder.time}
           </span>
         </div>
-        <h3 class="past-reminders__task-title" data-past-reminder-task-title>
+        <h3 class="past-reminders__task-title" title="${reminder.task}" data-past-reminder-task-title>
           ${reminder.task}
         </h3>
         <button class="past-reminder-delete-btn" title="Delete reminder">
@@ -274,10 +273,12 @@ export function createTaskReminder() {
       const msToEnd = reminderEndTime - Date.now();
       reminderTimeout = setTimeout(() => {
         updateDisplay(task, "00:00");
-        showNotification(
-          `Time to ${task}! ✅`,
-          "Your reminder session is complete.",
-        );
+        if (typeof chrome === "undefined" || !chrome.alarms) {
+          showNotification(
+            `Time to ${task}! ✅`,
+            "Your reminder session is complete.",
+          );
+        }
         localStorage.removeItem(ACTIVE_REMINDER_KEY);
       }, msToEnd);
     }
@@ -423,7 +424,7 @@ export function createTaskReminder() {
     updateRemindersUI();
     restoreActiveReminder();
 
-    isInitialized = true; // Mark as initialized
+    isInitialized = true;
   }
 
   return { init };

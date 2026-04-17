@@ -11,7 +11,6 @@ export function createTaskReminder() {
     notificationSound = "/src/assets/notification.mp3";
   }
 
-  // Private State
   let reminderEndTime = null;
   let countdownRAF = null;
   let reminderTimeout = null;
@@ -21,7 +20,11 @@ export function createTaskReminder() {
   let isSoundPlaying = false;
   let lastTask = "";
 
+  // Flag to prevent event listener memory leaks
+  let isInitialized = false;
+
   const PAST_REMINDERS_KEY = "pastReminders";
+  const ACTIVE_REMINDER_KEY = "activeReminder";
   const MAX_PAST_REMINDERS = 6;
 
   function requestNotificationPermission() {
@@ -76,9 +79,7 @@ export function createTaskReminder() {
     savePastReminders(reminders);
   }
 
-  function renderPastReminders() {
-    const pastRemindersBlock = document.querySelector(".past-reminders");
-    const list = document.querySelector(".past-reminders__list");
+  function renderPastReminders(pastRemindersBlock, list) {
     if (!pastRemindersBlock || !list) return;
 
     const reminders = loadPastReminders();
@@ -91,6 +92,8 @@ export function createTaskReminder() {
     }
 
     list.innerHTML = "";
+
+    const fragment = document.createDocumentFragment();
 
     reminders.forEach((reminder, idx) => {
       const li = document.createElement("li");
@@ -113,12 +116,15 @@ export function createTaskReminder() {
           <i class="bi bi-trash3-fill"></i>
         </button>
       `;
-
-      list.appendChild(li);
+      fragment.appendChild(li);
     });
+
+    list.appendChild(fragment);
   }
 
   function init() {
+    if (isInitialized) return;
+
     const panel = document.getElementById("panel-reminder");
     if (!panel) return;
 
@@ -133,6 +139,8 @@ export function createTaskReminder() {
       soundCheckbox: panel.querySelector("#sound"),
       displayTitle: panel.querySelector(".reminder__title"),
       displayTime: panel.querySelector(".reminder__time"),
+      pastRemindersBlock: panel.querySelector(".past-reminders"),
+      list: panel.querySelector(".past-reminders__list"),
     };
 
     const required = [
@@ -156,7 +164,12 @@ export function createTaskReminder() {
       soundCheckbox,
       displayTitle,
       displayTime,
+      pastRemindersBlock,
+      list,
     } = elements;
+
+    const updateRemindersUI = () =>
+      renderPastReminders(pastRemindersBlock, list);
 
     function showModal() {
       modal.classList.remove("hidden");
@@ -210,11 +223,11 @@ export function createTaskReminder() {
             updateResetBtnText();
           })
           .catch(() => {
-            isSoundPlaying = true;
+            isSoundPlaying = false;
             updateResetBtnText();
           });
       } catch (error) {
-        isSoundPlaying = true;
+        isSoundPlaying = false;
         updateResetBtnText();
       }
     }
@@ -231,7 +244,7 @@ export function createTaskReminder() {
       updateResetBtnText();
     }
 
-    function startCountdown(task, minutes) {
+    function startCountdown(task) {
       if (reminderTimeout) clearTimeout(reminderTimeout);
       if (soundTimeout) clearTimeout(soundTimeout);
 
@@ -241,6 +254,7 @@ export function createTaskReminder() {
 
         if (msLeft <= 0) {
           updateDisplay(task, "00:00");
+          localStorage.removeItem(ACTIVE_REMINDER_KEY);
           return;
         }
 
@@ -264,32 +278,62 @@ export function createTaskReminder() {
           `Time to ${task}! ✅`,
           "Your reminder session is complete.",
         );
+        localStorage.removeItem(ACTIVE_REMINDER_KEY);
       }, msToEnd);
     }
 
-    function setReminder(task, minutes, options = {}) {
+    function setReminder(task, minutes) {
       requestNotificationPermission();
       soundEnabled = soundCheckbox?.checked ?? true;
       lastTask = task;
       reminderEndTime = Date.now() + Number(minutes) * 60 * 1000;
 
+      localStorage.setItem(
+        ACTIVE_REMINDER_KEY,
+        JSON.stringify({
+          task,
+          reminderEndTime,
+          soundEnabled,
+        }),
+      );
+
+      if (typeof chrome !== "undefined" && chrome.alarms) {
+        chrome.alarms.create("task-reminder", {
+          delayInMinutes: Number(minutes),
+        });
+        if (chrome.storage) {
+          chrome.storage.local.set({
+            reminderTask: task,
+            reminderSound: soundEnabled,
+          });
+        }
+      }
+
       if (countdownRAF) cancelAnimationFrame(countdownRAF);
       if (reminderTimeout) clearTimeout(reminderTimeout);
       if (soundTimeout) clearTimeout(soundTimeout);
 
-      startCountdown(task, minutes);
+      startCountdown(task);
 
       addOrMovePastReminder({
         task,
         time: `${minutes} min`,
         created: Date.now(),
       });
-      renderPastReminders();
+      updateRemindersUI();
     }
 
     function resetReminder(stopSoundNow = true) {
       updateDisplay("Buy Eggs");
       reminderEndTime = null;
+      localStorage.removeItem(ACTIVE_REMINDER_KEY);
+
+      if (typeof chrome !== "undefined" && chrome.alarms) {
+        chrome.alarms.clear("task-reminder");
+        if (chrome.storage) {
+          chrome.storage.local.remove(["reminderTask", "reminderSound"]);
+        }
+      }
 
       if (countdownRAF) cancelAnimationFrame(countdownRAF);
       if (reminderTimeout) clearTimeout(reminderTimeout);
@@ -312,7 +356,22 @@ export function createTaskReminder() {
       hideModal();
     }
 
-    // Attach base Listeners
+    function restoreActiveReminder() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(ACTIVE_REMINDER_KEY));
+        if (saved && saved.reminderEndTime > Date.now()) {
+          lastTask = saved.task;
+          reminderEndTime = saved.reminderEndTime;
+          soundEnabled = saved.soundEnabled;
+          startCountdown(lastTask);
+        } else if (saved) {
+          localStorage.removeItem(ACTIVE_REMINDER_KEY);
+        }
+      } catch (e) {
+        localStorage.removeItem(ACTIVE_REMINDER_KEY);
+      }
+    }
+
     setBtn.addEventListener("click", showModal);
     resetBtn.addEventListener("click", () => resetReminder());
     form.addEventListener("submit", handleFormSubmit);
@@ -323,8 +382,6 @@ export function createTaskReminder() {
       });
     }
 
-    // Past Reminder Delegation
-    const list = document.querySelector(".past-reminders__list");
     if (list) {
       list.addEventListener("click", (e) => {
         const btn = e.target.closest(".past-reminder-delete-btn");
@@ -334,7 +391,7 @@ export function createTaskReminder() {
           const idx = parseInt(li.getAttribute("data-past-reminder-index"), 10);
           if (!isNaN(idx)) {
             deletePastReminder(idx);
-            renderPastReminders();
+            updateRemindersUI();
           }
           return;
         }
@@ -354,17 +411,19 @@ export function createTaskReminder() {
             const match = reminder.time.match(/(\d+)\s*min/);
             if (match) minutes = parseInt(match[1], 10);
           }
-          setReminder(reminder.task, minutes, { updatePast: true });
+          setReminder(reminder.task, minutes);
         }
       });
     }
 
-    // Initial setup state
     modal.classList.add("hidden");
     form.classList.add("hidden");
     isSoundPlaying = false;
     updateResetBtnText();
-    renderPastReminders();
+    updateRemindersUI();
+    restoreActiveReminder();
+
+    isInitialized = true; // Mark as initialized
   }
 
   return { init };

@@ -27,7 +27,6 @@
         />
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link rel="icon" href="/favicons/favicon.ico" />
-
         <title>Tabre: Nepali Calendar New Tab</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,7 +73,6 @@
 
         <div class="calendar__upper spacing">
             <p class="calendar__date-en" data-today-en></p>
-
             <div class="calendar-clock__wrapper">
                 <p class="calendar__clock" data-clock></p>
                 <div class="settings">
@@ -90,7 +88,6 @@
                             >▼</span
                         >
                     </button>
-
                     <div
                         class="settings__menu"
                         id="settings-menu"
@@ -108,7 +105,6 @@
                             ></span>
                             <span class="settings__item-text">Fullscreen</span>
                         </button>
-
                         <button
                             class="settings__item"
                             role="menuitem"
@@ -117,17 +113,13 @@
                             id="btn-change-bg"
                             aria-label="Change Background"
                         >
-                            <span
-                                class="settings__item-icon"
-                                aria-hidden="true"
-                            >
-                                <i class="bi bi-image"></i
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-image"></i
                             ></span>
                             <span class="settings__item-text"
                                 >Change Background</span
                             >
                         </button>
-
                         <button
                             class="settings__item"
                             role="menuitem"
@@ -136,11 +128,8 @@
                             id="btn-toggle-bookmarks"
                             aria-label="Toggle Bookmarks"
                         >
-                            <span
-                                class="settings__item-icon"
-                                aria-hidden="true"
-                            >
-                                <i class="bi bi-bookmark-dash"></i
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-bookmark-dash"></i
                             ></span>
                             <span class="settings__item-text"
                                 >Hide Bookmarks</span
@@ -175,7 +164,6 @@
                                     data-np-day-event
                                 ></h3>
                             </div>
-
                             <h3 class="calendar__event holiday-notice">
                                 <span class="holiday-notice__icon"></span>
                                 आज सार्वजनिक बिदा
@@ -202,7 +190,6 @@
                             </button>
                         </header>
                         <ul class="bookmarks__list" id="bookmarks-list"></ul>
-
                         <dialog class="bookmarks__modal" id="bookmarks-modal">
                             <div class="bookmarks__modal-content">
                                 <header class="bookmarks__modal-header">
@@ -286,7 +273,7 @@
                             </section>
                             <section data-converter-section="bs-to-ad" hidden>
                                 <div class="date-converter__input-group">
-                                    <label>Enter Anno Domini (AD)</label>
+                                    <label>Enter Bikram Sambat (BS)</label>
                                     <div class="date-converter__bs-date-inputs">
                                         <input
                                             type="number"
@@ -361,9 +348,8 @@
                     <section class="reminder">
                         <header class="reminder__header">
                             <h2 class="reminder__title">
-                                Buy Eggs<span class="reminder__title-emphasis"
-                                    >in</span
-                                >
+                                Buy Eggs
+                                <span class="reminder__title-emphasis">in</span>
                             </h2>
                             <time class="reminder__time" datetime="20:00"
                                 >20:00</time
@@ -411,7 +397,55 @@
                                 Reset
                             </button>
                         </footer>
-                        <aside class="reminder__modal hidden"></aside>
+                        <aside class="reminder__modal hidden">
+                            <form class="reminder-form hidden">
+                                <div class="reminder-form__control">
+                                    <label for="reminder-form__task-title"
+                                        >Task Title</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="reminder-form__task-title"
+                                        class="reminder-form__input"
+                                        placeholder="e.g. Drink water"
+                                        required
+                                    />
+                                </div>
+                                <div class="reminder-form__control">
+                                    <label for="reminder-form__minutes"
+                                        >Duration (minutes)</label
+                                    >
+                                    <input
+                                        type="number"
+                                        id="reminder-form__minutes"
+                                        class="reminder-form__input"
+                                        placeholder="e.g. 20"
+                                        required
+                                        min="1"
+                                    />
+                                </div>
+                                <div class="reminder-form-control-checkbox">
+                                    <label for="sound"
+                                        >Play Notification Sound</label
+                                    >
+                                    <input type="checkbox" id="sound" checked />
+                                </div>
+                                <div class="reminder-form__button-group">
+                                    <button
+                                        type="submit"
+                                        class="reminder__btn btn-primary"
+                                    >
+                                        Start
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="reminder__btn btn-danger reminder-form__btn"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </aside>
                     </section>
                 </div>
             </div>
@@ -422,8 +456,8 @@
             <a class="calendar__author-link" href="https://x.com/rajoyish"
                 >Rajesh Budhathoki</a
             >
-            | Try it live at
-            <a href="https://tabre.netlify.app/">Tabre</a> or get the
+            | Try it live at <a href="https://tabre.netlify.app/">Tabre</a> or
+            get the
             <a
                 href="https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo"
                 >Chrome Extension</a

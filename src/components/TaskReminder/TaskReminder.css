@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    /* Added constraints to prevent stretching */
     width: 100%;
     max-width: 50rem;
     padding: 0 1.5rem;
@@ -12,47 +11,49 @@
 .reminder-form__control {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .reminder-form__control label {
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .reminder-form__input {
     font-family: inherit;
-    font-size: 1.5rem;
-    padding: 0.5em;
+    font-size: 1.25rem;
+    padding: 0.75em;
     border-radius: 0.3em;
-    margin-bottom: 0.5em;
+    border: 1px solid rgba(5, 242, 242, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.reminder-form__input:focus {
+    outline: none;
+    border-color: var(--accent-sky);
 }
 
 .reminder-form__input::placeholder {
-    font-family: inherit;
     color: #868686;
-}
-
-.reminder-form__info {
-    text-align: left;
-    color: gold;
-    font-size: 0.95rem;
-    font-style: italic;
 }
 
 .reminder__controls,
 .reminder-form__button-group {
-    margin: 0 auto;
     display: flex;
-    gap: 2em;
+    gap: 1.5em;
     justify-content: center;
 }
 
 .reminder__controls {
     margin-bottom: 5em;
+}
+
+.reminder-form__button-group {
+    margin-top: 1.5rem;
 }
 
 .reminder__header {
@@ -73,38 +74,45 @@
 
 .reminder__title-emphasis {
     font-style: italic;
-    color: gold;
+    color: var(--accent-sky);
 }
 
 .reminder__btn {
     font-family: inherit;
     font-size: 1rem;
     font-weight: 700;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     border: 0;
     border-radius: 0.3em;
-    transition: background-color 0.3s ease-in-out;
+    transition:
+        background-color 0.3s ease-in-out,
+        transform 0.1s ease;
     cursor: pointer;
 }
 
+.reminder__btn:active {
+    transform: scale(0.98);
+}
+
 .btn-primary {
-    background-color: gold;
+    background-color: var(--accent-green);
+    color: var(--dark-black);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: goldenrod;
+    background-color: var(--dark-green);
     color: whitesmoke;
 }
 
 .btn-danger {
-    background-color: red;
+    background-color: #d90429;
     color: whitesmoke;
 }
 
 .btn-danger:hover,
 .btn-danger:focus {
-    background-color: maroon;
+    background-color: #8d021f;
 }
 
 .reminder__modal {
@@ -113,34 +121,41 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.85);
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .reminder-form {
-    min-height: 100vh;
-    max-width: 45rem;
-    display: grid;
-    place-items: center;
-    margin: auto;
+    background-color: var(--dark-black);
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 30rem;
+    box-shadow: 0 10px 40px rgba(5, 242, 242, 0.1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(5, 242, 242, 0.15);
 }
 
 .reminder-form-control-checkbox {
     display: flex;
     font-size: 1rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 4em;
-    color: gold;
-    gap: 1em;
+    margin-bottom: 1.5rem;
+    color: var(--accent-sky);
+    gap: 0.75em;
 }
 
 .reminder-form-control-checkbox input[type="checkbox"] {
-    accent-color: gold;
-    scale: 1.5;
+    accent-color: var(--accent-green);
+    scale: 1.3;
 }
 
-/* Past Reminders */
 .past-reminders {
     margin-bottom: 3em;
     display: flex;
@@ -168,6 +183,13 @@
     gap: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.3em;
+    transition: background-color 0.2s ease;
+}
+
+.past-reminders__item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .past-reminders__icon-wrapper {
@@ -178,7 +200,7 @@
 
 .past-reminders__icon {
     font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.3rem);
-    color: gold;
+    color: var(--accent-sky);
 }
 
 .past-reminders__time,
@@ -188,7 +210,7 @@
 
 .past-reminder-delete-btn {
     border: 0;
-    background-color: red;
+    background-color: #d90429;
     color: whitesmoke;
     height: 2rem;
     width: 2rem;
@@ -204,7 +226,11 @@
 
 .past-reminder-delete-btn:hover,
 .past-reminder-delete-btn:focus {
-    background-color: maroon;
+    background-color: #8d021f;
+}
+
+.hidden {
+    display: none !important;
 }
 
 @media (min-width: 500px) {

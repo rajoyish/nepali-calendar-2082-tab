@@ -12,7 +12,7 @@ import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
 import { updateExtensionUI } from "./components/ExtensionUIUpdater/ExtensionUIUpdater.js";
-import { initBookmarks } from "./components/Bookmarks/Bookmarks.js"; // <-- ADDED
+import { initBookmarks } from "./components/Bookmarks/Bookmarks.js";
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 

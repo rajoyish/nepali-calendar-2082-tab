@@ -5,6 +5,8 @@ import {
   isFullscreen,
 } from "../../utils/fullscreen.js";
 
+const SETTINGS_KEY = "tabre_show_bookmarks";
+
 export function initSettingsDropdown(element) {
   const trigger = element.querySelector(".settings__trigger");
   const menu = element.querySelector(".settings__menu");
@@ -71,14 +73,68 @@ export function initSettingsDropdown(element) {
     }
   }
 
-  function handleAction(action) {
+  async function updateBookmarksIcon() {
+    const bookmarksItem = items.find(
+      (item) => item.dataset.action === "toggle-bookmarks",
+    );
+    if (!bookmarksItem) return;
+
+    let isEnabled = true;
+    if (typeof chrome !== "undefined" && chrome.storage) {
+      const data = await chrome.storage.local.get([SETTINGS_KEY]);
+      if (data[SETTINGS_KEY] !== undefined) isEnabled = data[SETTINGS_KEY];
+    } else {
+      const data = localStorage.getItem(SETTINGS_KEY);
+      if (data !== null) isEnabled = JSON.parse(data);
+    }
+
+    const icon = bookmarksItem.querySelector("i");
+    const textSpan = bookmarksItem.querySelector(".settings__item-text");
+
+    if (isEnabled) {
+      if (icon) {
+        icon.classList.remove("bi-bookmark-check");
+        icon.classList.add("bi-bookmark-dash");
+      }
+      if (textSpan) textSpan.textContent = "Hide Bookmarks";
+    } else {
+      if (icon) {
+        icon.classList.remove("bi-bookmark-dash");
+        icon.classList.add("bi-bookmark-check");
+      }
+      if (textSpan) textSpan.textContent = "Show Bookmarks";
+    }
+  }
+
+  async function handleAction(action) {
     if (action === "fullscreen") {
       if (!isFullscreen()) {
         enterFullscreen(document.documentElement);
       } else {
         exitFullscreen();
       }
+    } else if (action === "toggle-bookmarks") {
+      let isEnabled = true;
+      if (typeof chrome !== "undefined" && chrome.storage) {
+        const data = await chrome.storage.local.get([SETTINGS_KEY]);
+        if (data[SETTINGS_KEY] !== undefined) isEnabled = data[SETTINGS_KEY];
+        await chrome.storage.local.set({ [SETTINGS_KEY]: !isEnabled });
+      } else {
+        const data = localStorage.getItem(SETTINGS_KEY);
+        if (data !== null) isEnabled = JSON.parse(data);
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(!isEnabled));
+      }
+
+      await updateBookmarksIcon();
+
+      // Dispatch event so Bookmarks.js can hide/show the section immediately
+      document.dispatchEvent(
+        new CustomEvent("bookmarksVisibilityChanged", {
+          detail: { isEnabled: !isEnabled },
+        }),
+      );
     }
+
     closeMenu();
     trigger.focus();
   }
@@ -194,6 +250,7 @@ export function initSettingsDropdown(element) {
 
   closeMenu();
   updateFullscreenIcon();
+  updateBookmarksIcon();
 
   return () => controller.abort();
 }

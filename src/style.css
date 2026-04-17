@@ -1,3 +1,10 @@
+:root {
+    --dark-black: #131826;
+    --accent-sky: #05f2f2;
+    --dark-green: #168c04;
+    --accent-green: #43bf0a;
+}
+
 *,
 *::before,
 *::after {
@@ -32,6 +39,14 @@ body {
 /* Utilities */
 .hidden {
     display: none;
+}
+
+.spacing {
+    padding: 1rem;
+}
+
+.border-2 {
+    border: 2px solid red;
 }
 
 /* Typography */
@@ -120,5 +135,8 @@ footer a,
     .tabs-list {
         gap: 2rem;
         flex-direction: row;
+    }
+    .spacing {
+        padding: 1rem 6rem;
     }
 }

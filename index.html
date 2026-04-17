@@ -64,7 +64,7 @@
             </li>
             <li>
                 <a
-                    id="tab-converter"
+                    id="tab-reminder"
                     href="#panel-reminder"
                     aria-controls="panel-reminder"
                     >Reminder</a
@@ -72,12 +72,11 @@
             </li>
         </ul>
 
-        <div class="calendar__upper">
+        <div class="calendar__upper spacing">
             <p class="calendar__date-en" data-today-en></p>
 
             <div class="calendar-clock__wrapper">
                 <p class="calendar__clock" data-clock></p>
-                <!--Settings Menu-->
                 <div class="settings">
                     <button
                         class="settings__trigger"
@@ -128,9 +127,27 @@
                                 >Change Background</span
                             >
                         </button>
+
+                        <button
+                            class="settings__item"
+                            role="menuitem"
+                            tabindex="-1"
+                            data-action="toggle-bookmarks"
+                            id="btn-toggle-bookmarks"
+                            aria-label="Toggle Bookmarks"
+                        >
+                            <span
+                                class="settings__item-icon"
+                                aria-hidden="true"
+                            >
+                                <i class="bi bi-bookmark-dash"></i
+                            ></span>
+                            <span class="settings__item-text"
+                                >Hide Bookmarks</span
+                            >
+                        </button>
                     </div>
                 </div>
-                <!--Settings Menu-->
             </div>
         </div>
 
@@ -164,6 +181,50 @@
                                 आज सार्वजनिक बिदा
                             </h3>
                         </div>
+                    </section>
+
+                    <section class="bookmarks spacing" id="bookmarks-section">
+                        <header class="bookmarks__header">
+                            <div class="bookmarks__header-left">
+                                <h2 class="bookmarks__title">Quick Links</h2>
+                                <span
+                                    class="bookmarks__count"
+                                    id="bookmarks-count"
+                                    >0/10</span
+                                >
+                            </div>
+                            <button
+                                class="bookmarks__add-btn"
+                                id="btn-open-bookmarks-modal"
+                                aria-label="Add Bookmark"
+                            >
+                                <i class="bi bi-plus-lg"></i> Add
+                            </button>
+                        </header>
+                        <ul class="bookmarks__list" id="bookmarks-list"></ul>
+
+                        <dialog class="bookmarks__modal" id="bookmarks-modal">
+                            <div class="bookmarks__modal-content">
+                                <header class="bookmarks__modal-header">
+                                    <h3>Select Bookmarks</h3>
+                                    <button
+                                        class="bookmarks__modal-close"
+                                        id="btn-close-bookmarks-modal"
+                                        aria-label="Close modal"
+                                    >
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </header>
+                                <div
+                                    class="bookmarks__modal-body"
+                                    id="bookmarks-modal-body"
+                                >
+                                    <p style="text-align: center; opacity: 0.6">
+                                        Loading bookmarks...
+                                    </p>
+                                </div>
+                            </div>
+                        </dialog>
                     </section>
                 </div>
 
@@ -200,14 +261,12 @@
                                 <i class="bi bi-arrow-right-short"></i> AD</span
                             >
                         </nav>
-
                         <main class="date-converter__content">
                             <section data-converter-section="ad-to-bs">
                                 <div class="date-converter__input-group">
                                     <label for="converter-ad-date"
                                         >Select AD Date</label
                                     >
-
                                     <div class="custom-date-input">
                                         <input
                                             type="date"
@@ -225,7 +284,6 @@
                                     <output data-converter-bs-result></output>
                                 </div>
                             </section>
-
                             <section data-converter-section="bs-to-ad" hidden>
                                 <div class="date-converter__input-group">
                                     <label>Enter Anno Domini (AD)</label>
@@ -303,14 +361,14 @@
                     <section class="reminder">
                         <header class="reminder__header">
                             <h2 class="reminder__title">
-                                Buy Eggs
-                                <span class="reminder__title-emphasis">in</span>
+                                Buy Eggs<span class="reminder__title-emphasis"
+                                    >in</span
+                                >
                             </h2>
                             <time class="reminder__time" datetime="20:00"
                                 >20:00</time
                             >
                         </header>
-
                         <div class="past-reminders">
                             <h2 class="past-reminders__title">
                                 Recent Reminders
@@ -318,9 +376,9 @@
                             <ul class="past-reminders__list">
                                 <li class="past-reminders__item">
                                     <div class="past-reminders__icon-wrapper">
-                                        <span class="past-reminders__icon">
-                                            <i class="bi bi-clock-history"></i>
-                                        </span>
+                                        <span class="past-reminders__icon"
+                                            ><i class="bi bi-clock-history"></i
+                                        ></span>
                                         <span
                                             class="past-reminders__time"
                                             data-past-reminder-time
@@ -339,7 +397,6 @@
                                 </li>
                             </ul>
                         </div>
-
                         <footer class="reminder__controls">
                             <button
                                 type="button"
@@ -354,68 +411,7 @@
                                 Reset
                             </button>
                         </footer>
-
-                        <aside class="reminder__modal hidden">
-                            <form class="reminder-form">
-                                <div class="form-wrapper">
-                                    <div class="reminder-form__control">
-                                        <label for="reminder-form__task-title">
-                                            What should I remind you about?
-                                        </label>
-                                        <input
-                                            type="text"
-                                            class="reminder-form__input"
-                                            id="reminder-form__task-title"
-                                            placeholder="Buy Eggs"
-                                            required
-                                        />
-                                        <small class="reminder-form__info">
-                                            Keep it short. Use a verb phrase.
-                                        </small>
-                                    </div>
-
-                                    <div class="reminder-form__control">
-                                        <label for="reminder-form__minutes"
-                                            >Remind in</label
-                                        >
-                                        <input
-                                            class="reminder-form__input"
-                                            type="number"
-                                            id="reminder-form__minutes"
-                                            required
-                                        />
-                                        <small class="reminder-form__info"
-                                            >e.g., 30 minutes</small
-                                        >
-                                    </div>
-
-                                    <div class="reminder-form-control-checkbox">
-                                        <input
-                                            class="reminder-form__checkbox"
-                                            type="checkbox"
-                                            id="sound"
-                                            checked
-                                        />
-                                        <label for="sound">Enable Sound?</label>
-                                    </div>
-
-                                    <div class="reminder-form__button-group">
-                                        <button
-                                            type="submit"
-                                            class="reminder-form__btn reminder__btn btn-primary"
-                                        >
-                                            Save
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="reminder-form__btn reminder__btn btn-danger"
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </aside>
+                        <aside class="reminder__modal hidden"></aside>
                     </section>
                 </div>
             </div>

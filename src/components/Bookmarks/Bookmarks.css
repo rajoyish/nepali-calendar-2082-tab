@@ -1,0 +1,247 @@
+.bookmarks {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: "Mona Sans", sans-serif;
+}
+
+.bookmarks__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.bookmarks__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.bookmarks__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.bookmarks__count {
+    font-size: 0.85rem;
+    background: var(--accent-sky);
+    color: var(--dark-black);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+}
+
+.bookmarks__add-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: var(--dark-black);
+    color: var(--accent-sky);
+    transition: all 0.2s ease;
+}
+
+.bookmarks__add-btn:hover {
+    background-color: var(--accent-sky);
+    color: var(--dark-black);
+}
+
+.bookmarks__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.bookmarks__item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.bookmarks__item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.bookmarks__link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: whitesmoke;
+    flex: 1;
+    min-width: 0;
+}
+
+.bookmarks__link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+}
+
+.bookmarks__icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.bookmarks__delete {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    opacity: 0;
+    padding: 0 0 0 0.5rem;
+    display: grid;
+    place-items: center;
+    transition: opacity 0.2s;
+}
+
+.bookmarks__item:hover .bookmarks__delete {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.bookmarks__modal {
+    margin: auto;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: #1a1a2e; /* Deep dark background */
+    color: whitesmoke;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bookmarks__modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.bookmarks__modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+.bookmarks__modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1a1a2e;
+}
+
+.bookmarks__modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: "Mona Sans", sans-serif;
+}
+
+.bookmarks__modal-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    transition: color 0.2s;
+}
+
+.bookmarks__modal-close:hover {
+    color: whitesmoke;
+}
+
+.bookmarks__modal-body {
+    padding: 1rem 1.5rem;
+    overflow-y: auto;
+    font-family: "Mona Sans", sans-serif;
+}
+
+/* Tree Structure inside Modal */
+.bm-tree {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.bm-tree ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0.5rem;
+}
+
+.bm-tree li {
+    margin: 0.4rem 0;
+}
+
+.bm-tree details summary {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.bm-tree details summary:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bm-tree__node {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.bm-tree__node:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bm-tree__node span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 350px;
+    font-size: 0.95rem;
+}
+
+.bm-tree__empty {
+    padding-left: 2rem;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+/* Custom Checkbox */
+.bm-tree__node input[type="checkbox"] {
+    accent-color: #30cfd0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

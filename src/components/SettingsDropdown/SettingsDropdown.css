@@ -4,7 +4,7 @@
 }
 
 .settings__trigger {
-    background: #4a90e2;
+    background: var(--dark-green);
     color: white;
     border: none;
     padding: 12px 16px;
@@ -21,19 +21,19 @@
 }
 
 .settings__trigger:hover {
-    background: #357abd;
+    background: var(--accent-green);
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 4px 8px rgba(67, 191, 10, 0.3);
 }
 
 .settings__trigger:focus {
-    outline: 2px solid #357abd;
+    outline: 2px solid var(--accent-green);
     outline-offset: 2px;
 }
 
 .settings__trigger:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 2px 40.3x;
 }
 
 .settings__trigger-text {

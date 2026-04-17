@@ -2,9 +2,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding: 1rem;
     align-items: center;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 
 .calendar {
@@ -43,7 +42,7 @@
 .bullet::before {
     content: "";
     position: absolute;
-    background-color: cyan;
+    background-color: var(--accent-sky);
     height: 0.8rem;
     width: 0.8rem;
     margin-top: 0.3rem;
@@ -128,7 +127,6 @@
         justify-content: center;
     }
     .calendar__upper {
-        padding: 1rem 6rem;
         flex-direction: row;
     }
 }

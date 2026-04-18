@@ -102,14 +102,12 @@
 
 .calendar-controls__month-select {
     padding: 0.25rem 0.5rem;
-    font-size: 0.9rem;
     border-radius: 0.25em;
-    border: 1px solid lightslategray;
     background-color: white;
     color: #1d1c1c;
     cursor: pointer;
     outline: none;
-    font-family: inherit;
+    font-family: "Mona Sans", sans-serif;
 }
 
 .calendar-controls__month-select:hover {

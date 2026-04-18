@@ -144,13 +144,13 @@ function renderMonthGrid(
 
       const eventText = dateObj.event_title ? dateObj.event_title : "छैन";
       const tithiText = dateObj.tithi ? dateObj.tithi : "छैन";
-      const holidayStatus = isHoliday(dateObj) ? "हो" : "छैन";
+      const holidayStatus = isHoliday(dateObj) ? "छ" : "छैन";
 
       body.innerHTML = `
-        <p>अङ्ग्रेजी तारिख: <strong>${fullEnglishDate}</strong></p>
-        <p>तिथि: <strong>${tithiText}</strong></p>
-        <p>घटनाक्रम: <strong>${eventText}</strong></p>
-        <p>सार्वजनिक विदा: <strong>${holidayStatus}</strong></p>
+        <p>अङ्ग्रेजी तारिख : <strong>${fullEnglishDate}</strong></p>
+        <p>तिथि : <strong>${tithiText}</strong></p>
+        <p>कार्यक्रम : <strong>${eventText}</strong></p>
+        <p>सार्वजनिक विदा : <strong>${holidayStatus}</strong></p>
       `;
       dialog.showModal();
     });

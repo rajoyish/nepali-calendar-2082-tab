@@ -10,46 +10,20 @@ import {
 let abbreviationListenerAdded = false;
 
 function isHoliday(dateObj) {
-  return (
-    dateObj &&
-    Array.isArray(dateObj.classes) &&
-    dateObj.classes.includes("is-holiday")
-  );
+  return dateObj && dateObj.isHoliday === true;
 }
 
 function createModal() {
   const dialog = document.createElement("dialog");
   dialog.className = "date-modal";
 
-  const content = document.createElement("div");
-  content.className = "date-modal__content";
-
-  const header = document.createElement("header");
-  header.className = "date-modal__header";
-
-  const title = document.createElement("h3");
-  title.className = "date-modal__title";
-
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "date-modal__close";
-  closeBtn.innerHTML = "&times;";
-  closeBtn.onclick = () => dialog.close();
-
-  header.appendChild(title);
-  header.appendChild(closeBtn);
-
-  const body = document.createElement("div");
-  body.className = "date-modal__body";
-
-  content.appendChild(header);
-  content.appendChild(body);
-  dialog.appendChild(content);
-
   dialog.addEventListener("click", (e) => {
-    if (e.target === dialog) dialog.close();
+    if (e.target === dialog || e.target.closest(".date-modal__close")) {
+      dialog.close();
+    }
   });
 
-  return { dialog, title, body };
+  return { dialog };
 }
 
 function renderMonthGrid(
@@ -57,7 +31,7 @@ function renderMonthGrid(
   monthDates,
   firstDayWeekIndex,
   todaysNpDateStr,
-  month_np,
+  monthNp,
   year,
   modalElements,
   monthYearEn,
@@ -65,7 +39,7 @@ function renderMonthGrid(
   const totalCells = 42;
   let cellIndex = 0;
   let dateIndex = 0;
-  const firstDateEn = parseInt(monthDates[0].date_en, 10);
+  const firstDateEn = parseInt(monthDates[0].dateEn, 10);
 
   for (; cellIndex < firstDayWeekIndex; cellIndex++) {
     const li = document.createElement("li");
@@ -86,7 +60,7 @@ function renderMonthGrid(
     if (cellIndex % 7 === 6) li.classList.add("is-saturday");
     if (isHoliday(dateObj)) li.classList.add("is-holiday");
 
-    const cellNpDateStr = `${month_np} ${dateObj.date_np}, ${year}`;
+    const cellNpDateStr = `${monthNp} ${dateObj.dateNp}, ${year}`;
     if (todaysNpDateStr && cellNpDateStr === todaysNpDateStr) {
       li.classList.add("is-today");
     }
@@ -94,12 +68,12 @@ function renderMonthGrid(
     const spanEn = document.createElement("span");
     spanEn.className = "month-view__date-en";
     spanEn.setAttribute("data-month-view-date-en", "");
-    spanEn.textContent = dateObj.date_en;
+    spanEn.textContent = dateObj.dateEn;
 
     const spanNp = document.createElement("span");
     spanNp.className = "month-view__date-np";
     spanNp.setAttribute("data-month-view-date-np", "");
-    spanNp.textContent = dateObj.date_np;
+    spanNp.textContent = dateObj.dateNp;
 
     const spanTithi = document.createElement("span");
     spanTithi.className = "month-view__date-tithi";
@@ -111,47 +85,167 @@ function renderMonthGrid(
     li.appendChild(spanTithi);
 
     li.addEventListener("click", () => {
-      const { dialog, title, body } = modalElements;
-      title.textContent = `${month_np} ${dateObj.date_np}, ${year}`;
+      const { dialog } = modalElements;
+      const d = dateObj.details;
 
-      if (isHoliday(dateObj)) {
-        title.style.color = "red";
-      } else {
-        title.style.color = "";
-      }
-
-      const dateEnNum = parseInt(dateObj.date_en, 10);
+      const dateEnNum = parseInt(dateObj.dateEn, 10);
       const { monthIndex, year: enYear } = getGregorianMonthYear(
         monthYearEn,
         dateEnNum,
         firstDateEn,
       );
-      const fullMonths = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-      const fullEnglishDate = `${dateEnNum} ${fullMonths[monthIndex]} ${enYear}`;
 
-      const eventText = dateObj.event_title ? dateObj.event_title : "छैन";
-      const tithiText = dateObj.tithi ? dateObj.tithi : "छैन";
-      const holidayStatus = isHoliday(dateObj) ? "छ" : "छैन";
+      const targetDate = new Date(enYear, monthIndex, dateEnNum);
+      targetDate.setHours(0, 0, 0, 0);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
 
-      body.innerHTML = `
-        <p>अङ्ग्रेजी तारिख : <strong>${fullEnglishDate}</strong></p>
-        <p>तिथि : <strong>${tithiText}</strong></p>
-        <p>कार्यक्रम : <strong>${eventText}</strong></p>
-        <p>सार्वजनिक विदा : <strong>${holidayStatus}</strong></p>
-      `;
+      const diffDays = Math.round((targetDate - today) / 86400000);
+      let relativeDayText = "";
+      if (diffDays === 0) relativeDayText = "आज";
+      else if (diffDays > 0) relativeDayText = `${diffDays} दिन बाँकी`;
+      else relativeDayText = `${Math.abs(diffDays)} दिन अघि`;
+
+      let bodyHtml = `<div class="date-modal__content">`;
+
+      if (d) {
+        const titleColor = isHoliday(dateObj) ? 'style="color:#e53935;"' : "";
+        bodyHtml += `
+          <header class="date-modal__header">
+            <h3 class="date-modal__title" ${titleColor}>${monthNp} ${dateObj.dateNp}, ${year}, ${d.panchanga.dayName}</h3>
+            <div class="date-modal__header-right">
+              <span class="date-modal__badge">${relativeDayText}</span>
+              <button class="date-modal__close">&times;</button>
+            </div>
+          </header>
+
+          <div class="date-modal__meta">
+            <div class="date-modal__meta-col">
+              <div>${d.fullDateEn}</div>
+              <p class="date-modal__text-muted">${d.nepalSamvat || ""}</p>
+            </div>
+            <div class="date-modal__meta-col date-modal__meta-col--right">
+              <div>${d.panchanga.yoga ? d.panchanga.yoga + " " : ""}${dateObj.tithi}</div>
+              <p class="date-modal__text-muted">☀️ सूर्योदय ०५:${d.sunrise} &nbsp; 🌅 सूर्यास्त १८:${d.sunset}</p>
+            </div>
+          </div>
+
+          <div class="date-modal__section">
+            <h4 class="date-modal__section-title">पञ्चाङ्ग</h4>
+            <div class="date-modal__grid">
+              <div class="date-modal__grid-label">दिन</div>
+              <div class="date-modal__grid-value">${d.panchanga.dayName}</div>
+              <div class="date-modal__grid-label">तिथि</div>
+              <div class="date-modal__grid-value">${d.panchanga.tithiDetails}</div>
+              <div class="date-modal__grid-label">नक्षत्र</div>
+              <div class="date-modal__grid-value">${d.panchanga.nakshatra}</div>
+              <div class="date-modal__grid-label">योग</div>
+              <div class="date-modal__grid-value">${d.panchanga.yoga}</div>
+              <div class="date-modal__grid-label">करण</div>
+              <div class="date-modal__grid-value">${d.panchanga.firstKarana}</div>
+            </div>
+          </div>
+        `;
+
+        let eventsList =
+          d.events && d.events.length > 0
+            ? d.events
+                .map(
+                  (e) => `
+              <li class="date-modal__list-item">
+                <span class="date-modal__bullet"></span>
+                ${e.label} ${e.isHoliday ? '<span class="date-modal__tag-holiday">(बिदा)</span>' : ""}
+              </li>`,
+                )
+                .join("")
+            : `<li class="date-modal__list-item"><span class="date-modal__bullet"></span> ${dateObj.eventTitle || "छैन"}</li>`;
+
+        bodyHtml += `
+          <div class="date-modal__section">
+            <h4 class="date-modal__section-title">कार्यक्रमहरू</h4>
+            <ul class="date-modal__list">${eventsList}</ul>
+          </div>
+        `;
+
+        let auspiciousList =
+          d.auspiciousTimes && d.auspiciousTimes.length > 0
+            ? d.auspiciousTimes
+                .map(
+                  (a) => `
+              <li class="date-modal__list-item"><span class="date-modal__bullet"></span> ${a}</li>`,
+                )
+                .join("")
+            : `<p class="date-modal__text-muted">कुनै शुभ साइत तथा मुहूर्त फेला परेन |</p>`;
+
+        bodyHtml += `
+          <div class="date-modal__section">
+            <h4 class="date-modal__section-title">शुभ साइत</h4>
+            <ul class="date-modal__list">${auspiciousList}</ul>
+          </div>
+        `;
+
+        if (d.muhurtas && d.muhurtas.length > 0) {
+          bodyHtml += `
+            <div class="date-modal__section">
+              <h4 class="date-modal__section-title">मुहूर्त</h4>
+              <div class="date-modal__grid">
+                ${d.muhurtas.map((m) => `<div class="date-modal__grid-label">${m.label}</div><div class="date-modal__grid-value">${m.time}</div>`).join("")}
+              </div>
+            </div>
+           `;
+        }
+      } else {
+        const fallbackDayName = targetDate.toLocaleDateString("ne-NP", {
+          weekday: "long",
+        });
+        const fullMonths = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const fallbackDateEnStr = `${dateEnNum} ${fullMonths[monthIndex]} ${enYear}, ${targetDate.toLocaleDateString("en-US", { weekday: "long" })}`;
+        const titleColor = isHoliday(dateObj) ? 'style="color:#e53935;"' : "";
+
+        bodyHtml += `
+          <header class="date-modal__header">
+            <h3 class="date-modal__title" ${titleColor}>${monthNp} ${dateObj.dateNp}, ${year}, ${fallbackDayName}</h3>
+            <div class="date-modal__header-right">
+              <span class="date-modal__badge">${relativeDayText}</span>
+              <button class="date-modal__close">&times;</button>
+            </div>
+          </header>
+          <div class="date-modal__meta">
+            <div class="date-modal__meta-col">
+              <div>${fallbackDateEnStr}</div>
+            </div>
+            <div class="date-modal__meta-col date-modal__meta-col--right">
+              <div>${dateObj.tithi || ""}</div>
+            </div>
+          </div>
+          <div class="date-modal__section">
+            <h4 class="date-modal__section-title">कार्यक्रमहरू</h4>
+            <ul class="date-modal__list">
+              <li class="date-modal__list-item">
+                <span class="date-modal__bullet"></span>
+                ${dateObj.eventTitle || "छैन"}
+                ${isHoliday(dateObj) ? '<span class="date-modal__tag-holiday">(बिदा)</span>' : ""}
+              </li>
+            </ul>
+          </div>
+        `;
+      }
+
+      bodyHtml += `</div>`;
+      dialog.innerHTML = bodyHtml;
       dialog.showModal();
     });
 
@@ -248,7 +342,7 @@ export function initMonthView(container) {
     calendarData.months.forEach((m, index) => {
       const option = document.createElement("option");
       option.value = index;
-      option.textContent = `${m.month_np} (${m.month_year_en})`;
+      option.textContent = `${m.monthNp} (${m.monthYearEn})`;
       monthSelect.appendChild(option);
     });
   }
@@ -283,9 +377,14 @@ export function initMonthView(container) {
   let todaysNpDateStr = "";
 
   if (todayNp && calendarData.months) {
-    todaysNpDateStr = `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`;
+    const tMonth = todayNp.monthNp || todayNp.month_np;
+    const tDate = todayNp.dateNp || todayNp.date_np;
+    const tYear = todayNp.yearNp || todayNp.year;
+
+    todaysNpDateStr = `${tMonth} ${tDate}, ${tYear}`;
+
     const foundIndex = calendarData.months.findIndex(
-      (m) => m.month_np === todayNp.month_np,
+      (m) => m.monthNp === tMonth,
     );
     if (foundIndex !== -1) {
       currentMonthIndex = foundIndex;
@@ -301,15 +400,15 @@ export function initMonthView(container) {
     const monthObj = calendarData.months[selectedIndex];
 
     spanNp.textContent = todaysNpDateStr;
-    spanMonthYear.textContent = `${calendarData.year} ${monthObj.month_np} | ${monthObj.month_year_en}`;
+    spanMonthYear.textContent = `${calendarData.yearNp} ${monthObj.monthNp} | ${monthObj.monthYearEn}`;
 
     ul.innerHTML = "";
     ul.appendChild(headerLi);
     renderNepaliWeekdayHeader(ul);
 
-    const firstDateObj = monthObj.dates[0];
-    const firstDateEn = parseInt(firstDateObj.date_en, 10);
-    const monthYearEn = monthObj.month_year_en;
+    const firstDateObj = monthObj.days[0];
+    const firstDateEn = parseInt(firstDateObj.dateEn, 10);
+    const monthYearEn = monthObj.monthYearEn;
 
     const { monthIndex, year } = getGregorianMonthYear(
       monthYearEn,
@@ -321,11 +420,11 @@ export function initMonthView(container) {
 
     renderMonthGrid(
       ul,
-      monthObj.dates,
+      monthObj.days,
       firstDayWeekIndex,
       todaysNpDateStr,
-      monthObj.month_np,
-      calendarData.year,
+      monthObj.monthNp,
+      calendarData.yearNp,
       modalElements,
       monthYearEn,
     );

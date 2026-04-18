@@ -1,237 +1,955 @@
- {
-      "month_np": "भदौ",
-      "month_year_en": "Aug/Sep 2026",
-      "dates": [
-        {
-          "classes": [],
-          "event_title": "नाग पञ्चमी व्रत",
-          "date_np": "१",
-          "tithi": "पञ्चमी",
-          "date_en": "17"
+{
+  "monthNp": "भदौ",
+  "monthYearEn": "Aug/Sep 2026",
+  "days": [
+    {
+      "dateNp": "१",
+      "dateEn": 17,
+      "tithi": "पञ्चमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "नाग पञ्चमी व्रत",
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "१ भदौ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "17 August 2026, Monday",
+        "sunrise": "०५ः३६",
+        "sunset": "१८ः३८",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "पञ्चमी १८:५७ बजेसम्म",
+          "nakshatra": "हस्त ०६:५२ बजेसम्म",
+          "yoga": "साध्य",
+          "moonSign": "१९:१७",
+          "sunSign": "सिंह",
+          "firstKarana": "बव",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "कल्कि जयन्ती",
-          "date_np": "२",
-          "tithi": "षष्ठी",
-          "date_en": "18"
+        "events": [
+          {
+            "label": "नाग पञ्चमी व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "सिंह संक्रान्ति",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत",
+          "पसल खोल्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०५:३८-०७:१५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०७:१५-०८:५२"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:३०-१२:०७"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:४१-१२:३३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१२:२३-१४:०३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:३३-१३:२५"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:४४-१५:२२"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:०९-१६:०१"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२",
+      "dateEn": 18,
+      "tithi": "षष्ठी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "कल्कि जयन्ती",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "३",
+      "dateEn": 19,
+      "tithi": "सप्तमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "तुलसीदास जयन्ती",
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "३ भदौ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "19 August 2026, Wednesday",
+        "sunrise": "०५ः३७",
+        "sunset": "१८ः३६",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "सप्तमी २०:३१ बजेसम्म",
+          "nakshatra": "स्वाती ०९:१८ बजेसम्म",
+          "yoga": "शुक्ल",
+          "moonSign": "२८:४२",
+          "sunSign": "सिंह",
+          "firstKarana": "गर",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "तुलसीदास जयन्ती",
-          "date_np": "३",
-          "tithi": "सप्तमी",
-          "date_en": "19"
+        "events": [
+          {
+            "label": "तुलसीदास जयन्ती",
+            "isHoliday": false
+          },
+          {
+            "label": "राष्ट्रिय सूचना दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०७:१६-०८:५३"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०७:१६-०८:५३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:३०-१२:०७"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:४१-१२:३२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:४१-१२:३३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:०७-१३:४४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१३:०७-१४:५२"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "४",
+      "dateEn": 20,
+      "tithi": "अष्टमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "गोरखकाली पूजा",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "५",
+      "dateEn": 21,
+      "tithi": "नवमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "६",
+      "dateEn": 22,
+      "tithi": "दशमी",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "७",
+      "dateEn": 23,
+      "tithi": "एकादशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "पुत्रदा एकादशी व्रत",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "८",
+      "dateEn": 24,
+      "tithi": "द्वादशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "९",
+      "dateEn": 25,
+      "tithi": "द्वादशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "प्रदोष व्रत",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१०",
+      "dateEn": 26,
+      "tithi": "त्रयोदशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "११",
+      "dateEn": 27,
+      "tithi": "चतुर्दशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "पूर्णिमा व्रत",
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "११ भदौ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "27 August 2026, Thursday",
+        "sunrise": "०५ः४०",
+        "sunset": "१८ः२८",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "चतुर्दशी ०८:३१ बजेसम्म",
+          "nakshatra": "धनिष्ठा ०२:५७ बजेसम्म",
+          "yoga": "शोभन",
+          "moonSign": "१४:१५",
+          "sunSign": "सिंह",
+          "firstKarana": "वणिज",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "गोरखकाली पूजा",
-          "date_np": "४",
-          "tithi": "अष्टमी",
-          "date_en": "20"
+        "events": [
+          {
+            "label": "पूर्णिमा व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "क्वाति खाने दिन",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०५:४२-०७:१८"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०८:५३-१०:२९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:५७-१०:४८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३९-१२:३०"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:३९-१५:१४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४०-१५:१५"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:०३-१५:५३"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "१२",
+      "dateEn": 28,
+      "tithi": "पूर्णिमा",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": "जनै पूर्णिमा रक्षा बन्धन",
+      "extraEventCount": 2,
+      "details": {
+        "fullDateNp": "१२ भदौ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "28 August 2026, Friday",
+        "sunrise": "०५ः४१",
+        "sunset": "१८ः२७",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "पूर्णिमा ०९:१६ बजेसम्म",
+          "nakshatra": "शतभिषा ०३:५८ बजेसम्म",
+          "yoga": "अतिगण्ड",
+          "moonSign": "कुम्भ",
+          "sunSign": "सिंह",
+          "firstKarana": "बव",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "५",
-          "tithi": "नवमी",
-          "date_en": "21"
+        "events": [
+          {
+            "label": "जनै पूर्णिमा रक्षा बन्धन",
+            "isHoliday": true
+          },
+          {
+            "label": "पूर्णिमा व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "क्वाति खाने दिन",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०७:१८-०८:५३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१५-०९:०६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:५४-१०:२९"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:०२-११:४२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:२९-१२:०४"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३९-१२:३०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:२९-१३:२०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:१५-१६:५०"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "१३",
+      "dateEn": 29,
+      "tithi": "प्रतिपदा",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": "गाईजात्रा (काठमाडौं उपत्यका बिदा)",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१४",
+      "dateEn": 30,
+      "tithi": "द्वितीया",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "रोपाईं जात्रा",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१५",
+      "dateEn": 31,
+      "tithi": "तृतीया",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१६",
+      "dateEn": 1,
+      "tithi": "चतुर्थी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "मंगलचौथी व्रत",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१७",
+      "dateEn": 2,
+      "tithi": "षष्ठी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१८",
+      "dateEn": 3,
+      "tithi": "सप्तमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "गौरा सप्तमी",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "१९",
+      "dateEn": 4,
+      "tithi": "अष्टमी",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": "श्रीकृष्ण जन्माष्टमी",
+      "extraEventCount": 2,
+      "details": {
+        "fullDateNp": "१९ भदौ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "4 September 2026, Friday",
+        "sunrise": "०५ः४४",
+        "sunset": "१८ः१९",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "अष्टमी २३:१७ बजेसम्म",
+          "nakshatra": "रोहिणी २३:१७ बजेसम्म",
+          "yoga": "हर्षण",
+          "moonSign": "वृष",
+          "sunSign": "सिंह",
+          "firstKarana": "बालव",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "",
-          "date_np": "६",
-          "tithi": "दशमी",
-          "date_en": "22"
+        "events": [
+          {
+            "label": "श्रीकृष्ण जन्माष्टमी",
+            "isHoliday": true
+          },
+          {
+            "label": "गाैरा पर्व",
+            "isHoliday": true
+          },
+          {
+            "label": "गोरखकाली पूजा",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "पसल खोल्ने साइत",
+          "रुद्री गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०७:२०-०८:५४"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१६-०९:०६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:५४-१०:२८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:२८-१२:०२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३७-१२:२७"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:२७-१३:१७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:१०-१६:४२"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१५:४८-१७:१८"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२०",
+      "dateEn": 5,
+      "tithi": "नवमी",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "२० भदौ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "5 September 2026, Saturday",
+        "sunrise": "०५ः४५",
+        "sunset": "१८ः१७",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "नवमी २०:५१ बजेसम्म",
+          "nakshatra": "मृगशिरा २१:३८ बजेसम्म",
+          "yoga": "वज्र",
+          "moonSign": "१०:२८",
+          "sunSign": "सिंह",
+          "firstKarana": "तैतिल",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "पुत्रदा एकादशी व्रत",
-          "date_np": "७",
-          "tithi": "एकादशी",
-          "date_en": "23"
+        "events": [
+          {
+            "label": "गूङा नवमी",
+            "isHoliday": false
+          },
+          {
+            "label": "विराटनगरमा राधाकृष्ण रथयात्रा",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०५:३५-०७:०४"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०५:४७-०७:२०"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:२७-०८:१७"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:५४-१०:२८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३७-१२:२७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:३५-१५:०९"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:०८-१६:४१"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२१",
+      "dateEn": 6,
+      "tithi": "दशमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "२२",
+      "dateEn": 7,
+      "tithi": "एकादशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "अजा एकादशी व्रत",
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "२२ भदौ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "7 September 2026, Monday",
+        "sunrise": "०५ः४६",
+        "sunset": "१८ः१५",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "एकादशी १६:०२ बजेसम्म",
+          "nakshatra": "पुनर्वसु १८:२२ बजेसम्म",
+          "yoga": "व्यतिपात",
+          "moonSign": "१२:४५",
+          "sunSign": "सिंह",
+          "firstKarana": "बालव",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "८",
-          "tithi": "द्वादशी",
-          "date_en": "24"
+        "events": [
+          {
+            "label": "अजा एकादशी व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "निजामती सेवा दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०५:४८-"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०७:१७-०८:४७"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०७:२१-०८:५४"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:२७-१२:०१"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३६-१२:२६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:२५-१३:१५"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:३४-१५:०७"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:५४-१५:४५"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२३",
+      "dateEn": 8,
+      "tithi": "द्वादशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "प्रदोष व्रत",
+      "extraEventCount": 2,
+      "details": {
+        "fullDateNp": "२३ भदौ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "8 September 2026, Tuesday",
+        "sunrise": "०५ः४६",
+        "sunset": "१८ः१४",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "द्वादशी १३:४८ बजेसम्म",
+          "nakshatra": "तिष्य १६:५५ बजेसम्म",
+          "yoga": "वरीयान",
+          "moonSign": "कर्कट",
+          "sunSign": "सिंह",
+          "firstKarana": "तैतिल",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "प्रदोष व्रत",
-          "date_np": "९",
-          "tithi": "द्वादशी",
-          "date_en": "25"
+        "events": [
+          {
+            "label": "प्रदोष व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "जेनजी शहीद दिवस",
+            "isHoliday": false
+          },
+          {
+            "label": "विश्व शिक्षा तथा साक्षरता दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०४:५५-०६:२५"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१७-०९:०७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:५४-१०:२७"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३६-१२:२५"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "११:५९-१३:३३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:००-१३:३३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:०७-१६:४०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२२:५१-२३:४०"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२४",
+      "dateEn": 9,
+      "tithi": "त्रयोदशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "२५",
+      "dateEn": 10,
+      "tithi": "चतुर्दशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "२६",
+      "dateEn": 11,
+      "tithi": "औँशी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "कुशे औंसी",
+      "extraEventCount": 1,
+      "details": {
+        "fullDateNp": "२६ भदौ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "11 September 2026, Friday",
+        "sunrise": "०५ः४७",
+        "sunset": "१८ः१०",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "औँशी ०८:४३ बजेसम्म",
+          "nakshatra": "पूर्वफाल्गुनी १४:१५ बजेसम्म",
+          "yoga": "साध्य",
+          "moonSign": "२०:११",
+          "sunSign": "सिंह",
+          "firstKarana": "नाग",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "१०",
-          "tithi": "त्रयोदशी",
-          "date_en": "26"
+        "events": [
+          {
+            "label": "कुशे औंसी",
+            "isHoliday": false
+          },
+          {
+            "label": "बुबाको मुख हेर्ने दिन",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०७:२२-०८:५४"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१७-०९:०७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:५४-१०:२७"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:२७-११:५९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:२४"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:२५-१३:१५"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:०४-१६:३६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२०:३३-२२:०७"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "२७",
+      "dateEn": 12,
+      "tithi": "प्रतिपदा",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "२८",
+      "dateEn": 13,
+      "tithi": "द्वितीया",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": "दर खाने दिन",
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "२९",
+      "dateEn": 14,
+      "tithi": "तृतीया",
+      "isHoliday": true,
+      "isToday": false,
+      "eventTitle": "हरितालिका तीज (महिला कर्मचारीहरूलाई मात्र)",
+      "extraEventCount": 2,
+      "details": {
+        "fullDateNp": "२९ भदौ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "14 September 2026, Monday",
+        "sunrise": "०५ः४९",
+        "sunset": "१८ः०८",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "तृतीया ०७:२१ बजेसम्म",
+          "nakshatra": "चित्रा १५:२१ बजेसम्म",
+          "yoga": "ब्रह्म",
+          "moonSign": "तुला",
+          "sunSign": "सिंह",
+          "firstKarana": "गर",
+          "ayana": "दक्षिणायन"
         },
-        {
-          "classes": [],
-          "event_title": "पूर्णिमा व्रत",
-          "date_np": "११",
-          "tithi": "चतुर्दशी",
-          "date_en": "27"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "जनै पूर्णिमा रक्षा बन्धन",
-          "date_np": "१२",
-          "tithi": "पूर्णिमा",
-          "date_en": "28"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "गाईजात्रा (काठमाडौं उपत्यका बिदा)",
-          "date_np": "१३",
-          "tithi": "प्रतिपदा",
-          "date_en": "29"
-        },
-        {
-          "classes": [],
-          "event_title": "रोपाईं जात्रा",
-          "date_np": "१४",
-          "tithi": "द्वितीया",
-          "date_en": "30"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "१५",
-          "tithi": "तृतीया",
-          "date_en": "31"
-        },
-        {
-          "classes": [],
-          "event_title": "मंगलचौथी व्रत",
-          "date_np": "१६",
-          "tithi": "चतुर्थी",
-          "date_en": "1"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "१७",
-          "tithi": "षष्ठी",
-          "date_en": "2"
-        },
-        {
-          "classes": [],
-          "event_title": "गौरा सप्तमी",
-          "date_np": "१८",
-          "tithi": "सप्तमी",
-          "date_en": "3"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "श्रीकृष्ण जन्माष्टमी",
-          "date_np": "१९",
-          "tithi": "अष्टमी",
-          "date_en": "4"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "",
-          "date_np": "२०",
-          "tithi": "नवमी",
-          "date_en": "5"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "२१",
-          "tithi": "दशमी",
-          "date_en": "6"
-        },
-        {
-          "classes": [],
-          "event_title": "अजा एकादशी व्रत",
-          "date_np": "२२",
-          "tithi": "एकादशी",
-          "date_en": "7"
-        },
-        {
-          "classes": [],
-          "event_title": "प्रदोष व्रत",
-          "date_np": "२३",
-          "tithi": "द्वादशी",
-          "date_en": "8"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "२४",
-          "tithi": "त्रयोदशी",
-          "date_en": "9"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "२५",
-          "tithi": "चतुर्दशी",
-          "date_en": "10"
-        },
-        {
-          "classes": [],
-          "event_title": "कुशे औंसी",
-          "date_np": "२६",
-          "tithi": "औँशी",
-          "date_en": "11"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "",
-          "date_np": "२७",
-          "tithi": "प्रतिपदा",
-          "date_en": "12"
-        },
-        {
-          "classes": [],
-          "event_title": "दर खाने दिन",
-          "date_np": "२८",
-          "tithi": "द्वितीया",
-          "date_en": "13"
-        },
-        {
-          "classes": [
-            "is-holiday"
-          ],
-          "event_title": "हरितालिका तीज (महिला कर्मचारीहरूलाई मात्र)",
-          "date_np": "२९",
-          "tithi": "तृतीया",
-          "date_en": "14"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "३०",
-          "tithi": "चतुर्थी",
-          "date_en": "15"
-        },
-        {
-          "classes": [],
-          "event_title": "",
-          "date_np": "३१",
-          "tithi": "पञ्चमी",
-          "date_en": "16"
-        }
-      ]
+        "events": [
+          {
+            "label": "हरितालिका तीज (महिला कर्मचारीहरूलाई मात्र)",
+            "isHoliday": true
+          },
+          {
+            "label": "गणेश चतुर्थी व्रत",
+            "isHoliday": false
+          },
+          {
+            "label": "बाल दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत",
+          "पसल खोल्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०५:५१-०७:२३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०७:२३-०८:५४"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:२६-११:५८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:२२-१३:११"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:३०-१५:०२"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:४९-१५:३८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२०:०२-२१:४३"
+          }
+        ]
+      }
+    },
+    {
+      "dateNp": "३०",
+      "dateEn": 15,
+      "tithi": "चतुर्थी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
+    },
+    {
+      "dateNp": "३१",
+      "dateEn": 16,
+      "tithi": "पञ्चमी",
+      "isHoliday": false,
+      "isToday": false,
+      "eventTitle": null,
+      "extraEventCount": 0,
+      "details": null
     }
+  ]
+}

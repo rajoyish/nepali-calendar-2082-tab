@@ -199,11 +199,11 @@ export function getTodayNepaliDateFull() {
   const bs = getTodayBsDate();
   if (!bs) return null;
   const monthObj = calendarData.months[bs.month - 1];
-  const dateObj = monthObj?.dates.find(
-    (d) => nepaliToNumber(d.date_np) === bs.day,
+  const dateObj = monthObj?.days.find(
+    (d) => nepaliToNumber(d.dateNp) === bs.day,
   );
   if (!dateObj) return null;
-  return { ...dateObj, month_np: monthObj.month_np, year: calendarData.year };
+  return { ...dateObj, monthNp: monthObj.monthNp, yearNp: calendarData.yearNp };
 }
 
 const setText = (selector, value) => {
@@ -220,16 +220,12 @@ let lastHolidayKey = "";
 let lastIsHoliday = false;
 
 export function updateHolidayNotice(today = getTodayNepaliDateFull()) {
-  const key = today ? `${today.year}-${today.month_np}-${today.date_np}` : "";
+  const key = today ? `${today.yearNp}-${today.monthNp}-${today.dateNp}` : "";
   if (key === lastHolidayKey) {
     setDisplay(".holiday-notice", lastIsHoliday);
     return;
   }
-  const isHoliday = !!(
-    today &&
-    today.classes &&
-    today.classes.includes("is-holiday")
-  );
+  const isHoliday = !!(today && today.isHoliday);
   lastHolidayKey = key;
   lastIsHoliday = isHoliday;
   setDisplay(".holiday-notice", isHoliday);
@@ -237,15 +233,15 @@ export function updateHolidayNotice(today = getTodayNepaliDateFull()) {
 
 export function renderTodayNepaliDate() {
   const today = getTodayNepaliDateFull();
-  setText("[data-np-date]", today?.date_np);
+  setText("[data-np-date]", today?.dateNp);
   setText(
     "[data-np-month-year]",
-    today ? `${today.month_np}, ${today.year}` : "",
+    today ? `${today.monthNp}, ${today.yearNp}` : "",
   );
   setText("[data-np-day-tithi]", today?.tithi);
 
-  const hasEvent = today && today.event_title;
-  setText("[data-np-day-event]", hasEvent ? today.event_title : "");
+  const hasEvent = today && today.eventTitle;
+  setText("[data-np-day-event]", hasEvent ? today.eventTitle : "");
   setDisplay("[data-np-day-event]", !!hasEvent);
   updateHolidayNotice(today);
 }
@@ -256,10 +252,10 @@ export function getNepaliDateForAd(adDateString) {
   const [year, month, day] = bsStr.split("-").map(Number);
   const monthObj = calendarData.months[month - 1];
   if (!monthObj) return null;
-  const npDay = monthObj.dates.find(
+  const npDay = monthObj.days.find(
     (d) =>
       Number(
-        String(d.date_np).replace(/[०१२३४५६७८९]/g, (c) =>
+        String(d.dateNp).replace(/[०१२३४५६७८९]/g, (c) =>
           "०१२३४५६७८९".indexOf(c),
         ),
       ) === day,
@@ -267,16 +263,14 @@ export function getNepaliDateForAd(adDateString) {
   if (!npDay) return null;
   return {
     ...npDay,
-    month_np: monthObj.month_np,
-    year: calendarData.year,
+    monthNp: monthObj.monthNp,
+    yearNp: calendarData.yearNp,
     bs: bsStr,
     ad: adDateString,
   };
 }
 
-// Functional Component Factory
 export function createTodayComponent() {
-  // Private State
   let lastRenderedGregorianDate = "";
   let lastRenderedNepaliDate = "";
   let lastBgImage = "";
@@ -292,11 +286,11 @@ export function createTodayComponent() {
 
       const todayNp = getTodayNepaliDateFull();
       const currentNepaliDate = todayNp
-        ? `${todayNp.month_np} ${todayNp.date_np}, ${todayNp.year}`
+        ? `${todayNp.monthNp} ${todayNp.dateNp}, ${todayNp.yearNp}`
         : "";
 
       if (todayNp && updateExtensionUICallback) {
-        updateExtensionUICallback(currentNepaliDate, todayNp.date_np);
+        updateExtensionUICallback(currentNepaliDate, todayNp.dateNp);
       }
 
       if (currentNepaliDate !== lastRenderedNepaliDate) {
@@ -344,7 +338,6 @@ export function createTodayComponent() {
     setupManualBackgroundUpdate();
   }
 
-  // Expose public API
   return {
     init,
     periodicUpdate,

@@ -204,10 +204,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -348,7 +345,7 @@
       "tithi": "द्वितीया",
       "isHoliday": true,
       "isToday": false,
-      "eventTitle": "क्रिसमस (इसाई धर्म मात्र)",
+      "eventTitle": "ख्रीष्टमस (ख्रीष्टियनहरुको लागि मात्र)",
       "extraEventCount": 0,
       "details": null
     },
@@ -507,9 +504,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "दूर मुहूर्तम्",

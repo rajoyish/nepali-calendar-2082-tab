@@ -1,19 +1,20 @@
 .month-view {
     max-width: 100vw;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     display: grid;
     grid-template-columns: repeat(7, minmax(44px, 1fr));
     grid-template-rows: auto auto 1fr;
     list-style-type: none;
-    padding: 0.5rem;
-    color: #1d1c1c;
-    border-radius: 0.25em;
+    padding: 1rem;
+    color: var(--dark-black);
+    border-radius: 0.5em;
     gap: 0.5em;
     box-sizing: border-box;
     overflow-x: auto;
     font-size: 0.95rem;
     margin-bottom: 5em;
+    box-shadow: 0 10px 25px rgba(19, 24, 38, 0.08);
 }
 
 .month-view-header-wrapper {
@@ -22,10 +23,48 @@
     font-weight: 700;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 0.5rem;
-    gap: 0.25rem;
-    font-size: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    color: var(--dark-black);
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.month-nav-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.month-nav-btn:hover:not(:disabled) {
+    color: var(--accent-green);
+    transform: scale(1.1);
+}
+
+.month-nav-btn:disabled {
+    color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.month-year-indicator {
+    font-weight: 700;
+    min-width: 140px;
+    text-align: center;
 }
 
 .month-view__day-of-week {
@@ -33,32 +72,40 @@
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
+    color: var(--dark-black);
 }
 
 .month-view__day-label--np {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .month-view__date {
-    border: 1px solid lightslategray;
+    border: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.25rem;
+    padding: 0.4rem;
     border-radius: 0.5em;
     min-width: 0;
+    background-color: #ffffff;
 }
 
 .month-view__date:not(.month-view__date--empty) {
     cursor: pointer;
     transition:
         background-color 0.2s ease,
-        transform 0.1s ease;
+        color 0.2s ease,
+        transform 0.1s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .month-view__date:not(.month-view__date--empty):hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: scale(1.03);
+    background-color: var(--accent-sky);
+    color: var(--dark-black);
+    transform: translateY(-2px);
+    border-color: var(--accent-sky);
+    box-shadow: 0 4px 10px rgba(5, 242, 242, 0.3);
 }
 
 .month-view__date-en {
@@ -67,13 +114,14 @@
 }
 
 .month-view__date-np {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .month-view__date-tithi {
     align-self: flex-start;
     display: none;
+    font-size: 0.85rem;
 }
 
 .month-view__date--empty {
@@ -82,47 +130,30 @@
     pointer-events: none;
 }
 
-.month-view__date.is-today {
-    background: #1ec31e;
-    border-color: #1ec31e;
-}
-
-.is-saturday,
-.is-holiday {
+.month-view__date:not(.month-view__date--empty).is-saturday,
+.month-view__date:not(.month-view__date--empty).is-holiday {
+    background-color: #ffffff;
     color: #e53935;
-    border-color: #e53935;
+    border: 2px solid #e53935;
+    padding: calc(0.4rem - 1px);
 }
 
-.calendar-controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
-}
-
-.calendar-controls__month-select {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25em;
-    background-color: white;
-    color: #1d1c1c;
-    cursor: pointer;
-    outline: none;
-    font-family: "Mona Sans", sans-serif;
-}
-
-.calendar-controls__month-select:hover {
-    border-color: #333;
+.month-view__date.is-today:not(.is-saturday) {
+    background-color: #ffffff;
+    color: var(--dark-green);
+    border: 2px solid var(--dark-green);
+    padding: calc(0.4rem - 1px);
 }
 
 .date-modal {
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     padding: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(19, 24, 38, 0.2);
     max-width: 500px;
     width: 90%;
     font-family: "Mona Sans", "Anek Devanagari", sans-serif;
-    color: #1d1c1c;
+    color: var(--dark-black);
     margin: 0;
     position: fixed;
     top: 50%;
@@ -131,14 +162,14 @@
 }
 
 .date-modal::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
+    background: rgba(19, 24, 38, 0.6);
+    backdrop-filter: blur(4px);
 }
 
 .date-modal__content {
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: #ffffff;
 }
 
 .date-modal__header {
@@ -152,7 +183,7 @@
 .date-modal__title {
     margin: 0;
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.3;
 }
 
@@ -163,12 +194,13 @@
 }
 
 .date-modal__badge {
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    padding: 0.25rem 0.75rem;
+    background-color: var(--accent-sky);
+    border: none;
+    padding: 0.35rem 0.85rem;
     border-radius: 1rem;
     font-size: 0.85rem;
-    color: #444;
+    font-weight: 600;
+    color: var(--dark-black);
     white-space: nowrap;
 }
 
@@ -177,28 +209,28 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #666;
+    color: #64748b;
     padding: 0;
     line-height: 1;
     transition: color 0.2s;
 }
 
 .date-modal__close:hover {
-    color: #000;
+    color: var(--danger-red, #e53935);
 }
 
 .date-modal__meta {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f5f9;
     font-size: 0.95rem;
 }
 
 .date-modal__meta-col {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.35rem;
 }
 
 .date-modal__meta-col--right {
@@ -206,14 +238,14 @@
 }
 
 .date-modal__text-muted {
-    color: #666;
+    color: #64748b;
     font-size: 0.9rem;
     margin: 0;
 }
 
 .date-modal__section {
     padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .date-modal__section:last-child {
@@ -222,25 +254,27 @@
 
 .date-modal__section-title {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0 0 1rem 0;
-    color: #333;
+    color: var(--dark-black);
 }
 
 .date-modal__grid {
     display: grid;
     grid-template-columns: 80px 1fr;
-    row-gap: 0.5rem;
+    row-gap: 0.6rem;
     column-gap: 1rem;
     font-size: 0.95rem;
 }
 
 .date-modal__grid-label {
-    color: #555;
+    color: #64748b;
+    font-weight: 500;
 }
 
 .date-modal__grid-value {
-    color: #111;
+    color: var(--dark-black);
+    font-weight: 600;
 }
 
 .date-modal__list {
@@ -249,7 +283,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .date-modal__list-item {
@@ -262,7 +296,7 @@
 .date-modal__bullet {
     width: 8px;
     height: 8px;
-    background-color: #f26b38;
+    background-color: var(--accent-green);
     border-radius: 50%;
     margin-top: 6px;
     margin-right: 0.75rem;
@@ -272,13 +306,14 @@
 .date-modal__tag-holiday {
     color: #e53935;
     margin-left: 0.5rem;
+    font-weight: 600;
 }
 
 @media (min-width: 500px) {
     .month-view {
         max-width: 75rem;
         padding: 2rem;
-        border-radius: 0.5em;
+        border-radius: 0.75em;
         grid-template-columns: repeat(7, 1fr);
         font-size: unset;
     }
@@ -288,24 +323,30 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         gap: 0;
     }
 
     .month-view__day-of-week {
-        font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+        font-size: clamp(1rem, 2vw + 0.5rem, 1.3rem);
     }
 
     .month-view__date {
-        padding: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .month-view__date:not(.month-view__date--empty).is-saturday,
+    .month-view__date:not(.month-view__date--empty).is-holiday,
+    .month-view__date.is-today:not(.is-saturday) {
+        padding: calc(0.75rem - 1px);
     }
 
     .month-view__date-en {
-        font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+        font-size: clamp(1rem, 2vw + 0.5rem, 1.2rem);
     }
 
     .month-view__date-np {
-        font-size: clamp(1.2rem, 3vw + 0.5rem, 2.2rem);
+        font-size: clamp(1.2rem, 3vw + 0.5rem, 2rem);
     }
 
     .month-view__date-tithi {

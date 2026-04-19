@@ -5,6 +5,8 @@ function initDateConverter() {
   const container = document.querySelector("#date-converter");
   if (!container) return;
 
+  container.classList.add("glass");
+
   const elements = {
     modeToggle: container.querySelector(".date-converter__toggle-input"),
     modeLabelAd: container.querySelector(".date-converter__mode-label--ad"),
@@ -18,6 +20,13 @@ function initDateConverter() {
     bsDay: container.querySelector(".date-converter__input--day"),
     adResult: container.querySelector(".date-converter__output--ad"),
   };
+
+  if (elements.adInput) elements.adInput.classList.add("glass-pill");
+  if (elements.bsYear) elements.bsYear.classList.add("glass-pill");
+  if (elements.bsMonth) elements.bsMonth.classList.add("glass-pill");
+  if (elements.bsDay) elements.bsDay.classList.add("glass-pill");
+  if (elements.bsResult) elements.bsResult.classList.add("glass-pill");
+  if (elements.adResult) elements.adResult.classList.add("glass-pill");
 
   let currentMode = "ad-to-bs";
   let copyTimeoutId = null;

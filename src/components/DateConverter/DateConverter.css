@@ -1,8 +1,12 @@
-.date-converter__modes,
-.date-converter__input-group label,
-.date-converter__result-group label,
-.custom-date-field {
+.date-converter {
     font-family: "Mona Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+    color: #fff;
 }
 
 .date-converter__modes {
@@ -16,250 +20,231 @@
 .date-converter__mode-label {
     font-size: 1.2em;
     font-weight: 500;
-    color: #fff;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 0.5;
+    transition:
+        opacity 0.3s ease,
+        color 0.3s ease;
 }
 
-input[type="checkbox"].toggle {
+.date-converter__mode-label--active {
+    opacity: 1;
+    color: var(--accent-sky);
+}
+
+.date-converter__toggle-input {
     opacity: 0;
     position: absolute;
     left: -9999px;
 }
 
-.toggle-switch {
+.date-converter__toggle-switch {
     position: relative;
     display: inline-block;
     width: 3.2em;
     height: 1.8em;
-    background: #e0e0e0;
+    background: var(--dark-black);
     border-radius: 1em;
-    transition: background 0.2s;
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
     cursor: pointer;
     vertical-align: middle;
+    border: 2px solid var(--accent-sky);
 }
 
-.toggle-switch::before {
+.date-converter__toggle-switch::before {
     content: "";
     position: absolute;
-    top: 0.2em;
-    left: 0.2em;
-    width: 1.4em;
-    height: 1.4em;
-    background: #2196f3;
+    top: 0.12em;
+    left: 0.15em;
+    width: 1.3em;
+    height: 1.3em;
+    background: var(--accent-sky);
     border-radius: 50%;
     transition:
-        left 0.2s,
-        background 0.2s;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-input[type="checkbox"].toggle:checked + .toggle-switch::before {
-    left: 1.6em;
-    background: #43c94b;
+.date-converter__toggle-input:checked + .date-converter__toggle-switch {
+    background: var(--dark-green);
+    border-color: var(--accent-green);
 }
 
-input[type="checkbox"].toggle:focus + .toggle-switch {
-    outline: 2px solid #2196f3;
-    outline-offset: 2px;
+.date-converter__toggle-input:checked + .date-converter__toggle-switch::before {
+    left: 1.5em;
+    background: var(--accent-green);
 }
 
-input[type="checkbox"].toggle:not(:checked) ~ [data-mode-label-ad] {
-    opacity: 1;
+.date-converter__toggle-input:focus-visible + .date-converter__toggle-switch {
+    outline: 2px solid var(--accent-sky);
+    outline-offset: 4px;
 }
 
-input[type="checkbox"].toggle:checked ~ [data-mode-label-bs] {
-    opacity: 1;
-}
-
-.date-converter {
-    font-family: inherit;
+.date-converter__content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    font-size: 1.5rem;
-    margin-bottom: 5em;
 }
 
-.date-converter__input-group {
+.date-converter__section {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    text-align: center;
+    align-items: center;
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.date-converter__input-group label {
-    margin-bottom: 2rem;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.date-converter__result-group {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.date-converter__result-group label {
-    margin-bottom: 1rem;
-}
-
-.date-converter__bs-date-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-.date-converter__bs-date-inputs input::placeholder {
-    color: gold;
-}
-
-.date-converter__content input,
-select {
-    min-width: 20rem;
-    border: 1px solid whitesmoke;
-    background: transparent;
-    color: whitesmoke;
-    border-radius: 0.3em;
-    height: 4rem;
-    text-align: center;
-    font-size: 1.3rem;
-}
-
-input:focus,
-select:focus {
-    outline: 3px solid rgba(221, 160, 221, 0.8);
-    border: none;
-}
-
-option {
-    color: black;
-}
-
-output {
-    font-size: 3rem;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Clipboard icon and popover for copy-to-clipboard */
-[data-converter-bs-result] strong,
-[data-converter-bs-result] small,
-[data-converter-ad-result] strong,
-[data-converter-ad-result] small {
-    position: relative;
-    cursor: pointer;
-    transition: background 0.15s;
-}
-
-[data-converter-bs-result] strong:hover,
-[data-converter-bs-result] small:hover,
-[data-converter-ad-result] strong:hover,
-[data-converter-ad-result] small:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-[data-converter-bs-result] strong:hover::after,
-[data-converter-bs-result] small:hover::after,
-[data-converter-ad-result] strong:hover::after,
-[data-converter-ad-result] small:hover::after {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -0.3em;
-    margin-left: 0.1em;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='white' stroke-width='1.5' viewBox='0 0 16 16'%3E%3Cpath d='M10 1.5v1a1.5 1.5 0 0 1-3 0v-1'/%3E%3Crect width='10' height='12' x='3' y='2.5' rx='2'/%3E%3C/svg%3E")
-        no-repeat center/contain;
-    pointer-events: none;
-}
-
-[data-converter-bs-result] strong:hover::before,
-[data-converter-bs-result] small:hover::before,
-[data-converter-ad-result] strong:hover::before,
-[data-converter-ad-result] small:hover::before {
-    content: "";
+.date-converter__section--hidden {
     display: none;
 }
 
-.copy-popover {
-    font-family: sans-serif;
+.date-converter__input-group,
+.date-converter__result-group {
+    font-family: "Anek Devanagari", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.date-converter__label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.date-converter__bs-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    .date-converter__bs-inputs {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.date-converter__input,
+.date-converter__select {
+    width: 100%;
+    flex: 1;
+    border: 2px solid var(--accent-sky);
+    background: var(--dark-black);
+    color-scheme: dark;
+    color: #fff;
+    border-radius: 0.5em;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: inherit;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.1s ease;
+}
+
+.date-converter__input:focus,
+.date-converter__select:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 4px rgba(67, 191, 10, 0.2);
+    transform: translateY(-2px);
+}
+
+.date-converter__input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.date-converter__select option {
+    background: var(--dark-black);
+    color: #fff;
+}
+
+.date-converter__output {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    border-radius: 0.3em;
+    padding: 0.2em 0.8em;
+    text-align: center;
+}
+
+.date-converter__output:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.date-converter__output-main {
+    font-weight: 700;
+}
+
+.date-converter__output-sub {
+    font-size: 1.5rem;
+    /*margin-top: 0.5em;*/
+    font-weight: 400;
+}
+
+.date-converter__popover {
     position: absolute;
-    top: -2.2em;
+    top: -45px;
     left: 50%;
-    transform: translateX(-50%);
-    background: purple;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--dark-green);
     color: #fff;
     font-size: 1rem;
-    padding: 0.25em 0.8em;
+    padding: 0.5em 1.2em;
     border-radius: 0.5em;
     white-space: nowrap;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
-.copy-popover.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Custom Date Field */
-.custom-date-input {
-    position: relative;
-    display: flex;
-    align-items: center;
-    line-height: 1;
-}
-
-.custom-date-field {
-    padding-right: 2.5em;
-    color: white;
-    background: transparent;
-    border: 1px solid #fff;
-    border-radius: 0.5em;
-    padding-top: 0.3em;
-}
-
-#converter-ad-date {
-    font-size: 1.5rem;
-}
-
-.custom-date-field::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    display: none;
-}
-
-.custom-date-field::-moz-calendar-picker-indicator {
-    opacity: 0;
-    display: none;
-}
-
-.custom-date-field::-ms-input-placeholder {
-    color: transparent;
-}
-
-.custom-calendar-icon {
+.date-converter__popover::after {
+    content: "";
     position: absolute;
-    right: 0.75em;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 1.3em;
+    bottom: -0.4em;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0.5em 0.5em 0;
+    border-style: solid;
+    border-color: var(--dark-green) transparent transparent transparent;
+}
+
+.date-converter__popover--show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.custom-calendar-icon:hover {
-    color: #0d6efd;
-}
-
-@media (min-width: 500px) {
-    .date-converter__bs-date-inputs {
-        flex-direction: row;
-    }
 }

@@ -7,7 +7,7 @@ import {
 } from "./components/Today/Today.js";
 import { setupTabs } from "./tabs.js";
 import { initMonthView } from "./components/FullCalendar/FullCalendar.js";
-import { createDateConverter } from "./components/DateConverter/DateConverter.js";
+import "./components/DateConverter/DateConverter.js";
 import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
@@ -18,19 +18,6 @@ window.getNepaliDateForAd = getNepaliDateForAd;
 
 const todayComponent = createTodayComponent();
 const taskReminder = createTaskReminder();
-let converterInstance = null;
-
-function initializeConverter() {
-  const converterPanel = document.getElementById("panel-converter");
-  if (converterPanel && !converterInstance) {
-    try {
-      converterInstance = createDateConverter();
-      converterInstance.init("panel-converter");
-    } catch (error) {
-      console.error(error);
-    }
-  }
-}
 
 function setupTabActivation(tabSelector, panelSelector, onActivate) {
   const tabsList = document.querySelector(".tabs-list");
@@ -74,12 +61,6 @@ function setupCalendarTab() {
   });
 }
 
-function setupConverterTab() {
-  setupTabActivation("Date Converter", "#panel-converter", () =>
-    initializeConverter(),
-  );
-}
-
 function setupPeriodicUpdates() {
   setInterval(() => {
     todayComponent.periodicUpdate();
@@ -92,15 +73,6 @@ function setupEventHandlers() {
       todayComponent.periodicUpdate();
     }
   });
-
-  window.addEventListener("online", () => {
-    if (!converterInstance) {
-      const converterPanel = document.querySelector("#panel-converter");
-      if (converterPanel && !converterPanel.hasAttribute("hidden")) {
-        initializeConverter();
-      }
-    }
-  });
 }
 
 function initApp() {
@@ -109,7 +81,6 @@ function initApp() {
   initBookmarks();
   setupTabs();
   setupCalendarTab();
-  setupConverterTab();
   setupPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();

@@ -36,40 +36,46 @@
         />
     </head>
     <body>
-        <ul class="tabs-list" aria-label="Calendar Tabs">
-            <li>
-                <a
-                    id="tab-today"
-                    href="#panel-today"
-                    aria-controls="panel-today"
-                    >Today</a
-                >
-            </li>
-            <li>
-                <a
-                    id="tab-calendar"
-                    href="#panel-calendar"
-                    aria-controls="panel-calendar"
-                    >Full Calendar</a
-                >
-            </li>
-            <li>
-                <a
-                    id="tab-converter"
-                    href="#panel-converter"
-                    aria-controls="panel-converter"
-                    >Date Converter</a
-                >
-            </li>
-            <li>
-                <a
-                    id="tab-reminder"
-                    href="#panel-reminder"
-                    aria-controls="panel-reminder"
-                    >Reminder</a
-                >
-            </li>
-        </ul>
+        <nav aria-label="Main Navigation">
+            <ul class="tabs-list" role="tablist">
+                <li role="presentation">
+                    <a
+                        id="tab-today"
+                        href="#panel-today"
+                        role="tab"
+                        aria-controls="panel-today"
+                        >Today</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-calendar"
+                        href="#panel-calendar"
+                        role="tab"
+                        aria-controls="panel-calendar"
+                        >Full Calendar</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-converter"
+                        href="#panel-converter"
+                        role="tab"
+                        aria-controls="panel-converter"
+                        >Date Converter</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-reminder"
+                        href="#panel-reminder"
+                        role="tab"
+                        aria-controls="panel-reminder"
+                        >Reminder</a
+                    >
+                </li>
+            </ul>
+        </nav>
 
         <div class="calendar__upper spacing">
             <p class="calendar__date-en" data-today-en></p>
@@ -78,7 +84,7 @@
                 <div class="settings">
                     <button
                         class="settings__trigger"
-                        aria-haspopup="true"
+                        aria-haspopup="menu"
                         aria-expanded="false"
                         aria-controls="settings-menu"
                         id="settings-trigger"
@@ -142,7 +148,11 @@
 
         <main class="tabs-container">
             <div class="tabs__panels">
-                <div id="panel-today" aria-labelledby="tab-today">
+                <div
+                    id="panel-today"
+                    role="tabpanel"
+                    aria-labelledby="tab-today"
+                >
                     <section class="calendar">
                         <div class="calendar__main">
                             <h1 class="calendar__date-np" data-np-date></h1>
@@ -215,76 +225,87 @@
                     </section>
                 </div>
 
-                <div id="panel-calendar" aria-labelledby="tab-calendar">
+                <div
+                    id="panel-calendar"
+                    role="tabpanel"
+                    aria-labelledby="tab-calendar"
+                >
                     <div id="month-view-calendar-root"></div>
                 </div>
 
-                <div id="panel-converter" aria-labelledby="tab-converter">
-                    <article class="date-converter">
+                <div
+                    id="panel-converter"
+                    role="tabpanel"
+                    aria-labelledby="tab-converter"
+                >
+                    <article class="date-converter" id="date-converter">
                         <nav class="date-converter__modes">
                             <span
-                                class="date-converter__mode-label"
-                                data-mode-label-ad
+                                class="date-converter__mode-label date-converter__mode-label--ad"
                                 >AD
                                 <i class="bi bi-arrow-right-short"></i> BS</span
                             >
                             <input
                                 type="checkbox"
                                 id="date-converter-toggle"
-                                class="toggle"
-                                data-converter-toggle
+                                class="date-converter__toggle-input"
                                 aria-checked="false"
                                 aria-label="Switch between AD to BS and BS to AD"
                             />
                             <label
                                 for="date-converter-toggle"
-                                class="toggle-switch"
+                                class="date-converter__toggle-switch"
                                 aria-hidden="true"
                             ></label>
                             <span
-                                class="date-converter__mode-label"
-                                data-mode-label-bs
+                                class="date-converter__mode-label date-converter__mode-label--bs"
                                 >BS
                                 <i class="bi bi-arrow-right-short"></i> AD</span
                             >
                         </nav>
-                        <main class="date-converter__content">
-                            <section data-converter-section="ad-to-bs">
+                        <div class="date-converter__content">
+                            <section
+                                class="date-converter__section date-converter__section--ad-to-bs"
+                            >
                                 <div class="date-converter__input-group">
-                                    <label for="converter-ad-date"
+                                    <label
+                                        class="date-converter__label"
+                                        for="converter-ad-date"
                                         >Select AD Date</label
                                     >
-                                    <div class="custom-date-input">
-                                        <input
-                                            type="date"
-                                            id="converter-ad-date"
-                                            data-converter-ad-input
-                                            class="custom-date-field"
-                                        />
-                                        <i
-                                            class="bi bi-calendar2-date-fill custom-calendar-icon"
-                                        ></i>
-                                    </div>
+                                    <input
+                                        type="date"
+                                        id="converter-ad-date"
+                                        class="date-converter__input date-converter__input--date"
+                                    />
                                 </div>
                                 <div class="date-converter__result-group">
-                                    <label>Bikram Sambat (BS)</label>
-                                    <output data-converter-bs-result></output>
+                                    <label class="date-converter__label"
+                                        >Bikram Sambat (BS)</label
+                                    >
+                                    <output
+                                        class="date-converter__output date-converter__output--bs"
+                                    ></output>
                                 </div>
                             </section>
-                            <section data-converter-section="bs-to-ad" hidden>
+                            <section
+                                class="date-converter__section date-converter__section--bs-to-ad date-converter__section--hidden"
+                            >
                                 <div class="date-converter__input-group">
-                                    <label>Enter Bikram Sambat (BS)</label>
-                                    <div class="date-converter__bs-date-inputs">
+                                    <label class="date-converter__label"
+                                        >Enter Bikram Sambat (BS)</label
+                                    >
+                                    <div class="date-converter__bs-inputs">
                                         <input
                                             type="number"
-                                            data-converter-bs-year
+                                            class="date-converter__input date-converter__input--year"
                                             placeholder="Year (e.g., 2082)"
                                             min="1970"
                                             max="2100"
                                             aria-label="BS Year"
                                         />
                                         <select
-                                            data-converter-bs-month
+                                            class="date-converter__select date-converter__select--month"
                                             aria-label="BS Month"
                                         >
                                             <option value="">Month</option>
@@ -327,7 +348,7 @@
                                         </select>
                                         <input
                                             type="number"
-                                            data-converter-bs-day
+                                            class="date-converter__input date-converter__input--day"
                                             placeholder="Day"
                                             min="1"
                                             max="32"
@@ -336,20 +357,29 @@
                                     </div>
                                 </div>
                                 <div class="date-converter__result-group">
-                                    <label>English Date (AD):</label>
-                                    <output data-converter-ad-result></output>
+                                    <label class="date-converter__label"
+                                        >English Date (AD):</label
+                                    >
+                                    <output
+                                        class="date-converter__output date-converter__output--ad"
+                                    ></output>
                                 </div>
                             </section>
-                        </main>
+                        </div>
                     </article>
                 </div>
 
-                <div id="panel-reminder" aria-labelledby="tab-reminder">
+                <div
+                    id="panel-reminder"
+                    role="tabpanel"
+                    aria-labelledby="tab-reminder"
+                >
                     <section class="reminder">
                         <header class="reminder__header">
                             <h2 class="reminder__title">
-                                Buy Eggs
-                                <span class="reminder__title-emphasis">in</span>
+                                Buy Eggs<span class="reminder__title-emphasis"
+                                    >in</span
+                                >
                             </h2>
                             <time class="reminder__time" datetime="20:00"
                                 >20:00</time

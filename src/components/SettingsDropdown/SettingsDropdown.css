@@ -33,7 +33,7 @@
 
 .settings__trigger:active {
     transform: translateY(0);
-    box-shadow: 0 2px 40.3x;
+    box-shadow: 0 2px 4px rgba(67, 191, 10, 0.3);
 }
 
 .settings__trigger-text {
@@ -53,7 +53,6 @@
 .settings__menu {
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
     background: white;
     border: 1px solid #e1e5e9;

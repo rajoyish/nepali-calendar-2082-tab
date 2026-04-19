@@ -6,6 +6,7 @@ import {
 } from "../../utils/fullscreen.js";
 
 const SETTINGS_KEY = "tabre_show_bookmarks";
+const SETTINGS_KEY_GLASS = "tabre_glass_enabled";
 
 export function initSettingsDropdown(element) {
   const trigger = element.querySelector(".settings__trigger");
@@ -55,16 +56,14 @@ export function initSettingsDropdown(element) {
 
       if (isFullscreen()) {
         if (icon) {
-          icon.classList.remove("bi-fullscreen");
-          icon.classList.add("bi-fullscreen-exit");
+          icon.className = "bi bi-fullscreen-exit";
         }
         if (textSpan) {
           textSpan.textContent = "Exit";
         }
       } else {
         if (icon) {
-          icon.classList.remove("bi-fullscreen-exit");
-          icon.classList.add("bi-fullscreen");
+          icon.className = "bi bi-fullscreen";
         }
         if (textSpan) {
           textSpan.textContent = "Fullscreen";
@@ -93,16 +92,48 @@ export function initSettingsDropdown(element) {
 
     if (isEnabled) {
       if (icon) {
-        icon.classList.remove("bi-bookmark-check");
-        icon.classList.add("bi-bookmark-dash");
+        icon.className = "bi bi-bookmark-dash";
       }
       if (textSpan) textSpan.textContent = "Hide Bookmarks";
     } else {
       if (icon) {
-        icon.classList.remove("bi-bookmark-dash");
-        icon.classList.add("bi-bookmark-check");
+        icon.className = "bi bi-bookmark-check";
       }
       if (textSpan) textSpan.textContent = "Show Bookmarks";
+    }
+  }
+
+  async function updateGlassIcon() {
+    const glassItem = items.find(
+      (item) => item.dataset.action === "toggle-glass",
+    );
+    if (!glassItem) return;
+
+    let isEnabled = true;
+    if (typeof chrome !== "undefined" && chrome.storage) {
+      const data = await chrome.storage.local.get([SETTINGS_KEY_GLASS]);
+      if (data[SETTINGS_KEY_GLASS] !== undefined)
+        isEnabled = data[SETTINGS_KEY_GLASS];
+    } else {
+      const data = localStorage.getItem(SETTINGS_KEY_GLASS);
+      if (data !== null) isEnabled = JSON.parse(data);
+    }
+
+    const icon = glassItem.querySelector("i");
+    const textSpan = glassItem.querySelector(".settings__item-text");
+
+    if (isEnabled) {
+      if (icon) {
+        icon.className = "bi bi-droplet-half";
+      }
+      if (textSpan) textSpan.textContent = "Disable Glass";
+      document.body.classList.remove("no-glass");
+    } else {
+      if (icon) {
+        icon.className = "bi bi-droplet";
+      }
+      if (textSpan) textSpan.textContent = "Enable Glass";
+      document.body.classList.add("no-glass");
     }
   }
 
@@ -127,12 +158,25 @@ export function initSettingsDropdown(element) {
 
       await updateBookmarksIcon();
 
-      // Dispatch event so Bookmarks.js can hide/show the section immediately
       document.dispatchEvent(
         new CustomEvent("bookmarksVisibilityChanged", {
           detail: { isEnabled: !isEnabled },
         }),
       );
+    } else if (action === "toggle-glass") {
+      let isEnabled = true;
+      if (typeof chrome !== "undefined" && chrome.storage) {
+        const data = await chrome.storage.local.get([SETTINGS_KEY_GLASS]);
+        if (data[SETTINGS_KEY_GLASS] !== undefined)
+          isEnabled = data[SETTINGS_KEY_GLASS];
+        await chrome.storage.local.set({ [SETTINGS_KEY_GLASS]: !isEnabled });
+      } else {
+        const data = localStorage.getItem(SETTINGS_KEY_GLASS);
+        if (data !== null) isEnabled = JSON.parse(data);
+        localStorage.setItem(SETTINGS_KEY_GLASS, JSON.stringify(!isEnabled));
+      }
+
+      await updateGlassIcon();
     }
 
     closeMenu();
@@ -251,6 +295,7 @@ export function initSettingsDropdown(element) {
   closeMenu();
   updateFullscreenIcon();
   updateBookmarksIcon();
+  updateGlassIcon();
 
   return () => controller.abort();
 }

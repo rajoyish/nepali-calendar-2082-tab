@@ -36,7 +36,53 @@ body {
     grid-template-rows: repeat(2, auto) 1fr auto;
 }
 
-/* Utilities */
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(5, 242, 242, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition:
+        background 0.3s ease,
+        backdrop-filter 0.3s ease,
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+body.no-glass .glass {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.glass-pill {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid transparent;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+body.no-glass .glass-pill {
+    background: rgba(19, 24, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(5, 242, 242, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.no-glass .glass-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .hidden {
     display: none;
 }
@@ -49,7 +95,6 @@ body {
     border: 2px solid red;
 }
 
-/* Typography */
 .tabs-list,
 .calendar__footer {
     font-family: "Mona Sans", sans-serif;

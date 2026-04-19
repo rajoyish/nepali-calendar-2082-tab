@@ -1,20 +1,21 @@
-.month-view {
+.calendar-root-wrapper {
     max-width: 100vw;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
+    margin: 0 auto 5em auto;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    color: #f5f5f5;
+}
+
+.month-view {
     display: grid;
     grid-template-columns: repeat(7, minmax(44px, 1fr));
     grid-template-rows: auto auto 1fr;
     list-style-type: none;
     padding: 1rem;
-    color: var(--dark-black);
-    border-radius: 0.5em;
     gap: 0.5em;
     box-sizing: border-box;
     overflow-x: auto;
     font-size: 0.95rem;
-    margin-bottom: 5em;
-    box-shadow: 0 10px 25px rgba(19, 24, 38, 0.08);
 }
 
 .month-view-header-wrapper {
@@ -27,7 +28,7 @@
     margin-bottom: 1rem;
     gap: 0.75rem;
     font-size: 1.1rem;
-    color: var(--dark-black);
+    color: #ffffff;
 }
 
 .month-navigation {
@@ -42,7 +43,7 @@
     padding: 0;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--dark-black);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +58,7 @@
 }
 
 .month-nav-btn:disabled {
-    color: #cbd5e1;
+    color: rgba(255, 255, 255, 0.3);
     cursor: not-allowed;
 }
 
@@ -72,7 +73,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
-    color: var(--dark-black);
+    color: #f5f5f5;
 }
 
 .month-view__day-label--np {
@@ -80,18 +81,15 @@
 }
 
 .month-view__date {
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0.4rem;
     border-radius: 0.5em;
     min-width: 0;
-    background-color: #ffffff;
-}
-
-.month-view__date:not(.month-view__date--empty) {
-    cursor: pointer;
     transition:
         background-color 0.2s ease,
         color 0.2s ease,
@@ -100,12 +98,25 @@
         box-shadow 0.2s ease;
 }
 
+.month-view__date:not(.month-view__date--empty) {
+    cursor: pointer;
+}
+
 .month-view__date:not(.month-view__date--empty):hover {
-    background-color: var(--accent-sky);
-    color: var(--dark-black);
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
     transform: translateY(-2px);
     border-color: var(--accent-sky);
     box-shadow: 0 4px 10px rgba(5, 242, 242, 0.3);
+}
+
+body.no-glass .month-view__date {
+    background-color: rgba(19, 24, 38, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.no-glass .month-view__date:not(.month-view__date--empty):hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .month-view__date-en {
@@ -125,24 +136,34 @@
 }
 
 .month-view__date--empty {
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
     pointer-events: none;
+    box-shadow: none !important;
 }
 
 .month-view__date:not(.month-view__date--empty).is-saturday,
 .month-view__date:not(.month-view__date--empty).is-holiday {
-    background-color: #ffffff;
-    color: #e53935;
+    background-color: rgba(229, 57, 53, 0.15);
+    color: #ff6b6b;
     border: 2px solid #e53935;
     padding: calc(0.4rem - 1px);
 }
 
+body.no-glass .month-view__date:not(.month-view__date--empty).is-saturday,
+body.no-glass .month-view__date:not(.month-view__date--empty).is-holiday {
+    background-color: rgba(19, 24, 38, 0.8);
+}
+
 .month-view__date.is-today:not(.is-saturday) {
-    background-color: #ffffff;
-    color: var(--dark-green);
-    border: 2px solid var(--dark-green);
+    background-color: rgba(67, 191, 10, 0.15);
+    color: var(--accent-green);
+    border: 2px solid var(--accent-green);
     padding: calc(0.4rem - 1px);
+}
+
+body.no-glass .month-view__date.is-today:not(.is-saturday) {
+    background-color: rgba(19, 24, 38, 0.8);
 }
 
 .date-modal {
@@ -310,10 +331,13 @@
 }
 
 @media (min-width: 500px) {
-    .month-view {
+    .calendar-root-wrapper {
         max-width: 75rem;
-        padding: 2rem;
         border-radius: 0.75em;
+    }
+
+    .month-view {
+        padding: 2rem;
         grid-template-columns: repeat(7, 1fr);
         font-size: unset;
     }

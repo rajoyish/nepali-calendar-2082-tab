@@ -79,7 +79,7 @@
 
         <div class="calendar__upper spacing">
             <p class="calendar__date-en" data-today-en></p>
-            <div class="calendar-clock__wrapper">
+            <div class="calendar-clock__wrapper glass">
                 <p class="calendar__clock" data-clock></p>
                 <div class="settings">
                     <button
@@ -169,7 +169,7 @@
                     aria-labelledby="tab-today"
                 >
                     <section class="calendar">
-                        <div class="calendar__main">
+                        <div class="calendar__main glass">
                             <h1 class="calendar__date-np" data-np-date></h1>
                             <h2
                                 class="calendar__month-year"
@@ -177,15 +177,15 @@
                             ></h2>
                             <div class="calendar__day-tithi-event">
                                 <h3
-                                    class="calendar__day-of-week"
+                                    class="calendar__day-of-week glass-pill"
                                     data-np-day-of-week
                                 ></h3>
                                 <h3
-                                    class="calendar__tithi bullet"
+                                    class="calendar__tithi bullet glass-pill"
                                     data-np-day-tithi
                                 ></h3>
                                 <h3
-                                    class="calendar__event bullet"
+                                    class="calendar__event bullet glass-pill"
                                     data-np-day-event
                                 ></h3>
                             </div>
@@ -245,7 +245,10 @@
                     role="tabpanel"
                     aria-labelledby="tab-calendar"
                 >
-                    <div id="month-view-calendar-root"></div>
+                    <div
+                        id="month-view-calendar-root"
+                        class="glass calendar-root-wrapper"
+                    ></div>
                 </div>
 
                 <div

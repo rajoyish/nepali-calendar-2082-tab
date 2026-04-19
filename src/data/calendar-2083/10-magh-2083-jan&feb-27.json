@@ -87,7 +87,62 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२ माघ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "16 January 2027, Saturday",
+        "sunrise": "०६ः५८",
+        "sunset": "१७ः३०",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "अष्टमी ०८:२३ बजेसम्म",
+          "nakshatra": "अश्विनी १९:०९ बजेसम्म",
+          "yoga": "सिद्ध",
+          "moonSign": "मेष",
+          "sunSign": "मकर",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "भूकम्प सुरक्षा दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०६:५७-०८:१६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:२१-०९:०४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०९:३५-१०:५५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५३-१२:३५"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:३४-१४:५३"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१४:५४-१६:१३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१९:५८-२१:३२"
+          }
+        ]
+      }
     },
     {
       "dateNp": "३",
@@ -97,7 +152,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "३ माघ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "17 January 2027, Sunday",
+        "sunrise": "०६ः५८",
+        "sunset": "१७ः३१",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "नवमी ०७:११ बजेसम्म",
+          "nakshatra": "भरणी १८:२४ बजेसम्म",
+          "yoga": "साध्य",
+          "moonSign": "२४:१०",
+          "sunSign": "मकर",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०९:११-१०:४४"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१०:५५-१२:१५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५३-१२:३६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:१५-१३:३४"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१४:५४-१६:१३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१६:०८-१६:५१"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१६:१३-१७:३३"
+          }
+        ]
+      }
     },
     {
       "dateNp": "४",
@@ -107,7 +212,66 @@
       "isToday": false,
       "eventTitle": "पुत्रदा एकादशी व्रत (स्मार्तहरूको लागि)",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "४ माघ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "18 January 2027, Monday",
+        "sunrise": "०६ः५७",
+        "sunset": "१७ः३२",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "एकादशी ०३:४४ बजेसम्म",
+          "nakshatra": "कृत्तिका १७:२० बजेसम्म",
+          "yoga": "शुक्ल",
+          "moonSign": "वृष",
+          "sunSign": "मकर",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "पुत्रदा एकादशी व्रत (स्मार्तहरूको लागि)",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "बिवाह गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५६-०८:१६"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:१६-०९:३६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:१३-११:४२"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:५५-१२:१५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५३-१२:३६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:३६-१३:१९"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:३५-१४:५४"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:४४-१५:२६"
+          }
+        ]
+      }
     },
     {
       "dateNp": "५",
@@ -117,7 +281,67 @@
       "isToday": false,
       "eventTitle": "पुत्रदा एकादशी व्रत (वैष्णवहरूको लागि)",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "५ माघ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "19 January 2027, Tuesday",
+        "sunrise": "०६ः५७",
+        "sunset": "१७ः३२",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "द्वादशी ०१:३७ बजेसम्म",
+          "nakshatra": "रोहिणी १५:५९ बजेसम्म",
+          "yoga": "ब्रह्म",
+          "moonSign": "२७:१४",
+          "sunSign": "मकर",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "पुत्रदा एकादशी व्रत (वैष्णवहरूको लागि)",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:०४-०९:४६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०९:३६-१०:५५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५४-१२:३६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "११:५५-१३:२२"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:१५-१३:३५"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:१६-१३:३६"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१४:५५-१६:१५"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२२:५५-२३:३८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "६",
@@ -127,7 +351,63 @@
       "isToday": false,
       "eventTitle": "प्रदोष व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "६ माघ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "20 January 2027, Wednesday",
+        "sunrise": "०६ः५७",
+        "sunset": "१७ः३३",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "त्रयोदशी २३:२० बजेसम्म",
+          "nakshatra": "मृगशिरा १४:२७ बजेसम्म",
+          "yoga": "ऐन्द्र",
+          "moonSign": "मिथुन",
+          "sunSign": "मकर",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "प्रदोष व्रत",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०८:१६-०९:३६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:१६-०९:३६"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:५६-१२:१५"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:५४-१२:३६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५४-१२:३७"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:१५-१३:३५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२३:५६-०१:२०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "७",
@@ -137,7 +417,61 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "७ माघ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "21 January 2027, Thursday",
+        "sunrise": "०६ः५७",
+        "sunset": "१७ः३४",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "चतुर्दशी २०:४९ बजेसम्म",
+          "nakshatra": "आर्द्रा १४:४९ बजेसम्म",
+          "yoga": "वैधृति",
+          "moonSign": "२९:३३",
+          "sunSign": "मकर",
+          "firstKarana": "गर",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "००:०९-०१:३३"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५५-०८:१६"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०९:३६-१०:५६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१०:२९-११:१२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५४-१२:३७"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:३६-१४:५६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:३६-१४:५७"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:४५-१५:२८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "८",
@@ -217,7 +551,58 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "९ माघ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "23 January 2027, Saturday",
+        "sunrise": "०६ः५६",
+        "sunset": "१७ः३५",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "प्रतिपदा १६:२२ बजेसम्म",
+          "nakshatra": "तिष्य ०९:३१ बजेसम्म",
+          "yoga": "प्रीति",
+          "moonSign": "कर्कट",
+          "sunSign": "मकर",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "पसल खोल्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०६:५५-०८:१५"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:२१-०९:०३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०९:३६-१०:५६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:३७-१४:५७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१४:५८-१६:१८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१९:०६-२०:३२"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१०",
@@ -227,7 +612,56 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१० माघ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "24 January 2027, Sunday",
+        "sunrise": "०६ः५६",
+        "sunset": "१७ः३६",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "द्वितीया १४:१६ बजेसम्म",
+          "nakshatra": "अश्लेषा ०८:०३ बजेसम्म",
+          "yoga": "आयुष्यमान्",
+          "moonSign": "०८:०३",
+          "sunSign": "मकर",
+          "firstKarana": "गर",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:५६-१२:१७"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३८"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:१६-१३:३७"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१४:५७-१६:१८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१५:५७-१७:२५"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१६:१३-१६:५६"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१६:१८-१७:३८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "११",
@@ -237,7 +671,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "११ माघ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "25 January 2027, Monday",
+        "sunrise": "०६ः५६",
+        "sunset": "१७ः३७",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "तृतीया १२:२५ बजेसम्म",
+          "nakshatra": "पूर्वफाल्गुणी ०५:५० बजेसम्म",
+          "yoga": "शोभन",
+          "moonSign": "सिंह",
+          "sunSign": "मकर",
+          "firstKarana": "भद्रा",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५४-०८:१४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:१५-०९:३५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:१८-११:४७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:५६-१२:१७"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:३८-१३:२१"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:३७-१४:५८"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:४७-१५:३०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१२",
@@ -247,7 +731,62 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१२ माघ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "26 January 2027, Tuesday",
+        "sunrise": "०६ः५५",
+        "sunset": "१७ः३८",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "चतुर्थी १०:५३ बजेसम्म",
+          "nakshatra": "उत्तरफाल्गुणी ०५:१४ बजेसम्म",
+          "yoga": "अतिगण्ड",
+          "moonSign": "११:३९",
+          "sunSign": "मकर",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "बिवाह गर्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:०८-०९:३९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:०३-०९:४६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०९:३५-१०:५६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३८"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:१७-१३:३८"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:१७-१३:३८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१४:५८-१६:१९"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२२:५७-२३:४१"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१३",
@@ -257,7 +796,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१३ माघ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "27 January 2027, Wednesday",
+        "sunrise": "०६ः५५",
+        "sunset": "१७ः३९",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "पञ्चमी ०९:४३ बजेसम्म",
+          "nakshatra": "हस्ता ०५:०३ बजेसम्म",
+          "yoga": "सुकर्मा",
+          "moonSign": "कन्या",
+          "sunSign": "मकर",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०८:१४-०९:३५"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:१४-०९:३५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:३६-१०:११"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:५६-१२:१७"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:५५-१२:३९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:१७-१३:३८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१४",
@@ -267,7 +856,63 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१४ माघ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "28 January 2027, Thursday",
+        "sunrise": "०६ः५५",
+        "sunset": "१७ः४०",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "षष्ठी ०९:०० बजेसम्म",
+          "nakshatra": "चित्रा ०५:२१ बजेसम्म",
+          "yoga": "धृति",
+          "moonSign": "१७:०८",
+          "sunSign": "मकर",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "पसल खोल्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५३-०८:१४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:१७-०९:५५"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०९:३५-१०:५६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१०:२९-११:१२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५५-१२:३९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:३८-१४:५९"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:३९-१५:००"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:४९-१५:३२"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१५",
@@ -348,7 +993,63 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१६ माघ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "30 January 2027, Saturday",
+        "sunrise": "०६ः५४",
+        "sunset": "१७ः४१",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "अष्टमी ०९:०३ बजेसम्म",
+          "nakshatra": "विशाखा",
+          "yoga": "गण्ड",
+          "moonSign": "२५:०२",
+          "sunSign": "मकर",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "शहीद दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०६:५२-०८:१३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:०९-०९:५३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१८-०९:०२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०९:३५-१०:५६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:३९"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:३९-१५:००"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:०१-१६:२३"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१७",
@@ -358,7 +1059,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१७ माघ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "31 January 2027, Sunday",
+        "sunrise": "०६ः५३",
+        "sunset": "१७ः४२",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "नवमी ०९:५१ बजेसम्म",
+          "nakshatra": "विशाखा ०७:२४ बजेसम्म",
+          "yoga": "वृद्धि",
+          "moonSign": "वृश्चिक",
+          "sunSign": "मकर",
+          "firstKarana": "गर",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:३३-१०:१९"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१०:५६-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:३९"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:१८-१३:३९"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:०१-१६:२२"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१६:१७-१७:०१"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१६:२२-१७:४४"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१८",
@@ -368,7 +1115,56 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१८ माघ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "1 February 2027, Monday",
+        "sunrise": "०६ः५३",
+        "sunset": "१७ः४३",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "दशमी ११:०८ बजेसम्म",
+          "nakshatra": "अनुराधा ०९:०९ बजेसम्म",
+          "yoga": "ध्रुव",
+          "moonSign": "वृश्चिक",
+          "sunSign": "मकर",
+          "firstKarana": "भद्रा",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५०-०८:१२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:१२-०९:३४"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:५६-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:३९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:४०-१३:२३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:३९-१५:०१"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:५०-१५:३४"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१९",
@@ -378,7 +1174,63 @@
       "isToday": false,
       "eventTitle": "षट्तिला एकादशी",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१९ माघ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "2 February 2027, Tuesday",
+        "sunrise": "०६ः५२",
+        "sunset": "१७ः४४",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "एकादशी १२:४९ बजेसम्म",
+          "nakshatra": "ज्येष्ठा ११:१८ बजेसम्म",
+          "yoga": "व्याघात",
+          "moonSign": "११:१८",
+          "sunSign": "मकर",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "षट्तिला एकादशी",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "बिवाह गर्ने साइत",
+          "रुद्री गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:०१-०९:४५"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०९:३४-१०:५६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:१८-१३:४०"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:१८-१३:४०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:०२-१६:२४"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२२:५९-२३:४३"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२०",
@@ -388,7 +1240,64 @@
       "isToday": false,
       "eventTitle": "प्रदोष व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२० माघ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "3 February 2027, Wednesday",
+        "sunrise": "०६ः५२",
+        "sunset": "१७ः४५",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "द्वादशी १४:४९ बजेसम्म",
+          "nakshatra": "मूल १३:४५ बजेसम्म",
+          "yoga": "हर्षण",
+          "moonSign": "धनु",
+          "sunSign": "मकर",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "प्रदोष व्रत",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "बिवाह गर्ने साइत",
+          "रुद्री गर्ने साइत",
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०८:११-०९:३३"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:१२-०९:३४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:५२-१२:४०"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:५६-१२:१८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:१८-१३:४०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२१",
@@ -398,7 +1307,60 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२१ माघ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "4 February 2027, Thursday",
+        "sunrise": "०६ः५१",
+        "sunset": "१७ः४५",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "त्रयोदशी १६:५९ बजेसम्म",
+          "nakshatra": "पूर्वाषाढा १६:२१ बजेसम्म",
+          "yoga": "वज्र",
+          "moonSign": "२३:००",
+          "sunSign": "मकर",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "रुद्री गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "००:४७-०२:३५"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०६:४९-०८:११"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०९:३३-१०:५६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१०:२८-११:१२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४०-१५:०३"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:४१-१५:०३"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:५२-१५:३५"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२२",
@@ -408,7 +1370,60 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२२ माघ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "5 February 2027, Friday",
+        "sunrise": "०६ः५०",
+        "sunset": "१७ः४६",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "चतुर्दशी १९:०७ बजेसम्म",
+          "nakshatra": "उत्तराषाढा १८:५७ बजेसम्म",
+          "yoga": "सिद्धि",
+          "moonSign": "मकर",
+          "sunSign": "मकर",
+          "firstKarana": "शकुनि",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०८:११-०९:३३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:००-०९:४४"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०९:३३-१०:५५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:५६-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:४०-१३:२४"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:०३-१६:२५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२३:१५-०२:०३"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२३",
@@ -418,7 +1433,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२३ माघ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "6 February 2027, Saturday",
+        "sunrise": "०६ः५०",
+        "sunset": "१७ः४७",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "औँशी २१:०४ बजेसम्म",
+          "nakshatra": "श्रवण २१:२१ बजेसम्म",
+          "yoga": "व्यतिपात",
+          "moonSign": "मकर",
+          "sunSign": "मकर",
+          "firstKarana": "चतुष्पद",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०१:५९-०३:४६"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०६:४७-०८:१०"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:१६-०८:५९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०९:३३-१०:५५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:४१-१५:०३"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:०४-१६:२७"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२४",
@@ -428,7 +1489,58 @@
       "isToday": false,
       "eventTitle": "सोनाम ल्होछार",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२४ माघ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "7 February 2027, Sunday",
+        "sunrise": "०६ः४९",
+        "sunset": "१७ः४८",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "प्रतिपदा २२:४२ बजेसम्म",
+          "nakshatra": "धनिष्ठा २३:२७ बजेसम्म",
+          "yoga": "वरीयान",
+          "moonSign": "१०:२७",
+          "sunSign": "मकर",
+          "firstKarana": "किंस्तुघ्न",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "सोनाम ल्होछार",
+            "isHoliday": true
+          }
+        ],
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:५५-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:१८-१३:४१"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:०४-१६:२७"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१६:२१-१७:०५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१६:२७-१७:४९"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२५",
@@ -438,7 +1550,63 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२५ माघ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "8 February 2027, Monday",
+        "sunrise": "०६ः४९",
+        "sunset": "१७ः४९",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "द्वितीया २३:५३ बजेसम्म",
+          "nakshatra": "शतभिषा ०१:०८ बजेसम्म",
+          "yoga": "परिघ",
+          "moonSign": "कुम्भ",
+          "sunSign": "मकर",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "ब्रतबन्ध गर्ने साइत",
+          "अन्नाप्रशन गर्ने साइत",
+          "रुद्री गर्ने साइत",
+          "मुण्डन"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०६:४५-०८:०८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०७:५६-०९:४१"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:०९-०९:३२"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:५५-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:४०-१३:२५"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:४१-१५:०४"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१४:५३-१५:३७"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२६",
@@ -448,7 +1616,60 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२६ माघ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "9 February 2027, Tuesday",
+        "sunrise": "०६ः४८",
+        "sunset": "१७ः४९",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "तृतीया ००:३५ बजेसम्म",
+          "nakshatra": "पूर्वभाद्र ०२:२१ बजेसम्म",
+          "yoga": "शिव",
+          "moonSign": "२०:०६",
+          "sunSign": "मकर",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "होम गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०८:५८-०९:४३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०९:०५-१०:४८"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०९:३२-१०:५५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:१८-१३:४१"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:१८-१३:४२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:०४-१६:२८"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२३:०१-२३:४५"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२७",
@@ -458,7 +1679,62 @@
       "isToday": false,
       "eventTitle": "तिलकुन्द चौथी",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२७ माघ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४७",
+        "fullDateEn": "10 February 2027, Wednesday",
+        "sunrise": "०६ः४७",
+        "sunset": "१७ः५०",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "चतुर्थी ००:४५ बजेसम्म",
+          "nakshatra": "उत्तरभाद्र ०३:०४ बजेसम्म",
+          "yoga": "सिद्ध",
+          "moonSign": "मीन",
+          "sunSign": "मकर",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "तिलकुन्द चौथी",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "बिवाह गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०८:०७-०९:३१"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:०८-०९:३१"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:५५-१२:१८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:५६-१२:४०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:१८-१३:४१"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१४:०४-१५:४५"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२८",
@@ -543,7 +1819,33 @@
       "isToday": false,
       "eventTitle": "स्कन्द षष्ठी",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२९ माघ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं.",
+        "fullDateEn": "12 February 2027, Friday",
+        "sunrise": "०६ः४६",
+        "sunset": "१७ः५२",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "षष्ठी २३:२६ बजेसम्म",
+          "nakshatra": "अश्विनी ०३:०३ बजेसम्म",
+          "yoga": "शुभ",
+          "moonSign": "मेष",
+          "sunSign": "मकर",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "स्कन्द षष्ठी",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "पसल खोल्ने साइत",
+          "रुद्री गर्ने साइत"
+        ]
+      }
     }
   ]
 }

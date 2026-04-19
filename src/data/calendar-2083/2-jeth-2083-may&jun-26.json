@@ -228,7 +228,60 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "४ जेठ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "18 May 2026, Monday",
+        "sunrise": "१६",
+        "sunset": "४६",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "द्वितीया २१:१७ बजेसम्म",
+          "nakshatra": "रोहिणी १४:३७ बजेसम्म",
+          "yoga": "सुकर्मा",
+          "moonSign": "२५:४७",
+          "sunSign": "वृष",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "राहू काल",
+            "time": "०६:५५-०८:३७"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:१९-१२:००"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२७"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:२७-१३:२१"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:४२-१५:२४"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:११-१६:०५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१६:४१-१८:०६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१७:०६-१८:४८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "५",
@@ -238,7 +291,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "५ जेठ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "19 May 2026, Tuesday",
+        "sunrise": "१५",
+        "sunset": "४७",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "तृतीया १८:४९ बजेसम्म",
+          "nakshatra": "मृगशिरा १२:५७ बजेसम्म",
+          "yoga": "धृति",
+          "moonSign": "मिथुन",
+          "sunSign": "वृष",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:५६-०८:५०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:३७-१०:१९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:०१-१३:४२"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:०१-१३:४३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:२४-१७:०६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१६:२५-१७:४९"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२२:५८-२३:५२"
+          }
+        ]
+      }
     },
     {
       "dateNp": "६",
@@ -248,7 +351,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "६ जेठ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "20 May 2026, Wednesday",
+        "sunrise": "१५",
+        "sunset": "४७",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "चतुर्थी १६:२८ बजेसम्म",
+          "nakshatra": "आर्द्रा ११:२० बजेसम्म",
+          "yoga": "शूल",
+          "moonSign": "२८:१४",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५४-०८:३६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५५-०८:३७"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:१९-१२:०१"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:०१-१३:४३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१७:२२-१८:५०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "७",
@@ -258,7 +407,60 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "७ जेठ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "21 May 2026, Thursday",
+        "sunrise": "१४",
+        "sunset": "४८",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "पञ्चमी १४:१६ बजेसम्म",
+          "nakshatra": "पुनर्वसु ०९:५३ बजेसम्म",
+          "yoga": "गण्ड",
+          "moonSign": "कर्कट",
+          "sunSign": "वृष",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०५:१२-०६:५४"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:४४-१०:३९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "११:५४-१३:२४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४३-१५:२५"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:४३-१५:२५"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:११-१६:०६"
+          }
+        ]
+      }
     },
     {
       "dateNp": "८",
@@ -268,7 +470,63 @@
       "isToday": false,
       "eventTitle": "अन्तर्राष्ट्रिय जैविक विविधता दिवस",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "८ जेठ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "22 May 2026, Friday",
+        "sunrise": "१४",
+        "sunset": "४९",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "षष्ठी १२:१८ बजेसम्म",
+          "nakshatra": "तिष्य ०८:३९ बजेसम्म",
+          "yoga": "वृद्धि",
+          "moonSign": "कर्कट",
+          "sunSign": "वृष",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "अन्तर्राष्ट्रिय जैविक विविधता दिवस",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०६:५४-०८:३६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:५५-०८:५०"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:३६-१०:१८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:१९-१२:०१"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:२८-१३:२३"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१५:२४-१६:५८"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:२५-१७:०८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "९",
@@ -278,7 +536,59 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "९ जेठ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "23 May 2026, Saturday",
+        "sunrise": "१४",
+        "sunset": "४९",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "सप्तमी १०:३९ बजेसम्म",
+          "nakshatra": "अश्लेषा ०७:४३ बजेसम्म",
+          "yoga": "ध्रुव",
+          "moonSign": "०७:४३",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "युगकवि सिद्धिचरण श्रेष्ठ जन्म-जयन्ति",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०५:११-०६:५४"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:०१-०७:५५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:३६-१०:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३३-१२:२८"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:४३-१५:२६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१४:१७-१५:५४"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:२६-१७:०८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१०",
@@ -288,7 +598,59 @@
       "isToday": false,
       "eventTitle": "गोरखकाली पूजा",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१० जेठ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "24 May 2026, Sunday",
+        "sunrise": "१३",
+        "sunset": "५०",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "अष्टमी ०९:२२ बजेसम्म",
+          "nakshatra": "मघा ०७:०८ बजेसम्म",
+          "yoga": "व्याघात",
+          "moonSign": "सिंह",
+          "sunSign": "वृष",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "गोरखकाली पूजा",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:१८-१२:०१"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:३३-१२:११"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२८"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:०१-१३:४३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:२६-१७:०८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१७:००-१७:५५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१७:०८-१८:५१"
+          }
+        ]
+      }
     },
     {
       "dateNp": "११",
@@ -298,7 +660,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "११ जेठ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "25 May 2026, Monday",
+        "sunrise": "१३",
+        "sunset": "५०",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "नवमी ०८:३१ बजेसम्म",
+          "nakshatra": "पूर्वफाल्गुनी ०६:५९ बजेसम्म",
+          "yoga": "हर्षण",
+          "moonSign": "१३:०१",
+          "sunSign": "वृष",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "राहू काल",
+            "time": "०६:५३-०८:३६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:१८-१२:०१"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:३७-१२:१८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२८"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:२८-१३:२३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:४४-१५:२६"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:१३-१६:०७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१७:०९-१८:५२"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१२",
@@ -378,7 +790,59 @@
       "isToday": false,
       "eventTitle": "पद्मिनी एकादशी व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१३ जेठ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "27 May 2026, Wednesday",
+        "sunrise": "१२",
+        "sunset": "५१",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "एकादशी ०८:१७ बजेसम्म",
+          "nakshatra": "हस्त ०८:०८ बजेसम्म",
+          "yoga": "सिद्धि",
+          "moonSign": "२०:४३",
+          "sunSign": "वृष",
+          "firstKarana": "भद्रा",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "पद्मिनी एकादशी व्रत",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५३-०८:३६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५३-०८:३६"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:१९-१२:०१"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:३४-१२:२८"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:०१-१३:४४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१४:५२-१६:३७"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१४",
@@ -388,7 +852,63 @@
       "isToday": false,
       "eventTitle": "प्रदोष व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१४ जेठ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "28 May 2026, Thursday",
+        "sunrise": "१२",
+        "sunset": "५२",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "द्वादशी ०८:५५ बजेसम्म",
+          "nakshatra": "चित्रा ०९:२६ बजेसम्म",
+          "yoga": "वरीयान",
+          "moonSign": "तुला",
+          "sunSign": "वृष",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "प्रदोष व्रत",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०५:१०-०६:५३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:४४-१०:३९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४४-१५:२७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:४५-१५:२८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१४:३२-१६:१८"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:१४-१६:०८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१५",
@@ -468,7 +988,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१६ जेठ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "30 May 2026, Saturday",
+        "sunrise": "११",
+        "sunset": "५३",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "चतुर्दशी ११:३४ बजेसम्म",
+          "nakshatra": "विशाखा १३:२६ बजेसम्म",
+          "yoga": "परिघ",
+          "moonSign": "०६:४९",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०५:१०-०६:५३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०६:५९-०७:५४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२९"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:४५-१५:२८"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:२८-१७:११"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१८:०३-१९:५०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१७",
@@ -478,7 +1044,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१७ जेठ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "31 May 2026, Sunday",
+        "sunrise": "११",
+        "sunset": "५३",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "पूर्णिमा १३:२४ बजेसम्म",
+          "nakshatra": "अनुराधा १५:५१ बजेसम्म",
+          "yoga": "शिव",
+          "moonSign": "वृश्चिक",
+          "sunSign": "वृष",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:१९-१२:०२"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३४-१२:२९"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:०२-१३:४५"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:२८-१७:११"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१७:०३-१७:५८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१७:१२-१८:५४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२२:४३-००:३१"
+          }
+        ]
+      }
     },
     {
       "dateNp": "१८",
@@ -554,7 +1166,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "१९ जेठ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "2 June 2026, Tuesday",
+        "sunrise": "१०",
+        "sunset": "५४",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "द्वितीया १७:२५ बजेसम्म",
+          "nakshatra": "मूल २१:०३ बजेसम्म",
+          "yoga": "साध्य",
+          "moonSign": "धनु",
+          "sunSign": "वृष",
+          "firstKarana": "गर",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:५४-०८:४९"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:०२-१३:४६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:०२-१३:४६"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:२९-१७:१२"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२०:३३-२२:२०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२३:००-२३:५५"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२०",
@@ -564,7 +1226,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२० जेठ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "3 June 2026, Wednesday",
+        "sunrise": "१०",
+        "sunset": "५५",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "तृतीया १९:१४ बजेसम्म",
+          "nakshatra": "पूर्वाषाढा २३:२७ बजेसम्म",
+          "yoga": "शुभ",
+          "moonSign": "धनु",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५२-०८:३६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५२-०८:३६"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०९:०७-१०:५४"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१०:१९-१२:०२"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:०२-१३:४६"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२१",
@@ -574,7 +1282,63 @@
       "isToday": false,
       "eventTitle": "जातीय भेदभाव तथा छुवाछूत उन्मूलन दिवस",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२१ जेठ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "4 June 2026, Thursday",
+        "sunrise": "१०",
+        "sunset": "५५",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "चतुर्थी २०:४५ बजेसम्म",
+          "nakshatra": "उत्तराषाढा ०१:३१ बजेसम्म",
+          "yoga": "शुक्ल",
+          "moonSign": "०६:००",
+          "sunSign": "वृष",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "जातीय भेदभाव तथा छुवाछूत उन्मूलन दिवस",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०५:०९-०६:५२"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:४५-१०:४०"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:०९-११:५६"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४६-१५:२९"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:४६-१५:३०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:१६-१६:११"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२२",
@@ -584,7 +1348,66 @@
       "isToday": false,
       "eventTitle": "विश्व वातावरण दिवस",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२२ जेठ, २०८३ शुक्रबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "5 June 2026, Friday",
+        "sunrise": "१०",
+        "sunset": "५५",
+        "panchanga": {
+          "dayName": "शुक्रबार",
+          "tithiDetails": "पञ्चमी २१:५० बजेसम्म",
+          "nakshatra": "श्रवण ०३:१० बजेसम्म",
+          "yoga": "ब्रह्म",
+          "moonSign": "मकर",
+          "sunSign": "वृष",
+          "firstKarana": "कौलव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "विश्व वातावरण दिवस",
+            "isHoliday": false
+          }
+        ],
+        "auspiciousTimes": [
+          "अन्नाप्रशन गर्ने साइत"
+        ],
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०६:५२-०८:३६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:५४-०८:५०"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "०८:२१-१०:०७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१०:१९-१२:०३"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१२:३०-१३:२६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१५:३०-१७:१४"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२३",
@@ -594,7 +1417,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२३ जेठ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "6 June 2026, Saturday",
+        "sunrise": "१०",
+        "sunset": "५६",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "षष्ठी २२:२७ बजेसम्म",
+          "nakshatra": "धनिष्ठा ०४:२१ बजेसम्म",
+          "yoga": "ऐन्द्र",
+          "moonSign": "१५:४९",
+          "sunSign": "वृष",
+          "firstKarana": "गर",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०५:०९-०६:५२"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०६:५९-०७:५४"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:३६-१०:१९"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१०:३८-१२:२३"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:४६-१५:३०"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:३०-१७:१४"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२४",
@@ -604,7 +1473,59 @@
       "isToday": false,
       "eventTitle": "रविसप्तमी व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२४ जेठ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "7 June 2026, Sunday",
+        "sunrise": "१०",
+        "sunset": "५६",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "सप्तमी २२:३३ बजेसम्म",
+          "nakshatra": "शतभिषा ०५:०१ बजेसम्म",
+          "yoga": "वैधृति",
+          "moonSign": "कुम्भ",
+          "sunSign": "वृष",
+          "firstKarana": "भद्रा",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "रविसप्तमी व्रत",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:२०-१२:०३"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३१"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:०३-१३:४७"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:३०-१७:१४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१५:४८-१७:३०"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१७:०७-१८:०२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१७:१४-१८:५८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२५",
@@ -614,7 +1535,63 @@
       "isToday": false,
       "eventTitle": "गोरखकाली पूजा",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२५ जेठ, २०८३ सोमबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "8 June 2026, Monday",
+        "sunrise": "१०",
+        "sunset": "५७",
+        "panchanga": {
+          "dayName": "सोमबार",
+          "tithiDetails": "अष्टमी २२:०८ बजेसम्म",
+          "nakshatra": "पूर्वभाद्र",
+          "yoga": "विष्कुम्भ",
+          "moonSign": "२३:१२",
+          "sunSign": "वृष",
+          "firstKarana": "बालव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "गोरखकाली पूजा",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "०५:०९-०६:५३"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०६:५२-०८:३६"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१०:२०-१२:०३"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३५-१२:३१"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१२:३१-१३:२७"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१३:४७-१५:३१"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:१७-१६:१२"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१६:००-१७:३९"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२६",
@@ -624,7 +1601,57 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२६ जेठ, २०८३ मङ्गलबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "9 June 2026, Tuesday",
+        "sunrise": "०९",
+        "sunset": "५७",
+        "panchanga": {
+          "dayName": "मङ्गलबार",
+          "tithiDetails": "नवमी २१:१५ बजेसम्म",
+          "nakshatra": "पूर्वभाद्र ०५:१३ बजेसम्म",
+          "yoga": "आयुष्यमान्",
+          "moonSign": "मीन",
+          "sunSign": "वृष",
+          "firstKarana": "तैतिल",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०७:५५-०८:५०"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०८:३६-१०:२०"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३६-१२:३१"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:०४-१३:४७"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१२:०४-१३:४८"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१५:३१-१७:१५"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१९:२८-२१:०३"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "२३:०३-२३:५८"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२७",
@@ -634,7 +1661,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२७ जेठ, २०८३ बुधबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "10 June 2026, Wednesday",
+        "sunrise": "०९",
+        "sunset": "५८",
+        "panchanga": {
+          "dayName": "बुधबार",
+          "tithiDetails": "दशमी १९:५७ बजेसम्म",
+          "nakshatra": "रेवती ०४:१५ बजेसम्म",
+          "yoga": "सौभाग्य",
+          "moonSign": "२८:१५",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "यमगण्ड",
+            "time": "०६:५३-०८:३६"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "०६:५३-०८:३६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "११:३६-१२:३१"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३६-१२:३२"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१२:०४-१३:४७"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१२:२०-१२:०४"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "२१:०९-२२:४०"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२८",
@@ -644,7 +1717,63 @@
       "isToday": false,
       "eventTitle": "परमा एकादशी व्रत",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "२८ जेठ, २०८३ बिहीबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "11 June 2026, Thursday",
+        "sunrise": "०९",
+        "sunset": "५८",
+        "panchanga": {
+          "dayName": "बिहीबार",
+          "tithiDetails": "एकादशी १८:१६ बजेसम्म",
+          "nakshatra": "अश्विनी ०३:१४ बजेसम्म",
+          "yoga": "शोभन",
+          "moonSign": "मेष",
+          "sunSign": "वृष",
+          "firstKarana": "बव",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "परमा एकादशी व्रत",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "व्रज्याम काल",
+            "time": "०३:०३-०४:३१"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "०५:०९-०६:५३"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "०८:३६-१०:२०"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०९:४६-१०:४१"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३६-१२:३१"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१३:४८-१५:३१"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१३:४८-१५:३२"
+          },
+          {
+            "label": "दूर मुहूर्तम् 2",
+            "time": "१५:१८-१६:१३"
+          }
+        ]
+      }
     },
     {
       "dateNp": "२९",
@@ -724,7 +1853,53 @@
       "isToday": false,
       "eventTitle": null,
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "३० जेठ, २०८३ शनिबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "13 June 2026, Saturday",
+        "sunrise": "०९",
+        "sunset": "५९",
+        "panchanga": {
+          "dayName": "शनिबार",
+          "tithiDetails": "त्रयोदशी १४:०३ बजेसम्म",
+          "nakshatra": "कृत्तिका ००:२५ बजेसम्म",
+          "yoga": "सुकर्मा",
+          "moonSign": "०७:३४",
+          "sunSign": "वृष",
+          "firstKarana": "वणिज",
+          "ayana": "उत्तरायण"
+        },
+        "muhurtas": [
+          {
+            "label": "गुलिक काल",
+            "time": "०५:०९-०६:५३"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "०६:५९-०७:५५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "०८:३७-१०:२१"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३७-१२:३२"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१३:४८-१५:३२"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१४:५८-१६:२२"
+          },
+          {
+            "label": "अमृत बेला",
+            "time": "१५:३२-१७:१६"
+          }
+        ]
+      }
     },
     {
       "dateNp": "३१",
@@ -734,7 +1909,59 @@
       "isToday": false,
       "eventTitle": "विश्व रक्तदाता दिवस",
       "extraEventCount": 0,
-      "details": null
+      "details": {
+        "fullDateNp": "३१ जेठ, २०८३ आइतबार",
+        "nepalSamvat": "ने.सं. ११४६",
+        "fullDateEn": "14 June 2026, Sunday",
+        "sunrise": "१०",
+        "sunset": "५९",
+        "panchanga": {
+          "dayName": "आइतबार",
+          "tithiDetails": "चतुर्दशी ११:४० बजेसम्म",
+          "nakshatra": "रोहिणी २२:४७ बजेसम्म",
+          "yoga": "धृति",
+          "moonSign": "वृष",
+          "sunSign": "वृष",
+          "firstKarana": "शकुनि",
+          "ayana": "उत्तरायण"
+        },
+        "events": [
+          {
+            "label": "विश्व रक्तदाता दिवस",
+            "isHoliday": false
+          }
+        ],
+        "muhurtas": [
+          {
+            "label": "अमृत बेला",
+            "time": "१०:२१-१२:०५"
+          },
+          {
+            "label": "अभिजीत मुहूर्त",
+            "time": "११:३७-१२:३२"
+          },
+          {
+            "label": "यमगण्ड",
+            "time": "१२:०५-१३:४८"
+          },
+          {
+            "label": "व्रज्याम काल",
+            "time": "१५:३०-१६:५४"
+          },
+          {
+            "label": "गुलिक काल",
+            "time": "१५:३२-१७:१६"
+          },
+          {
+            "label": "दूर मुहूर्तम्",
+            "time": "१७:०९-१८:०५"
+          },
+          {
+            "label": "राहू काल",
+            "time": "१७:१६-१८:५९"
+          }
+        ]
+      }
     }
   ]
 }

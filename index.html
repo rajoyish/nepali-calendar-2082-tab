@@ -58,6 +58,15 @@
                 </li>
                 <li role="presentation">
                     <a
+                        id="tab-upcoming"
+                        href="#panel-upcoming"
+                        role="tab"
+                        aria-controls="panel-upcoming"
+                        >Upcoming Events</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
                         id="tab-converter"
                         href="#panel-converter"
                         role="tab"
@@ -249,6 +258,15 @@
                         id="month-view-calendar-root"
                         class="glass calendar-root-wrapper"
                     ></div>
+                </div>
+
+                <div
+                    id="panel-upcoming"
+                    role="tabpanel"
+                    aria-labelledby="tab-upcoming"
+                    hidden
+                >
+                    <div id="upcoming-events-root"></div>
                 </div>
 
                 <div

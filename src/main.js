@@ -3,6 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { initTodayCalendar } from "./components/Today/Today.js";
 import { setupTabs } from "./tabs.js";
 import { initMonthView } from "./components/FullCalendar/FullCalendar.js";
+import { initUpcomingEvents } from "./components/UpcomingEvents/UpcomingEvents.js";
 import "./components/DateConverter/DateConverter.js";
 import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
@@ -73,6 +74,15 @@ function setupCalendarTab() {
   });
 }
 
+function setupUpcomingEventsTab() {
+  setupTabActivation("Upcoming Events", "#panel-upcoming", (panel) => {
+    const root = panel.querySelector("#upcoming-events-root");
+    if (root) {
+      initUpcomingEvents(root);
+    }
+  });
+}
+
 function setupEventHandlers() {
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
@@ -91,6 +101,7 @@ async function initApp() {
   initBookmarks();
   setupTabs();
   setupCalendarTab();
+  setupUpcomingEventsTab();
   startPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();

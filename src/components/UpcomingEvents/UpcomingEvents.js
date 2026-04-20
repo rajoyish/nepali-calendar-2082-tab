@@ -1,10 +1,13 @@
 import "./UpcomingEvents.css";
 import calendarData from "../../data/calendar-data.json";
-import { getGregorianMonthYear } from "../../utils/calendarUtils.js";
+import {
+  getGregorianMonthYear,
+  getRelativeDateText,
+  toDevanagariNumeral,
+  weekdays,
+} from "../../utils/calendarUtils.js";
 import { adToBs } from "@sbmdkl/nepali-date-converter";
 
-const devanagariDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
-const toDev = (num) => String(num).replace(/\d/g, (d) => devanagariDigits[d]);
 const npMonths = [
   "वैशाख",
   "जेठ",
@@ -18,24 +21,6 @@ const npMonths = [
   "माघ",
   "फागुन",
   "चैत",
-];
-const npDays = [
-  "आइतबार",
-  "सोमबार",
-  "मङ्गलबार",
-  "बुधबार",
-  "बिहीबार",
-  "शुक्रबार",
-  "शनिबार",
-];
-const enDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
 ];
 const enMonths = [
   "January",
@@ -51,6 +36,8 @@ const enMonths = [
   "November",
   "December",
 ];
+const npDays = weekdays.map((w) => w[1]);
+const enDays = weekdays.map((w) => w[0]);
 
 let systemEventsCache = null;
 
@@ -90,7 +77,7 @@ const getSystemEvents = () => {
             fullDateNp: day.details.fullDateNp,
             fullDateEn:
               day.details.fullDateEn ||
-              `${adDate.getDate()} ${enMonths[adDate.getMonth()]} ${adDate.getFullYear()}, ${enDays[adDate.getDay()]}`,
+              `${enMonths[adDate.getMonth()]} ${adDate.getDate()}, ${adDate.getFullYear()}, ${enDays[adDate.getDay()]}`,
             isHoliday: evt.isHoliday,
             isCustom: false,
             timestamp: adDate.getTime(),
@@ -170,6 +157,63 @@ export const initUpcomingEvents = (container) => {
   const inputBs = container.querySelector("#event-bs-date");
   const inputName = container.querySelector("#event-name");
 
+  const generateCardHtml = (e) => {
+    let monthNp, dateNp, dayOfWeekNp, fullDateNp, fullDateEn;
+    const adDateObj = new Date(e.adDate);
+
+    if (e.isCustom) {
+      const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
+      if (match) {
+        const [, yyyy, mm, dd] = match;
+        monthNp = npMonths[parseInt(mm, 10) - 1];
+        dateNp = toDevanagariNumeral(parseInt(dd, 10));
+        dayOfWeekNp = npDays[adDateObj.getDay()];
+        fullDateNp = `${dateNp} ${monthNp}, ${toDevanagariNumeral(yyyy)} ${dayOfWeekNp}`;
+      } else {
+        monthNp = "??";
+        dateNp = "??";
+        dayOfWeekNp = npDays[adDateObj.getDay()];
+        fullDateNp = e.bsDate;
+      }
+      fullDateEn = `${enMonths[adDateObj.getMonth()]} ${adDateObj.getDate()}, ${adDateObj.getFullYear()}, ${enDays[adDateObj.getDay()]}`;
+    } else {
+      monthNp = e.monthNp;
+      dateNp = e.dateNp;
+      dayOfWeekNp = e.dayOfWeekNp;
+      fullDateNp = e.fullDateNp;
+      fullDateEn = e.fullDateEn;
+    }
+
+    const cardClass = e.isHoliday
+      ? "event-card--holiday"
+      : e.isCustom
+        ? "event-card--custom"
+        : "";
+
+    return `
+      <div class="event-card ${cardClass}">
+          <div class="event-card__calendar">
+              <span class="event-card__month">${monthNp}</span>
+              <span class="event-card__date">${dateNp}</span>
+              <span class="event-card__day">${dayOfWeekNp}</span>
+          </div>
+          <div class="event-card__details">
+              <div class="event-card__header">
+                  <h3 class="event-card__title">${e.title}</h3>
+                  ${e.isHoliday ? '<span class="event-card__badge event-card__badge--holiday">बिदा</span>' : ""}
+                  ${e.isCustom ? '<span class="event-card__badge event-card__badge--custom">My Event</span>' : ""}
+              </div>
+              <span class="event-card__full-np">${fullDateNp}</span>
+              <span class="event-card__full-en">${fullDateEn}</span>
+          </div>
+          <div class="event-card__actions">
+              <span class="event-card__relative">${getRelativeDateText(adDateObj.toISOString())}</span>
+              ${e.isCustom ? `<button class="event-card__btn-delete" data-id="${e.id}"><i class="bi bi-trash3-fill"></i></button>` : ""}
+          </div>
+      </div>
+    `;
+  };
+
   const render = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -179,70 +223,34 @@ export const initUpcomingEvents = (container) => {
       (e) => new Date(e.adDate) >= today,
     );
 
-    const allEvents = [...sysEvents, ...customEvents].sort(
-      (a, b) => a.timestamp - b.timestamp,
-    );
+    let finalHtml = "";
 
-    if (allEvents.length === 0) {
+    if (customEvents.length > 0) {
+      customEvents.sort((a, b) => a.timestamp - b.timestamp);
+      finalHtml += customEvents.map(generateCardHtml).join("");
+    }
+
+    const groupedSysEvents = new Map();
+    sysEvents
+      .sort((a, b) => a.timestamp - b.timestamp)
+      .forEach((e) => {
+        if (!groupedSysEvents.has(e.monthNp)) {
+          groupedSysEvents.set(e.monthNp, []);
+        }
+        groupedSysEvents.get(e.monthNp).push(e);
+      });
+
+    groupedSysEvents.forEach((events, month) => {
+      finalHtml += `<div class="upcoming__month-divider">${month}</div>`;
+      finalHtml += events.map(generateCardHtml).join("");
+    });
+
+    if (finalHtml === "") {
       listEl.innerHTML = `<div style="text-align:center; opacity:0.6; padding: 2rem;">No upcoming events</div>`;
       return;
     }
 
-    listEl.innerHTML = allEvents
-      .map((e) => {
-        let monthNp, dateNp, dayOfWeekNp, fullDateNp, fullDateEn;
-        const adDateObj = new Date(e.adDate);
-
-        if (e.isCustom) {
-          const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
-          if (match) {
-            const [, yyyy, mm, dd] = match;
-            monthNp = npMonths[parseInt(mm, 10) - 1];
-            dateNp = toDev(parseInt(dd, 10));
-            dayOfWeekNp = npDays[adDateObj.getDay()];
-            fullDateNp = `${dateNp} ${monthNp}, ${toDev(yyyy)} ${dayOfWeekNp}`;
-          } else {
-            monthNp = "??";
-            dateNp = "??";
-            dayOfWeekNp = npDays[adDateObj.getDay()];
-            fullDateNp = e.bsDate;
-          }
-          fullDateEn = `${adDateObj.getDate()} ${enMonths[adDateObj.getMonth()]} ${adDateObj.getFullYear()}, ${enDays[adDateObj.getDay()]}`;
-        } else {
-          monthNp = e.monthNp;
-          dateNp = e.dateNp;
-          dayOfWeekNp = e.dayOfWeekNp;
-          fullDateNp = e.fullDateNp;
-          fullDateEn = e.fullDateEn;
-        }
-
-        const cardClass = e.isHoliday
-          ? "event-card--holiday"
-          : e.isCustom
-            ? "event-card--custom"
-            : "";
-
-        return `
-          <div class="event-card ${cardClass}">
-              <div class="event-card__calendar">
-                  <span class="event-card__month">${monthNp}</span>
-                  <span class="event-card__date">${dateNp}</span>
-                  <span class="event-card__day">${dayOfWeekNp}</span>
-              </div>
-              <div class="event-card__details">
-                  <h3 class="event-card__title">${e.title}</h3>
-                  <span class="event-card__full-np">${fullDateNp}</span>
-                  <span class="event-card__full-en">${fullDateEn}</span>
-              </div>
-              <div class="event-card__actions">
-                  ${e.isHoliday ? '<span class="event-card__badge event-card__badge--holiday">बिदा</span>' : ""}
-                  ${e.isCustom ? '<span class="event-card__badge event-card__badge--custom">My Event</span>' : ""}
-                  ${e.isCustom ? `<button class="event-card__btn-delete" data-id="${e.id}"><i class="bi bi-trash3-fill"></i></button>` : ""}
-              </div>
-          </div>
-        `;
-      })
-      .join("");
+    listEl.innerHTML = finalHtml;
 
     container.querySelectorAll(".event-card__btn-delete").forEach((btn) => {
       btn.addEventListener("click", (e) => {

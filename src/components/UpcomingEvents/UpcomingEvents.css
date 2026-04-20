@@ -69,6 +69,15 @@
     border-radius: 10px;
 }
 
+.upcoming__month-divider {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-sky);
+    padding: 1rem 0 0.2rem 0;
+    margin-bottom: 0.2rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
 .event-card {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -127,33 +136,22 @@
     min-width: 0;
 }
 
+.event-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
 .event-card__title {
     font-size: 1.4rem;
     font-weight: 500;
-    margin: 0 0 0.2rem 0;
+    margin: 0;
     color: #ffffff;
 }
 
-.event-card__full-np {
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.event-card__full-en {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.event-card__actions {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.8rem;
-}
-
 .event-card__badge {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
     font-weight: 600;
@@ -169,6 +167,30 @@
 .event-card__badge--custom {
     background-color: rgba(5, 242, 242, 0.15);
     color: var(--accent-sky);
+}
+
+.event-card__full-np {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.event-card__full-en {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.event-card__actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.event-card__relative {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
 }
 
 .event-card__btn-delete {
@@ -202,10 +224,6 @@
     color: #ffffff;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     margin: auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .upcoming-modal::backdrop {

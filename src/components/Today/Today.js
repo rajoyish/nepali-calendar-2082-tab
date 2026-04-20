@@ -1,6 +1,13 @@
 import "./Today.css";
-import calendarData from "../../data/calendar-data.json";
-import { adToBs } from "@sbmdkl/nepali-date-converter";
+import {
+  fetchKathmanduTime,
+  getTodayNepaliDateFull,
+  getNepalGregorianDate,
+  toDevanagariNumeral,
+  toNepaliWeekday,
+  weekdays,
+  abbreviatedWeekdays,
+} from "../../utils/calendarUtils.js";
 
 const modules = import.meta.glob(
   "../../assets/wallpapers/*.{png,jpg,jpeg,gif,webp}",
@@ -8,6 +15,10 @@ const modules = import.meta.glob(
 );
 const bgImages = Object.values(modules);
 let manualOffset = 0;
+let clockInterval = null;
+let lastClockValue = "";
+let lastHolidayKey = "";
+let lastIsHoliday = false;
 
 export function getTimePeriodBgImage(date) {
   if (bgImages.length === 0) return "";
@@ -19,47 +30,7 @@ export function getTimePeriodBgImage(date) {
 
 export function changeBackgroundManually() {
   manualOffset++;
-}
-
-const devanagariDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
-
-function toDevanagariNumeral(str) {
-  return String(str).replace(/\d/g, (d) => devanagariDigits[d]);
-}
-
-export const weekdays = [
-  ["Sunday", "आइतबार"],
-  ["Monday", "सोमबार"],
-  ["Tuesday", "मङ्गलबार"],
-  ["Wednesday", "बुधबार"],
-  ["Thursday", "बिहीबार"],
-  ["Friday", "शुक्रबार"],
-  ["Saturday", "शनिबार"],
-];
-
-export const abbreviatedWeekdays = [
-  ["Sun", "आइत"],
-  ["Mon", "सोम"],
-  ["Tue", "मङ्गल"],
-  ["Wed", "बुध"],
-  ["Thu", "बिही"],
-  ["Fri", "शुक्र"],
-  ["Sat", "शनि"],
-];
-
-function toNepaliWeekday(enDay) {
-  for (const [en, np] of weekdays) {
-    if (en === enDay) return np;
-  }
-  return "";
-}
-
-export function renderNepaliDayOfWeek() {
-  const elEn = document.querySelector("[data-today-en]");
-  const elNp = document.querySelector("[data-np-day-of-week]");
-  if (!elEn || !elNp) return;
-  const enDay = elEn.textContent.split(",")[0].trim();
-  elNp.textContent = toNepaliWeekday(enDay);
+  updateBackgroundImage();
 }
 
 export function renderNepaliWeekdayHeader(ul) {
@@ -112,98 +83,39 @@ function getNepaliTimePeriod(date) {
   );
 }
 
-function getNepalTime() {
-  const now = new Date();
-  const nepalOffsetMinutes = 5 * 60 + 45;
-  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-  return new Date(utc + nepalOffsetMinutes * 60000);
-}
-
-export function getNepalGregorianDate() {
-  const nepalTime = getNepalTime();
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  return `${days[nepalTime.getDay()]}, ${months[nepalTime.getMonth()]} ${nepalTime.getDate()}, ${nepalTime.getFullYear()}`;
-}
-
-function getNepalClockString() {
-  const nepalTime = getNepalTime();
-  let hour = nepalTime.getHours();
-  const minute = nepalTime.getMinutes();
-  const second = nepalTime.getSeconds();
+function getNepalClockString(ktmDate) {
+  let hour = ktmDate.getHours();
+  const minute = ktmDate.getMinutes();
+  const second = ktmDate.getSeconds();
   let hour12 = hour % 12;
   if (hour12 === 0) hour12 = 12;
   const pad = (n) => n.toString().padStart(2, "0");
-  const period = getNepaliTimePeriod(nepalTime);
+  const period = getNepaliTimePeriod(ktmDate);
   return `${period} ${pad(hour12)}:${pad(minute)}:${pad(second)}`;
 }
 
-let lastClockValue = "";
-export function renderNepalClock() {
+export function renderNepalClock(ktmDate) {
   const el = document.querySelector("[data-clock]");
   if (!el) return;
-  const clockStr = toDevanagariNumeral(getNepalClockString());
+  const clockStr = toDevanagariNumeral(getNepalClockString(ktmDate));
   if (el.textContent !== clockStr) {
     el.textContent = clockStr;
     lastClockValue = clockStr;
   }
 }
 
-export function renderNepalDate() {
+export function renderNepalDate(ktmDate) {
   const el = document.querySelector("[data-today-en]");
   if (!el) return;
-  el.textContent = getNepalGregorianDate();
+  el.textContent = getNepalGregorianDate(ktmDate);
 }
 
-function nepaliToNumber(str) {
-  const np = "०१२३४५६७८९";
-  return Number(
-    String(str)
-      .split("")
-      .map((c) => (np.indexOf(c) >= 0 ? np.indexOf(c) : c))
-      .join(""),
-  );
-}
-
-function getTodayBsDate() {
-  const nepalTime = getNepalTime();
-  const iso = nepalTime.toISOString().split("T")[0];
-  const bsStr = adToBs(iso);
-  if (!bsStr) return null;
-  const [year, month, day] = bsStr.split("-").map(Number);
-  return { year, month, day };
-}
-
-export function getTodayNepaliDateFull() {
-  const bs = getTodayBsDate();
-  if (!bs) return null;
-  const monthObj = calendarData.months[bs.month - 1];
-  const dateObj = monthObj?.days.find(
-    (d) => nepaliToNumber(d.dateNp) === bs.day,
-  );
-  if (!dateObj) return null;
-  return { ...dateObj, monthNp: monthObj.monthNp, yearNp: calendarData.yearNp };
+export function renderNepaliDayOfWeek() {
+  const elEn = document.querySelector("[data-today-en]");
+  const elNp = document.querySelector("[data-np-day-of-week]");
+  if (!elEn || !elNp) return;
+  const enDay = elEn.textContent.split(",")[0].trim();
+  elNp.textContent = toNepaliWeekday(enDay);
 }
 
 const setText = (selector, value) => {
@@ -216,10 +128,7 @@ const setDisplay = (selector, show) => {
   if (el) el.style.display = show ? "" : "none";
 };
 
-let lastHolidayKey = "";
-let lastIsHoliday = false;
-
-export function updateHolidayNotice(today = getTodayNepaliDateFull()) {
+export function updateHolidayNotice(today) {
   const key = today ? `${today.yearNp}-${today.monthNp}-${today.dateNp}` : "";
   if (key === lastHolidayKey) {
     setDisplay(".holiday-notice", lastIsHoliday);
@@ -231,115 +140,52 @@ export function updateHolidayNotice(today = getTodayNepaliDateFull()) {
   setDisplay(".holiday-notice", isHoliday);
 }
 
-export function renderTodayNepaliDate() {
-  const today = getTodayNepaliDateFull();
-  setText("[data-np-date]", today?.dateNp);
+export function renderTodayNepaliDate(todayNp) {
+  setText("[data-np-date]", todayNp?.dateNp);
   setText(
     "[data-np-month-year]",
-    today ? `${today.monthNp}, ${today.yearNp}` : "",
+    todayNp ? `${todayNp.monthNp}, ${todayNp.yearNp}` : "",
   );
-  setText("[data-np-day-tithi]", today?.tithi);
+  setText("[data-np-day-tithi]", todayNp?.tithi);
 
-  const hasEvent = today && today.eventTitle;
-  setText("[data-np-day-event]", hasEvent ? today.eventTitle : "");
+  const hasEvent = todayNp && todayNp.eventTitle;
+  setText("[data-np-day-event]", hasEvent ? todayNp.eventTitle : "");
   setDisplay("[data-np-day-event]", !!hasEvent);
-  updateHolidayNotice(today);
+  updateHolidayNotice(todayNp);
 }
 
-export function getNepaliDateForAd(adDateString) {
-  const bsStr = adToBs(adDateString);
-  if (!bsStr) return null;
-  const [year, month, day] = bsStr.split("-").map(Number);
-  const monthObj = calendarData.months[month - 1];
-  if (!monthObj) return null;
-  const npDay = monthObj.days.find(
-    (d) =>
-      Number(
-        String(d.dateNp).replace(/[०१२३४५६७८९]/g, (c) =>
-          "०१२३४५६७८९".indexOf(c),
-        ),
-      ) === day,
-  );
-  if (!npDay) return null;
-  return {
-    ...npDay,
-    monthNp: monthObj.monthNp,
-    yearNp: calendarData.yearNp,
-    bs: bsStr,
-    ad: adDateString,
-  };
+function updateBackgroundImage() {
+  const bgImage = getTimePeriodBgImage(new Date());
+  document.body.style.backgroundImage = `url(${bgImage})`;
 }
 
-export function createTodayComponent() {
-  let lastRenderedGregorianDate = "";
-  let lastRenderedNepaliDate = "";
-  let lastBgImage = "";
-  let clockInterval = null;
-  let updateExtensionUICallback = null;
+export async function initTodayCalendar(updateExtensionUICallback) {
+  const ktmDate = await fetchKathmanduTime();
+  const todayNp = getTodayNepaliDateFull(ktmDate);
 
-  function renderDateDependentNepalInfo() {
-    const currentGregorianDate = getNepalGregorianDate();
-    if (currentGregorianDate !== lastRenderedGregorianDate) {
-      lastRenderedGregorianDate = currentGregorianDate;
-      renderNepalDate();
-      renderNepaliDayOfWeek();
+  renderNepalDate(ktmDate);
+  renderNepaliDayOfWeek();
+  renderTodayNepaliDate(todayNp);
 
-      const todayNp = getTodayNepaliDateFull();
-      const currentNepaliDate = todayNp
-        ? `${todayNp.monthNp} ${todayNp.dateNp}, ${todayNp.yearNp}`
-        : "";
-
-      if (todayNp && updateExtensionUICallback) {
-        updateExtensionUICallback(currentNepaliDate, todayNp.dateNp);
-      }
-
-      if (currentNepaliDate !== lastRenderedNepaliDate) {
-        lastRenderedNepaliDate = currentNepaliDate;
-        renderTodayNepaliDate();
-      }
-    }
+  if (todayNp && updateExtensionUICallback) {
+    const currentNepaliDate = `${todayNp.monthNp} ${todayNp.dateNp}, ${todayNp.yearNp}`;
+    updateExtensionUICallback(currentNepaliDate, todayNp.dateNp);
   }
 
-  function updateBackgroundImage() {
-    const bgImage = getTimePeriodBgImage(new Date());
-    if (bgImage && bgImage !== lastBgImage) {
-      document.body.style.backgroundImage = `url(${bgImage})`;
-      lastBgImage = bgImage;
-    }
+  updateBackgroundImage();
+
+  const btn = document.getElementById("btn-change-bg");
+  if (btn) {
+    btn.removeEventListener("click", changeBackgroundManually);
+    btn.addEventListener("click", changeBackgroundManually);
   }
 
-  function setupManualBackgroundUpdate() {
-    const btn = document.getElementById("btn-change-bg");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        changeBackgroundManually();
-        lastBgImage = "";
-        updateBackgroundImage();
-      });
-    }
-  }
+  if (clockInterval) clearInterval(clockInterval);
 
-  function startClock() {
-    if (clockInterval) return;
-    renderNepalClock();
-    clockInterval = setInterval(() => renderNepalClock(), 1000);
-  }
+  renderNepalClock(ktmDate);
 
-  function periodicUpdate() {
-    renderDateDependentNepalInfo();
-    updateBackgroundImage();
-  }
-
-  function init(callback) {
-    updateExtensionUICallback = callback;
-    renderDateDependentNepalInfo();
-    startClock();
-    updateBackgroundImage();
-    setupManualBackgroundUpdate();
-  }
-
-  return {
-    init,
-    periodicUpdate,
-  };
+  clockInterval = setInterval(async () => {
+    const currentKtmDate = await fetchKathmanduTime();
+    renderNepalClock(currentKtmDate);
+  }, 1000);
 }

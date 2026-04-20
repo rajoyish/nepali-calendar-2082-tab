@@ -1,18 +1,16 @@
 import "./FullCalendar.css";
 import calendarData from "../../data/calendar-data.json";
 import {
-  renderNepaliWeekdayHeader,
+  fetchKathmanduTime,
+  getTodayNepaliDateFull,
+  toDevanagariNumeral,
   abbreviatedWeekdays,
   weekdays,
-  getTodayNepaliDateFull,
-} from "../Today/Today.js";
+} from "../../utils/calendarUtils.js";
+import { renderNepaliWeekdayHeader } from "../Today/Today.js";
 
 let abbreviationListenerAdded = false;
-const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
-
-function toDevanagariDigits(num) {
-  return num.toString().replace(/\d/g, (d) => nepaliDigits[d]);
-}
+let isRendered = false;
 
 function isHoliday(dateObj) {
   return dateObj && dateObj.isHoliday === true;
@@ -21,24 +19,20 @@ function isHoliday(dateObj) {
 function createModal() {
   const dialog = document.createElement("dialog");
   dialog.className = "date-modal";
-
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog || e.target.closest(".date-modal__close")) {
       dialog.close();
     }
   });
-
   return { dialog };
 }
 
 function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
   const parts = monthYearEn.split(" ");
   const mParts = parts[0].split("/");
-
   const isSecondMonth =
     firstDateEn !== undefined ? dateEn < firstDateEn : dateEn === 1;
   const monthName = isSecondMonth ? mParts[1] : mParts[0];
-
   const monthIndex = [
     "jan",
     "feb",
@@ -62,7 +56,6 @@ function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
   ) {
     year += 1;
   }
-
   return { monthIndex, year };
 }
 
@@ -80,9 +73,9 @@ function openDateModal(
     dateEnNum,
     firstDateEn,
   );
-
   const targetDate = new Date(enYear, monthIndex, dateEnNum);
   targetDate.setHours(0, 0, 0, 0);
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -90,8 +83,8 @@ function openDateModal(
   let relativeDayText = "";
   if (diffDays === 0) relativeDayText = "आज";
   else if (diffDays > 0)
-    relativeDayText = `${toDevanagariDigits(diffDays)} दिन बाँकी`;
-  else relativeDayText = `${toDevanagariDigits(Math.abs(diffDays))} दिन अघि`;
+    relativeDayText = `${toDevanagariNumeral(diffDays)} दिन बाँकी`;
+  else relativeDayText = `${toDevanagariNumeral(Math.abs(diffDays))} दिन अघि`;
 
   const d = dateObj.details;
   let bodyHtml = `<div class="date-modal__content">`;
@@ -106,7 +99,6 @@ function openDateModal(
           <button class="date-modal__close">&times;</button>
         </div>
       </header>
-
       <div class="date-modal__meta">
         <div class="date-modal__meta-col">
           <div>${d.fullDateEn}</div>
@@ -117,7 +109,6 @@ function openDateModal(
           <p class="date-modal__text-muted">☀️ सूर्योदय ०५:${d.sunrise} &nbsp; 🌅 सूर्यास्त १८:${d.sunset}</p>
         </div>
       </div>
-
       <div class="date-modal__section">
         <h4 class="date-modal__section-title">पञ्चाङ्ग</h4>
         <div class="date-modal__grid">
@@ -328,8 +319,11 @@ function maybeAddResizeListener() {
   abbreviationListenerAdded = true;
 }
 
-export function initMonthView(container) {
+export async function initMonthView(container) {
+  if (isRendered) return;
+
   container.innerHTML = "";
+  isRendered = true;
 
   const ul = document.createElement("ul");
   ul.className = "month-view";
@@ -361,12 +355,9 @@ export function initMonthView(container) {
 
   headerLi.appendChild(spanNp);
   headerLi.appendChild(navWrapper);
-  container.appendChild(ul);
 
-  const modalElements = createModal();
-  container.appendChild(modalElements.dialog);
-
-  const todayNp = getTodayNepaliDateFull();
+  const ktmDate = await fetchKathmanduTime();
+  const todayNp = getTodayNepaliDateFull(ktmDate);
   let currentMonthIndex = 0;
   let todaysNpDateStr = "";
 
@@ -381,6 +372,8 @@ export function initMonthView(container) {
     );
     if (foundIndex !== -1) currentMonthIndex = foundIndex;
   }
+
+  const modalElements = createModal();
 
   function renderSelectedMonth() {
     if (!calendarData.months || calendarData.months.length === 0) return;
@@ -434,6 +427,11 @@ export function initMonthView(container) {
       firstDateEn,
     );
   });
+
+  const layoutFragment = document.createDocumentFragment();
+  layoutFragment.appendChild(ul);
+  layoutFragment.appendChild(modalElements.dialog);
+  container.appendChild(layoutFragment);
 
   renderSelectedMonth();
   maybeAddResizeListener();

@@ -1,10 +1,6 @@
 import "./style.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-import {
-  createTodayComponent,
-  getNepaliDateForAd,
-} from "./components/Today/Today.js";
+import { initTodayCalendar } from "./components/Today/Today.js";
 import { setupTabs } from "./tabs.js";
 import { initMonthView } from "./components/FullCalendar/FullCalendar.js";
 import "./components/DateConverter/DateConverter.js";
@@ -13,11 +9,27 @@ import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
 import { updateExtensionUI } from "./components/ExtensionUIUpdater/ExtensionUIUpdater.js";
 import { initBookmarks } from "./components/Bookmarks/Bookmarks.js";
+import { getNepaliDateForAd } from "./utils/calendarUtils.js";
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 
-const todayComponent = createTodayComponent();
 const taskReminder = createTaskReminder();
+let updateInterval;
+
+function startPeriodicUpdates() {
+  if (!updateInterval) {
+    updateInterval = setInterval(() => {
+      initTodayCalendar(updateExtensionUI);
+    }, 60 * 1000);
+  }
+}
+
+function stopPeriodicUpdates() {
+  if (updateInterval) {
+    clearInterval(updateInterval);
+    updateInterval = null;
+  }
+}
 
 function setupTabActivation(tabSelector, panelSelector, onActivate) {
   const tabsList = document.querySelector(".tabs-list");
@@ -55,33 +67,31 @@ function setupTabActivation(tabSelector, panelSelector, onActivate) {
 function setupCalendarTab() {
   setupTabActivation("Full Calendar", "#panel-calendar", (panel) => {
     const calendarRoot = panel.querySelector("#month-view-calendar-root");
-    if (calendarRoot && !calendarRoot.hasChildNodes()) {
+    if (calendarRoot) {
       initMonthView(calendarRoot);
     }
   });
 }
 
-function setupPeriodicUpdates() {
-  setInterval(() => {
-    todayComponent.periodicUpdate();
-  }, 60 * 1000);
-}
-
 function setupEventHandlers() {
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) {
-      todayComponent.periodicUpdate();
+    if (document.hidden) {
+      stopPeriodicUpdates();
+    } else {
+      initTodayCalendar(updateExtensionUI);
+      startPeriodicUpdates();
     }
   });
 }
 
-function initApp() {
-  todayComponent.init(updateExtensionUI);
+async function initApp() {
+  await initTodayCalendar(updateExtensionUI);
+
   taskReminder.init();
   initBookmarks();
   setupTabs();
   setupCalendarTab();
-  setupPeriodicUpdates();
+  startPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();
 

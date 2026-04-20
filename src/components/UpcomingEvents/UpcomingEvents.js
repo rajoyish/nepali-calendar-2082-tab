@@ -114,6 +114,7 @@ export const initUpcomingEvents = (container) => {
   }
 
   container.dataset.init = "true";
+  let activeFilter = "all";
 
   container.innerHTML = `
     <div class="upcoming">
@@ -122,6 +123,11 @@ export const initUpcomingEvents = (container) => {
             <button class="upcoming__btn-add" id="btn-add-event">
                 <i class="bi bi-plus-lg"></i> Add Event
             </button>
+        </div>
+        <div class="upcoming__filters" id="upcoming-filters">
+            <button class="upcoming__filter-btn upcoming__filter-btn--active" data-filter="all">All</button>
+            <button class="upcoming__filter-btn" data-filter="holiday">Holidays</button>
+            <button class="upcoming__filter-btn" data-filter="custom">My Events</button>
         </div>
         <div class="upcoming__list" id="events-list"></div>
     </div>
@@ -156,6 +162,7 @@ export const initUpcomingEvents = (container) => {
   const inputAd = container.querySelector("#event-ad-date");
   const inputBs = container.querySelector("#event-bs-date");
   const inputName = container.querySelector("#event-name");
+  const filtersEl = container.querySelector("#upcoming-filters");
 
   const generateCardHtml = (e) => {
     let monthNp, dateNp, dayOfWeekNp, fullDateNp, fullDateEn;
@@ -218,10 +225,17 @@ export const initUpcomingEvents = (container) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const sysEvents = getSystemEvents();
-    const customEvents = getCustomEvents().filter(
+    let sysEvents = getSystemEvents();
+    let customEvents = getCustomEvents().filter(
       (e) => new Date(e.adDate) >= today,
     );
+
+    if (activeFilter === "holiday") {
+      sysEvents = sysEvents.filter((e) => e.isHoliday);
+      customEvents = [];
+    } else if (activeFilter === "custom") {
+      sysEvents = [];
+    }
 
     let finalHtml = "";
 
@@ -246,21 +260,33 @@ export const initUpcomingEvents = (container) => {
     });
 
     if (finalHtml === "") {
-      listEl.innerHTML = `<div style="text-align:center; opacity:0.6; padding: 2rem;">No upcoming events</div>`;
+      listEl.innerHTML = `<div style="text-align:center; opacity:0.6; padding: 2rem;">No ${activeFilter === "all" ? "upcoming" : activeFilter} events found</div>`;
       return;
     }
 
     listEl.innerHTML = finalHtml;
-
-    container.querySelectorAll(".event-card__btn-delete").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        deleteCustomEvent(e.currentTarget.dataset.id);
-        render();
-      });
-    });
   };
 
   container.render = render;
+
+  filtersEl.addEventListener("click", (e) => {
+    if (e.target.classList.contains("upcoming__filter-btn")) {
+      filtersEl
+        .querySelectorAll(".upcoming__filter-btn")
+        .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
+      e.target.classList.add("upcoming__filter-btn--active");
+      activeFilter = e.target.dataset.filter;
+      render();
+    }
+  });
+
+  listEl.addEventListener("click", (e) => {
+    const deleteBtn = e.target.closest(".event-card__btn-delete");
+    if (deleteBtn) {
+      deleteCustomEvent(deleteBtn.dataset.id);
+      render();
+    }
+  });
 
   inputAd.addEventListener("change", (e) => {
     if (e.target.value) {
@@ -301,6 +327,15 @@ export const initUpcomingEvents = (container) => {
     modalEl.close();
     formEl.reset();
     inputBs.value = "";
+
+    activeFilter = "all";
+    filtersEl
+      .querySelectorAll(".upcoming__filter-btn")
+      .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
+    filtersEl
+      .querySelector('[data-filter="all"]')
+      .classList.add("upcoming__filter-btn--active");
+
     render();
   });
 

@@ -170,10 +170,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -234,10 +231,7 @@
           "firstKarana": "गर",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "जग राख्न्ने साइत",
-          "पसल खोल्ने साइत"
-        ],
+        "auspiciousTimes": ["जग राख्न्ने साइत", "पसल खोल्ने साइत"],
         "muhurtas": [
           {
             "label": "गुलिक काल",
@@ -366,10 +360,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -430,9 +421,7 @@
           "firstKarana": "तैतिल",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -499,10 +488,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "यमगण्ड",
@@ -639,14 +625,11 @@
         },
         "events": [
           {
-            "label": "क्रिसमस (इसाई धर्म मात्र)",
+            "label": "ख्रीष्टमस (ख्रिष्टियनहरुलाई मात्र)",
             "isHoliday": true
           }
         ],
-        "auspiciousTimes": [
-          "होम गर्ने साइत",
-          "मुण्डन"
-        ],
+        "auspiciousTimes": ["होम गर्ने साइत", "मुण्डन"],
         "muhurtas": [
           {
             "label": "गुलिक काल",
@@ -707,10 +690,7 @@
           "firstKarana": "वणिज",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "जग राख्न्ने साइत",
-          "पसल खोल्ने साइत"
-        ],
+        "auspiciousTimes": ["जग राख्न्ने साइत", "पसल खोल्ने साइत"],
         "muhurtas": [
           {
             "label": "गुलिक काल",
@@ -763,9 +743,7 @@
           "firstKarana": "बव",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -822,10 +800,7 @@
           "firstKarana": "कौलव",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -886,9 +861,7 @@
           "firstKarana": "गर",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "दूर मुहूर्तम्",
@@ -1026,9 +999,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -1099,9 +1070,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "दूर मुहूर्तम्",
@@ -1224,10 +1193,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -1290,9 +1256,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -1359,10 +1323,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "दूर मुहूर्तम्",
@@ -1547,9 +1508,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "गुलिक काल",
@@ -1610,10 +1569,7 @@
           "firstKarana": "बालव",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "पसल खोल्ने साइत",
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["पसल खोल्ने साइत", "रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "गुलिक काल",
@@ -1728,9 +1684,7 @@
             "isHoliday": true
           }
         ],
-        "auspiciousTimes": [
-          "मुण्डन"
-        ],
+        "auspiciousTimes": ["मुण्डन"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -1791,9 +1745,7 @@
           "firstKarana": "भद्रा",
           "ayana": "दक्षिणायन"
         },
-        "auspiciousTimes": [
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "व्रज्याम काल",
@@ -1860,9 +1812,7 @@
             "isHoliday": false
           }
         ],
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत"],
         "muhurtas": [
           {
             "label": "यमगण्ड",
@@ -1915,10 +1865,7 @@
           "firstKarana": "तैतिल",
           "ayana": "उत्तरायण"
         },
-        "auspiciousTimes": [
-          "रुद्री गर्ने साइत",
-          "होम गर्ने साइत"
-        ],
+        "auspiciousTimes": ["रुद्री गर्ने साइत", "होम गर्ने साइत"],
         "muhurtas": [
           {
             "label": "यमगण्ड",

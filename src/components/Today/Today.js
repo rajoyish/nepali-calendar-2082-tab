@@ -1,6 +1,7 @@
 import "./Today.css";
 import {
   fetchKathmanduTime,
+  getLocalKathmanduTime,
   getTodayNepaliDateFull,
   getNepalGregorianDate,
   toDevanagariNumeral,
@@ -19,6 +20,29 @@ let clockInterval = null;
 let lastClockValue = "";
 let lastHolidayKey = "";
 let lastIsHoliday = false;
+
+// Cache Helpers
+function getCachedNepaliDate(currentIsoDate) {
+  try {
+    const cached = localStorage.getItem("nepaliDateCache");
+    if (cached) {
+      const parsedCache = JSON.parse(cached);
+      if (parsedCache.dateKey === currentIsoDate) {
+        return parsedCache.data;
+      }
+    }
+  } catch (e) {
+    console.error("Failed to parse cache", e);
+  }
+  return null;
+}
+
+function setCachedNepaliDate(currentIsoDate, npData) {
+  localStorage.setItem(
+    "nepaliDateCache",
+    JSON.stringify({ dateKey: currentIsoDate, data: npData }),
+  );
+}
 
 export function getTimePeriodBgImage(date) {
   if (bgImages.length === 0) return "";
@@ -160,19 +184,29 @@ function updateBackgroundImage() {
 }
 
 export async function initTodayCalendar(updateExtensionUICallback) {
-  const ktmDate = await fetchKathmanduTime();
-  const todayNp = getTodayNepaliDateFull(ktmDate);
+  // 1. Instant optimistic render using local system time
+  let ktmDate = getLocalKathmanduTime();
+  const currentIsoDate = ktmDate.toISOString().split("T")[0];
 
+  // Try to load heavy data from cache first
+  let todayNp = getCachedNepaliDate(currentIsoDate);
+
+  if (!todayNp) {
+    todayNp = getTodayNepaliDateFull(ktmDate);
+    if (todayNp) setCachedNepaliDate(currentIsoDate, todayNp);
+  }
+
+  // Paint the DOM immediately without waiting for network
   renderNepalDate(ktmDate);
   renderNepaliDayOfWeek();
   renderTodayNepaliDate(todayNp);
+  updateBackgroundImage();
+  renderNepalClock(ktmDate);
 
   if (todayNp && updateExtensionUICallback) {
     const currentNepaliDate = `${todayNp.monthNp} ${todayNp.dateNp}, ${todayNp.yearNp}`;
     updateExtensionUICallback(currentNepaliDate, todayNp.dateNp);
   }
-
-  updateBackgroundImage();
 
   const btn = document.getElementById("btn-change-bg");
   if (btn) {
@@ -180,12 +214,27 @@ export async function initTodayCalendar(updateExtensionUICallback) {
     btn.addEventListener("click", changeBackgroundManually);
   }
 
+  // 2. Efficient clock interval using local calculation instead of API calls
   if (clockInterval) clearInterval(clockInterval);
-
-  renderNepalClock(ktmDate);
-
-  clockInterval = setInterval(async () => {
-    const currentKtmDate = await fetchKathmanduTime();
+  clockInterval = setInterval(() => {
+    const currentKtmDate = getLocalKathmanduTime();
     renderNepalClock(currentKtmDate);
   }, 1000);
+
+  // 3. Background sync to correct any system time inaccuracies silently
+  fetchKathmanduTime()
+    .then((accurateKtmDate) => {
+      const accurateIsoDate = accurateKtmDate.toISOString().split("T")[0];
+
+      if (accurateIsoDate !== currentIsoDate) {
+        const accurateTodayNp = getTodayNepaliDateFull(accurateKtmDate);
+        if (accurateTodayNp) {
+          setCachedNepaliDate(accurateIsoDate, accurateTodayNp);
+          renderNepalDate(accurateKtmDate);
+          renderNepaliDayOfWeek();
+          renderTodayNepaliDate(accurateTodayNp);
+        }
+      }
+    })
+    .catch(console.error);
 }

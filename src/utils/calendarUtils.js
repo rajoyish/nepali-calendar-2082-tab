@@ -48,6 +48,14 @@ export function nepaliToNumber(str) {
   );
 }
 
+// Synchronous local time calculation for instant rendering
+export function getLocalKathmanduTime() {
+  const now = new Date();
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const nepalOffsetMinutes = 5 * 60 + 45;
+  return new Date(utc + nepalOffsetMinutes * 60000);
+}
+
 export async function fetchKathmanduTime() {
   try {
     const controller = new AbortController();
@@ -69,10 +77,8 @@ export async function fetchKathmanduTime() {
     const data = await response.json();
     return new Date(data.dateTime);
   } catch (error) {
-    const now = new Date();
-    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-    const nepalOffsetMinutes = 5 * 60 + 45;
-    return new Date(utc + nepalOffsetMinutes * 60000);
+    // Fallback to local calculation if API fails or times out
+    return getLocalKathmanduTime();
   }
 }
 

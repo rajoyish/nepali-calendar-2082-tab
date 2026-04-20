@@ -60,9 +60,8 @@ export function nepaliToNumber(str) {
 
 export function getLocalKathmanduTime() {
   const now = new Date();
-  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-  const nepalOffsetMinutes = 5 * 60 + 45;
-  return new Date(utc + nepalOffsetMinutes * 60000);
+  const ktmString = now.toLocaleString("en-US", { timeZone: "Asia/Kathmandu" });
+  return new Date(ktmString);
 }
 
 export async function fetchKathmanduTime() {
@@ -188,12 +187,10 @@ export function isHoliday(dateObj) {
   return dateObj && dateObj.isHoliday === true;
 }
 
-export function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
+export function getGregorianMonthYear(monthYearEn, isSecondMonth) {
   const parts = monthYearEn.split(" ");
   const mParts = parts[0].split("/");
-  const isSecondMonth =
-    firstDateEn !== undefined ? dateEn < firstDateEn : dateEn === 1;
-  const monthName = isSecondMonth ? mParts[1] : mParts[0];
+  const monthName = isSecondMonth && mParts.length > 1 ? mParts[1] : mParts[0];
   const monthIndex = [
     "jan",
     "feb",
@@ -218,4 +215,29 @@ export function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
     year += 1;
   }
   return { monthIndex, year };
+}
+
+export function getRelativeDateText(targetDate) {
+  const todayKtm = getLocalKathmanduTime();
+  todayKtm.setHours(0, 0, 0, 0);
+
+  const target = new Date(targetDate);
+  target.setHours(0, 0, 0, 0);
+
+  const utc1 = Date.UTC(
+    target.getFullYear(),
+    target.getMonth(),
+    target.getDate(),
+  );
+  const utc2 = Date.UTC(
+    todayKtm.getFullYear(),
+    todayKtm.getMonth(),
+    todayKtm.getDate(),
+  );
+
+  const diffDays = Math.floor((utc1 - utc2) / 86400000);
+
+  if (diffDays === 0) return "आज";
+  if (diffDays > 0) return `${toDevanagariNumeral(diffDays)} दिन बाँकी`;
+  return `${toDevanagariNumeral(Math.abs(diffDays))} दिन अघि`;
 }

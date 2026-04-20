@@ -8,6 +8,7 @@ import {
   weekdays,
   isHoliday,
   getGregorianMonthYear,
+  getRelativeDateText,
 } from "../../utils/calendarUtils.js";
 import { renderNepaliWeekdayHeader } from "../Today/Today.js";
 
@@ -25,32 +26,27 @@ function createModal() {
   return { dialog };
 }
 
-function openDateModal(
-  dialog,
-  dateObj,
-  monthNp,
-  yearNp,
-  monthYearEn,
-  firstDateEn,
-) {
-  const dateEnNum = parseInt(dateObj.dateEn, 10);
+function openDateModal(dialog, dateObj, monthObj, yearNp, dateIndex) {
+  let isSecondMonth = false;
+  for (let i = 1; i <= dateIndex; i++) {
+    if (
+      parseInt(monthObj.days[i].dateEn, 10) <
+      parseInt(monthObj.days[i - 1].dateEn, 10)
+    ) {
+      isSecondMonth = true;
+      break;
+    }
+  }
+
   const { monthIndex, year: enYear } = getGregorianMonthYear(
-    monthYearEn,
-    dateEnNum,
-    firstDateEn,
+    monthObj.monthYearEn,
+    isSecondMonth,
   );
+  const dateEnNum = parseInt(dateObj.dateEn, 10);
   const targetDate = new Date(enYear, monthIndex, dateEnNum);
-  targetDate.setHours(0, 0, 0, 0);
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const diffDays = Math.round((targetDate - today) / 86400000);
-  let relativeDayText = "";
-  if (diffDays === 0) relativeDayText = "आज";
-  else if (diffDays > 0)
-    relativeDayText = `${toDevanagariNumeral(diffDays)} दिन बाँकी`;
-  else relativeDayText = `${toDevanagariNumeral(Math.abs(diffDays))} दिन अघि`;
+  const relativeDayText = getRelativeDateText(targetDate);
+  const monthNp = monthObj.monthNp;
 
   const d = dateObj.details;
   let bodyHtml = `<div class="date-modal__content">`;
@@ -193,12 +189,11 @@ function openDateModal(
 function renderMonthGrid(ul, monthObj, yearNp, todaysNpDateStr) {
   const fragment = document.createDocumentFragment();
   const monthDates = monthObj.days;
-  const firstDateEn = parseInt(monthDates[0].dateEn, 10);
   const { monthIndex, year } = getGregorianMonthYear(
     monthObj.monthYearEn,
-    firstDateEn,
-    firstDateEn,
+    false,
   );
+  const firstDateEn = parseInt(monthDates[0].dateEn, 10);
   const firstDate = new Date(year, monthIndex, firstDateEn);
   const firstDayWeekIndex = firstDate.getDay();
 
@@ -379,18 +374,16 @@ export async function initMonthView(container) {
     );
     if (!li) return;
 
-    const index = li.dataset.index;
+    const index = parseInt(li.dataset.index, 10);
     const monthObj = calendarData.months[currentMonthIndex];
     const dateObj = monthObj.days[index];
-    const firstDateEn = parseInt(monthObj.days[0].dateEn, 10);
 
     openDateModal(
       modalElements.dialog,
       dateObj,
-      monthObj.monthNp,
+      monthObj,
       calendarData.yearNp,
-      monthObj.monthYearEn,
-      firstDateEn,
+      index,
     );
   });
 

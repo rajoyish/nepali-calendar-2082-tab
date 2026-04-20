@@ -1,11 +1,6 @@
-:root {
-    --dark-black: #131826;
-    --accent-sky: #05f2f2;
-    --dark-green: #168c04;
-    --accent-green: #43bf0a;
-}
-
 .upcoming {
+    max-width: 48rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -79,24 +74,16 @@
 }
 
 .event-card {
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     padding: 1.2rem;
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    transition: background-color 0.2s ease;
     border-left: 4px solid var(--dark-green);
-}
-
-.event-card:hover {
-    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .event-card--custom {
     border-left: 4px solid var(--accent-sky);
-    background-color: rgba(5, 242, 242, 0.03);
 }
 
 .event-card--holiday {
@@ -215,15 +202,18 @@
 }
 
 .upcoming-modal {
-    background-color: var(--dark-black);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2rem;
     width: 90%;
     max-width: 400px;
     color: #ffffff;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     margin: auto;
+}
+
+body.no-glass .upcoming-modal {
+    background-color: var(--dark-black);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .upcoming-modal::backdrop {

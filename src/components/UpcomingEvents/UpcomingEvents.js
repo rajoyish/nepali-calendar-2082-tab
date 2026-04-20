@@ -125,7 +125,7 @@ export const initUpcomingEvents = (container) => {
         </div>
         <div class="upcoming__list" id="events-list"></div>
     </div>
-    <dialog class="upcoming-modal" id="event-modal">
+    <dialog class="upcoming-modal glass" id="event-modal">
         <form class="upcoming-form" id="event-form">
             <h3 class="upcoming-form__title">New Custom Event</h3>
             <div class="upcoming-form__group">
@@ -191,7 +191,7 @@ export const initUpcomingEvents = (container) => {
         : "";
 
     return `
-      <div class="event-card ${cardClass}">
+      <div class="event-card glass-pill ${cardClass}">
           <div class="event-card__calendar">
               <span class="event-card__month">${monthNp}</span>
               <span class="event-card__date">${dateNp}</span>

@@ -4,10 +4,11 @@ import {
   getLocalKathmanduTime,
   getTodayNepaliDateFull,
   getNepalGregorianDate,
-  toDevanagariNumeral,
   toNepaliWeekday,
   weekdays,
   abbreviatedWeekdays,
+  getFormattedNepalClock,
+  isHoliday,
 } from "../../utils/calendarUtils.js";
 
 const modules = import.meta.glob(
@@ -21,7 +22,6 @@ let lastClockValue = "";
 let lastHolidayKey = "";
 let lastIsHoliday = false;
 
-// Cache Helpers
 function getCachedNepaliDate(currentIsoDate) {
   try {
     const cached = localStorage.getItem("nepaliDateCache");
@@ -85,43 +85,10 @@ export function renderNepaliWeekdayHeader(ul) {
   });
 }
 
-const npTimePeriods = [
-  { label: "बिहान", start: 5, end: 12 },
-  { label: "मध्यान्ह", start: 12, end: 13 },
-  { label: "अपरान्ह", start: 13, end: 17 },
-  { label: "साँझ", start: 17, end: 19 },
-  { label: "बेलुका", start: 19, end: 21 },
-  { label: "राति", start: 21, end: 24 },
-  { label: "राति", start: 0, end: 5 },
-];
-
-function getNepaliTimePeriod(date) {
-  const hour = date.getHours();
-  return (
-    npTimePeriods.find(
-      (period) =>
-        (period.start <= hour && hour < period.end) ||
-        (period.start > period.end &&
-          (hour >= period.start || hour < period.end)),
-    )?.label || ""
-  );
-}
-
-function getNepalClockString(ktmDate) {
-  let hour = ktmDate.getHours();
-  const minute = ktmDate.getMinutes();
-  const second = ktmDate.getSeconds();
-  let hour12 = hour % 12;
-  if (hour12 === 0) hour12 = 12;
-  const pad = (n) => n.toString().padStart(2, "0");
-  const period = getNepaliTimePeriod(ktmDate);
-  return `${period} ${pad(hour12)}:${pad(minute)}:${pad(second)}`;
-}
-
 export function renderNepalClock(ktmDate) {
   const el = document.querySelector("[data-clock]");
   if (!el) return;
-  const clockStr = toDevanagariNumeral(getNepalClockString(ktmDate));
+  const clockStr = getFormattedNepalClock(ktmDate);
   if (el.textContent !== clockStr) {
     el.textContent = clockStr;
     lastClockValue = clockStr;
@@ -158,10 +125,10 @@ export function updateHolidayNotice(today) {
     setDisplay(".holiday-notice", lastIsHoliday);
     return;
   }
-  const isHoliday = !!(today && today.isHoliday);
+  const isHolidayStatus = isHoliday(today);
   lastHolidayKey = key;
-  lastIsHoliday = isHoliday;
-  setDisplay(".holiday-notice", isHoliday);
+  lastIsHoliday = isHolidayStatus;
+  setDisplay(".holiday-notice", isHolidayStatus);
 }
 
 export function renderTodayNepaliDate(todayNp) {
@@ -184,11 +151,9 @@ function updateBackgroundImage() {
 }
 
 export async function initTodayCalendar(updateExtensionUICallback) {
-  // 1. Instant optimistic render using local system time
   let ktmDate = getLocalKathmanduTime();
   const currentIsoDate = ktmDate.toISOString().split("T")[0];
 
-  // Try to load heavy data from cache first
   let todayNp = getCachedNepaliDate(currentIsoDate);
 
   if (!todayNp) {
@@ -196,7 +161,6 @@ export async function initTodayCalendar(updateExtensionUICallback) {
     if (todayNp) setCachedNepaliDate(currentIsoDate, todayNp);
   }
 
-  // Paint the DOM immediately without waiting for network
   renderNepalDate(ktmDate);
   renderNepaliDayOfWeek();
   renderTodayNepaliDate(todayNp);
@@ -214,14 +178,12 @@ export async function initTodayCalendar(updateExtensionUICallback) {
     btn.addEventListener("click", changeBackgroundManually);
   }
 
-  // 2. Efficient clock interval using local calculation instead of API calls
   if (clockInterval) clearInterval(clockInterval);
   clockInterval = setInterval(() => {
     const currentKtmDate = getLocalKathmanduTime();
     renderNepalClock(currentKtmDate);
   }, 1000);
 
-  // 3. Background sync to correct any system time inaccuracies silently
   fetchKathmanduTime()
     .then((accurateKtmDate) => {
       const accurateIsoDate = accurateKtmDate.toISOString().split("T")[0];

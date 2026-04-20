@@ -6,15 +6,13 @@ import {
   toDevanagariNumeral,
   abbreviatedWeekdays,
   weekdays,
+  isHoliday,
+  getGregorianMonthYear,
 } from "../../utils/calendarUtils.js";
 import { renderNepaliWeekdayHeader } from "../Today/Today.js";
 
 let abbreviationListenerAdded = false;
 let isRendered = false;
-
-function isHoliday(dateObj) {
-  return dateObj && dateObj.isHoliday === true;
-}
 
 function createModal() {
   const dialog = document.createElement("dialog");
@@ -25,38 +23,6 @@ function createModal() {
     }
   });
   return { dialog };
-}
-
-function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
-  const parts = monthYearEn.split(" ");
-  const mParts = parts[0].split("/");
-  const isSecondMonth =
-    firstDateEn !== undefined ? dateEn < firstDateEn : dateEn === 1;
-  const monthName = isSecondMonth ? mParts[1] : mParts[0];
-  const monthIndex = [
-    "jan",
-    "feb",
-    "mar",
-    "apr",
-    "may",
-    "jun",
-    "jul",
-    "aug",
-    "sep",
-    "oct",
-    "nov",
-    "dec",
-  ].findIndex((m) => monthName.toLowerCase().startsWith(m));
-
-  let year = parseInt(parts[1], 10);
-  if (
-    isSecondMonth &&
-    monthIndex === 0 &&
-    mParts[0].toLowerCase().startsWith("dec")
-  ) {
-    year += 1;
-  }
-  return { monthIndex, year };
 }
 
 function openDateModal(

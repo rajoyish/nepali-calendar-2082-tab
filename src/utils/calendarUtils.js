@@ -34,12 +34,22 @@ export const devanagariDigits = [
   "९",
 ];
 
+export const npTimePeriods = [
+  { label: "बिहान", start: 5, end: 12 },
+  { label: "मध्यान्ह", start: 12, end: 13 },
+  { label: "अपरान्ह", start: 13, end: 17 },
+  { label: "साँझ", start: 17, end: 19 },
+  { label: "बेलुका", start: 19, end: 21 },
+  { label: "राति", start: 21, end: 24 },
+  { label: "राति", start: 0, end: 5 },
+];
+
 export function toDevanagariNumeral(str) {
   return String(str).replace(/\d/g, (d) => devanagariDigits[d]);
 }
 
 export function nepaliToNumber(str) {
-  const np = "०१२३४५६७८९";
+  const np = devanagariDigits.join("");
   return Number(
     String(str)
       .split("")
@@ -48,7 +58,6 @@ export function nepaliToNumber(str) {
   );
 }
 
-// Synchronous local time calculation for instant rendering
 export function getLocalKathmanduTime() {
   const now = new Date();
   const utc = now.getTime() + now.getTimezoneOffset() * 60000;
@@ -77,7 +86,6 @@ export async function fetchKathmanduTime() {
     const data = await response.json();
     return new Date(data.dateTime);
   } catch (error) {
-    // Fallback to local calculation if API fails or times out
     return getLocalKathmanduTime();
   }
 }
@@ -141,14 +149,7 @@ export function getNepaliDateForAd(adDateString) {
   const [year, month, day] = bsStr.split("-").map(Number);
   const monthObj = calendarData.months[month - 1];
   if (!monthObj) return null;
-  const npDay = monthObj.days.find(
-    (d) =>
-      Number(
-        String(d.dateNp).replace(/[०१२३४५६७८९]/g, (c) =>
-          "०१२३४५६७८९".indexOf(c),
-        ),
-      ) === day,
-  );
+  const npDay = monthObj.days.find((d) => nepaliToNumber(d.dateNp) === day);
   if (!npDay) return null;
   return {
     ...npDay,
@@ -157,4 +158,64 @@ export function getNepaliDateForAd(adDateString) {
     bs: bsStr,
     ad: adDateString,
   };
+}
+
+export function getNepaliTimePeriod(date) {
+  const hour = date.getHours();
+  return (
+    npTimePeriods.find(
+      (period) =>
+        (period.start <= hour && hour < period.end) ||
+        (period.start > period.end &&
+          (hour >= period.start || hour < period.end)),
+    )?.label || ""
+  );
+}
+
+export function getFormattedNepalClock(ktmDate) {
+  let hour = ktmDate.getHours();
+  const minute = ktmDate.getMinutes();
+  const second = ktmDate.getSeconds();
+  let hour12 = hour % 12;
+  if (hour12 === 0) hour12 = 12;
+  const pad = (n) => n.toString().padStart(2, "0");
+  const period = getNepaliTimePeriod(ktmDate);
+  const clockStr = `${period} ${pad(hour12)}:${pad(minute)}:${pad(second)}`;
+  return toDevanagariNumeral(clockStr);
+}
+
+export function isHoliday(dateObj) {
+  return dateObj && dateObj.isHoliday === true;
+}
+
+export function getGregorianMonthYear(monthYearEn, dateEn, firstDateEn) {
+  const parts = monthYearEn.split(" ");
+  const mParts = parts[0].split("/");
+  const isSecondMonth =
+    firstDateEn !== undefined ? dateEn < firstDateEn : dateEn === 1;
+  const monthName = isSecondMonth ? mParts[1] : mParts[0];
+  const monthIndex = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ].findIndex((m) => monthName.toLowerCase().startsWith(m));
+
+  let year = parseInt(parts[1], 10);
+  if (
+    isSecondMonth &&
+    monthIndex === 0 &&
+    mParts[0].toLowerCase().startsWith("dec")
+  ) {
+    year += 1;
+  }
+  return { monthIndex, year };
 }

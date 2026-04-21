@@ -1,5 +1,5 @@
 import { adToBs } from "@sbmdkl/nepali-date-converter";
-import calendarData from "../data/calendar-data.json";
+import { getCalendarData } from "./dataFetcher.js";
 
 export const weekdays = [
   ["Sunday", "आइतबार"],
@@ -67,7 +67,7 @@ export function getLocalKathmanduTime() {
 export async function fetchKathmanduTime() {
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 800);
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     const response = await fetch(
       "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Kathmandu",
@@ -97,9 +97,11 @@ export function getTodayBsDate(ktmDate) {
   return { year, month, day };
 }
 
-export function getTodayNepaliDateFull(ktmDate) {
+export async function getTodayNepaliDateFull(ktmDate) {
   const bs = getTodayBsDate(ktmDate);
   if (!bs) return null;
+  const calendarData = await getCalendarData();
+  if (!calendarData) return null;
   const monthObj = calendarData.months[bs.month - 1];
   const dateObj = monthObj?.days.find(
     (d) => nepaliToNumber(d.dateNp) === bs.day,
@@ -142,10 +144,12 @@ export function toNepaliWeekday(enDay) {
   return "";
 }
 
-export function getNepaliDateForAd(adDateString) {
+export async function getNepaliDateForAd(adDateString) {
   const bsStr = adToBs(adDateString);
   if (!bsStr) return null;
   const [year, month, day] = bsStr.split("-").map(Number);
+  const calendarData = await getCalendarData();
+  if (!calendarData) return null;
   const monthObj = calendarData.months[month - 1];
   if (!monthObj) return null;
   const npDay = monthObj.days.find((d) => nepaliToNumber(d.dateNp) === day);

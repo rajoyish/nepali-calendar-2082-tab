@@ -5,7 +5,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const sourceDir = path.join(__dirname, "../src/data/calendar-2083");
-const outputFile = path.join(__dirname, "../src/data/calendar-data.json");
+const publicDir = path.join(__dirname, "../public");
+const outputFile = path.join(publicDir, "calendar-data.json");
 const calendarYear = "२०८३";
 
 function buildCalendarData() {
@@ -34,10 +35,12 @@ function buildCalendarData() {
       months: monthsData,
     };
 
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir, { recursive: true });
+    }
+
     fs.writeFileSync(outputFile, JSON.stringify(finalData, null, 2), "utf8");
-    console.log(
-      `Successfully built calendar-data.json with ${monthsData.length} months.`,
-    );
+    console.log(`Successfully built calendar-data.json into the public folder with ${monthsData.length} months.`);
   } catch (error) {
     console.error(error);
   }

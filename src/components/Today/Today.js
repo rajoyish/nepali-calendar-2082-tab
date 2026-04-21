@@ -1,4 +1,5 @@
 import "./Today.css";
+import { getCalendarData } from "../../utils/dataFetcher.js";
 import {
   fetchKathmanduTime,
   getLocalKathmanduTime,
@@ -31,9 +32,7 @@ function getCachedNepaliDate(currentIsoDate) {
         return parsedCache.data;
       }
     }
-  } catch (e) {
-    console.error("Failed to parse cache", e);
-  }
+  } catch (e) {}
   return null;
 }
 
@@ -151,13 +150,16 @@ function updateBackgroundImage() {
 }
 
 export async function initTodayCalendar(updateExtensionUICallback) {
+  const calendarData = await getCalendarData();
+  if (!calendarData) return;
+
   let ktmDate = getLocalKathmanduTime();
   const currentIsoDate = ktmDate.toISOString().split("T")[0];
 
   let todayNp = getCachedNepaliDate(currentIsoDate);
 
   if (!todayNp) {
-    todayNp = getTodayNepaliDateFull(ktmDate);
+    todayNp = await getTodayNepaliDateFull(ktmDate);
     if (todayNp) setCachedNepaliDate(currentIsoDate, todayNp);
   }
 
@@ -185,11 +187,11 @@ export async function initTodayCalendar(updateExtensionUICallback) {
   }, 1000);
 
   fetchKathmanduTime()
-    .then((accurateKtmDate) => {
+    .then(async (accurateKtmDate) => {
       const accurateIsoDate = accurateKtmDate.toISOString().split("T")[0];
 
       if (accurateIsoDate !== currentIsoDate) {
-        const accurateTodayNp = getTodayNepaliDateFull(accurateKtmDate);
+        const accurateTodayNp = await getTodayNepaliDateFull(accurateKtmDate);
         if (accurateTodayNp) {
           setCachedNepaliDate(accurateIsoDate, accurateTodayNp);
           renderNepalDate(accurateKtmDate);
@@ -198,5 +200,5 @@ export async function initTodayCalendar(updateExtensionUICallback) {
         }
       }
     })
-    .catch(console.error);
+    .catch(() => {});
 }

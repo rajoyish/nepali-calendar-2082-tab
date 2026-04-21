@@ -1,5 +1,5 @@
 import "./FullCalendar.css";
-import calendarData from "../../data/calendar-data.json";
+import { getCalendarData } from "../../utils/dataFetcher.js";
 import {
   fetchKathmanduTime,
   getTodayNepaliDateFull,
@@ -283,6 +283,12 @@ function maybeAddResizeListener() {
 export async function initMonthView(container) {
   if (isRendered) return;
 
+  const calendarData = await getCalendarData();
+  if (!calendarData) {
+    container.innerHTML = "<p>Failed to load calendar data.</p>";
+    return;
+  }
+
   container.innerHTML = "";
   isRendered = true;
 
@@ -318,7 +324,7 @@ export async function initMonthView(container) {
   headerLi.appendChild(navWrapper);
 
   const ktmDate = await fetchKathmanduTime();
-  const todayNp = getTodayNepaliDateFull(ktmDate);
+  const todayNp = await getTodayNepaliDateFull(ktmDate);
   let currentMonthIndex = 0;
   let todaysNpDateStr = "";
 

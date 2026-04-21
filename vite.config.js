@@ -5,5 +5,14 @@ export default defineConfig({
   build: {
     outDir: "chrome-extension",
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+        },
+      },
+    },
   },
 });

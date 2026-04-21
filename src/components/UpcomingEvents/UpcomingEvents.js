@@ -1,5 +1,5 @@
 import "./UpcomingEvents.css";
-import calendarData from "../../data/calendar-data.json";
+import { getCalendarData } from "../../utils/dataFetcher.js";
 import {
   getGregorianMonthYear,
   getRelativeDateText,
@@ -61,11 +61,14 @@ const getLocalYYYYMMDD = (d) => {
   return `${y}-${m}-${day}`;
 };
 
-const getSystemEvents = () => {
+const getSystemEvents = async () => {
   if (systemEventsCache) return systemEventsCache;
   const events = [];
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  const calendarData = await getCalendarData();
+  if (!calendarData || !calendarData.months) return events;
 
   calendarData.months.forEach((month) => {
     let isSecondMonth = false;
@@ -304,13 +307,13 @@ export const initUpcomingEvents = (container) => {
     `;
   };
 
-  const render = () => {
+  const render = async () => {
     checkAndNotifyTodayEvents();
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let sysEvents = getSystemEvents();
+    let sysEvents = await getSystemEvents();
     let customEvents = getCustomEvents().filter(
       (e) => e.timestamp >= today.getTime(),
     );
@@ -354,7 +357,7 @@ export const initUpcomingEvents = (container) => {
 
   container.render = render;
 
-  container.addEventListener("click", (e) => {
+  container.addEventListener("click", async (e) => {
     if (e.target.closest("#btn-add-event")) {
       if (typeof chrome === "undefined" || !chrome.notifications) {
         if (
@@ -383,14 +386,14 @@ export const initUpcomingEvents = (container) => {
         .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
       filterBtn.classList.add("upcoming__filter-btn--active");
       activeFilter = filterBtn.dataset.filter;
-      render();
+      await render();
       return;
     }
 
     const deleteBtn = e.target.closest(".event-card__btn-delete");
     if (deleteBtn) {
       deleteCustomEvent(deleteBtn.dataset.id);
-      render();
+      await render();
       return;
     }
   });
@@ -407,7 +410,7 @@ export const initUpcomingEvents = (container) => {
     }
   });
 
-  formEl.addEventListener("submit", (e) => {
+  formEl.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const [yyyy, mm, dd] = inputAd.value.split("-");
@@ -436,7 +439,7 @@ export const initUpcomingEvents = (container) => {
       .querySelector('[data-filter="all"]')
       .classList.add("upcoming__filter-btn--active");
 
-    render();
+    await render();
   });
 
   render();

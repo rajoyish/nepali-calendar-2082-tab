@@ -22,6 +22,7 @@ let clockInterval = null;
 let lastClockValue = "";
 let lastHolidayKey = "";
 let lastIsHoliday = false;
+let isBgListenerAdded = false;
 
 function getCachedNepaliDate(currentIsoDate) {
   try {
@@ -174,21 +175,28 @@ export async function initTodayCalendar(updateExtensionUICallback) {
     updateExtensionUICallback(currentNepaliDate, todayNp.dateNp);
   }
 
-  const btn = document.getElementById("btn-change-bg");
-  if (btn) {
-    btn.removeEventListener("click", changeBackgroundManually);
-    btn.addEventListener("click", changeBackgroundManually);
+  if (!isBgListenerAdded) {
+    const btn = document.getElementById("btn-change-bg");
+    if (btn) {
+      btn.addEventListener("click", changeBackgroundManually);
+      isBgListenerAdded = true;
+    }
   }
 
   if (clockInterval) clearInterval(clockInterval);
+  
+  let currentKtmTimeMs = getLocalKathmanduTime().getTime();
+  
   clockInterval = setInterval(() => {
-    const currentKtmDate = getLocalKathmanduTime();
-    renderNepalClock(currentKtmDate);
+    currentKtmTimeMs += 1000;
+    const updatedKtmDate = new Date(currentKtmTimeMs);
+    renderNepalClock(updatedKtmDate);
   }, 1000);
 
   fetchKathmanduTime()
     .then(async (accurateKtmDate) => {
       const accurateIsoDate = accurateKtmDate.toISOString().split("T")[0];
+      currentKtmTimeMs = accurateKtmDate.getTime();
 
       if (accurateIsoDate !== currentIsoDate) {
         const accurateTodayNp = await getTodayNepaliDateFull(accurateKtmDate);

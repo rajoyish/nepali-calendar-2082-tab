@@ -2,8 +2,6 @@ import "./style.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { initTodayCalendar } from "./components/Today/Today.js";
 import { setupTabs } from "./tabs.js";
-import { initMonthView } from "./components/FullCalendar/FullCalendar.js";
-import { initUpcomingEvents } from "./components/UpcomingEvents/UpcomingEvents.js";
 import "./components/DateConverter/DateConverter.js";
 import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
@@ -66,18 +64,20 @@ function setupTabActivation(tabSelector, panelSelector, onActivate) {
 }
 
 function setupCalendarTab() {
-  setupTabActivation("Full Calendar", "#panel-calendar", (panel) => {
+  setupTabActivation("Full Calendar", "#panel-calendar", async (panel) => {
     const calendarRoot = panel.querySelector("#month-view-calendar-root");
     if (calendarRoot) {
+      const { initMonthView } = await import("./components/FullCalendar/FullCalendar.js");
       initMonthView(calendarRoot);
     }
   });
 }
 
 function setupUpcomingEventsTab() {
-  setupTabActivation("Upcoming Events", "#panel-upcoming", (panel) => {
+  setupTabActivation("Upcoming Events", "#panel-upcoming", async (panel) => {
     const root = panel.querySelector("#upcoming-events-root");
     if (root) {
+      const { initUpcomingEvents } = await import("./components/UpcomingEvents/UpcomingEvents.js");
       initUpcomingEvents(root);
     }
   });

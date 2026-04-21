@@ -1,5 +1,17 @@
 import "./TaskReminder.css";
 
+const getEmojiIcon = () => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+  ctx.font = "48px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("🔔", 32, 36);
+  return canvas.toDataURL("image/png");
+};
+
 export function createTaskReminder() {
   let notificationSound;
   try {
@@ -37,10 +49,23 @@ export function createTaskReminder() {
   }
 
   function showNotification(title, body) {
-    if ("Notification" in window && Notification.permission === "granted") {
+    const iconUrl = getEmojiIcon();
+
+    if (typeof chrome !== "undefined" && chrome.notifications) {
+      chrome.notifications.create(`rem-${Date.now()}`, {
+        type: "basic",
+        iconUrl: iconUrl,
+        title: title,
+        message: body,
+        requireInteraction: true,
+      });
+    } else if (
+      "Notification" in window &&
+      Notification.permission === "granted"
+    ) {
       new Notification(title, {
         body: body,
-        icon: "/favicons/android-chrome-192x192.png",
+        icon: iconUrl,
         requireInteraction: true,
       });
     }
@@ -96,24 +121,33 @@ export function createTaskReminder() {
 
     reminders.forEach((reminder, idx) => {
       const li = document.createElement("li");
-      li.className = "past-reminders__item";
+      li.className =
+        "reminder-card glass-pill reminder-card--custom past-reminders__item";
       li.setAttribute("data-past-reminder-index", idx);
 
+      const createdDate = reminder.created
+        ? new Date(reminder.created)
+        : new Date();
+      const timeStr = createdDate.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
       li.innerHTML = `
-        <div class="past-reminders__icon-wrapper">
-          <span class="past-reminders__icon">
-            <i class="bi bi-clock-history"></i>
-          </span>
-          <span class="past-reminders__time" data-past-reminder-time>
-            ${reminder.time}
-          </span>
+        <div class="reminder-card__details">
+            <div class="reminder-card__header">
+                <h3 class="reminder-card__title" title="${reminder.task}" data-past-reminder-task-title>
+                    ${reminder.task}
+                </h3>
+            </div>
+            <span class="reminder-card__full-np" data-past-reminder-time>Duration: ${reminder.time}</span>
+            <span class="reminder-card__full-en">Created: ${timeStr}</span>
         </div>
-        <h3 class="past-reminders__task-title" title="${reminder.task}" data-past-reminder-task-title>
-          ${reminder.task}
-        </h3>
-        <button class="past-reminder-delete-btn" title="Delete reminder">
-          <i class="bi bi-trash3-fill"></i>
-        </button>
+        <div class="reminder-card__actions">
+            <button class="reminder-card__btn-delete past-reminder-delete-btn" title="Delete reminder">
+                <i class="bi bi-trash3-fill"></i>
+            </button>
+        </div>
       `;
       fragment.appendChild(li);
     });
@@ -273,12 +307,16 @@ export function createTaskReminder() {
       const msToEnd = reminderEndTime - Date.now();
       reminderTimeout = setTimeout(() => {
         updateDisplay(task, "00:00");
-        if (typeof chrome === "undefined" || !chrome.alarms) {
+
+        if (typeof chrome !== "undefined" && chrome.alarms) {
+          chrome.alarms.clear("task-reminder");
+        } else {
           showNotification(
             `Time to ${task}! ✅`,
             "Your reminder session is complete.",
           );
         }
+
         localStorage.removeItem(ACTIVE_REMINDER_KEY);
       }, msToEnd);
     }
@@ -306,6 +344,7 @@ export function createTaskReminder() {
           chrome.storage.local.set({
             reminderTask: task,
             reminderSound: soundEnabled,
+            reminderIcon: getEmojiIcon(),
           });
         }
       }
@@ -332,7 +371,11 @@ export function createTaskReminder() {
       if (typeof chrome !== "undefined" && chrome.alarms) {
         chrome.alarms.clear("task-reminder");
         if (chrome.storage) {
-          chrome.storage.local.remove(["reminderTask", "reminderSound"]);
+          chrome.storage.local.remove([
+            "reminderTask",
+            "reminderSound",
+            "reminderIcon",
+          ]);
         }
       }
 

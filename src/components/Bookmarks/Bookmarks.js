@@ -15,7 +15,6 @@ export async function initBookmarks() {
   await syncVisibility();
   await renderSavedBookmarks();
 
-  // Modal Controls
   if (openBtn && modal) {
     openBtn.addEventListener("click", async () => {
       modal.showModal();
@@ -26,24 +25,24 @@ export async function initBookmarks() {
   if (closeBtn && modal) {
     closeBtn.addEventListener("click", () => {
       modal.close();
-      // Re-render the main UI in case changes were made in the modal
       renderSavedBookmarks();
     });
   }
 
-  // Close modal if clicked outside
-  modal?.addEventListener("click", (e) => {
-    const dialogDimensions = modal.getBoundingClientRect();
-    if (
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom
-    ) {
-      modal.close();
-      renderSavedBookmarks();
-    }
-  });
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      const dialogDimensions = modal.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        modal.close();
+        renderSavedBookmarks();
+      }
+    });
+  }
 
   document.addEventListener("bookmarksVisibilityChanged", async (e) => {
     if (e.detail.isEnabled) {
@@ -53,8 +52,6 @@ export async function initBookmarks() {
     }
   });
 }
-
-// --- Storage Handlers ---
 
 async function getSavedBookmarks() {
   if (typeof chrome !== "undefined" && chrome.storage) {
@@ -91,8 +88,6 @@ async function syncVisibility() {
   }
 }
 
-// --- Main UI Renderer ---
-
 async function renderSavedBookmarks() {
   const list = document.getElementById("bookmarks-list");
   const countSpan = document.getElementById("bookmarks-count");
@@ -100,9 +95,10 @@ async function renderSavedBookmarks() {
 
   const bookmarks = await getSavedBookmarks();
 
-  countSpan.textContent = `${bookmarks.length}/${MAX_BOOKMARKS}`;
+  if (countSpan) {
+    countSpan.textContent = `${bookmarks.length}/${MAX_BOOKMARKS}`;
+  }
 
-  // Hide add button if limit reached
   if (openBtn) {
     openBtn.style.display = bookmarks.length >= MAX_BOOKMARKS ? "none" : "flex";
   }
@@ -143,8 +139,6 @@ async function renderSavedBookmarks() {
   });
 }
 
-// --- Modal Tree Logic ---
-
 async function populateModalTree() {
   const body = document.getElementById("bookmarks-modal-body");
   const saved = await getSavedBookmarks();
@@ -157,8 +151,54 @@ async function populateModalTree() {
       body.appendChild(treeEl);
     });
   } else {
-    body.innerHTML =
-      '<p style="text-align:center; color:#ff6b6b; padding:1rem;">Bookmarks API is only available inside the Chrome Extension.</p>';
+    const mockBookmarksTree = [
+      {
+        id: "root",
+        title: "",
+        children: [
+          {
+            id: "1",
+            title: "Bookmarks Bar (Local Dev Mock)",
+            children: [
+              { id: "101", title: "Google", url: "https://www.google.com" },
+              { id: "102", title: "GitHub", url: "https://github.com" },
+              {
+                id: "103",
+                title: "Tabre Live",
+                url: "https://tabre.netlify.app",
+              },
+              {
+                id: "2",
+                title: "Dev Tools",
+                children: [
+                  { id: "201", title: "Vite", url: "https://vitejs.dev" },
+                  {
+                    id: "202",
+                    title: "MDN Web Docs",
+                    url: "https://developer.mozilla.org",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "3",
+            title: "Other Bookmarks",
+            children: [
+              {
+                id: "301",
+                title: "Example Domain",
+                url: "https://example.com",
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+    body.innerHTML = "";
+    const treeEl = buildTreeNodes(mockBookmarksTree[0].children, savedIds);
+    body.appendChild(treeEl);
   }
 }
 
@@ -170,13 +210,11 @@ function buildTreeNodes(nodes, savedIds) {
     const li = document.createElement("li");
 
     if (node.children) {
-      // It's a folder
       const details = document.createElement("details");
       const summary = document.createElement("summary");
       summary.innerHTML = `<i class="bi bi-folder-fill" style="color: #ffd166;"></i> ${node.title || "Folder"}`;
       details.appendChild(summary);
 
-      // Recursively build children
       if (node.children.length > 0) {
         details.appendChild(buildTreeNodes(node.children, savedIds));
       } else {
@@ -187,7 +225,6 @@ function buildTreeNodes(nodes, savedIds) {
       }
       li.appendChild(details);
     } else if (node.url) {
-      // It's a link
       const label = document.createElement("label");
       label.className = "bm-tree__node";
 
@@ -195,14 +232,13 @@ function buildTreeNodes(nodes, savedIds) {
       checkbox.type = "checkbox";
       checkbox.checked = savedIds.includes(node.id);
 
-      // Handle Checking/Unchecking
       checkbox.addEventListener("change", async (e) => {
         const isChecked = e.target.checked;
         let currentSaved = await getSavedBookmarks();
 
         if (isChecked) {
           if (currentSaved.length >= MAX_BOOKMARKS) {
-            e.target.checked = false; // revert
+            e.target.checked = false;
             alert(`You can only select up to ${MAX_BOOKMARKS} quick links.`);
             return;
           }
@@ -212,10 +248,11 @@ function buildTreeNodes(nodes, savedIds) {
         }
 
         await saveBookmarks(currentSaved);
-        // Update counter in main UI live behind the modal
+
         const countSpan = document.getElementById("bookmarks-count");
-        if (countSpan)
+        if (countSpan) {
           countSpan.textContent = `${currentSaved.length}/${MAX_BOOKMARKS}`;
+        }
       });
 
       label.appendChild(checkbox);
@@ -233,7 +270,6 @@ function buildTreeNodes(nodes, savedIds) {
       li.appendChild(label);
     }
 
-    // Don't append completely empty root folders without names
     if (node.title || node.url) {
       ul.appendChild(li);
     }

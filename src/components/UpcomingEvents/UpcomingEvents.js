@@ -41,6 +41,26 @@ const enDays = weekdays.map((w) => w[0]);
 
 let systemEventsCache = null;
 
+const getEmojiIcon = () => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+  ctx.font = "48px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("📅", 32, 36);
+  return canvas.toDataURL("image/png");
+};
+
+const getLocalYYYYMMDD = (d) => {
+  const date = new Date(d);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
+
 const getSystemEvents = () => {
   if (systemEventsCache) return systemEventsCache;
   const events = [];
@@ -63,7 +83,7 @@ const getSystemEvents = () => {
       const adDate = new Date(year, monthIndex, parseInt(day.dateEn, 10));
       adDate.setHours(0, 0, 0, 0);
 
-      if (adDate >= today && day.details && day.details.events) {
+      if (adDate >= today && day.details?.events) {
         day.details.events.forEach((evt) => {
           events.push({
             id: `sys-${adDate.getTime()}-${evt.label}`,
@@ -92,8 +112,11 @@ const getSystemEvents = () => {
 };
 
 const getCustomEvents = () => {
-  const data = localStorage.getItem("customEvents");
-  return data ? JSON.parse(data) : [];
+  try {
+    return JSON.parse(localStorage.getItem("customEvents")) || [];
+  } catch {
+    return [];
+  }
 };
 
 const saveCustomEvent = (event) => {
@@ -105,6 +128,68 @@ const saveCustomEvent = (event) => {
 const deleteCustomEvent = (id) => {
   const events = getCustomEvents().filter((e) => e.id !== id);
   localStorage.setItem("customEvents", JSON.stringify(events));
+};
+
+const checkAndNotifyTodayEvents = () => {
+  const todayStr = getLocalYYYYMMDD(new Date());
+  const notifiedKey = `notified_events_${todayStr}`;
+
+  let notifiedIds = [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem(notifiedKey));
+    notifiedIds = Array.isArray(parsed) ? parsed : [];
+  } catch {
+    notifiedIds = [];
+  }
+
+  const events = getCustomEvents();
+  const todayEvents = events.filter(
+    (e) =>
+      getLocalYYYYMMDD(e.timestamp) === todayStr && !notifiedIds.includes(e.id),
+  );
+
+  if (todayEvents.length > 0) {
+    const iconUrl = getEmojiIcon();
+
+    todayEvents.forEach((e) => {
+      const adDateObj = new Date(e.timestamp);
+      let fullDateNp = e.bsDate;
+      const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
+
+      if (match) {
+        const [, yyyy, mm, dd] = match;
+        fullDateNp = `${toDevanagariNumeral(parseInt(dd, 10))} ${npMonths[parseInt(mm, 10) - 1]}, ${toDevanagariNumeral(yyyy)} ${npDays[adDateObj.getDay()]}`;
+      }
+
+      const fullDateEn = `${enMonths[adDateObj.getMonth()]} ${adDateObj.getDate()}, ${adDateObj.getFullYear()}, ${enDays[adDateObj.getDay()]}`;
+
+      const title = e.title;
+      const body = `${fullDateNp}\n${fullDateEn}`;
+
+      if (typeof chrome !== "undefined" && chrome.notifications) {
+        chrome.notifications.create(`evt-${e.id}`, {
+          type: "basic",
+          iconUrl: iconUrl,
+          title: title,
+          message: body,
+          requireInteraction: true,
+        });
+        notifiedIds.push(e.id);
+      } else if (
+        "Notification" in window &&
+        Notification.permission === "granted"
+      ) {
+        new Notification(title, {
+          body: body,
+          icon: iconUrl,
+          requireInteraction: true,
+        });
+        notifiedIds.push(e.id);
+      }
+    });
+
+    localStorage.setItem(notifiedKey, JSON.stringify(notifiedIds));
+  }
 };
 
 export const initUpcomingEvents = (container) => {
@@ -157,8 +242,6 @@ export const initUpcomingEvents = (container) => {
   const listEl = container.querySelector("#events-list");
   const modalEl = container.querySelector("#event-modal");
   const formEl = container.querySelector("#event-form");
-  const btnAdd = container.querySelector("#btn-add-event");
-  const btnCancel = container.querySelector("#btn-cancel");
   const inputAd = container.querySelector("#event-ad-date");
   const inputBs = container.querySelector("#event-bs-date");
   const inputName = container.querySelector("#event-name");
@@ -166,7 +249,7 @@ export const initUpcomingEvents = (container) => {
 
   const generateCardHtml = (e) => {
     let monthNp, dateNp, dayOfWeekNp, fullDateNp, fullDateEn;
-    const adDateObj = new Date(e.adDate);
+    const adDateObj = new Date(e.timestamp);
 
     if (e.isCustom) {
       const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
@@ -222,12 +305,14 @@ export const initUpcomingEvents = (container) => {
   };
 
   const render = () => {
+    checkAndNotifyTodayEvents();
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
     let sysEvents = getSystemEvents();
     let customEvents = getCustomEvents().filter(
-      (e) => new Date(e.adDate) >= today,
+      (e) => e.timestamp >= today.getTime(),
     );
 
     if (activeFilter === "holiday") {
@@ -269,22 +354,44 @@ export const initUpcomingEvents = (container) => {
 
   container.render = render;
 
-  filtersEl.addEventListener("click", (e) => {
-    if (e.target.classList.contains("upcoming__filter-btn")) {
+  container.addEventListener("click", (e) => {
+    if (e.target.closest("#btn-add-event")) {
+      if (typeof chrome === "undefined" || !chrome.notifications) {
+        if (
+          "Notification" in window &&
+          Notification.permission !== "granted" &&
+          Notification.permission !== "denied"
+        ) {
+          Notification.requestPermission();
+        }
+      }
+      modalEl.showModal();
+      return;
+    }
+
+    if (e.target.closest("#btn-cancel")) {
+      modalEl.close();
+      formEl.reset();
+      inputBs.value = "";
+      return;
+    }
+
+    const filterBtn = e.target.closest(".upcoming__filter-btn");
+    if (filterBtn) {
       filtersEl
         .querySelectorAll(".upcoming__filter-btn")
         .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
-      e.target.classList.add("upcoming__filter-btn--active");
-      activeFilter = e.target.dataset.filter;
+      filterBtn.classList.add("upcoming__filter-btn--active");
+      activeFilter = filterBtn.dataset.filter;
       render();
+      return;
     }
-  });
 
-  listEl.addEventListener("click", (e) => {
     const deleteBtn = e.target.closest(".event-card__btn-delete");
     if (deleteBtn) {
       deleteCustomEvent(deleteBtn.dataset.id);
       render();
+      return;
     }
   });
 
@@ -300,18 +407,11 @@ export const initUpcomingEvents = (container) => {
     }
   });
 
-  btnAdd.addEventListener("click", () => modalEl.showModal());
-
-  btnCancel.addEventListener("click", () => {
-    modalEl.close();
-    formEl.reset();
-    inputBs.value = "";
-  });
-
   formEl.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const adDateObj = new Date(inputAd.value);
+    const [yyyy, mm, dd] = inputAd.value.split("-");
+    const adDateObj = new Date(yyyy, mm - 1, dd);
     adDateObj.setHours(0, 0, 0, 0);
 
     saveCustomEvent({

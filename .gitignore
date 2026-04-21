@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-chrome-extension/
+chrome-extension
 node_modules
 dist
 dist-ssr

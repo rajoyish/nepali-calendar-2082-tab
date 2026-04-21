@@ -32,5 +32,9 @@ function serveDebugJson() {
 
 export default defineConfig({
   base: "./",
+  build: {
+    outDir: "chrome-extension",
+    emptyOutDir: true,
+  },
   plugins: [serveDebugJson()],
 });

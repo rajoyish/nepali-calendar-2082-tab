@@ -10,8 +10,8 @@
     "dev": "concurrently \"npm run watch:calendar\" \"vite\"",
     "prebuild": "npm run build:calendar",
     "build": "vite build",
-    "copy-extension": "node scripts/copy-extension.js",
-    "build-extension": "npm run build && npm run copy-extension",
+    "prewatch": "npm run build:calendar",
+    "watch": "concurrently \"npm run watch:calendar\" \"vite build --watch\"",
     "preview": "vite preview"
   },
   "devDependencies": {

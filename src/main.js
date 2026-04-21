@@ -8,7 +8,7 @@ import "./components/DateConverter/DateConverter.js";
 import { createTaskReminder } from "./components/TaskReminder/TaskReminder.js";
 import { setupDateInputIcon } from "./utils/dateInputIcon.js";
 import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDropdown.js";
-import { updateExtensionUI } from "./components/ExtensionUIUpdater/ExtensionUIUpdater.js";
+import { updateDateBadge } from "./components/DateBadgeRenderer/DateBadgeRenderer.js";
 import { initBookmarks } from "./components/Bookmarks/Bookmarks.js";
 import { getNepaliDateForAd } from "./utils/calendarUtils.js";
 
@@ -20,7 +20,7 @@ let updateInterval;
 function startPeriodicUpdates() {
   if (!updateInterval) {
     updateInterval = setInterval(() => {
-      initTodayCalendar(updateExtensionUI);
+      initTodayCalendar(updateDateBadge);
     }, 60 * 1000);
   }
 }
@@ -88,14 +88,14 @@ function setupEventHandlers() {
     if (document.hidden) {
       stopPeriodicUpdates();
     } else {
-      initTodayCalendar(updateExtensionUI);
+      initTodayCalendar(updateDateBadge);
       startPeriodicUpdates();
     }
   });
 }
 
 async function initApp() {
-  await initTodayCalendar(updateExtensionUI);
+  await initTodayCalendar(updateDateBadge);
 
   taskReminder.init();
   initBookmarks();

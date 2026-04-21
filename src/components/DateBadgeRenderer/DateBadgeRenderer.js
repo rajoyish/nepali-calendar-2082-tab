@@ -1,4 +1,4 @@
-export function updateExtensionUI(fullDateString, dayNumber) {
+export function updateDateBadge(fullDateString, dayNumber) {
   if (!fullDateString) return;
 
   document.title = `${fullDateString} | Tabre`;

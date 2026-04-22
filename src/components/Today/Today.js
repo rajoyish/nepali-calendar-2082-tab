@@ -139,6 +139,10 @@ export function renderTodayNepaliDate(todayNp) {
   );
   setText("[data-np-day-tithi]", todayNp?.tithi);
 
+  const nepalSamvat = todayNp?.details?.nepalSamvat;
+  setText("[data-np-samvat]", nepalSamvat);
+  setDisplay("[data-np-samvat]", !!nepalSamvat);
+
   const hasEvent = todayNp && todayNp.eventTitle;
   setText("[data-np-day-event]", hasEvent ? todayNp.eventTitle : "");
   setDisplay("[data-np-day-event]", !!hasEvent);
@@ -184,9 +188,9 @@ export async function initTodayCalendar(updateExtensionUICallback) {
   }
 
   if (clockInterval) clearInterval(clockInterval);
-  
+
   let currentKtmTimeMs = getLocalKathmanduTime().getTime();
-  
+
   clockInterval = setInterval(() => {
     currentKtmTimeMs += 1000;
     const updatedKtmDate = new Date(currentKtmTimeMs);

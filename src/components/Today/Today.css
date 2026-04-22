@@ -66,6 +66,7 @@
 }
 
 .calendar__day-of-week,
+.calendar__np-samvat,
 .calendar__tithi,
 .calendar__event {
     font-size: clamp(1.1rem, 3vw, 1.4rem);

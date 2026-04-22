@@ -1,44 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Rajesh Budhathoki" />
-    <meta
-      name="description"
-      content="Tabre is a modern Nepali calendar web app for the year 2082, featuring Nepali date, time, tithi, events, and a date converter. Instantly view the Nepali calendar and utilities every time you open a new tab."
-    />
-    <meta
-      name="keywords"
-      content="Nepali calendar 2082, Nepali date, Nepali time, Nepali tithi, Nepali events, Nepali date converter, Tabre, new tab calendar, Bikram Sambat, BS calendar, Nepali holidays, Nepali utilities, Rajesh Budhathoki"
-    />
-    <title>Privacy Policy | Tabre: Nepali Calendar New Tab</title>
-  </head>
-  <body>
-    <div class="privacy__wrapper">
-      <h1>Privacy Policy</h1>
-      <p>
-        Privacy Policy for Tabre Nepali Date Chrome Extension This Chrome
-        extension does not collect, store, or transmit any personal data or user
-        information. The extension simply redirects the new tab page to
-        <a class="privacy__link" href=" https://tabre.netlify.app/">
-          https://tabre.netlify.app/</a
-        >. For information on how your data is handled on the redirected site,
-        please refer to that website's own privacy policy. If you have any
-        questions or concerns, please contact us at
-        <a class="privacy__link" href="mailto:huesarrays@gmail.com.">
-          huesarrays@gmail.com.</a
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Rajesh Budhathoki" />
+        <meta
+            name="description"
+            content="Tabre is a modern Nepali calendar web app for the year 2082, featuring Nepali date, time, tithi, events, and a date converter. Instantly view the Nepali calendar and utilities every time you open a new tab."
+        />
+        <meta
+            name="keywords"
+            content="Nepali calendar 2082, Nepali date, Nepali time, Nepali tithi, Nepali events, Nepali date converter, Tabre, new tab calendar, Bikram Sambat, BS calendar, Nepali holidays, Nepali utilities, Rajesh Budhathoki"
+        />
+        <title>Privacy Policy | Tabre: Nepali Calendar New Tab</title>
+        <style>
+            /* Basic inline styling to ensure readability, adjust via your external CSS as needed */
+            body {
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+            .privacy__wrapper {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 2rem;
+                border-radius: 12px;
+            }
+            h2 {
+                margin-top: 2rem;
+            }
+            ul {
+                padding-left: 1.5rem;
+            }
+            li {
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="privacy__wrapper">
+            <h1>Privacy Policy</h1>
+            <p>
+                Welcome to Tabre: Nepali Calendar New Tab. We believe your new
+                tab experience should be beautiful, useful, and private. This
+                policy outlines how the extension handles your data and uses
+                Chrome permissions.
+            </p>
+
+            <h2>1. Local Data Processing (No Tracking)</h2>
+            <p>
+                <strong
+                    >Tabre does not collect, track, store on remote servers, or
+                    sell any personal data.</strong
+                >
+                All of your custom events, task reminders, and visual
+                preferences (such as your glassmorphism toggle settings) are
+                stored strictly locally on your own device using your browser's
+                built-in storage.
+            </p>
+
+            <h2>2. Why We Request Permissions</h2>
+            <p>
+                To provide a fully-featured dashboard, Tabre requires the
+                following permissions, which are used exactly as described
+                below:
+            </p>
+            <ul>
+                <li>
+                    <strong>Storage:</strong> Used exclusively to save your
+                    custom calendar events, task reminders, and UI settings
+                    locally on your machine.
+                </li>
+                <li>
+                    <strong>Alarms & Notifications:</strong> Used together to
+                    schedule and trigger desktop push notifications and audio
+                    alerts for the tasks and events you explicitly create.
+                </li>
+                <li>
+                    <strong>Bookmarks:</strong> Used strictly to display your
+                    saved browser bookmarks directly on your new tab page for
+                    easy, quick access. We do not track, alter, or export your
+                    browsing history.
+                </li>
+                <li>
+                    <strong>Host Access (timeapi.io):</strong> Used to securely
+                    fetch precise, real-time clock synchronization to ensure the
+                    calendar and date converter remain perfectly accurate.
+                </li>
+            </ul>
+
+            <h2>3. Offline Functionality</h2>
+            <p>
+                Tabre is built with a privacy-first mindset. Aside from syncing
+                precise time data or dynamically loading background images, all
+                core features—including notifications, task management, and
+                calendar algorithms—work 100% offline on your device.
+            </p>
+
+            <h2>4. Contact</h2>
+            <p>
+                If you have any questions or concerns regarding this privacy
+                policy or the extension, please contact us at
+                <a class="privacy__link" href="mailto:huesarrays@gmail.com"
+                    >huesarrays@gmail.com</a
+                >.
+            </p>
+        </div>
+
+        <footer
+            class="calendar__footer"
+            style="margin-top: 3rem; text-align: center"
         >
-      </p>
-    </div>
-    <footer class="calendar__footer">
-      Crafted with ❤️ by
-      <a class="calendar__author-link" href="https://x.com/rajoyish"
-        >Rajesh Budhathoki</a
-      >
-      | Explore it live at
-      <a href="https://tabre.netlify.app/">Tabre</a>
-    </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+            Crafted with ❤️ by
+            <a class="calendar__author-link" href="https://x.com/rajoyish"
+                >Rajesh Budhathoki</a
+            >
+            | Explore it live at
+            <a href="https://tabre.netlify.app/">Tabre</a>
+        </footer>
+        <script type="module" src="/src/main.js"></script>
+    </body>
 </html>

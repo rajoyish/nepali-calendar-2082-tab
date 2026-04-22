@@ -1,0 +1,30 @@
+.btn-today-details {
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1.5rem;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--dark-green), var(--accent-green));
+    color: #ffffff;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 15px rgba(67, 191, 10, 0.3);
+}
+
+.btn-today-details:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(67, 191, 10, 0.5);
+    background: linear-gradient(135deg, var(--accent-green), var(--dark-green));
+}
+
+.btn-today-details:active {
+    transform: translateY(1px);
+}

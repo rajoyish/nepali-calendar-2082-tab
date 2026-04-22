@@ -1,5 +1,6 @@
 import "./Today.css";
 import { getCalendarData } from "../../utils/dataFetcher.js";
+import { showDateModal } from "../DateModal/DateModal.js";
 import {
   fetchKathmanduTime,
   getLocalKathmanduTime,
@@ -12,6 +13,24 @@ import {
   isHoliday,
 } from "../../utils/calendarUtils.js";
 
+if (!window.__tabre_storage_patched) {
+  const originalSetItem = localStorage.setItem;
+  localStorage.setItem = function (key, value) {
+    originalSetItem.apply(this, arguments);
+    if (key === "tabre_glass_enabled") {
+      const btn = document.getElementById("today-details-btn");
+      if (btn) {
+        if (String(value) !== "false") {
+          btn.classList.add("glass");
+        } else {
+          btn.classList.remove("glass");
+        }
+      }
+    }
+  };
+  window.__tabre_storage_patched = true;
+}
+
 const modules = import.meta.glob(
   "../../assets/wallpapers/*.{png,jpg,jpeg,gif,webp}",
   { eager: true, import: "default" },
@@ -23,6 +42,7 @@ let lastClockValue = "";
 let lastHolidayKey = "";
 let lastIsHoliday = false;
 let isBgListenerAdded = false;
+let detailsBtnHandler = null;
 
 function getCachedNepaliDate(currentIsoDate) {
   try {
@@ -131,7 +151,7 @@ export function updateHolidayNotice(today) {
   setDisplay(".holiday-notice", isHolidayStatus);
 }
 
-export function renderTodayNepaliDate(todayNp) {
+export function renderTodayNepaliDate(todayNp, calendarData) {
   setText("[data-np-date]", todayNp?.dateNp);
   setText(
     "[data-np-month-year]",
@@ -147,6 +167,35 @@ export function renderTodayNepaliDate(todayNp) {
   setText("[data-np-day-event]", hasEvent ? todayNp.eventTitle : "");
   setDisplay("[data-np-day-event]", !!hasEvent);
   updateHolidayNotice(todayNp);
+
+  const tithiEventContainer = document.querySelector(
+    ".calendar__day-tithi-event",
+  );
+  if (tithiEventContainer) {
+    let btn = document.getElementById("today-details-btn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "today-details-btn";
+
+      const isGlassEnabled =
+        localStorage.getItem("tabre_glass_enabled") !== "false";
+      btn.className = `btn-today-details ${isGlassEnabled ? "glass" : ""}`;
+
+      btn.textContent = "Daily Insights";
+      tithiEventContainer.insertAdjacentElement("afterend", btn);
+    }
+
+    if (detailsBtnHandler) {
+      btn.removeEventListener("click", detailsBtnHandler);
+    }
+
+    detailsBtnHandler = () => {
+      if (todayNp && calendarData) {
+        showDateModal(todayNp, calendarData);
+      }
+    };
+    btn.addEventListener("click", detailsBtnHandler);
+  }
 }
 
 function updateBackgroundImage() {
@@ -170,7 +219,7 @@ export async function initTodayCalendar(updateExtensionUICallback) {
 
   renderNepalDate(ktmDate);
   renderNepaliDayOfWeek();
-  renderTodayNepaliDate(todayNp);
+  renderTodayNepaliDate(todayNp, calendarData);
   updateBackgroundImage();
   renderNepalClock(ktmDate);
 
@@ -208,7 +257,7 @@ export async function initTodayCalendar(updateExtensionUICallback) {
           setCachedNepaliDate(accurateIsoDate, accurateTodayNp);
           renderNepalDate(accurateKtmDate);
           renderNepaliDayOfWeek();
-          renderTodayNepaliDate(accurateTodayNp);
+          renderTodayNepaliDate(accurateTodayNp, calendarData);
         }
       }
     })

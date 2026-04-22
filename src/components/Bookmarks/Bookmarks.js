@@ -4,6 +4,17 @@ const STORAGE_KEY = "tabre_user_bookmarks";
 const SETTINGS_KEY = "tabre_show_bookmarks";
 const MAX_BOOKMARKS = 10;
 
+function getFallbackIconUrl() {
+  if (
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    chrome.runtime.getURL
+  ) {
+    return chrome.runtime.getURL("favicons/favicon-16x16.png");
+  }
+  return "/favicons/favicon-16x16.png";
+}
+
 export async function initBookmarks() {
   const section = document.getElementById("bookmarks-section");
   const openBtn = document.getElementById("btn-open-bookmarks-modal");
@@ -111,13 +122,15 @@ async function renderSavedBookmarks() {
     return;
   }
 
+  const fallbackSrc = getFallbackIconUrl();
+
   bookmarks.forEach((bm) => {
     const li = document.createElement("li");
     li.className = "bookmarks__item";
 
     li.innerHTML = `
             <a href="${bm.url}" class="bookmarks__link" title="${bm.title}">
-                <img src="https://www.google.com/s2/favicons?domain=${bm.url}&sz=32" alt="" class="bookmarks__icon" loading="lazy">
+                <img src="https://www.google.com/s2/favicons?domain=${bm.url}&sz=32" alt="" class="bookmarks__icon" loading="lazy" onerror="this.onerror=null;this.src='${fallbackSrc}';">
                 <span>${bm.title}</span>
             </a>
             <button class="bookmarks__delete" aria-label="Remove bookmark" data-id="${bm.id}">
@@ -205,6 +218,7 @@ async function populateModalTree() {
 function buildTreeNodes(nodes, savedIds) {
   const ul = document.createElement("ul");
   ul.className = "bm-tree";
+  const fallbackSrc = getFallbackIconUrl();
 
   nodes.forEach((node) => {
     const li = document.createElement("li");
@@ -261,6 +275,10 @@ function buildTreeNodes(nodes, savedIds) {
       img.src = `https://www.google.com/s2/favicons?domain=${node.url}&sz=16`;
       img.width = 16;
       img.height = 16;
+      img.onerror = function () {
+        this.onerror = null;
+        this.src = fallbackSrc;
+      };
       label.appendChild(img);
 
       const textSpan = document.createElement("span");

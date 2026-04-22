@@ -3,6 +3,7 @@ import { getCalendarData } from "../../utils/dataFetcher.js";
 import { showDateModal } from "../DateModal/DateModal.js";
 import {
   fetchKathmanduTime,
+  getLocalKathmanduTime,
   getTodayNepaliDateFull,
   abbreviatedWeekdays,
   weekdays,
@@ -151,22 +152,26 @@ export async function initMonthView(container) {
   headerLi.appendChild(spanNp);
   headerLi.appendChild(navWrapper);
 
-  const ktmDate = await fetchKathmanduTime();
-  const todayNp = await getTodayNepaliDateFull(ktmDate);
+  const localKtmDate = getLocalKathmanduTime();
+  let todayNp = await getTodayNepaliDateFull(localKtmDate);
   let currentMonthIndex = 0;
   let todaysNpDateStr = "";
 
-  if (todayNp && calendarData.months) {
-    const tMonth = todayNp.monthNp || todayNp.month_np;
-    const tDate = todayNp.dateNp || todayNp.date_np;
-    const tYear = todayNp.yearNp || todayNp.year;
+  const updateCurrentDateInfo = (npDateData) => {
+    if (npDateData && calendarData.months) {
+      const tMonth = npDateData.monthNp || npDateData.month_np;
+      const tDate = npDateData.dateNp || npDateData.date_np;
+      const tYear = npDateData.yearNp || npDateData.year;
 
-    todaysNpDateStr = `${tMonth} ${tDate}, ${tYear}`;
-    const foundIndex = calendarData.months.findIndex(
-      (m) => m.monthNp === tMonth,
-    );
-    if (foundIndex !== -1) currentMonthIndex = foundIndex;
-  }
+      todaysNpDateStr = `${tMonth} ${tDate}, ${tYear}`;
+      const foundIndex = calendarData.months.findIndex(
+        (m) => m.monthNp === tMonth,
+      );
+      if (foundIndex !== -1) currentMonthIndex = foundIndex;
+    }
+  };
+
+  updateCurrentDateInfo(todayNp);
 
   function renderSelectedMonth() {
     if (!calendarData.months || calendarData.months.length === 0) return;
@@ -219,4 +224,18 @@ export async function initMonthView(container) {
 
   renderSelectedMonth();
   maybeAddResizeListener();
+
+  fetchKathmanduTime().then(async (accurateKtmDate) => {
+    const accurateTodayNp = await getTodayNepaliDateFull(accurateKtmDate);
+    if (
+      accurateTodayNp &&
+      todayNp &&
+      (accurateTodayNp.dateNp !== todayNp.dateNp ||
+        accurateTodayNp.monthNp !== todayNp.monthNp)
+    ) {
+      todayNp = accurateTodayNp;
+      updateCurrentDateInfo(todayNp);
+      renderSelectedMonth();
+    }
+  });
 }

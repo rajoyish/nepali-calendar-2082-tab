@@ -64,29 +64,37 @@ export function getLocalKathmanduTime() {
   return new Date(ktmString);
 }
 
-export async function fetchKathmanduTime() {
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+let timeFetchPromise = null;
 
-    const response = await fetch(
-      "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Kathmandu",
-      {
-        signal: controller.signal,
-      },
-    );
+export function fetchKathmanduTime() {
+  if (timeFetchPromise) return timeFetchPromise;
 
-    clearTimeout(timeoutId);
+  timeFetchPromise = (async () => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-    if (!response.ok) {
-      throw new Error();
+      const response = await fetch(
+        "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Kathmandu",
+        {
+          signal: controller.signal,
+        },
+      );
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      const data = await response.json();
+      return new Date(data.dateTime);
+    } catch (error) {
+      return getLocalKathmanduTime();
     }
+  })();
 
-    const data = await response.json();
-    return new Date(data.dateTime);
-  } catch (error) {
-    return getLocalKathmanduTime();
-  }
+  return timeFetchPromise;
 }
 
 export function getTodayBsDate(ktmDate) {

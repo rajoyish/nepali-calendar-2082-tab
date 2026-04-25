@@ -10,6 +10,7 @@
 }
 
 .calendar {
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,6 +83,7 @@
 .bullet::before {
     content: "";
     display: block;
+    margin-top: -0.5rem;
     background-color: var(--accent-sky);
     height: 0.6rem;
     width: 0.6rem;
@@ -115,13 +117,13 @@
     justify-content: center;
     gap: 1rem;
     padding: 1rem 2.5rem;
-    background: rgba(22, 140, 4, 0.15) !important;
-    border: 1px solid var(--accent-green) !important;
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid var(--accent-red);
     border-radius: 2rem;
     color: #ffffff;
     font-weight: 500;
     margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(22, 140, 4, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
 }
 
 .holiday-notice__icon {
@@ -129,6 +131,7 @@
     width: 0.85rem;
     height: 0.85rem;
     display: inline-block;
+    margin-top: -0.3rem;
 }
 
 .holiday-notice__icon::before {
@@ -138,7 +141,7 @@
     left: 50%;
     width: 100%;
     height: 100%;
-    background: var(--accent-sky);
+    background: var(--accent-red);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;

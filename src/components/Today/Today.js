@@ -17,16 +17,6 @@ if (!window.__tabre_storage_patched) {
   const originalSetItem = localStorage.setItem;
   localStorage.setItem = function (key, value) {
     originalSetItem.apply(this, arguments);
-    if (key === "tabre_glass_enabled") {
-      const btn = document.getElementById("today-details-btn");
-      if (btn) {
-        if (String(value) !== "false") {
-          btn.classList.add("glass");
-        } else {
-          btn.classList.remove("glass");
-        }
-      }
-    }
   };
   window.__tabre_storage_patched = true;
 }
@@ -177,9 +167,7 @@ export function renderTodayNepaliDate(todayNp, calendarData) {
       btn = document.createElement("button");
       btn.id = "today-details-btn";
 
-      const isGlassEnabled =
-        localStorage.getItem("tabre_glass_enabled") !== "false";
-      btn.className = `btn-today-details ${isGlassEnabled ? "glass" : ""}`;
+      btn.className = "btn-today-details";
 
       btn.textContent = "Daily Insights";
       tithiEventContainer.insertAdjacentElement("afterend", btn);

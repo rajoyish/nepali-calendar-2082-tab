@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tabre: Nepali Calendar New Tab",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Transform your new tab into a Nepali calendar hub—convert BS/AD dates, track events, set reminders, and awesome backgrounds.",
   "chrome_url_overrides": {
     "newtab": "index.html"

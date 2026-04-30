@@ -133,7 +133,7 @@ const deleteCustomEvent = (id) => {
   localStorage.setItem("customEvents", JSON.stringify(events));
 };
 
-const checkAndNotifyTodayEvents = () => {
+export const checkAndNotifyTodayEvents = async () => {
   const todayStr = getLocalYYYYMMDD(new Date());
   const notifiedKey = `notified_events_${todayStr}`;
 
@@ -145,8 +145,13 @@ const checkAndNotifyTodayEvents = () => {
     notifiedIds = [];
   }
 
-  const events = getCustomEvents();
-  const todayEvents = events.filter(
+  const customEvents = getCustomEvents();
+  const systemEvents = await getSystemEvents();
+
+  const todayEvents = [
+    ...customEvents,
+    ...systemEvents.filter((e) => e.isHoliday),
+  ].filter(
     (e) =>
       getLocalYYYYMMDD(e.timestamp) === todayStr && !notifiedIds.includes(e.id),
   );
@@ -156,16 +161,19 @@ const checkAndNotifyTodayEvents = () => {
 
     todayEvents.forEach((e) => {
       const adDateObj = new Date(e.timestamp);
-      let fullDateNp = e.bsDate;
-      const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
+      let fullDateNp = e.bsDate || e.fullDateNp;
 
-      if (match) {
-        const [, yyyy, mm, dd] = match;
-        fullDateNp = `${toDevanagariNumeral(parseInt(dd, 10))} ${npMonths[parseInt(mm, 10) - 1]}, ${toDevanagariNumeral(yyyy)} ${npDays[adDateObj.getDay()]}`;
+      if (e.isCustom) {
+        const match = e.bsDate.match(/(\d{4})[^\d]+(\d{1,2})[^\d]+(\d{1,2})/);
+        if (match) {
+          const [, yyyy, mm, dd] = match;
+          fullDateNp = `${toDevanagariNumeral(parseInt(dd, 10))} ${npMonths[parseInt(mm, 10) - 1]}, ${toDevanagariNumeral(yyyy)} ${npDays[adDateObj.getDay()]}`;
+        }
       }
 
-      const fullDateEn = `${enMonths[adDateObj.getMonth()]} ${adDateObj.getDate()}, ${adDateObj.getFullYear()}, ${enDays[adDateObj.getDay()]}`;
-
+      const fullDateEn =
+        e.fullDateEn ||
+        `${enMonths[adDateObj.getMonth()]} ${adDateObj.getDate()}, ${adDateObj.getFullYear()}, ${enDays[adDateObj.getDay()]}`;
       const title = e.title;
       const body = `${fullDateNp}\n${fullDateEn}`;
 
@@ -244,10 +252,6 @@ export const initUpcomingEvents = (container) => {
 
   const listEl = container.querySelector("#events-list");
   const modalEl = container.querySelector("#event-modal");
-  const formEl = container.querySelector("#event-form");
-  const inputAd = container.querySelector("#event-ad-date");
-  const inputBs = container.querySelector("#event-bs-date");
-  const inputName = container.querySelector("#event-name");
   const filtersEl = container.querySelector("#upcoming-filters");
 
   const generateCardHtml = (e) => {
@@ -293,8 +297,6 @@ export const initUpcomingEvents = (container) => {
           <div class="event-card__details">
               <div class="event-card__header">
                   <h3 class="event-card__title">${e.title}</h3>
-                  ${e.isHoliday ? '<span class="event-card__badge event-card__badge--holiday">बिदा</span>' : ""}
-                  ${e.isCustom ? '<span class="event-card__badge event-card__badge--custom">My Event</span>' : ""}
               </div>
               <span class="event-card__full-np">${fullDateNp}</span>
               <span class="event-card__full-en">${fullDateEn}</span>
@@ -302,6 +304,8 @@ export const initUpcomingEvents = (container) => {
           <div class="event-card__actions">
               <span class="event-card__relative">${getRelativeDateText(adDateObj.toISOString())}</span>
               ${e.isCustom ? `<button class="event-card__btn-delete" data-id="${e.id}"><i class="bi bi-trash3-fill"></i></button>` : ""}
+              ${e.isHoliday ? '<span class="event-card__badge event-card__badge--holiday">बिदा</span>' : ""}
+              ${e.isCustom ? '<span class="event-card__badge event-card__badge--custom">My Event</span>' : ""}
           </div>
       </div>
     `;
@@ -374,8 +378,8 @@ export const initUpcomingEvents = (container) => {
 
     if (e.target.closest("#btn-cancel")) {
       modalEl.close();
-      formEl.reset();
-      inputBs.value = "";
+      container.querySelector("#event-form").reset();
+      container.querySelector("#event-bs-date").value = "";
       return;
     }
 
@@ -398,49 +402,60 @@ export const initUpcomingEvents = (container) => {
     }
   });
 
-  inputAd.addEventListener("change", (e) => {
-    if (e.target.value) {
-      try {
-        inputBs.value = adToBs(e.target.value);
-      } catch {
-        inputBs.value = "Invalid Date";
+  container.addEventListener("change", (e) => {
+    if (e.target.id === "event-ad-date") {
+      const inputBs = container.querySelector("#event-bs-date");
+      if (e.target.value) {
+        try {
+          inputBs.value = adToBs(e.target.value);
+        } catch {
+          inputBs.value = "Invalid Date";
+        }
+      } else {
+        inputBs.value = "";
       }
-    } else {
-      inputBs.value = "";
     }
   });
 
-  formEl.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  container.addEventListener("submit", async (e) => {
+    if (e.target.id === "event-form") {
+      e.preventDefault();
 
-    const [yyyy, mm, dd] = inputAd.value.split("-");
-    const adDateObj = new Date(yyyy, mm - 1, dd);
-    adDateObj.setHours(0, 0, 0, 0);
+      const inputAd = container.querySelector("#event-ad-date");
+      const inputBs = container.querySelector("#event-bs-date");
+      const inputName = container.querySelector("#event-name");
 
-    saveCustomEvent({
-      id: `cust-${Date.now()}`,
-      title: inputName.value,
-      adDate: adDateObj.toISOString(),
-      bsDate: inputBs.value,
-      isHoliday: false,
-      isCustom: true,
-      timestamp: adDateObj.getTime(),
-    });
+      const [yyyy, mm, dd] = inputAd.value.split("-");
+      const adDateObj = new Date(yyyy, mm - 1, dd);
+      adDateObj.setHours(0, 0, 0, 0);
 
-    modalEl.close();
-    formEl.reset();
-    inputBs.value = "";
+      saveCustomEvent({
+        id: `cust-${Date.now()}`,
+        title: inputName.value,
+        adDate: adDateObj.toISOString(),
+        bsDate: inputBs.value,
+        isHoliday: false,
+        isCustom: true,
+        timestamp: adDateObj.getTime(),
+      });
 
-    activeFilter = "all";
-    filtersEl
-      .querySelectorAll(".upcoming__filter-btn")
-      .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
-    filtersEl
-      .querySelector('[data-filter="all"]')
-      .classList.add("upcoming__filter-btn--active");
+      modalEl.close();
+      e.target.reset();
+      inputBs.value = "";
 
-    await render();
+      activeFilter = "all";
+      filtersEl
+        .querySelectorAll(".upcoming__filter-btn")
+        .forEach((btn) => btn.classList.remove("upcoming__filter-btn--active"));
+      filtersEl
+        .querySelector('[data-filter="all"]')
+        .classList.add("upcoming__filter-btn--active");
+
+      await render();
+    }
   });
 
   render();
 };
+
+checkAndNotifyTodayEvents();

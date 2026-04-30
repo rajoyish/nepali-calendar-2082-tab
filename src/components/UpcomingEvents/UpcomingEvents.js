@@ -213,7 +213,7 @@ export const initUpcomingEvents = (container) => {
   let activeFilter = "all";
 
   container.innerHTML = `
-    <div class="upcoming">
+    <div class="container upcoming">
         <div class="upcoming__header">
             <h2 class="upcoming__title">Upcoming Events</h2>
             <button class="upcoming__btn-add" id="btn-add-event">

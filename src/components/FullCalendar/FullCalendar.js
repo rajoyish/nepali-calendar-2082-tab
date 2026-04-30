@@ -122,7 +122,7 @@ export async function initMonthView(container) {
   isRendered = true;
 
   const ul = document.createElement("ul");
-  ul.className = "month-view";
+  ul.className = "month-view container-xl";
 
   const headerLi = document.createElement("li");
   headerLi.className = "month-view-header-wrapper";

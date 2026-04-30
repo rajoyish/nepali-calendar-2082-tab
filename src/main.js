@@ -9,11 +9,13 @@ import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDrop
 import { updateDateBadge } from "./components/DateBadgeRenderer/DateBadgeRenderer.js";
 import { initBookmarks } from "./components/Bookmarks/Bookmarks.js";
 import { getNepaliDateForAd } from "./utils/calendarUtils.js";
+import { initPreetiConverter } from './components/PreetiConverter/PreetiConverter.js';
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 
 const taskReminder = createTaskReminder();
 let updateInterval;
+let preetiConverterInstance = null;
 
 function startPeriodicUpdates() {
   if (!updateInterval) {
@@ -30,7 +32,7 @@ function stopPeriodicUpdates() {
   }
 }
 
-function setupTabActivation(tabSelector, panelSelector, onActivate) {
+function setupTabActivation(tabSelector, panelSelector, onActivate, onDeactivate) {
   const tabsList = document.querySelector(".tabs-list");
   if (!tabsList) return;
 
@@ -46,12 +48,15 @@ function setupTabActivation(tabSelector, panelSelector, onActivate) {
   const panel = document.querySelector(panelSelector);
 
   function maybeActivate() {
-    if (panel && !panel.hasAttribute("hidden")) onActivate(panel);
+    if (panel && !panel.hasAttribute("hidden")) {
+        onActivate(panel);
+    } else if (panel && panel.hasAttribute("hidden") && onDeactivate) {
+        onDeactivate(panel);
+    }
   }
 
   tabsList.addEventListener("click", (e) => {
-    const clickedTab = e.target.closest("a");
-    if (clickedTab === tab) setTimeout(maybeActivate, 0);
+    setTimeout(maybeActivate, 0);
   });
 
   tabsList.addEventListener("keydown", (e) => {
@@ -83,6 +88,24 @@ function setupUpcomingEventsTab() {
   });
 }
 
+function setupPreetiConverterTab() {
+    setupTabActivation(
+        "Preeti Converter", 
+        "#panel-preeti", 
+        (panel) => {
+            if (!preetiConverterInstance) {
+                preetiConverterInstance = initPreetiConverter('panel-preeti');
+            }
+        },
+        (panel) => {
+             if (preetiConverterInstance) {
+                 preetiConverterInstance.destroy();
+                 preetiConverterInstance = null;
+             }
+        }
+    );
+}
+
 function setupEventHandlers() {
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
@@ -102,6 +125,7 @@ async function initApp() {
   setupTabs();
   setupCalendarTab();
   setupUpcomingEventsTab();
+  setupPreetiConverterTab();
   startPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();

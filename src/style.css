@@ -96,6 +96,17 @@ body.no-glass .glass-pill:hover {
     border: 2px solid red;
 }
 
+.container {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.container-xl {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+
 .tabs-list,
 .calendar__footer {
     font-family: "Mona Sans", sans-serif;

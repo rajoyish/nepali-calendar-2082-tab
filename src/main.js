@@ -9,13 +9,13 @@ import { initSettingsDropdown } from "./components/SettingsDropdown/SettingsDrop
 import { updateDateBadge } from "./components/DateBadgeRenderer/DateBadgeRenderer.js";
 import { initBookmarks } from "./components/Bookmarks/Bookmarks.js";
 import { getNepaliDateForAd } from "./utils/calendarUtils.js";
-import { initPreetiConverter } from './components/PreetiConverter/PreetiConverter.js';
+import { initNepaliConverter } from "./components/NepaliConverter/NepaliConverter.js";
 
 window.getNepaliDateForAd = getNepaliDateForAd;
 
 const taskReminder = createTaskReminder();
 let updateInterval;
-let preetiConverterInstance = null;
+let nepaliConverterInstance = null;
 
 function startPeriodicUpdates() {
   if (!updateInterval) {
@@ -32,7 +32,12 @@ function stopPeriodicUpdates() {
   }
 }
 
-function setupTabActivation(tabSelector, panelSelector, onActivate, onDeactivate) {
+function setupTabActivation(
+  tabSelector,
+  panelSelector,
+  onActivate,
+  onDeactivate,
+) {
   const tabsList = document.querySelector(".tabs-list");
   if (!tabsList) return;
 
@@ -49,9 +54,9 @@ function setupTabActivation(tabSelector, panelSelector, onActivate, onDeactivate
 
   function maybeActivate() {
     if (panel && !panel.hasAttribute("hidden")) {
-        onActivate(panel);
+      onActivate(panel);
     } else if (panel && panel.hasAttribute("hidden") && onDeactivate) {
-        onDeactivate(panel);
+      onDeactivate(panel);
     }
   }
 
@@ -72,7 +77,8 @@ function setupCalendarTab() {
   setupTabActivation("Full Calendar", "#panel-calendar", async (panel) => {
     const calendarRoot = panel.querySelector("#month-view-calendar-root");
     if (calendarRoot) {
-      const { initMonthView } = await import("./components/FullCalendar/FullCalendar.js");
+      const { initMonthView } =
+        await import("./components/FullCalendar/FullCalendar.js");
       initMonthView(calendarRoot);
     }
   });
@@ -82,28 +88,29 @@ function setupUpcomingEventsTab() {
   setupTabActivation("Upcoming Events", "#panel-upcoming", async (panel) => {
     const root = panel.querySelector("#upcoming-events-root");
     if (root) {
-      const { initUpcomingEvents } = await import("./components/UpcomingEvents/UpcomingEvents.js");
+      const { initUpcomingEvents } =
+        await import("./components/UpcomingEvents/UpcomingEvents.js");
       initUpcomingEvents(root);
     }
   });
 }
 
-function setupPreetiConverterTab() {
-    setupTabActivation(
-        "Preeti Converter", 
-        "#panel-preeti", 
-        (panel) => {
-            if (!preetiConverterInstance) {
-                preetiConverterInstance = initPreetiConverter('panel-preeti');
-            }
-        },
-        (panel) => {
-             if (preetiConverterInstance) {
-                 preetiConverterInstance.destroy();
-                 preetiConverterInstance = null;
-             }
-        }
-    );
+function setupNepaliConverterTab() {
+  setupTabActivation(
+    "Nepali Converter",
+    "#panel-nepali",
+    (panel) => {
+      if (!nepaliConverterInstance) {
+        nepaliConverterInstance = initNepaliConverter("panel-nepali");
+      }
+    },
+    (panel) => {
+      if (nepaliConverterInstance) {
+        nepaliConverterInstance.destroy();
+        nepaliConverterInstance = null;
+      }
+    },
+  );
 }
 
 function setupEventHandlers() {
@@ -125,7 +132,7 @@ async function initApp() {
   setupTabs();
   setupCalendarTab();
   setupUpcomingEventsTab();
-  setupPreetiConverterTab();
+  setupNepaliConverterTab();
   startPeriodicUpdates();
   setupEventHandlers();
   setupDateInputIcon();

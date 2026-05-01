@@ -1,317 +1,561 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Rajesh Budhathoki" />
+        <meta
+            name="description"
+            content="Tabre is a modern Nepali calendar web app for the year 2083, featuring Nepali date, time, tithi, events, and a date converter. Instantly view the Nepali calendar and utilities every time you open a new tab."
+        />
+        <meta
+            name="keywords"
+            content="Nepali calendar 2083, Nepali date, Nepali time, Nepali tithi, Nepali events, Nepali date converter, Tabre, new tab calendar, Bikram Sambat, BS calendar, Nepali holidays, Nepali utilities, Rajesh Budhathoki"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/favicons/android-chrome-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="/favicons/android-chrome-512x512.png"
+        />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <link rel="icon" href="/favicons/favicon.ico" />
+        <title>Tabre: Nepali Calendar New Tab</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Rajesh Budhathoki" />
-    <meta name="description"
-        content="Tabre is a modern Nepali calendar web app for the year 2082, featuring Nepali date, time, tithi, events, and a date converter. Instantly view the Nepali calendar and utilities every time you open a new tab." />
-    <meta name="keywords"
-        content="Nepali calendar 2082, Nepali date, Nepali time, Nepali tithi, Nepali events, Nepali date converter, Tabre, new tab calendar, Bikram Sambat, BS calendar, Nepali holidays, Nepali utilities, Rajesh Budhathoki" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicons/android-chrome-512x512.png" />
-    <link rel="manifest" href="/favicons/site.webmanifest" />
-    <link rel="icon" href="/favicons/favicon.ico" />
-    <title>Tabre: Nepali Calendar New Tab</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet" />
-</head>
+    <body>
+        <nav aria-label="Main Navigation">
+            <ul class="tabs-list" role="tablist">
+                <li role="presentation">
+                    <a
+                        id="tab-today"
+                        href="#panel-today"
+                        role="tab"
+                        aria-controls="panel-today"
+                        >Today</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-calendar"
+                        href="#panel-calendar"
+                        role="tab"
+                        aria-controls="panel-calendar"
+                        >Full Calendar</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-upcoming"
+                        href="#panel-upcoming"
+                        role="tab"
+                        aria-controls="panel-upcoming"
+                        >Upcoming Events</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-converter"
+                        href="#panel-converter"
+                        role="tab"
+                        aria-controls="panel-converter"
+                        >Date Converter</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-reminder"
+                        href="#panel-reminder"
+                        role="tab"
+                        aria-controls="panel-reminder"
+                        >Reminder</a
+                    >
+                </li>
+                <li role="presentation">
+                    <a
+                        id="tab-nepali"
+                        href="#panel-nepali"
+                        role="tab"
+                        aria-controls="panel-nepali"
+                        >Nepali Converter</a
+                    >
+                </li>
+            </ul>
+        </nav>
 
-<body>
-    <nav aria-label="Main Navigation">
-        <ul class="tabs-list" role="tablist">
-            <li role="presentation">
-                <a id="tab-today" href="#panel-today" role="tab" aria-controls="panel-today">Today</a>
-            </li>
-            <li role="presentation">
-                <a id="tab-calendar" href="#panel-calendar" role="tab" aria-controls="panel-calendar">Full Calendar</a>
-            </li>
-            <li role="presentation">
-                <a id="tab-upcoming" href="#panel-upcoming" role="tab" aria-controls="panel-upcoming">Upcoming
-                    Events</a>
-            </li>
-            <li role="presentation">
-                <a id="tab-converter" href="#panel-converter" role="tab" aria-controls="panel-converter">Date
-                    Converter</a>
-            </li>
-            <li role="presentation">
-                <a id="tab-reminder" href="#panel-reminder" role="tab" aria-controls="panel-reminder">Reminder</a>
-            </li>
-            <li role="presentation">
-                <a id="tab-preeti" href="#panel-preeti" role="tab" aria-controls="panel-preeti">Preeti to Nepali
-                    Unicode</a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="calendar__upper spacing">
-        <p class="calendar__date-en" data-today-en></p>
-        <div class="calendar-clock__wrapper glass">
-            <p class="calendar__clock" data-clock></p>
-            <div class="settings">
-                <button class="settings__trigger" aria-haspopup="menu" aria-expanded="false"
-                    aria-controls="settings-menu" id="settings-trigger">
-                    <span class="settings__trigger-text">Settings</span>
-                    <span class="settings__trigger-icon" aria-hidden="true">▼</span>
-                </button>
-                <div class="settings__menu" id="settings-menu" role="menu" aria-labelledby="settings-trigger">
-                    <button class="settings__item" role="menuitem" tabindex="-1" data-action="fullscreen">
-                        <span class="settings__item-icon" aria-hidden="true"><i class="bi bi-fullscreen"></i></span>
-                        <span class="settings__item-text">Fullscreen</span>
+        <div class="calendar__upper spacing">
+            <p class="calendar__date-en" data-today-en></p>
+            <div class="calendar-clock__wrapper glass">
+                <p class="calendar__clock" data-clock></p>
+                <div class="settings">
+                    <button
+                        class="settings__trigger"
+                        aria-haspopup="menu"
+                        aria-expanded="false"
+                        aria-controls="settings-menu"
+                        id="settings-trigger"
+                    >
+                        <span class="settings__trigger-text">Settings</span>
+                        <span class="settings__trigger-icon" aria-hidden="true"
+                            >▼</span
+                        >
                     </button>
-                    <button class="settings__item" role="menuitem" tabindex="-1" data-action="change-background"
-                        id="btn-change-bg" aria-label="Change Background">
-                        <span class="settings__item-icon" aria-hidden="true"><i class="bi bi-image"></i></span>
-                        <span class="settings__item-text">Change Background</span>
-                    </button>
-                    <button class="settings__item" role="menuitem" tabindex="-1" data-action="toggle-glass"
-                        id="btn-toggle-glass" aria-label="Toggle Glassmorphism">
-                        <span class="settings__item-icon" aria-hidden="true"><i class="bi bi-droplet-half"></i></span>
-                        <span class="settings__item-text">Disable Glass</span>
-                    </button>
-                    <button class="settings__item" role="menuitem" tabindex="-1" data-action="toggle-bookmarks"
-                        id="btn-toggle-bookmarks" aria-label="Toggle Bookmarks">
-                        <span class="settings__item-icon" aria-hidden="true"><i class="bi bi-bookmark-dash"></i></span>
-                        <span class="settings__item-text">Hide Bookmarks</span>
-                    </button>
+                    <div
+                        class="settings__menu"
+                        id="settings-menu"
+                        role="menu"
+                        aria-labelledby="settings-trigger"
+                    >
+                        <button
+                            class="settings__item"
+                            role="menuitem"
+                            tabindex="-1"
+                            data-action="fullscreen"
+                        >
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-fullscreen"></i
+                            ></span>
+                            <span class="settings__item-text">Fullscreen</span>
+                        </button>
+                        <button
+                            class="settings__item"
+                            role="menuitem"
+                            tabindex="-1"
+                            data-action="change-background"
+                            id="btn-change-bg"
+                            aria-label="Change Background"
+                        >
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-image"></i
+                            ></span>
+                            <span class="settings__item-text"
+                                >Change Background</span
+                            >
+                        </button>
+                        <button
+                            class="settings__item"
+                            role="menuitem"
+                            tabindex="-1"
+                            data-action="toggle-glass"
+                            id="btn-toggle-glass"
+                            aria-label="Toggle Glassmorphism"
+                        >
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-droplet-half"></i
+                            ></span>
+                            <span class="settings__item-text"
+                                >Disable Glass</span
+                            >
+                        </button>
+                        <button
+                            class="settings__item"
+                            role="menuitem"
+                            tabindex="-1"
+                            data-action="toggle-bookmarks"
+                            id="btn-toggle-bookmarks"
+                            aria-label="Toggle Bookmarks"
+                        >
+                            <span class="settings__item-icon" aria-hidden="true"
+                                ><i class="bi bi-bookmark-dash"></i
+                            ></span>
+                            <span class="settings__item-text"
+                                >Hide Bookmarks</span
+                            >
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <main class="tabs-container">
-        <div class="tabs__panels">
-            <div id="panel-today" role="tabpanel" aria-labelledby="tab-today">
-                <section class="calendar">
-                    <div class="calendar__main glass">
-                        <h1 class="calendar__date-np" data-np-date></h1>
-                        <h2 class="calendar__month-year" data-np-month-year></h2>
-                        <div class="calendar__day-tithi-event">
-                            <h3 class="calendar__day-of-week bullet glass-pill" data-np-day-of-week></h3>
-                            <h3 class="calendar__np-samvat bullet glass-pill" data-np-samvat></h3>
-                            <h3 class="calendar__tithi bullet glass-pill" data-np-day-tithi></h3>
-                            <h3 class="calendar__event bullet glass-pill" data-np-day-event></h3>
-                        </div>
-                        <h3 class="calendar__event holiday-notice">
-                            <span class="holiday-notice__icon"></span>
-                            आज सार्वजनिक बिदा
-                        </h3>
-                    </div>
-                </section>
-
-                <section class="bookmarks spacing" id="bookmarks-section">
-                    <header class="bookmarks__header">
-                        <div class="bookmarks__header-left">
-                            <h2 class="bookmarks__title">Quick Links</h2>
-                            <span class="bookmarks__count" id="bookmarks-count">0/10</span>
-                        </div>
-                        <button class="bookmarks__add-btn" id="btn-open-bookmarks-modal" aria-label="Add Bookmark">
-                            <i class="bi bi-plus-lg"></i> Add
-                        </button>
-                    </header>
-                    <ul class="bookmarks__list" id="bookmarks-list"></ul>
-                    <dialog class="bookmarks__modal" id="bookmarks-modal">
-                        <div class="bookmarks__modal-content">
-                            <header class="bookmarks__modal-header">
-                                <h3>Select Bookmarks</h3>
-                                <button class="bookmarks__modal-close" id="btn-close-bookmarks-modal"
-                                    aria-label="Close modal">
-                                    <i class="bi bi-x-lg"></i>
-                                </button>
-                            </header>
-                            <div class="bookmarks__modal-body" id="bookmarks-modal-body">
-                                <p style="text-align: center; opacity: 0.6">
-                                    Loading bookmarks...
-                                </p>
+        <main class="tabs-container">
+            <div class="tabs__panels">
+                <div
+                    id="panel-today"
+                    role="tabpanel"
+                    aria-labelledby="tab-today"
+                >
+                    <section class="calendar">
+                        <div class="calendar__main glass">
+                            <h1 class="calendar__date-np" data-np-date></h1>
+                            <h2
+                                class="calendar__month-year"
+                                data-np-month-year
+                            ></h2>
+                            <div class="calendar__day-tithi-event">
+                                <h3
+                                    class="calendar__day-of-week bullet glass-pill"
+                                    data-np-day-of-week
+                                ></h3>
+                                <h3
+                                    class="calendar__np-samvat bullet glass-pill"
+                                    data-np-samvat
+                                ></h3>
+                                <h3
+                                    class="calendar__tithi bullet glass-pill"
+                                    data-np-day-tithi
+                                ></h3>
+                                <h3
+                                    class="calendar__event bullet glass-pill"
+                                    data-np-day-event
+                                ></h3>
                             </div>
+                            <h3 class="calendar__event holiday-notice">
+                                <span class="holiday-notice__icon"></span>
+                                आज सार्वजनिक बिदा
+                            </h3>
                         </div>
-                    </dialog>
-                </section>
-            </div>
+                    </section>
 
-            <div id="panel-calendar" role="tabpanel" aria-labelledby="tab-calendar">
-                <div id="month-view-calendar-root" class="glass calendar-root-wrapper"></div>
-            </div>
-
-            <div id="panel-upcoming" role="tabpanel" aria-labelledby="tab-upcoming" hidden>
-                <div id="upcoming-events-root"></div>
-            </div>
-
-            <div id="panel-converter" role="tabpanel" aria-labelledby="tab-converter">
-                <article class="date-converter" id="date-converter">
-                    <nav class="date-converter__modes">
-                        <span class="date-converter__mode-label date-converter__mode-label--ad">AD
-                            <i class="bi bi-arrow-right-short"></i> BS</span>
-                        <input type="checkbox" id="date-converter-toggle" class="date-converter__toggle-input"
-                            aria-checked="false" aria-label="Switch between AD to BS and BS to AD" />
-                        <label for="date-converter-toggle" class="date-converter__toggle-switch"
-                            aria-hidden="true"></label>
-                        <span class="date-converter__mode-label date-converter__mode-label--bs">BS
-                            <i class="bi bi-arrow-right-short"></i> AD</span>
-                    </nav>
-                    <div class="date-converter__content">
-                        <section class="date-converter__section date-converter__section--ad-to-bs">
-                            <div class="date-converter__input-group">
-                                <label class="date-converter__label" for="converter-ad-date">Select AD Date</label>
-                                <input type="date" id="converter-ad-date"
-                                    class="date-converter__input date-converter__input--date" />
+                    <section class="bookmarks spacing" id="bookmarks-section">
+                        <header class="bookmarks__header">
+                            <div class="bookmarks__header-left">
+                                <h2 class="bookmarks__title">Quick Links</h2>
+                                <span
+                                    class="bookmarks__count"
+                                    id="bookmarks-count"
+                                    >0/10</span
+                                >
                             </div>
-                            <div class="date-converter__result-group">
-                                <label class="date-converter__label">Bikram Sambat (BS)</label>
-                                <output class="date-converter__output date-converter__output--bs"></output>
-                            </div>
-                        </section>
-                        <section
-                            class="date-converter__section date-converter__section--bs-to-ad date-converter__section--hidden">
-                            <div class="date-converter__input-group">
-                                <label class="date-converter__label">Enter Bikram Sambat (BS)</label>
-                                <div class="date-converter__bs-inputs">
-                                    <input type="number" class="date-converter__input date-converter__input--year"
-                                        placeholder="Year (e.g., 2082)" min="1970" max="2100" aria-label="BS Year" />
-                                    <select class="date-converter__select date-converter__select--month"
-                                        aria-label="BS Month">
-                                        <option value="">Month</option>
-                                        <option value="1">
-                                            बैशाख (Baisakh)
-                                        </option>
-                                        <option value="2">
-                                            जेठ (Jestha)
-                                        </option>
-                                        <option value="3">
-                                            आषाढ (Ashadh)
-                                        </option>
-                                        <option value="4">
-                                            श्रावण (Shrawan)
-                                        </option>
-                                        <option value="5">
-                                            भाद्र (Bhadra)
-                                        </option>
-                                        <option value="6">
-                                            आश्विन (Ashwin)
-                                        </option>
-                                        <option value="7">
-                                            कार्तिक (Kartik)
-                                        </option>
-                                        <option value="8">
-                                            मंसिर (Mangsir)
-                                        </option>
-                                        <option value="9">
-                                            पौष (Poush)
-                                        </option>
-                                        <option value="10">
-                                            माघ (Magh)
-                                        </option>
-                                        <option value="11">
-                                            फाल्गुन (Falgun)
-                                        </option>
-                                        <option value="12">
-                                            चैत्र (Chaitra)
-                                        </option>
-                                    </select>
-                                    <input type="number" class="date-converter__input date-converter__input--day"
-                                        placeholder="Day" min="1" max="32" aria-label="BS Day" />
+                            <button
+                                class="bookmarks__add-btn"
+                                id="btn-open-bookmarks-modal"
+                                aria-label="Add Bookmark"
+                            >
+                                <i class="bi bi-plus-lg"></i> Add
+                            </button>
+                        </header>
+                        <ul class="bookmarks__list" id="bookmarks-list"></ul>
+                        <dialog class="bookmarks__modal" id="bookmarks-modal">
+                            <div class="bookmarks__modal-content">
+                                <header class="bookmarks__modal-header">
+                                    <h3>Select Bookmarks</h3>
+                                    <button
+                                        class="bookmarks__modal-close"
+                                        id="btn-close-bookmarks-modal"
+                                        aria-label="Close modal"
+                                    >
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </header>
+                                <div
+                                    class="bookmarks__modal-body"
+                                    id="bookmarks-modal-body"
+                                >
+                                    <p style="text-align: center; opacity: 0.6">
+                                        Loading bookmarks...
+                                    </p>
                                 </div>
                             </div>
-                            <div class="date-converter__result-group">
-                                <label class="date-converter__label">English Date (AD):</label>
-                                <output class="date-converter__output date-converter__output--ad"></output>
-                            </div>
-                        </section>
-                    </div>
-                </article>
-            </div>
+                        </dialog>
+                    </section>
+                </div>
 
-            <div id="panel-reminder" role="tabpanel" aria-labelledby="tab-reminder">
-                <section class="reminder">
-                    <header class="reminder__header">
-                        <h2 class="reminder__title">
-                            Buy Eggs
-                            <span class="reminder__title-emphasis">in</span>
-                        </h2>
-                        <time class="reminder__time" datetime="20:00">20:00</time>
-                    </header>
-                    <div class="past-reminders">
-                        <h2 class="past-reminders__title">
-                            Recent Reminders
-                        </h2>
-                        <ul class="past-reminders__list">
-                            <li class="past-reminders__item">
-                                <div class="past-reminders__icon-wrapper">
-                                    <span class="past-reminders__icon"><i class="bi bi-clock-history"></i></span>
-                                    <span class="past-reminders__time" data-past-reminder-time>10 min</span>
+                <div
+                    id="panel-calendar"
+                    role="tabpanel"
+                    aria-labelledby="tab-calendar"
+                >
+                    <div
+                        id="month-view-calendar-root"
+                        class="glass calendar-root-wrapper"
+                    ></div>
+                </div>
+
+                <div
+                    id="panel-upcoming"
+                    role="tabpanel"
+                    aria-labelledby="tab-upcoming"
+                    hidden
+                >
+                    <div id="upcoming-events-root"></div>
+                </div>
+
+                <div
+                    id="panel-converter"
+                    role="tabpanel"
+                    aria-labelledby="tab-converter"
+                >
+                    <article class="date-converter" id="date-converter">
+                        <nav class="date-converter__modes">
+                            <span
+                                class="date-converter__mode-label date-converter__mode-label--ad"
+                                >AD
+                                <i class="bi bi-arrow-right-short"></i> BS</span
+                            >
+                            <input
+                                type="checkbox"
+                                id="date-converter-toggle"
+                                class="date-converter__toggle-input"
+                                aria-checked="false"
+                                aria-label="Switch between AD to BS and BS to AD"
+                            />
+                            <label
+                                for="date-converter-toggle"
+                                class="date-converter__toggle-switch"
+                                aria-hidden="true"
+                            ></label>
+                            <span
+                                class="date-converter__mode-label date-converter__mode-label--bs"
+                                >BS
+                                <i class="bi bi-arrow-right-short"></i> AD</span
+                            >
+                        </nav>
+                        <div class="date-converter__content">
+                            <section
+                                class="date-converter__section date-converter__section--ad-to-bs"
+                            >
+                                <div class="date-converter__input-group">
+                                    <label
+                                        class="date-converter__label"
+                                        for="converter-ad-date"
+                                        >Select AD Date</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="converter-ad-date"
+                                        class="date-converter__input date-converter__input--date"
+                                    />
                                 </div>
-                                <h3 class="past-reminders__task-title" data-past-reminder-task-title>
-                                    Buy Eggs
-                                </h3>
-                                <button class="past-reminder-delete-btn">
-                                    <i class="bi bi-trash3-fill"></i>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <footer class="reminder__controls">
-                        <button type="button" class="reminder__btn btn-primary">
-                            Set Reminder
-                        </button>
-                        <button type="button" class="reminder__btn btn-danger">
-                            Reset
-                        </button>
-                    </footer>
-                    <aside class="reminder__modal hidden">
-                        <form class="reminder-form hidden">
-                            <div class="reminder-form__control">
-                                <label for="reminder-form__task-title">Task Title</label>
-                                <input type="text" id="reminder-form__task-title" class="reminder-form__input"
-                                    placeholder="e.g. Drink water" required />
-                            </div>
-                            <div class="reminder-form__control">
-                                <label for="reminder-form__minutes">Duration (minutes)</label>
-                                <input type="number" id="reminder-form__minutes" class="reminder-form__input"
-                                    placeholder="e.g. 20" required min="1" />
-                            </div>
-                            <div class="reminder-form-control-checkbox">
-                                <label for="sound">Play Notification Sound</label>
-                                <input type="checkbox" id="sound" checked />
-                            </div>
-                            <div class="reminder-form__button-group">
-                                <button type="submit" class="reminder__btn btn-primary">
-                                    Start
-                                </button>
-                                <button type="button" class="reminder__btn btn-danger reminder-form__btn">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </aside>
-                </section>
+                                <div class="date-converter__result-group">
+                                    <label class="date-converter__label"
+                                        >Bikram Sambat (BS)</label
+                                    >
+                                    <output
+                                        class="date-converter__output date-converter__output--bs"
+                                    ></output>
+                                </div>
+                            </section>
+                            <section
+                                class="date-converter__section date-converter__section--bs-to-ad date-converter__section--hidden"
+                            >
+                                <div class="date-converter__input-group">
+                                    <label class="date-converter__label"
+                                        >Enter Bikram Sambat (BS)</label
+                                    >
+                                    <div class="date-converter__bs-inputs">
+                                        <input
+                                            type="number"
+                                            class="date-converter__input date-converter__input--year"
+                                            placeholder="Year (e.g., 2083)"
+                                            min="1970"
+                                            max="2100"
+                                            aria-label="BS Year"
+                                        />
+                                        <select
+                                            class="date-converter__select date-converter__select--month"
+                                            aria-label="BS Month"
+                                        >
+                                            <option value="">Month</option>
+                                            <option value="1">
+                                                बैशाख (Baisakh)
+                                            </option>
+                                            <option value="2">
+                                                जेठ (Jestha)
+                                            </option>
+                                            <option value="3">
+                                                आषाढ (Ashadh)
+                                            </option>
+                                            <option value="4">
+                                                श्रावण (Shrawan)
+                                            </option>
+                                            <option value="5">
+                                                भाद्र (Bhadra)
+                                            </option>
+                                            <option value="6">
+                                                आश्विन (Ashwin)
+                                            </option>
+                                            <option value="7">
+                                                कार्तिक (Kartik)
+                                            </option>
+                                            <option value="8">
+                                                मंसिर (Mangsir)
+                                            </option>
+                                            <option value="9">
+                                                पौष (Poush)
+                                            </option>
+                                            <option value="10">
+                                                माघ (Magh)
+                                            </option>
+                                            <option value="11">
+                                                फाल्गुन (Falgun)
+                                            </option>
+                                            <option value="12">
+                                                चैत्र (Chaitra)
+                                            </option>
+                                        </select>
+                                        <input
+                                            type="number"
+                                            class="date-converter__input date-converter__input--day"
+                                            placeholder="Day"
+                                            min="1"
+                                            max="32"
+                                            aria-label="BS Day"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="date-converter__result-group">
+                                    <label class="date-converter__label"
+                                        >English Date (AD):</label
+                                    >
+                                    <output
+                                        class="date-converter__output date-converter__output--ad"
+                                    ></output>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                </div>
+
+                <div
+                    id="panel-reminder"
+                    role="tabpanel"
+                    aria-labelledby="tab-reminder"
+                >
+                    <section class="reminder">
+                        <header class="reminder__header">
+                            <h2 class="reminder__title">
+                                Buy Eggs
+                                <span class="reminder__title-emphasis">in</span>
+                            </h2>
+                            <time class="reminder__time" datetime="20:00"
+                                >20:00</time
+                            >
+                        </header>
+                        <div class="past-reminders">
+                            <h2 class="past-reminders__title">
+                                Recent Reminders
+                            </h2>
+                            <ul class="past-reminders__list">
+                                <li class="past-reminders__item">
+                                    <div class="past-reminders__icon-wrapper">
+                                        <span class="past-reminders__icon"
+                                            ><i class="bi bi-clock-history"></i
+                                        ></span>
+                                        <span
+                                            class="past-reminders__time"
+                                            data-past-reminder-time
+                                            >10 min</span
+                                        >
+                                    </div>
+                                    <h3
+                                        class="past-reminders__task-title"
+                                        data-past-reminder-task-title
+                                    >
+                                        Buy Eggs
+                                    </h3>
+                                    <button class="past-reminder-delete-btn">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <footer class="reminder__controls">
+                            <button
+                                type="button"
+                                class="reminder__btn btn-primary"
+                            >
+                                Set Reminder
+                            </button>
+                            <button
+                                type="button"
+                                class="reminder__btn btn-danger"
+                            >
+                                Reset
+                            </button>
+                        </footer>
+                        <aside class="reminder__modal hidden">
+                            <form class="reminder-form hidden">
+                                <div class="reminder-form__control">
+                                    <label for="reminder-form__task-title"
+                                        >Task Title</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="reminder-form__task-title"
+                                        class="reminder-form__input"
+                                        placeholder="e.g. Drink water"
+                                        required
+                                    />
+                                </div>
+                                <div class="reminder-form__control">
+                                    <label for="reminder-form__minutes"
+                                        >Duration (minutes)</label
+                                    >
+                                    <input
+                                        type="number"
+                                        id="reminder-form__minutes"
+                                        class="reminder-form__input"
+                                        placeholder="e.g. 20"
+                                        required
+                                        min="1"
+                                    />
+                                </div>
+                                <div class="reminder-form-control-checkbox">
+                                    <label for="sound"
+                                        >Play Notification Sound</label
+                                    >
+                                    <input type="checkbox" id="sound" checked />
+                                </div>
+                                <div class="reminder-form__button-group">
+                                    <button
+                                        type="submit"
+                                        class="reminder__btn btn-primary"
+                                    >
+                                        Start
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="reminder__btn btn-danger reminder-form__btn"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </aside>
+                    </section>
+                </div>
+
+                <div
+                    id="panel-nepali"
+                    role="tabpanel"
+                    aria-labelledby="tab-nepali"
+                    hidden
+                ></div>
             </div>
+        </main>
 
-            <div id="panel-preeti" role="tabpanel" aria-labelledby="tab-preeti" hidden></div>
-        </div>
-    </main>
+        <footer class="calendar__footer">
+            <p>
+                Made with ❤️ by
+                <a class="calendar__author-link" href="https://x.com/rajoyish"
+                    >Rajesh Budhathoki</a
+                >
+                | 👍 Love the Tabre?
+                <a href="https://buymemomo.com/rajoyish">Buy Me Momo</a>
+            </p>
+            <p style="margin-top: 1rem">
+                Try it live at
+                <a href="https://tabre.netlify.app/">Tabre</a> or get the
+                <a
+                    href="https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo"
+                    >Chrome Extension</a
+                >.
+            </p>
+        </footer>
 
-    <footer class="calendar__footer">
-        <p>
-            Made with ❤️ by
-            <a class="calendar__author-link" href="https://x.com/rajoyish">Rajesh Budhathoki</a>
-            | 👍 Love the Tabre?
-            <a href="https://buymemomo.com/rajoyish">Buy Me Momo</a>
-        </p>
-        <p style="margin-top: 1rem">
-            Try it live at
-            <a href="https://tabre.netlify.app/">Tabre</a> or get the
-            <a
-                href="https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo">Chrome
-                Extension</a>.
-        </p>
-    </footer>
-
-    <script type="module" src="/src/main.js"></script>
-</body>
-
+        <script type="module" src="/src/main.js"></script>
+    </body>
 </html>

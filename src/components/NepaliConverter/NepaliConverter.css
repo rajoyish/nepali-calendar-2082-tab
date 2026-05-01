@@ -3,7 +3,7 @@
     src: url("../../assets/Nagarik.ttf") format("truetype");
 }
 
-.preeti-app {
+.nepali-converter {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,27 @@
     border-radius: 12px;
 }
 
-.preeti-app__alert {
+.nepali-converter__modes {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color, rgba(255, 255, 255, 0.05));
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nepali-converter__mode-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-family: "Mona Sans", sans-serif;
+    font-size: 0.9rem;
+}
+
+.nepali-converter__alert {
     font-family: "Mona Sans", sans-serif;
     max-width: fit-content;
     margin: 1rem auto;
@@ -32,23 +52,28 @@
     transform: translateY(-10px);
 }
 
-.preeti-app__alert--visible {
+.nepali-converter__alert--visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.preeti-app__input-group {
+.nepali-converter__input-group {
     position: relative;
     width: 100%;
 }
 
-.preeti-app__textarea {
+.nepali-converter__input-group--hidden {
+    display: none !important;
+}
+
+.nepali-converter__textarea {
     display: block;
     width: 100%;
     min-height: 12rem;
     resize: vertical;
     padding: 1rem;
+    padding-bottom: 3.5rem;
     border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
     border-radius: 0.5rem;
     outline: none;
@@ -60,25 +85,28 @@
         background-color 0.2s;
 }
 
-.preeti-app__textarea:focus {
+.nepali-converter__textarea:focus {
     border-color: var(--primary-color, #2563eb);
     background-color: var(--bg-color-focus, rgba(255, 255, 255, 0.15));
     box-shadow: 0 0 0 2px var(--primary-color-alpha, rgba(37, 99, 235, 0.3));
 }
 
-.preeti-app__textarea--source {
+.nepali-converter__textarea--preeti {
     font-family: "Nagarik", sans-serif;
     font-size: 1.5rem;
 }
 
-.preeti-app__textarea--target {
+.nepali-converter__textarea--unicode {
     font-family: "Anek Devanagari", sans-serif;
     font-weight: 300;
     font-size: 1.1rem;
+}
+
+.nepali-converter__textarea--target {
     background-color: var(--bg-color-alt, rgba(0, 0, 0, 0.1));
 }
 
-.preeti-app__toolbar {
+.nepali-converter__toolbar {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -86,7 +114,7 @@
     justify-content: center;
 }
 
-.preeti-app__char-btn {
+.nepali-converter__char-btn {
     font-family: inherit;
     background-color: var(--btn-bg, rgba(255, 255, 255, 0.1));
     border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
@@ -98,22 +126,22 @@
     transition: all 0.2s ease;
 }
 
-.preeti-app__char-btn:hover {
+.nepali-converter__char-btn:hover {
     background-color: var(--btn-bg-hover, rgba(255, 255, 255, 0.25));
     transform: translateY(-1px);
 }
 
-.preeti-app__char-btn:active {
+.nepali-converter__char-btn:active {
     transform: translateY(1px);
 }
 
-.preeti-app__copy-bar {
+.nepali-converter__copy-bar {
     position: absolute;
-    bottom: 0.75rem;
-    left: 0.75rem;
+    bottom: 1rem;
+    left: 1rem;
 }
 
-.preeti-app__copy-btn {
+.nepali-converter__copy-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,12 +158,12 @@
         transform 0.1s;
 }
 
-.preeti-app__copy-btn:hover {
+.nepali-converter__copy-btn:hover {
     background-color: var(--dark-green);
     color: #ffffff;
 }
 
-.preeti-app__copy-btn:active {
+.nepali-converter__copy-btn:active {
     transform: scale(0.95);
 }
 
@@ -143,39 +171,85 @@
     display: none;
 }
 
-.preeti-app__copy-btn:hover .copy-icon-default,
-.preeti-app__copy-btn:active .copy-icon-default,
-.preeti-app__copy-btn.is-copied .copy-icon-default {
+.nepali-converter__copy-btn:hover .copy-icon-default,
+.nepali-converter__copy-btn:active .copy-icon-default,
+.nepali-converter__copy-btn.is-copied .copy-icon-default {
     display: none;
 }
 
-.preeti-app__copy-btn:hover .copy-icon-active,
-.preeti-app__copy-btn:active .copy-icon-active,
-.preeti-app__copy-btn.is-copied .copy-icon-active {
+.nepali-converter__copy-btn:hover .copy-icon-active,
+.nepali-converter__copy-btn:active .copy-icon-active,
+.nepali-converter__copy-btn.is-copied .copy-icon-active {
     display: inline-block;
 }
 
-body.no-glass .preeti-app__textarea {
+.nepali-converter__suggestions {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    background: #ffffff;
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    min-width: 180px;
+    display: none;
+}
+
+.nepali-converter__suggestion-item {
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--dark-black, #1a1a1a);
+    font-family: "Anek Devanagari", sans-serif;
+    font-size: 16px;
+    transition: background 0.15s;
+}
+
+.nepali-converter__suggestion-item--active {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.nepali-converter__suggestion-hint {
+    font-family: "Mona Sans", sans-serif;
+    font-size: 0.75rem;
+    color: #666;
+    padding: 8px 14px 4px;
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.nepali-converter__suggestion-hint span {
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+body.no-glass .nepali-converter__textarea {
     background-color: white;
     color: var(--dark-black);
 }
 
-body.no-glass .preeti-app__char-btn {
+body.no-glass .nepali-converter__char-btn {
     background-color: var(--dark-black);
     color: var(--accent-sky);
 }
 
-body.no-glass .preeti-app__char-btn:hover {
+body.no-glass .nepali-converter__char-btn:hover {
     background-color: var(--dark-green);
     color: white;
 }
 
-.preeti-app__textarea--source::placeholder,
-.preeti-app__textarea--target::placeholder {
+.nepali-converter__textarea::placeholder {
     color: white;
 }
 
-body.no-glass .preeti-app__textarea--source::placeholder,
-body.no-glass .preeti-app__textarea--target::placeholder {
+body.no-glass .nepali-converter__textarea::placeholder {
     color: var(--dark-black);
 }

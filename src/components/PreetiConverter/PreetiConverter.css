@@ -17,7 +17,7 @@
     font-family: "Mona Sans", sans-serif;
     max-width: fit-content;
     margin: 1rem auto;
-    background-color: var(--color-success, #84cc16);
+    background-color: var(--accent-green);
     color: #ffffff;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
@@ -110,7 +110,7 @@
 .preeti-app__copy-bar {
     position: absolute;
     bottom: 0.75rem;
-    right: 0.75rem;
+    left: 0.75rem;
 }
 
 .preeti-app__copy-btn {
@@ -120,21 +120,39 @@
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 0.25rem;
-    background-color: var(--primary-color, rgba(37, 99, 235, 0.8));
-    color: #ffffff;
+    background-color: var(--dark-black);
+    color: var(--accent-sky);
     border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition:
         background-color 0.2s,
+        color 0.2s,
         transform 0.1s;
 }
 
 .preeti-app__copy-btn:hover {
-    background-color: var(--primary-color-hover, rgba(37, 99, 235, 1));
+    background-color: var(--dark-green);
+    color: #ffffff;
 }
 
 .preeti-app__copy-btn:active {
     transform: scale(0.95);
+}
+
+.copy-icon-active {
+    display: none;
+}
+
+.preeti-app__copy-btn:hover .copy-icon-default,
+.preeti-app__copy-btn:active .copy-icon-default,
+.preeti-app__copy-btn.is-copied .copy-icon-default {
+    display: none;
+}
+
+.preeti-app__copy-btn:hover .copy-icon-active,
+.preeti-app__copy-btn:active .copy-icon-active,
+.preeti-app__copy-btn.is-copied .copy-icon-active {
+    display: inline-block;
 }
 
 body.no-glass .preeti-app__textarea {

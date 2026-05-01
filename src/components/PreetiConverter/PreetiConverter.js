@@ -1,5 +1,5 @@
-import './PreetiConverter.css';
-import { convertToUnicode } from './converter.js';
+import "./PreetiConverter.css";
+import { convertToUnicode } from "./converter.js";
 
 export const initPreetiConverter = (containerId) => {
   const container = document.getElementById(containerId);
@@ -11,11 +11,10 @@ export const initPreetiConverter = (containerId) => {
 
   const render = () => {
     container.innerHTML = `
+      <div class="preeti-app__alert" id="copyAlert" role="alert">
+        <span>👍 Copied to clipboard!</span>
+      </div>
       <section class="container-xl preeti-app glass">
-        <h2 class="preeti-app__title">Preeti to Unicode Converter</h2>
-        <div class="preeti-app__alert" id="copyAlert" role="alert">
-          <span>Copied to clipboard!</span>
-        </div>
         <div class="preeti-app__input-group">
           <textarea id="preetiInput" class="preeti-app__textarea preeti-app__textarea--source" placeholder="oxfF k|Llt jf gful/s kmG6df n]Vg&quot;xf];\\ ." spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
         </div>
@@ -51,11 +50,11 @@ export const initPreetiConverter = (containerId) => {
 
   const cacheDOM = () => {
     dom = {
-      input: document.getElementById('preetiInput'),
-      output: document.getElementById('unicodeOutput'),
-      toolbar: document.getElementById('charToolbar'),
-      copyBtn: document.getElementById('copyBtn'),
-      alert: document.getElementById('copyAlert')
+      input: document.getElementById("preetiInput"),
+      output: document.getElementById("unicodeOutput"),
+      toolbar: document.getElementById("charToolbar"),
+      copyBtn: document.getElementById("copyBtn"),
+      alert: document.getElementById("copyAlert"),
     };
   };
 
@@ -69,35 +68,35 @@ export const initPreetiConverter = (containerId) => {
 
   const handleInput = () => {
     handleCursorUpdate();
-    localStorage.setItem('preetiInput', dom.input.value);
+    localStorage.setItem("preetiInput", dom.input.value);
     syncOutput();
   };
 
   const handleToolbarClick = (event) => {
-    const btn = event.target.closest('.preeti-app__char-btn');
+    const btn = event.target.closest(".preeti-app__char-btn");
     if (!btn) return;
 
     const charToInsert = btn.dataset.char;
     const currentVal = dom.input.value;
-    
+
     const before = currentVal.substring(0, cursorPosition);
     const after = currentVal.substring(cursorPosition);
-    
+
     dom.input.value = before + charToInsert + after;
     cursorPosition += charToInsert.length;
-    
+
     dom.input.focus();
     dom.input.setSelectionRange(cursorPosition, cursorPosition);
-    
-    localStorage.setItem('preetiInput', dom.input.value);
+
+    localStorage.setItem("preetiInput", dom.input.value);
     syncOutput();
   };
 
   const showAlert = () => {
-    dom.alert.classList.add('preeti-app__alert--visible');
+    dom.alert.classList.add("preeti-app__alert--visible");
     if (alertTimeout) clearTimeout(alertTimeout);
     alertTimeout = setTimeout(() => {
-      dom.alert.classList.remove('preeti-app__alert--visible');
+      dom.alert.classList.remove("preeti-app__alert--visible");
     }, 3000);
   };
 
@@ -107,15 +106,15 @@ export const initPreetiConverter = (containerId) => {
   };
 
   const bindEvents = () => {
-    dom.input.addEventListener('input', handleInput);
-    dom.input.addEventListener('click', handleCursorUpdate);
-    dom.input.addEventListener('keyup', handleCursorUpdate);
-    dom.toolbar.addEventListener('click', handleToolbarClick);
-    dom.copyBtn.addEventListener('click', handleCopyClick);
+    dom.input.addEventListener("input", handleInput);
+    dom.input.addEventListener("click", handleCursorUpdate);
+    dom.input.addEventListener("keyup", handleCursorUpdate);
+    dom.toolbar.addEventListener("click", handleToolbarClick);
+    dom.copyBtn.addEventListener("click", handleCopyClick);
   };
 
   const initializeState = () => {
-    const savedInput = localStorage.getItem('preetiInput') || '';
+    const savedInput = localStorage.getItem("preetiInput") || "";
     if (savedInput) {
       dom.input.value = savedInput;
       syncOutput();
@@ -124,14 +123,15 @@ export const initPreetiConverter = (containerId) => {
 
   const destroy = () => {
     if (dom.input) {
-      dom.input.removeEventListener('input', handleInput);
-      dom.input.removeEventListener('click', handleCursorUpdate);
-      dom.input.removeEventListener('keyup', handleCursorUpdate);
+      dom.input.removeEventListener("input", handleInput);
+      dom.input.removeEventListener("click", handleCursorUpdate);
+      dom.input.removeEventListener("keyup", handleCursorUpdate);
     }
-    if (dom.toolbar) dom.toolbar.removeEventListener('click', handleToolbarClick);
-    if (dom.copyBtn) dom.copyBtn.removeEventListener('click', handleCopyClick);
+    if (dom.toolbar)
+      dom.toolbar.removeEventListener("click", handleToolbarClick);
+    if (dom.copyBtn) dom.copyBtn.removeEventListener("click", handleCopyClick);
     if (alertTimeout) clearTimeout(alertTimeout);
-    container.innerHTML = '';
+    container.innerHTML = "";
     dom = null;
   };
 

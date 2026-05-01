@@ -24,15 +24,21 @@ export const initNepaliConverter = (containerId) => {
       </div>
       <section class="container-xl nepali-converter glass">
         <div class="nepali-converter__modes" id="converterModes">
-          <label class="nepali-converter__mode-label">
-            <input type="radio" name="convertMode" value="preeti2unicode" checked> Preeti to Unicode (Default)
-          </label>
-          <label class="nepali-converter__mode-label">
-            <input type="radio" name="convertMode" value="unicode2preeti"> Unicode to Preeti
-          </label>
-          <label class="nepali-converter__mode-label">
-            <input type="radio" name="convertMode" value="roman2unicode"> Roman to Unicode
-          </label>
+          <div class="toggle-switch">
+            <span class="toggle-switch__label" id="labelU2P">Preeti</span>
+            <label>
+              <input type="checkbox" id="toggleP2U" class="toggle-switch__input" role="switch" aria-checked="true" checked />
+              <span class="toggle-switch__slider"></span>
+            </label>
+            <span class="toggle-switch__label toggle-switch__label--active" id="labelP2U">Unicode</span>
+          </div>
+          <div class="toggle-switch">
+            <span class="toggle-switch__label" id="labelRoman">Roman to Unicode?</span>
+            <label>
+              <input type="checkbox" id="toggleRoman" class="toggle-switch__input" role="switch" aria-checked="false" />
+              <span class="toggle-switch__slider"></span>
+            </label>
+          </div>
         </div>
 
         <div class="nepali-converter__input-group" id="inputGroupSource">
@@ -81,6 +87,11 @@ export const initNepaliConverter = (containerId) => {
   const cacheDOM = () => {
     dom = {
       modes: document.getElementById("converterModes"),
+      toggleP2U: document.getElementById("toggleP2U"),
+      toggleRoman: document.getElementById("toggleRoman"),
+      labelU2P: document.getElementById("labelU2P"),
+      labelP2U: document.getElementById("labelP2U"),
+      labelRoman: document.getElementById("labelRoman"),
       input: document.getElementById("converterInput"),
       output: document.getElementById("converterOutput"),
       toolbar: document.getElementById("charToolbar"),
@@ -332,8 +343,34 @@ export const initNepaliConverter = (containerId) => {
   };
 
   const handleModeChange = (event) => {
-    if (event.target.name === "convertMode") {
-      currentMode = event.target.value;
+    if (event.target === dom.toggleP2U || event.target === dom.toggleRoman) {
+      if (event.target === dom.toggleP2U && dom.toggleRoman.checked) {
+        dom.toggleRoman.checked = false;
+      }
+
+      if (dom.toggleRoman.checked) {
+        currentMode = "roman2unicode";
+        dom.labelRoman.classList.add("toggle-switch__label--active");
+        dom.labelU2P.classList.remove("toggle-switch__label--active");
+        dom.labelP2U.classList.remove("toggle-switch__label--active");
+        dom.toggleRoman.setAttribute("aria-checked", "true");
+      } else {
+        dom.labelRoman.classList.remove("toggle-switch__label--active");
+        dom.toggleRoman.setAttribute("aria-checked", "false");
+
+        if (dom.toggleP2U.checked) {
+          currentMode = "preeti2unicode";
+          dom.labelP2U.classList.add("toggle-switch__label--active");
+          dom.labelU2P.classList.remove("toggle-switch__label--active");
+          dom.toggleP2U.setAttribute("aria-checked", "true");
+        } else {
+          currentMode = "unicode2preeti";
+          dom.labelU2P.classList.add("toggle-switch__label--active");
+          dom.labelP2U.classList.remove("toggle-switch__label--active");
+          dom.toggleP2U.setAttribute("aria-checked", "false");
+        }
+      }
+
       updateClassesAndPlaceholders();
       dom.input.value =
         localStorage.getItem(`nepaliInput_${currentMode}`) || "";

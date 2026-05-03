@@ -108,6 +108,7 @@ const PREETI_TO_UNICODE_MAP = {
   j: "व",
   Z: "श्",
   z: "श",
+  if: "ष",
   i: "ष्",
   ":": "स्",
   ";": "स",
@@ -175,17 +176,13 @@ const UNICODE_TO_PREETI_OVERRIDES = {
   न्त्रि: "lGq",
   ग्रि: "lu|",
   क्ष्: "I",
-  क्ष: "If",
   त्र: "q",
   प्र: "k|",
   ग्र: "u|",
   ण्: "0",
-  ण: "0f",
   ल्पि: "lNk",
-  र्ण: "0f{",
   ऱ्या: "¥of",
   वान्‍: "jfg\\",
-  ष: "if",
   ष्: "i",
   त्मि: "lTd",
   ष्टि: "li6",
@@ -193,6 +190,7 @@ const UNICODE_TO_PREETI_OVERRIDES = {
   ह्म: "Xd",
   ब्र: "a|",
   र्‍: "¥",
+  भ्र: "e|",
 };
 
 const UNICODE_TO_PREETI_MAP = {
@@ -203,15 +201,18 @@ const UNICODE_TO_PREETI_MAP = {
   "ौ": "f}",
 };
 
-const combinedPreetiMap = {
-  ...PREETI_TO_UNICODE_MAP,
-  ...PREETI_TO_UNICODE_FIXES,
-};
-
 const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const preetiRegex = new RegExp(
-  Object.keys(combinedPreetiMap)
+  Object.keys(PREETI_TO_UNICODE_MAP)
+    .sort((a, b) => b.length - a.length)
+    .map(escapeRegExp)
+    .join("|"),
+  "g",
+);
+
+const fixesRegex = new RegExp(
+  Object.keys(PREETI_TO_UNICODE_FIXES)
     .sort((a, b) => b.length - a.length)
     .map(escapeRegExp)
     .join("|"),
@@ -239,7 +240,12 @@ export const convertToUnicode = (textToConvert) => {
 
   let convertedText = textToConvert.replace(
     preetiRegex,
-    (match) => combinedPreetiMap[match],
+    (match) => PREETI_TO_UNICODE_MAP[match],
+  );
+
+  convertedText = convertedText.replace(
+    fixesRegex,
+    (match) => PREETI_TO_UNICODE_FIXES[match],
   );
 
   convertedText = convertedText

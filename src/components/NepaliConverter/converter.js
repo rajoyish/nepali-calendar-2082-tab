@@ -135,6 +135,7 @@ const PREETI_TO_UNICODE_MAP = {
   F: "ँ",
   L: "ी",
   M: "ः",
+  "¥": "र्‍",
 };
 
 const PREETI_TO_UNICODE_FIXES = {
@@ -187,6 +188,7 @@ const UNICODE_TO_PREETI_OVERRIDES = {
   क्ति: "lQm",
   ह्म: "Xd",
   ब्र: "a|",
+  र्‍: "¥",
 };
 
 const UNICODE_TO_PREETI_MAP = {

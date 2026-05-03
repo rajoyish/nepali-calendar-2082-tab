@@ -240,7 +240,8 @@ export const convertToUnicode = (textToConvert) => {
     .replace(/l(.)/g, "$1ि")
     .replace(/ि्(.)/g, "्$1ि");
 
-  const rephRegex = /([^ािीुूृेैोौं:ँॅ]+)([ािीुूृेैोौं:ँॅ]*){/g;
+  const rephRegex =
+    /((?:[^\sािीुूृेैोौं:ँॅ्]्)*[^\sािीुूृेैोौं:ँॅ्])([ािीुूृेैोौं:ँॅ]*){/g;
   let previousText;
   do {
     previousText = convertedText;

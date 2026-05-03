@@ -271,6 +271,13 @@ export const convertToPreeti = (textToConvert) => {
     (match) => UNICODE_TO_PREETI_OVERRIDES[match],
   );
 
+  processedText = processedText.replace(
+    /([क-ह])्(?![क-ह\u200D])/g,
+    (match, p1) => {
+      return (UNICODE_TO_PREETI_MAP[p1] || p1) + "\\";
+    },
+  );
+
   processedText = processedText
     .replace(/र्([क-ह][ािीुूृेैोौं:ँॅ]*)/g, "$1{")
     .replace(/(.)ि/g, "l$1");

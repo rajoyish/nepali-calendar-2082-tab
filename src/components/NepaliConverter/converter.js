@@ -178,6 +178,15 @@ const UNICODE_TO_PREETI_OVERRIDES = {
   ण: "0f",
   ल्पि: "lNk",
   र्ण: "0f{",
+  ऱ्या: "¥of",
+  वान्‍: "jfg\\",
+  ष: "if",
+  ष्: "i",
+  त्मि: "lTd",
+  ष्टि: "li6",
+  क्ति: "lQm",
+  ह्म: "Xd",
+  ब्र: "a|",
 };
 
 const UNICODE_TO_PREETI_MAP = {

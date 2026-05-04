@@ -317,7 +317,42 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
       });
     }
 
+    const pvBtn = document.createElement("button");
+    pvBtn.className = "phonetic-map__cell";
+    pvBtn.dataset.char = "।";
+    pvBtn.dataset.action = "insert";
+
+    const pvCharSpan = document.createElement("span");
+    pvCharSpan.className = "phonetic-map__cell-char";
+    pvCharSpan.textContent = "।";
+
+    const pvPhonSpan = document.createElement("span");
+    pvPhonSpan.className = "phonetic-map__cell-phonetic";
+    pvPhonSpan.textContent = "⇧ + \\";
+
+    pvBtn.appendChild(pvCharSpan);
+    pvBtn.appendChild(pvPhonSpan);
+    fragment.appendChild(pvBtn);
+
     grid.appendChild(fragment);
+  };
+
+  const insertAtCursor = (char) => {
+    const val = inputElement.value;
+    const cursorStart = inputElement.selectionStart;
+    const cursorEnd = inputElement.selectionEnd;
+
+    const before = val.substring(0, cursorStart);
+    const after = val.substring(cursorEnd);
+
+    inputElement.value = before + char + after;
+
+    const newPos = before.length + char.length;
+    inputElement.setSelectionRange(newPos, newPos);
+    inputElement.focus();
+
+    hide();
+    inputElement.dispatchEvent(new Event("input"));
   };
 
   const replaceWord = (replacement) => {
@@ -372,10 +407,23 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     const btn = e.target.closest(".phonetic-map__cell");
     if (!btn) return;
     e.preventDefault();
-    replaceWord(btn.dataset.char);
+
+    if (btn.dataset.action === "insert") {
+      insertAtCursor(btn.dataset.char);
+    } else {
+      replaceWord(btn.dataset.char);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "|") {
+      e.preventDefault();
+      insertAtCursor("।");
+    }
   };
 
   grid.addEventListener("mousedown", handleGridClick);
+  inputElement.addEventListener("keydown", handleKeyDown);
 
   return {
     show,
@@ -390,6 +438,7 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     },
     destroy: () => {
       grid.removeEventListener("mousedown", handleGridClick);
+      inputElement.removeEventListener("keydown", handleKeyDown);
       if (container.parentNode) container.parentNode.removeChild(container);
     },
   };

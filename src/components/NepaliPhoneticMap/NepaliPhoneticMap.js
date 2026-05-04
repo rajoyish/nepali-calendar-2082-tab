@@ -1,89 +1,43 @@
 import "./NepaliPhoneticMap.css";
 
 const cons = {
-  k: "क",
-  kh: "ख",
-  g: "ग",
-  gh: "घ",
-  ng: "ङ",
-  c: "च",
-  ch: "छ",
-  j: "ज",
-  jh: "झ",
-  yn: "ञ",
-  t: "त",
-  th: "थ",
-  d: "द",
-  dh: "ध",
-  n: "न",
-  tt: "ट",
-  tth: "ठ",
-  dd: "ड",
-  ddh: "ढ",
-  nn: "ण",
-  p: "प",
-  ph: "फ",
-  b: "ब",
-  bh: "भ",
-  m: "म",
-  y: "य",
-  r: "र",
-  l: "ल",
-  v: "व",
-  w: "व",
-  sh: "श",
-  ss: "ष",
-  s: "स",
-  h: "ह",
-  ksh: "क्ष",
-  tr: "त्र",
-  gy: "ज्ञ",
+  k: "क", kh: "ख", g: "ग", gh: "घ", ng: "ङ", c: "च", ch: "छ", j: "ज",
+  jh: "झ", yn: "ञ", t: "त", th: "थ", d: "द", dh: "ध", n: "न", tt: "ट",
+  tth: "ठ", dd: "ड", ddh: "ढ", nn: "ण", p: "प", ph: "फ", b: "ब", bh: "भ",
+  m: "म", y: "य", r: "र", l: "ल", v: "व", w: "व", sh: "श", ss: "ष",
+  s: "स", h: "ह", ksh: "क्ष", tr: "त्र", gy: "ज्ञ",
 };
 
 const vows = {
-  "": "",
-  "\\": "्",
-  a: "",
-  aa: "ा",
-  i: "ि",
-  ee: "ी",
-  u: "ु",
-  uu: "ू",
-  ri: "ृ",
-  e: "े",
-  ai: "ै",
-  o: "ो",
-  ou: "ौ",
-  am: "ं",
-  an: "ँ",
-  ah: "ः",
+  "": "", "\\": "्", a: "", aa: "ा", i: "ि", ee: "ी", u: "ु", uu: "ू",
+  ri: "ृ", e: "े", ai: "ै", o: "ो", ou: "ौ", am: "ं", an: "ँ", ah: "ः",
+  aan: "ाँ", in: "िँ", een: "ीँ", un: "ुँ", uun: "ूँ", rin: "ृँ", en: "ेँ",
+  ain: "ैँ", on: "ोँ", oun: "ौँ", aam: "ां", im: "िं", eem: "ीं", um: "ुं",
+  uum: "ूं", rim: "ृं", em: "ें", aim: "ैं", om: "ों", oum: "ौं",
 };
 
 const indVows = {
-  a: "अ",
-  aa: "आ",
-  i: "इ",
-  ee: "ई",
-  u: "उ",
-  uu: "ऊ",
-  ri: "ऋ",
-  e: "ए",
-  ai: "ऐ",
-  o: "ओ",
-  ou: "औ",
-  am: "अं",
-  ah: "अः",
+  a: "अ", aa: "आ", i: "इ", ee: "ई", u: "उ", uu: "ऊ", ri: "ऋ", e: "ए",
+  ai: "ऐ", o: "ओ", ou: "औ", am: "अं", ah: "अः", an: "अँ", aan: "आँ",
+  in: "इँ", een: "ईँ", un: "उँ", uun: "ऊँ", rin: "ऋँ", en: "एँ", ain: "ऐँ",
+  on: "ओँ", oun: "औँ",
 };
 
 const sortedCons = Object.keys(cons).sort((a, b) => b.length - a.length);
 const sortedVows = Object.keys(vows).sort((a, b) => b.length - a.length);
 const sortedIndVows = Object.keys(indVows).sort((a, b) => b.length - a.length);
 
+const suffixes = [
+  "", "\\", "aa", "i", "ee", "u", "uu", "ri", "e", "ai", "o", "ou", "am", "an", "ah",
+  "aan", "in", "een", "un", "uun", "rin", "en", "ain", "on", "oun",
+  "aam", "im", "eem", "um", "uum", "rim", "em", "aim", "om", "oum",
+];
+
 export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
-  const container = document.createElement("div");
+  let container = document.createElement("div");
   container.className = "phonetic-map phonetic-map--hidden";
 
-  const grid = document.createElement("div");
+  let grid = document.createElement("div");
   grid.className = "phonetic-map__grid";
 
   container.appendChild(grid);
@@ -178,15 +132,9 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
 
   const generateGrid = (parsed) => {
     grid.innerHTML = "";
-
     const fragment = document.createDocumentFragment();
 
-    const createCell = (
-      displayChar,
-      replacementChar,
-      exactMatchVal,
-      phoneticText,
-    ) => {
+    const createCell = (displayChar, replacementChar, exactMatchVal, phoneticText) => {
       if (!displayChar) return;
       const btn = document.createElement("button");
       btn.className = "phonetic-map__cell";
@@ -230,20 +178,12 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
           createCell(relChar, parsed.prefix + relChar, "", relKey + parsed.vowelKey);
         });
 
-      const suffixes = [
-        "", "\\", "aa", "i", "ee", "u", "uu", "ri", "e", "ai", "o", "ou", "am", "an", "ah",
-      ];
       suffixes.forEach((suff) => {
         if (suff === parsed.vowelKey) return;
         const displayChar = parsed.consonant + vows[suff];
         const replacementChar = parsed.prefix + displayChar;
         const phoneticText = parsed.consonantKey + suff;
-        createCell(
-          displayChar,
-          replacementChar,
-          "",
-          phoneticText,
-        );
+        createCell(displayChar, replacementChar, "", phoneticText);
       });
     } else if (parsed.type === "vowel") {
       Object.entries(indVows).forEach(([vKey, char]) => {
@@ -348,8 +288,16 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     }
   };
 
+  const handleOutsideClick = (e) => {
+    if (state.isActive && container && !container.contains(e.target) && !inputElement.contains(e.target)) {
+      hide();
+    }
+  };
+
   grid.addEventListener("mousedown", handleGridClick);
   inputElement.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("mousedown", handleOutsideClick);
+  document.addEventListener("touchstart", handleOutsideClick, { passive: true });
 
   return {
     show,
@@ -365,7 +313,15 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     destroy: () => {
       grid.removeEventListener("mousedown", handleGridClick);
       inputElement.removeEventListener("keydown", handleKeyDown);
-      if (container.parentNode) container.parentNode.removeChild(container);
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+      if (container && container.parentNode) {
+        container.parentNode.removeChild(container);
+      }
+      container = null;
+      grid = null;
+      inputElement = null;
+      wrapperElement = null;
     },
   };
 };

@@ -1,0 +1,93 @@
+.phonetic-map {
+    position: absolute;
+    z-index: 9999;
+    background: #ffffff;
+    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    margin-top: 0;
+    transition: opacity 0.3s ease;
+}
+
+.phonetic-map--hidden {
+    display: none;
+}
+
+.phonetic-map__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 100%;
+}
+
+.phonetic-map__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+    border-radius: 4px;
+    background-color: var(--btn-bg, rgba(255, 255, 255, 0.1));
+    color: inherit;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.phonetic-map__cell:hover {
+    background-color: var(--btn-bg-hover, rgba(255, 255, 255, 0.25));
+    transform: translateY(-1px);
+}
+
+.phonetic-map__cell:active {
+    transform: translateY(1px);
+}
+
+.phonetic-map__cell--active {
+    background-color: var(--dark-green, #16a34a);
+    border-color: var(--accent-green, #22c55e);
+    color: #ffffff;
+}
+
+.phonetic-map__cell-char {
+    font-family: "Anek Devanagari", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.phonetic-map__cell-phonetic {
+    font-family: "Mona Sans", sans-serif;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+body.no-glass .phonetic-map {
+    background: var(--dark-black, #1a1a1a);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.no-glass .phonetic-map__cell {
+    background-color: var(--dark-black, #1a1a1a);
+    color: var(--accent-sky, #38bdf8);
+}
+
+body.no-glass .phonetic-map__cell:hover {
+    background-color: var(--dark-green, #16a34a);
+    color: #ffffff;
+}
+
+body.no-glass .phonetic-map__cell--active {
+    background-color: var(--dark-green, #16a34a);
+    color: #ffffff;
+}

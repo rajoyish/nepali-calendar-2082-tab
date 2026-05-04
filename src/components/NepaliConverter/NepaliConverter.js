@@ -4,6 +4,7 @@ import {
   convertToPreeti,
   transliterateNepali,
 } from "./converter.js";
+import { NepaliPhoneticMap } from "../NepaliPhoneticMap/NepaliPhoneticMap.js";
 
 export const initNepaliConverter = (containerId) => {
   const container = document.getElementById(containerId);
@@ -16,6 +17,7 @@ export const initNepaliConverter = (containerId) => {
   let activeIndex = -1;
   let currentMode = "preeti2unicode";
   let dom = {};
+  let phoneticFallback = null;
 
   const render = () => {
     container.innerHTML = `
@@ -102,6 +104,7 @@ export const initNepaliConverter = (containerId) => {
       alert: document.getElementById("copyAlert"),
       suggestionBox: document.getElementById("suggestionBox"),
     };
+    phoneticFallback = NepaliPhoneticMap(dom.input, dom.inputGroupSource);
   };
 
   const updateClassesAndPlaceholders = () => {
@@ -118,6 +121,7 @@ export const initNepaliConverter = (containerId) => {
       dom.copyBarSource.style.display = "none";
       dom.toolbar.style.display = "flex";
       dom.output.readOnly = true;
+      phoneticFallback.hide();
     } else if (currentMode === "unicode2preeti") {
       dom.input.className =
         "nepali-converter__textarea nepali-converter__textarea--unicode";
@@ -131,6 +135,7 @@ export const initNepaliConverter = (containerId) => {
       dom.copyBarSource.style.display = "none";
       dom.toolbar.style.display = "flex";
       dom.output.readOnly = true;
+      phoneticFallback.hide();
     } else if (currentMode === "roman2unicode") {
       dom.input.className =
         "nepali-converter__textarea nepali-converter__textarea--unicode";
@@ -160,7 +165,6 @@ export const initNepaliConverter = (containerId) => {
   const getCaretCoordinates = (element, position) => {
     const div = document.createElement("div");
     const style = window.getComputedStyle(element);
-
     const properties = [
       "direction",
       "boxSizing",
@@ -192,18 +196,15 @@ export const initNepaliConverter = (containerId) => {
       "wordSpacing",
     ];
     properties.forEach((prop) => (div.style[prop] = style[prop]));
-
     div.style.position = "absolute";
     div.style.visibility = "hidden";
     div.style.whiteSpace = "pre-wrap";
     div.style.wordWrap = "break-word";
-
     div.textContent = element.value.substring(0, position);
     const span = document.createElement("span");
     span.textContent = element.value.substring(position) || ".";
     div.appendChild(span);
     document.body.appendChild(div);
-
     const coords = {
       top:
         span.offsetTop +
@@ -211,7 +212,6 @@ export const initNepaliConverter = (containerId) => {
         element.scrollTop,
       left: span.offsetLeft + parseInt(style.borderLeftWidth || "0"),
     };
-
     document.body.removeChild(div);
     return coords;
   };
@@ -230,11 +230,9 @@ export const initNepaliConverter = (containerId) => {
   const selectSuggestion = (index) => {
     const word = currentSuggestions[index];
     if (!word) return;
-
     const words = dom.input.value.split(/\s+/);
     words[words.length - 1] = word;
     dom.input.value = words.join(" ") + " ";
-
     dom.suggestionBox.style.display = "none";
     localStorage.setItem(`nepaliInput_${currentMode}`, dom.input.value);
     dom.input.focus();
@@ -287,12 +285,34 @@ export const initNepaliConverter = (containerId) => {
 
       if (!currentWord.trim()) {
         dom.suggestionBox.style.display = "none";
+        phoneticFallback.hide();
         return;
       }
 
       debounceTimer = setTimeout(async () => {
-        const suggestions = await transliterateNepali(currentWord);
-        renderSuggestions(suggestions);
+        const isOffline = !navigator.onLine;
+        let suggestions = [];
+        let apiFailed = false;
+
+        if (!isOffline) {
+          try {
+            suggestions = await transliterateNepali(currentWord);
+            if (suggestions.length === 1 && suggestions[0] === currentWord) {
+              apiFailed = true;
+            }
+          } catch (error) {
+            apiFailed = true;
+          }
+        }
+
+        if (isOffline || apiFailed) {
+          showAlert("⚠️ Offline: Autocomplete paused.");
+          dom.suggestionBox.style.display = "none";
+          phoneticFallback.show();
+        } else {
+          phoneticFallback.hide();
+          renderSuggestions(suggestions);
+        }
       }, 250);
     } else {
       syncOutput();
@@ -300,11 +320,16 @@ export const initNepaliConverter = (containerId) => {
   };
 
   const handleKeydown = (e) => {
-    if (
-      currentMode !== "roman2unicode" ||
-      dom.suggestionBox.style.display === "none"
-    )
-      return;
+    if (currentMode !== "roman2unicode") return;
+
+    if (phoneticFallback.isActive() && e.key === " ") {
+      if (phoneticFallback.handleSpace()) {
+        e.preventDefault();
+        return;
+      }
+    }
+
+    if (dom.suggestionBox.style.display === "none") return;
 
     const items = dom.suggestionBox.querySelectorAll("li");
 
@@ -385,21 +410,28 @@ export const initNepaliConverter = (containerId) => {
     }
   };
 
-  const showAlert = () => {
+  const showAlert = (message = "👍 Copied to clipboard!") => {
+    const alertSpan = dom.alert.querySelector("span");
+    if (alertSpan) alertSpan.textContent = message;
+
     dom.alert.classList.add("nepali-converter__alert--visible");
-    dom.copyBtns.forEach((btn) => btn.classList.add("is-copied"));
+
+    if (message.includes("Copied")) {
+      dom.copyBtns.forEach((btn) => btn.classList.add("is-copied"));
+    }
+
     if (alertTimeout) clearTimeout(alertTimeout);
     alertTimeout = setTimeout(() => {
       dom.alert.classList.remove("nepali-converter__alert--visible");
       dom.copyBtns.forEach((btn) => btn.classList.remove("is-copied"));
-    }, 3000);
+    }, 10000);
   };
 
   const handleCopyClick = () => {
     const textToCopy =
       currentMode === "roman2unicode" ? dom.input.value : dom.output.value;
     if (!textToCopy) return;
-    navigator.clipboard.writeText(textToCopy).then(showAlert);
+    navigator.clipboard.writeText(textToCopy).then(() => showAlert());
   };
 
   const bindEvents = () => {
@@ -442,6 +474,7 @@ export const initNepaliConverter = (containerId) => {
 
     if (alertTimeout) clearTimeout(alertTimeout);
     if (debounceTimer) clearTimeout(debounceTimer);
+    if (phoneticFallback) phoneticFallback.destroy();
 
     container.innerHTML = "";
     dom = null;

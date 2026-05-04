@@ -1,5 +1,7 @@
 .phonetic-map {
     position: absolute;
+    top: 3rem;
+    left: 1rem;
     z-index: 9999;
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -10,7 +12,7 @@
     flex-direction: column;
     gap: 0.75rem;
     width: max-content;
-    max-width: calc(100vw - 32px);
+    max-width: calc(100% - 2rem);
     margin-top: 0;
     transition: opacity 0.3s ease;
     box-sizing: border-box;
@@ -32,6 +34,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
     min-width: 44px;
     padding: 6px 8px;
     border: 1px solid #cbd5e1;
@@ -92,4 +95,11 @@ body.no-glass .phonetic-map__cell:hover {
 body.no-glass .phonetic-map__cell--active {
     background-color: #16a34a;
     color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .phonetic-map {
+        margin-top: 1rem;
+        width: calc(100% - 2rem);
+    }
 }

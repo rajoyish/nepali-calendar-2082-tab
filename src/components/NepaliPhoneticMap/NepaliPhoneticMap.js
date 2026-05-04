@@ -96,60 +96,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     wordEnd: 0,
   };
 
-  const getCaretCoordinates = (element, position) => {
-    const div = document.createElement("div");
-    const style = window.getComputedStyle(element);
-    const properties = [
-      "direction",
-      "boxSizing",
-      "width",
-      "height",
-      "overflowX",
-      "overflowY",
-      "borderTopWidth",
-      "borderRightWidth",
-      "borderBottomWidth",
-      "borderLeftWidth",
-      "borderStyle",
-      "paddingTop",
-      "paddingRight",
-      "paddingBottom",
-      "paddingLeft",
-      "fontStyle",
-      "fontVariant",
-      "fontWeight",
-      "fontStretch",
-      "fontSize",
-      "lineHeight",
-      "fontFamily",
-      "textAlign",
-      "textTransform",
-      "textIndent",
-      "textDecoration",
-      "letterSpacing",
-      "wordSpacing",
-    ];
-    properties.forEach((prop) => (div.style[prop] = style[prop]));
-    div.style.position = "absolute";
-    div.style.visibility = "hidden";
-    div.style.whiteSpace = "pre-wrap";
-    div.style.wordWrap = "break-word";
-    div.textContent = element.value.substring(0, position);
-    const span = document.createElement("span");
-    span.textContent = element.value.substring(position) || ".";
-    div.appendChild(span);
-    document.body.appendChild(div);
-    const coords = {
-      top:
-        span.offsetTop +
-        parseInt(style.borderTopWidth || "0") -
-        element.scrollTop,
-      left: span.offsetLeft + parseInt(style.borderLeftWidth || "0"),
-    };
-    document.body.removeChild(div);
-    return coords;
-  };
-
   const updateWordBoundaries = () => {
     const val = inputElement.value;
     const cursor = inputElement.selectionStart;
@@ -369,27 +315,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     inputElement.dispatchEvent(new Event("input"));
   };
 
-  const positionMap = () => {
-    const coords = getCaretCoordinates(
-      inputElement,
-      inputElement.selectionStart,
-    );
-
-    container.style.top = `${coords.top + 24}px`;
-    container.style.left = `${coords.left}px`;
-
-    requestAnimationFrame(() => {
-      const mapRect = container.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-
-      if (mapRect.right > viewportWidth - 16) {
-        const overflow = mapRect.right - (viewportWidth - 16);
-        const newLeft = coords.left - overflow;
-        container.style.left = `${Math.max(0, newLeft)}px`;
-      }
-    });
-  };
-
   const show = () => {
     const word = updateWordBoundaries();
     if (!word.trim()) {
@@ -407,7 +332,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     generateGrid(parsed);
     container.classList.remove("phonetic-map--hidden");
     state.isActive = true;
-    positionMap();
   };
 
   const hide = () => {

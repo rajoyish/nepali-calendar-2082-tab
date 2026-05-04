@@ -330,11 +330,7 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
 
     const parsed = parsePhonetic(word.toLowerCase());
     if (!parsed) {
-      grid.innerHTML = "";
-      state.exactMatch = "";
-      container.classList.remove("phonetic-map--hidden");
-      state.isActive = true;
-      positionMap();
+      hide();
       return;
     }
 
@@ -365,7 +361,7 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     isActive: () => state.isActive,
     handleSpace: () => {
       if (state.exactMatch) {
-        replaceWord(state.exactMatch + " ");
+        replaceWord(state.exactMatch);
         return true;
       }
       return false;

@@ -141,6 +141,8 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
             type: "consonant",
             consonant: cons[c],
             consonantKey: c,
+            vowel: vows[vMatch],
+            vowelKey: vMatch,
           };
           remaining = remAfterCons.slice(vMatch.length);
           matched = true;
@@ -189,7 +191,7 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
       const btn = document.createElement("button");
       btn.className = "phonetic-map__cell";
 
-      if (replacementChar === exactMatchVal) {
+      if (exactMatchVal && replacementChar === exactMatchVal) {
         btn.classList.add("phonetic-map__cell--active");
       }
 
@@ -209,12 +211,12 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     };
 
     if (parsed.type === "consonant") {
-      const displayCharBase = parsed.consonant + vows[""];
+      const displayCharBase = parsed.consonant + parsed.vowel;
       createCell(
         displayCharBase,
         parsed.prefix + displayCharBase,
         parsed.exactMatch,
-        parsed.consonantKey,
+        parsed.consonantKey + parsed.vowelKey,
       );
 
       const relatedKeys = Object.keys(cons).filter(
@@ -224,34 +226,22 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
       relatedKeys
         .sort((a, b) => a.length - b.length || a.localeCompare(b))
         .forEach((relKey) => {
-          const relChar = cons[relKey];
-          createCell(relChar, parsed.prefix + relChar, "", relKey);
+          const relChar = cons[relKey] + parsed.vowel;
+          createCell(relChar, parsed.prefix + relChar, "", relKey + parsed.vowelKey);
         });
 
       const suffixes = [
-        "\\",
-        "aa",
-        "i",
-        "ee",
-        "u",
-        "uu",
-        "ri",
-        "e",
-        "ai",
-        "o",
-        "ou",
-        "am",
-        "an",
-        "ah",
+        "", "\\", "aa", "i", "ee", "u", "uu", "ri", "e", "ai", "o", "ou", "am", "an", "ah",
       ];
       suffixes.forEach((suff) => {
+        if (suff === parsed.vowelKey) return;
         const displayChar = parsed.consonant + vows[suff];
         const replacementChar = parsed.prefix + displayChar;
         const phoneticText = parsed.consonantKey + suff;
         createCell(
           displayChar,
           replacementChar,
-          parsed.exactMatch,
+          "",
           phoneticText,
         );
       });

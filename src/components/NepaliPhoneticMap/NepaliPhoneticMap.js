@@ -281,13 +281,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "|") {
-      e.preventDefault();
-      insertAtCursor("।");
-    }
-  };
-
   const handleOutsideClick = (e) => {
     if (state.isActive && container && !container.contains(e.target) && !inputElement.contains(e.target)) {
       hide();
@@ -295,7 +288,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
   };
 
   grid.addEventListener("mousedown", handleGridClick);
-  inputElement.addEventListener("keydown", handleKeyDown);
   document.addEventListener("mousedown", handleOutsideClick);
   document.addEventListener("touchstart", handleOutsideClick, { passive: true });
 
@@ -312,7 +304,6 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
     },
     destroy: () => {
       grid.removeEventListener("mousedown", handleGridClick);
-      inputElement.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("touchstart", handleOutsideClick);
       if (container && container.parentNode) {

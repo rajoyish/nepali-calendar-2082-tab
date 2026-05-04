@@ -333,6 +333,26 @@ export const initNepaliConverter = (containerId) => {
   const handleKeydown = (e) => {
     if (currentMode !== "roman2unicode") return;
 
+    if (e.key === "|") {
+      e.preventDefault();
+      const charToInsert = "।";
+      
+      const val = dom.input.value;
+      const start = dom.input.selectionStart;
+      const end = dom.input.selectionEnd;
+      const before = val.substring(0, start);
+      const after = val.substring(end);
+
+      dom.input.value = before + charToInsert + after;
+      cursorPosition = start + charToInsert.length;
+      dom.input.setSelectionRange(cursorPosition, cursorPosition);
+      localStorage.setItem(`nepaliInput_${currentMode}`, dom.input.value);
+
+      dom.suggestionBox.style.display = "none";
+      dom.input.dispatchEvent(new Event("input"));
+      return;
+    }
+
     if (e.shiftKey && /^[B-DF-HJ-NP-TV-Z]$/.test(e.key)) {
       e.preventDefault();
       const charToInsert = e.key.toLowerCase() + "\\";

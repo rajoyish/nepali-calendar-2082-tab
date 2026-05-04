@@ -10,9 +10,10 @@
     flex-direction: column;
     gap: 0.75rem;
     width: max-content;
-    max-width: calc(100% - 32px);
+    max-width: calc(100vw - 32px);
     margin-top: 0;
     transition: opacity 0.3s ease;
+    box-sizing: border-box;
 }
 
 .phonetic-map--hidden {

@@ -374,8 +374,20 @@ export const NepaliPhoneticMap = (inputElement, wrapperElement) => {
       inputElement,
       inputElement.selectionStart,
     );
+
     container.style.top = `${coords.top + 24}px`;
-    container.style.left = `${coords.left + 16}px`;
+    container.style.left = `${coords.left}px`;
+
+    requestAnimationFrame(() => {
+      const mapRect = container.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      if (mapRect.right > viewportWidth - 16) {
+        const overflow = mapRect.right - (viewportWidth - 16);
+        const newLeft = coords.left - overflow;
+        container.style.left = `${Math.max(0, newLeft)}px`;
+      }
+    });
   };
 
   const show = () => {

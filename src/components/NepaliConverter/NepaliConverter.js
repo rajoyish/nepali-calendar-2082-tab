@@ -16,12 +16,13 @@ export const initNepaliConverter = (containerId) => {
   let currentSuggestions = [];
   let activeIndex = -1;
   let currentMode = "preeti2unicode";
+  let isManualOffline = false;
   let dom = {};
   let phoneticFallback = null;
 
   const render = () => {
     container.innerHTML = `
-      <div class="nepali-converter__alert" id="copyAlert" role="alert">
+      <div class="nepali-converter__alert nepali-converter__alert--success" id="copyAlert" role="alert">
         <span>👍 Copied to clipboard!</span>
       </div>
       <section class="container-xl nepali-converter glass">
@@ -49,6 +50,9 @@ export const initNepaliConverter = (containerId) => {
             <button type="button" class="nepali-converter__copy-btn">
               <i class="bi bi-clipboard copy-icon-default"></i>
               <i class="bi bi-clipboard-check copy-icon-active"></i>
+            </button>
+            <button type="button" class="nepali-converter__mode-btn nepali-converter__mode-btn--online" id="networkModeBtn">
+              <i class="bi bi-wifi"></i> ONLINE MODE
             </button>
           </div>
           <ul id="suggestionBox" class="nepali-converter__suggestions"></ul>
@@ -99,6 +103,7 @@ export const initNepaliConverter = (containerId) => {
       toolbar: document.getElementById("charToolbar"),
       copyBtns: document.querySelectorAll(".nepali-converter__copy-btn"),
       copyBarSource: document.getElementById("copyBarSource"),
+      networkModeBtn: document.getElementById("networkModeBtn"),
       inputGroupTarget: document.getElementById("inputGroupTarget"),
       inputGroupSource: document.getElementById("inputGroupSource"),
       alert: document.getElementById("copyAlert"),
@@ -143,7 +148,7 @@ export const initNepaliConverter = (containerId) => {
       dom.inputGroupTarget.classList.add(
         "nepali-converter__input-group--hidden",
       );
-      dom.copyBarSource.style.display = "block";
+      dom.copyBarSource.style.display = "flex";
       dom.toolbar.style.display = "none";
       dom.output.readOnly = false;
     }
@@ -290,6 +295,12 @@ export const initNepaliConverter = (containerId) => {
       }
 
       debounceTimer = setTimeout(async () => {
+        if (isManualOffline) {
+          dom.suggestionBox.style.display = "none";
+          phoneticFallback.show();
+          return;
+        }
+
         const isOffline = !navigator.onLine;
         let suggestions = [];
         let apiFailed = false;
@@ -306,7 +317,7 @@ export const initNepaliConverter = (containerId) => {
         }
 
         if (isOffline || apiFailed) {
-          showAlert("⚠️ Offline: Autocomplete paused.");
+          showAlert("⚠️ Offline: Autocomplete paused.", "warning");
           dom.suggestionBox.style.display = "none";
           phoneticFallback.show();
         } else {
@@ -367,6 +378,25 @@ export const initNepaliConverter = (containerId) => {
     syncOutput();
   };
 
+  const handleNetworkModeClick = () => {
+    isManualOffline = !isManualOffline;
+
+    if (isManualOffline) {
+      dom.networkModeBtn.className =
+        "nepali-converter__mode-btn nepali-converter__mode-btn--offline";
+      dom.networkModeBtn.innerHTML = `<i class="bi bi-wifi-off"></i> OFFLINE MODE`;
+    } else {
+      dom.networkModeBtn.className =
+        "nepali-converter__mode-btn nepali-converter__mode-btn--online";
+      dom.networkModeBtn.innerHTML = `<i class="bi bi-wifi"></i> ONLINE MODE`;
+      showAlert("✅ Online: Autocomplete active.", "success");
+    }
+
+    if (currentMode === "roman2unicode") {
+      handleInput();
+    }
+  };
+
   const handleModeChange = (event) => {
     if (event.target === dom.toggleP2U || event.target === dom.toggleRoman) {
       if (event.target === dom.toggleP2U && dom.toggleRoman.checked) {
@@ -410,11 +440,11 @@ export const initNepaliConverter = (containerId) => {
     }
   };
 
-  const showAlert = (message = "👍 Copied to clipboard!") => {
+  const showAlert = (message = "👍 Copied to clipboard!", type = "success") => {
     const alertSpan = dom.alert.querySelector("span");
     if (alertSpan) alertSpan.textContent = message;
 
-    dom.alert.classList.add("nepali-converter__alert--visible");
+    dom.alert.className = `nepali-converter__alert nepali-converter__alert--visible nepali-converter__alert--${type}`;
 
     if (message.includes("Copied")) {
       dom.copyBtns.forEach((btn) => btn.classList.add("is-copied"));
@@ -422,7 +452,7 @@ export const initNepaliConverter = (containerId) => {
 
     if (alertTimeout) clearTimeout(alertTimeout);
     alertTimeout = setTimeout(() => {
-      dom.alert.classList.remove("nepali-converter__alert--visible");
+      dom.alert.className = `nepali-converter__alert nepali-converter__alert--${type}`;
       dom.copyBtns.forEach((btn) => btn.classList.remove("is-copied"));
     }, 10000);
   };
@@ -440,6 +470,7 @@ export const initNepaliConverter = (containerId) => {
     dom.input.addEventListener("keyup", handleCursorUpdate);
     dom.input.addEventListener("keydown", handleKeydown);
     dom.toolbar.addEventListener("click", handleToolbarClick);
+    dom.networkModeBtn.addEventListener("click", handleNetworkModeClick);
     dom.copyBtns.forEach((btn) =>
       btn.addEventListener("click", handleCopyClick),
     );
@@ -465,6 +496,8 @@ export const initNepaliConverter = (containerId) => {
     }
     if (dom.toolbar)
       dom.toolbar.removeEventListener("click", handleToolbarClick);
+    if (dom.networkModeBtn)
+      dom.networkModeBtn.removeEventListener("click", handleNetworkModeClick);
     if (dom.copyBtns)
       dom.copyBtns.forEach((btn) =>
         btn.removeEventListener("click", handleCopyClick),

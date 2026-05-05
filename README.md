@@ -1,67 +1,78 @@
-# 🇳🇵 Tabre – Nepali Calendar & Date Converter New Tab Extension
+# Tabre – Nepali Calendar & Converters New Tab Extension
 
-**Live Demo:** [https://tabre.netlify.app/](https://tabre.netlify.app/)
-
----
-
-Tabre is a Chrome extension that turns your new tab into a modern Nepali calendar dashboard. Instantly see the current Nepali date, time, tithi, and events, convert between Bikram Sambat (BS) and Gregorian (AD) calendars, and manage your tasks—all in one beautifully designed place.
+**[Live Demo](https://tabre.netlify.app/)** | **[Chrome Web Store](https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo)**
 
 ---
 
-## ✨ Features
-
-- 🗓 **Current Nepali Date & Time:** View today’s Nepali date and time in Devanagari, updated live.
-
-- 🔄 **Date Converter (AD ↔ BS):** Quickly convert dates between Nepali (BS) and English (AD).
-
-- 📅 **Interactive Full Calendar:** Browse the entire current Nepali month seamlessly with improved optimization and bug fixes. 
-  - **Enhanced Daily Details:** Tapping on a date now opens a comprehensive modal featuring Sunrise and Sunset times, Nepal Samvat details, Panchanga, a Daily Events List, and Auspicious Times & Muhurtas.
-
-- 🔔 **Smart Reminders, Tasks & Events:** - **Task Reminders:** Stay on top of your to-do list with a task reminder system that includes native browser push notifications and audio alerts—so you never miss a beat, even on another tab.
-  - **Upcoming Events:** Create and track custom events. The app will automatically send you a notification when today's date matches your saved event.
-  - View recent reminders and click to quickly restart them.
-
-- 🎨 **Customizable Aesthetic UI:** - **Glassmorphism Design:** Experience a modern look with our new glassmorphism effect. Prefer the classic look? You can easily toggle this feature on or off in the settings menu.
-  - **Dynamic Backgrounds:** The dashboard background dynamically adapts to the current time period (e.g., बिहान, मध्यान्ह). Enjoy beautiful, scenic backgrounds loaded instantly via optimized glob imports.
-
-- ⚡ **Fast & Private:** All features run locally. No data is collected or sent anywhere.
+Transform your new tab into a powerful and aesthetically pleasing Nepali calendar dashboard. Tabre is an all-in-one Chrome extension that brings the Nepali date, time, tithi, and local events directly to your browser. Equipped with advanced date conversion tools, typing utilities, and an integrated task manager, Tabre keeps you organized and seamlessly connected to Nepali time.
 
 ---
 
-## 🔒 Privacy
+## ✨ Key Features
 
-- 🚫 No data collection, tracking, or third-party scripts.
-- 💻 All features, including notifications and background images, work 100% offline on your device.
+### 📅 Calendar & Time Tracking
+*   **Live Nepali Date & Time:** Instantly view today’s date and time in Devanagari script, updated in real-time.
+*   **Interactive Full Calendar:** Browse the entire Nepali month seamlessly. The latest version features improved optimization and bug fixes for a smoother experience.
+*   **Enhanced Daily Details:** Click on any date to open a comprehensive modal displaying:
+    *   Sunrise and Sunset times
+    *   Nepal Samvat details
+    *   Panchanga and Tithi
+    *   Daily Events List
+    *   Auspicious Times & Muhurtas
+
+### 🛠️ Utilities & Tools
+*   **Date Converter (AD ↔ BS):** Quickly and accurately convert dates between Bikram Sambat (BS) and Gregorian (AD).
+*   **Language & Typing Converters:** 
+    *   Preeti to Nepali Unicode (and vice versa)
+    *   Smart Roman to Nepali Unicode converter featuring a custom keyboard interface.
+
+### 🔔 Productivity & Task Management
+*   **Task Reminders:** Stay on top of your workflow with an integrated to-do list. Includes native browser push notifications and audio alerts so you never miss a beat—even if you are working in another tab.
+*   **Upcoming Events Tracker:** Create custom events. Tabre will automatically notify you when today's date matches your saved event.
+*   **Quick Restart:** Easily view recent reminders and restart them with a single click.
+
+### 🎨 Customizable Aesthetic UI
+*   **Glassmorphism Design:** Experience a sleek, modern UI with our built-in glassmorphism effect. Prefer a classic look? Simply toggle it off in the settings menu.
+*   **Dynamic Backgrounds:** The dashboard background intelligently adapts to the current time of day (e.g., बिहान, मध्यान्ह). Beautiful, scenic wallpapers load instantly via optimized glob imports.
+
+---
+
+## 🔒 Privacy First
+
+Your data belongs to you. Tabre is built with strict privacy standards:
+*   **100% Offline Capability:** All features, including notifications and background images, work entirely locally on your device.
+*   **Zero Tracking:** No data collection, tracking, telemetry, or third-party scripts. 
 
 ---
 
 ## 🚀 Installation
 
-**From Chrome Web Store:**
+### Option 1: Install via Chrome Web Store (Recommended)
+1. Visit the [Tabre Extension Page](https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo).
+2. Click **Add to Chrome**.
 
-1. 🌐 Visit the [Chrome Web Store page](https://chromewebstore.google.com/detail/tabre-nepali-calendar-new/aifbilibghomlchloeechmmoeiepgcbo).
-2. 🖱 Click **Add to Chrome**.
-
-**Manual Installation:**
-
-1. 📥 Clone or download this repository.
-2. ⚙️ Go to `chrome://extensions/` and enable **Developer Mode**.
-3. 📂 Click **Load unpacked** and select the project folder (or the `dist` folder after building).
+### Option 2: Manual Installation
+1. Clone or download this repository to your local machine.
+2. Open your browser and navigate to `chrome://extensions/`.
+3. Toggle **Developer Mode** on (usually located in the top right corner).
+4. Click **Load unpacked** and select the project folder (or the `dist` folder if you have built it from source).
 
 ---
 
-## 💻 Development
+## 💻 Development Guide
 
-Built with [Vite 6](https://vitejs.dev/), Vanilla JS, HTML & CSS. Our developer workflow is fully automated to compile calendar data on the fly.
+Tabre is built for speed and simplicity using [Vite 6](https://vitejs.dev/), Vanilla JavaScript, HTML, and CSS. Our developer workflow is fully automated to compile calendar data on the fly.
+
+### Getting Started
 
 ```bash
-# Install dependencies
+# 1. Install project dependencies
 npm install
 
-# Start local development server
-# This concurrently runs Vite and watches/rebuilds calendar JSON data via nodemon
+# 2. Start the local development server
+# Note: This concurrently runs Vite and uses nodemon to watch/rebuild calendar JSON data
 npm run dev
 
-# Build extension for production
-# This runs the prebuild calendar compilation, Vite build, and copies extension assets
+# 3. Build the extension for production
+# This runs the pre-build calendar compilation, Vite build, and copies necessary extension assets
 npm run build-extension

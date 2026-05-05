@@ -1,7 +1,7 @@
 {
-  "name": "nepali-calendar-2083",
+  "name": "tabre-your-new-tab",
   "private": true,
-  "version": "4.0.0",
+  "version": "6.0.0",
   "type": "module",
   "scripts": {
     "build:calendar": "node scripts/build-calendar.js",

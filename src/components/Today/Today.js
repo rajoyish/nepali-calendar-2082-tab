@@ -196,7 +196,10 @@ export async function initTodayCalendar(updateExtensionUICallback) {
   if (!calendarData) return;
 
   let ktmDate = getLocalKathmanduTime();
-  const currentIsoDate = ktmDate.toISOString().split("T")[0];
+  const year = ktmDate.getFullYear();
+  const month = String(ktmDate.getMonth() + 1).padStart(2, "0");
+  const day = String(ktmDate.getDate()).padStart(2, "0");
+  const currentIsoDate = `${year}-${month}-${day}`;
 
   let todayNp = getCachedNepaliDate(currentIsoDate);
 
@@ -236,7 +239,10 @@ export async function initTodayCalendar(updateExtensionUICallback) {
 
   fetchKathmanduTime()
     .then(async (accurateKtmDate) => {
-      const accurateIsoDate = accurateKtmDate.toISOString().split("T")[0];
+      const aYear = accurateKtmDate.getFullYear();
+      const aMonth = String(accurateKtmDate.getMonth() + 1).padStart(2, "0");
+      const aDay = String(accurateKtmDate.getDate()).padStart(2, "0");
+      const accurateIsoDate = `${aYear}-${aMonth}-${aDay}`;
       currentKtmTimeMs = accurateKtmDate.getTime();
 
       if (accurateIsoDate !== currentIsoDate) {

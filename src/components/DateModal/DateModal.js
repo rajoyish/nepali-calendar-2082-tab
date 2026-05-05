@@ -27,7 +27,11 @@ export function showDateModal(dateObj, calendarData) {
 
   if (!monthObj) {
     for (const m of calendarData.months) {
-      if (m.days.includes(dateObj)) {
+      if (
+        m.days.some(
+          (d) => d.dateEn === dateObj.dateEn && d.dateNp === dateObj.dateNp,
+        )
+      ) {
         monthObj = m;
         break;
       }
@@ -36,7 +40,9 @@ export function showDateModal(dateObj, calendarData) {
 
   if (!monthObj) return;
 
-  const dateIndex = monthObj.days.indexOf(dateObj);
+  const dateIndex = monthObj.days.findIndex(
+    (d) => d.dateEn === dateObj.dateEn && d.dateNp === dateObj.dateNp,
+  );
   const yearNp = calendarData.yearNp;
   let isSecondMonth = false;
 

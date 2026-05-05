@@ -1,4 +1,5 @@
 .settings {
+    font-family: "Mona Sans", sans-serif;
     position: relative;
     display: inline-block;
 }
@@ -77,6 +78,7 @@
 }
 
 .settings__item {
+    font-family: "Mona Sans", sans-serif;
     width: 100%;
     background: none;
     border: none;

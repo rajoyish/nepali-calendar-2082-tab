@@ -39,7 +39,7 @@
     <body>
         <nav aria-label="Main Navigation">
             <ul class="tabs-list" role="tablist">
-                <li role="presentation">
+                <li role="presentation" class="tab-today-wrapper">
                     <a
                         id="tab-today"
                         href="#panel-today"
@@ -48,50 +48,63 @@
                         >Today</a
                     >
                 </li>
-                <li role="presentation">
-                    <a
-                        id="tab-calendar"
-                        href="#panel-calendar"
-                        role="tab"
-                        aria-controls="panel-calendar"
-                        >Full Calendar</a
+                <li role="presentation" class="hamburger-wrapper">
+                    <button
+                        id="hamburger-btn"
+                        class="hamburger-btn"
+                        aria-label="Toggle Menu"
+                        aria-expanded="false"
+                        aria-controls="dropdown-tabs"
                     >
-                </li>
-                <li role="presentation">
-                    <a
-                        id="tab-upcoming"
-                        href="#panel-upcoming"
-                        role="tab"
-                        aria-controls="panel-upcoming"
-                        >Upcoming Events</a
-                    >
-                </li>
-                <li role="presentation">
-                    <a
-                        id="tab-converter"
-                        href="#panel-converter"
-                        role="tab"
-                        aria-controls="panel-converter"
-                        >Date Converter</a
-                    >
-                </li>
-                <li role="presentation">
-                    <a
-                        id="tab-reminder"
-                        href="#panel-reminder"
-                        role="tab"
-                        aria-controls="panel-reminder"
-                        >Reminder</a
-                    >
-                </li>
-                <li role="presentation">
-                    <a
-                        id="tab-nepali"
-                        href="#panel-nepali"
-                        role="tab"
-                        aria-controls="panel-nepali"
-                        >Nepali Converter</a
-                    >
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <ul class="dropdown-tabs" id="dropdown-tabs">
+                        <li role="presentation">
+                            <a
+                                id="tab-calendar"
+                                href="#panel-calendar"
+                                role="tab"
+                                aria-controls="panel-calendar"
+                                >Full Calendar</a
+                            >
+                        </li>
+                        <li role="presentation">
+                            <a
+                                id="tab-upcoming"
+                                href="#panel-upcoming"
+                                role="tab"
+                                aria-controls="panel-upcoming"
+                                >Upcoming Events</a
+                            >
+                        </li>
+                        <li role="presentation">
+                            <a
+                                id="tab-converter"
+                                href="#panel-converter"
+                                role="tab"
+                                aria-controls="panel-converter"
+                                >Date Converter</a
+                            >
+                        </li>
+                        <li role="presentation">
+                            <a
+                                id="tab-reminder"
+                                href="#panel-reminder"
+                                role="tab"
+                                aria-controls="panel-reminder"
+                                >Reminder</a
+                            >
+                        </li>
+                        <li role="presentation">
+                            <a
+                                id="tab-nepali"
+                                href="#panel-nepali"
+                                role="tab"
+                                aria-controls="panel-nepali"
+                                >Nepali Converter</a
+                            >
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

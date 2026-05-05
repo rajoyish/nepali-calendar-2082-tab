@@ -106,7 +106,6 @@ body.no-glass .glass-pill:hover {
     margin: 0 auto;
 }
 
-
 .tabs-list,
 .calendar__footer {
     font-family: "Mona Sans", sans-serif;
@@ -117,10 +116,63 @@ body.no-glass .glass-pill:hover {
     padding: 1rem;
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.hamburger-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-btn {
+    background: transparent;
+    border: 2px solid var(--accent-sky);
+    border-radius: 0.5em;
+    color: var(--accent-sky);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.hamburger-btn:hover,
+.hamburger-btn[aria-expanded="true"] {
+    background: var(--accent-sky);
+    color: var(--dark-black);
+}
+
+.dropdown-tabs {
+    list-style: none;
+    padding: 1.5rem;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: var(--dark-black);
+    border: 1px solid var(--accent-sky);
+    border-radius: 0.5rem;
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-tabs.show {
+    display: flex;
+}
+
+.dropdown-tabs a {
+    display: block;
+    text-align: right;
 }
 
 .tabs-list a {
@@ -190,9 +242,29 @@ footer a,
 
 @media (min-width: 500px) {
     .tabs-list {
+        justify-content: center;
         gap: 2rem;
-        flex-direction: row;
     }
+
+    .hamburger-btn {
+        display: none;
+    }
+
+    .dropdown-tabs {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+        gap: 2rem;
+    }
+
+    .dropdown-tabs a {
+        text-align: left;
+    }
+
     .spacing {
         padding: 1rem 6rem;
     }

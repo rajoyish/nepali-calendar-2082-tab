@@ -28,11 +28,38 @@ export function setupTabs() {
     panel.setAttribute("tabindex", "0");
   });
 
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const dropdownTabs = document.getElementById("dropdown-tabs");
+
+  if (hamburgerBtn && dropdownTabs) {
+    hamburgerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isExpanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
+      hamburgerBtn.setAttribute("aria-expanded", !isExpanded);
+      dropdownTabs.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        !tabsList.contains(e.target) &&
+        dropdownTabs.classList.contains("show")
+      ) {
+        dropdownTabs.classList.remove("show");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   tabsList.addEventListener("click", (e) => {
     const clickedTab = e.target.closest("a");
     if (!clickedTab) return;
     e.preventDefault();
     switchTab(clickedTab);
+
+    if (dropdownTabs && dropdownTabs.classList.contains("show")) {
+      dropdownTabs.classList.remove("show");
+      if (hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded", "false");
+    }
   });
 
   tabsList.addEventListener("keydown", (e) => {
